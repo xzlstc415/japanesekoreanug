@@ -1,0 +1,25 @@
+# To generate the list of current project files run the following command:
+# find app lib test -name "*.rb" | awk '{gsub("//","/"); print "    - \x27"$1"\x27"}' >> .rubocop.yml
+
+Metrics/LineLength:
+  Max: 100
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/ClassLength:
+  Max: 300
+
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - '**/.*.yml'
+    - '**/Gemfile.lock'
+    - '**/Gemfile'
+    - 'test/fixtures/**/*'
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'

@@ -1,0 +1,11 @@
+*.DS_Store
+log
+tmp
+private
+coverage
+
+# ignore the .ruby-gemset file, but you can use one if you want
+.ruby-gemset
+
+.byebug_history
+.envrc
