@@ -12,26 +12,44 @@ var _ = require('lodash');
 var uglify = require('gulp-uglify');
 var pkg = require('./package.json');
 var jshint = require('gulp-jshint');
+var bowerFiles = require('main-bower-files');
+var angularFilesort = require('gulp-angular-filesort');
+var es = require('event-stream');
 
 var files = require('./gulp/gulp.config.js');
 
-gulp.task('default', function(){
-  console.log("HELLO GULP!");
+gulp.task('default', function(callback) {
+  runSequence('index', 'watch', 'serve', callback);
 });
 
-gulp.task('serve', function () {
-  nodemon({script: files.server, ext: ['js html']})
-    .on('restart', function () {
+gulp.task('serve', function() {
+  nodemon({script: files.server})
+    .on('restart', function() {
         console.log('restarted!');
     });
 });
 
-gulp.task('watch', function () {
-  gulp.watch(files.app_files.js, ['lint', 'build-src']);
-  gulp.watch(files.app_files.atpl, ['html2js', 'index']);
-  gulp.watch(files.app_files.html, ['index']);
-  gulp.watch(files.app_files.styles, ['less', 'index']);
-
-  gulp.watch('./src/config/**/*.json', ['config-build']);
+gulp.task('index', function() {
+  gulp.src(files.app_files.index)
+    .pipe(inject(gulp.src(bowerFiles(), {read: false}), {name: 'bower'}))
+    .pipe(inject(
+      gulp.src(files.app_files.assets, {read: false}), {name: 'assets'}
+    ))
+    .pipe(inject(es.merge(
+      gulp.src(files.app_files.css, {read: false}),
+      gulp.src(files.app_files.js)
+        .pipe(angularFilesort())
+    )))
+    .pipe(gulp.dest('./'));
 });
 
+gulp.task('lint', function() {
+  return gulp.src(files.app_files.js)
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
+gulp.task('watch', function() {
+  gulp.watch(files.app_files.js, ['lint', 'index']);
+  gulp.watch(files.app_files.css, ['index']);
+});

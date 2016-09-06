@@ -17,6 +17,10 @@ app.enable('trust proxy');
 app.use(bodyParser.json());
 app.use(express.static(config.static_site_root));
 
+app.all('/*', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html', { root: __dirname });
+});
 
 // FIRE IT UP
 

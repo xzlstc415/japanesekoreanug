@@ -19,6 +19,7 @@
     "lodash": "^4.15.0",
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
-    "angular-ui-router": "^0.3.1"
+    "angular-ui-router": "^0.3.1",
+    "normalize-css": "^4.2.0"
   }
 }
