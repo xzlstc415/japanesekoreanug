@@ -13,73 +13,16 @@ a:hover {
   color: #5bc0de;
 }
 
-a.no-underline {
-  text-decoration: none;
-}
-
-a.no-underline:hover {
-  text-decoration: none;
-}
-
-.user_nav {
-  position: absolute;
-  top: 15px;
-  right: 100px;
-}
-
-#top {
-  position: relative;
-}
-
-#top .logo {
-  margin-top: 50px;
-  margin-left: 100px;
-  padding-bottom: 10px;
-}
-
-.logo-tagline {
-  display: inline;
-  height: 100px;
-  width: 100px;
-}
-
-.yuji-logo-tagline {
-  margin-left: 20px;
-}
-
-#top .subscribe {
-  position: absolute;
-  bottom: 10px;
-  right: 100px;
-}
-
-#top .subscribe li {
-  position: relative;
-  margin-left: 8px;
-  font-size: 12px;
-}
-
-#top .subscribe li .name {
-  display: none;
-}
-
-#top .subscribe li:hover .name {
-  display: block;
-  position: absolute;
-  top: -22px; left: -84px; width: 200px;
-  color: #000;
-  text-align: center;
-}
-
-ul.horizontal {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-ul.horizontal li {
-  margin: 0;
-  padding: 0;
-  float: left;
-}
-
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */

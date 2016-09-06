@@ -4,27 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>JapaneseKoreanUG</title>
+  <base href="/">
 
-  <!-- <link rel="stylesheet" href="assets/css/normalize.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
-  <link rel="stylesheet" href="assets/css/yujihomo.css">
-  <link rel="stylesheet" href="assets/css/animations.css"> -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="/bower_components/normalize-css/normalize.css">
+  <!-- endinject -->
+  <!-- assets:css -->
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="stylesheet" href="/assets/css/yujihomo.css">
+  <!-- endinject -->
   <!-- inject:css -->
+  <link rel="stylesheet" href="/app/header/header.css">
   <!-- endinject -->
 </head>
 <body>
-  <header ng-include="'app/header/header.html'"></header>
-  <!-- inject:js -->
+  <header ui-view="header"></header>
+  <!-- bower:js -->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/bower_components/lodash/lodash.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <!-- endinject -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/lodash/dist/lodash.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-
-
-  <script src="app/yujihomo.js"></script>
+  <!-- inject:js -->
+  <script src="/app/yujihomo.js"></script>
+  <script src="/app/header/header.js"></script>
+  <!-- endinject -->
 </body>
 </html>

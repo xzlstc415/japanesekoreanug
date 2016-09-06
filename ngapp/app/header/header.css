@@ -1,0 +1,95 @@
+.user_nav {
+  position: absolute;
+  top: 15px;
+  right: 100px;
+}
+
+#top {
+  position: relative;
+  padding-top: 0.01em;
+}
+
+#top .logo {
+  margin-top: 50px;
+  margin-left: 100px;
+  padding-bottom: 10px;
+}
+
+.logo-tagline {
+  display: inline;
+  height: 100px;
+  width: 100px;
+}
+
+.yuji-logo-tagline {
+  margin-left: 20px;
+}
+
+#top .subscribe {
+  position: absolute;
+  bottom: 10px;
+  right: 100px;
+}
+
+#top .subscribe li {
+  position: relative;
+  margin-left: 8px;
+  font-size: 12px;
+}
+
+#top .subscribe li .name {
+  display: none;
+}
+
+#top .subscribe li:hover .name {
+  display: block;
+  position: absolute;
+  top: -22px; left: -84px; width: 200px;
+  color: #000;
+  text-align: center;
+}
+
+ul.horizontal {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.horizontal li {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+#nav-bar {
+  position: relative;
+  padding: 8px 100px;
+  background-color: #333;
+  border-top: solid 1px #FFF;
+  background: -webkit-gradient(linear, left top, left bottom, from(#5C5C5C), to(#111));
+  background: -moz-linear-gradient(top,  #5C5C5C, #111);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5C5C5C', endColorstr='#111');
+  border-bottom: solid 3px #FFBD00;
+  margin-bottom: 15px;
+}
+
+#nav-bar .nav {
+  float: right;
+  padding-top: 2px;
+}
+
+#nav-bar .nav li {
+  padding-left: 25px;
+  font-size: 14px;
+  color: #BBB;
+}
+
+#nav-bar .nav li a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+#nav-bar .nav li a:hover {
+  color: #FFF;
+  text-decoration: underline;;
+}
