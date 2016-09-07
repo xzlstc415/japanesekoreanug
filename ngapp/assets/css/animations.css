@@ -1,23 +1,20 @@
-[ui-view].ng-enter, [ui-view].ng-leave {
-    position: absolute;
-    left: 0;
-    right: 0;
+[ui-view]#main-container.ng-enter, [ui-view]#main-container.ng-leave {
     -webkit-transition:all .5s ease-in-out;
     transition:all .5s ease-in-out;
 }
 
-[ui-view].ng-enter {
+[ui-view]#main-container.ng-enter {
     opacity: 0;
 }
 
-[ui-view].ng-enter-active {
+[ui-view]#main-container.ng-enter-active {
     opacity: 1;
 }
 
-[ui-view].ng-leave {
+[ui-view]#main-container.ng-leave {
     opacity: 1;
 }
 
-[ui-view].ng-leave-active {
+[ui-view]#main-container.ng-leave-active {
     opacity: 0;
 }

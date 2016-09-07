@@ -1,0 +1,94 @@
+#casting-side-bar {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#casting-side-bar .banner {
+  margin-top: 15px;
+}
+
+.episode_views {
+  padding: 0 20px;
+  margin: 0;
+  font-weight: normal;
+  color: #444;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border: solid 1px #BBB;
+  background-color: #DDD;
+  background: -webkit-gradient(linear, left top, left bottom, from(#EEE), to(#CCC));
+  background: -moz-linear-gradient(top,  #EEE, #CCC);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEE', endColorstr='#CCC');
+  margin-bottom: 14px;
+}
+
+.episode_views .view {
+  padding-left: 3px;
+}
+
+.episode_views .view img {
+  background-color: #FFF;
+  background: -webkit-gradient(linear, left top, left bottom, from(#EEE), to(#FFF));
+  background: -moz-linear-gradient(top,  #EEE, #FFF);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEE', endColorstr='#FFF');
+  padding: 7px;
+  vertical-align: middle;
+  border: solid 1px #BBB;
+  border-top: none;
+  border-bottom: none;
+}
+
+.episode_views .view a img {
+  background: none;
+  padding: 2px;
+  border: none;
+}
+
+.search_option {
+  margin-bottom: 15px;
+}
+
+.search_option ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #bbb;
+  border-top: none;
+  padding: 5px 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
+}
+
+  .search_option li {
+    margin:5px 0;
+    font-size:14px
+  }
+
+  .search_option h2 {
+    padding: 4px 20px;
+    margin: 0;
+    font-weight: normal;
+    color: #444;
+    font-size: 14px;
+    text-align: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    border: solid 1px #bbb;
+    border-bottom-color: #AAA;
+    background-color: #DDD;
+    background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
+    background: -moz-linear-gradient(top, #eee, #ccc);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EEEEEE', endColorstr='#CCCCCC');
+  }

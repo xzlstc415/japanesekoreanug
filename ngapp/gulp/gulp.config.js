@@ -8,7 +8,7 @@ module.exports = {
     js: ['app/**/*.js'],
     tpl: ['app/**/*.tmpl.html'],
     index: ['index.html'],
-    css: ['app/**/*.css'],
+    css: ['app/**/**/*.css'],
     assets: ['assets/css/*.css']
   },
 

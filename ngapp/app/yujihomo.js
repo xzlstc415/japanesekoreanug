@@ -1,24 +1,30 @@
-angular.module('yujihomo', [
-  'ngAnimate',
-  'ui.router'
-])
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-    .state('yujihomo', {
-      url: '',
-      abstract: true,
-      views: {
-        'header@': {
-          templateUrl: 'app/header/header.tmpl.html'
+(function() {
+  'use strict';
+
+  var stateConfig = function($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('yujihomo', {
+        url: '',
+        abstract: true,
+        views: {
+          'header@': {
+            templateUrl: 'app/header/header.tmpl.html'
+          }
         }
-      }
-    })
-    .state('home', {
-      url:'/',
-      parent: 'yujihomo'
-    });
-  $urlRouterProvider.otherwise('/');
-})
-.config(function($locationProvider) {
-  $locationProvider.html5Mode(true);
-});
+      });
+    $urlRouterProvider.otherwise('/');
+  };
+  stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+  var locationConfig = function($locationProvider) {
+    $locationProvider.html5Mode(true);
+  };
+  locationConfig.$inject = ['$locationProvider'];
+
+  angular.module('yujihomo', [
+    'ngAnimate',
+    'ui.router'
+  ])
+  .config(stateConfig)
+  .config(locationConfig);
+})();
