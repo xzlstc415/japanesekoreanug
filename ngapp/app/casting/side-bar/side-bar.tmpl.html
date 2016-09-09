@@ -1,8 +1,20 @@
 <div class="episode_views">
   View:
-  <span class="view"><img alt="Full" height="10" src="/assets/img/full.png" width="15"></span>
-  <span class="view"><a href="/?view=list" title="List View"><img alt="List" height="10" src="/assets/img/list.png" width="14"></a></span>
-  <span class="view"><a href="/?view=grid" title="Grid View"><img alt="Grid" height="10" src="/assets/img/grid.png" width="11"></a></span>
+  <span class="view">
+    <a href="javascript:void(0)" title="List View" ng-click="sideBar.setCurrentStyle('full')" ng-class="{selected: sideBar.getCurrentStyle() == 'full'}">
+      <img alt="Full" height="10" src="/assets/img/full.png" width="15">
+    </a>
+  </span>
+  <span class="view">
+    <a href="javascript:void(0)" title="List View" ng-click="sideBar.setCurrentStyle('list')" ng-class="{selected: sideBar.getCurrentStyle() == 'list'}">
+      <img alt="List" height="10" src="/assets/img/list.png" width="14">
+    </a>
+  </span>
+  <span class="view">
+    <a href="javascript:void(0)" title="Grid View" ng-click="sideBar.setCurrentStyle('grid')" ng-class="{selected: sideBar.getCurrentStyle() == 'grid'}">
+      <img alt="Grid" height="10" src="/assets/img/grid.png" width="11">
+    </a>
+  </span>
 </div>
 <div class="search_option">
   <h2>Types</h2>

@@ -11,7 +11,12 @@
             templateUrl: 'app/casting/casting.tmpl.html'
           },
           'side-bar@home': {
-            templateUrl: 'app/casting/side-bar/side-bar.tmpl.html'
+            templateUrl: 'app/casting/side-bar/side-bar.tmpl.html',
+            controller: 'sideBarCtrl as sideBar'
+          },
+          'episodes@home': {
+            templateUrl: 'app/casting/episodes/episodes.tmpl.html',
+            controller: 'episodesCtrl as episodes'
           }
         }
       });

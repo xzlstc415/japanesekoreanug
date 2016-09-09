@@ -1,0 +1,179 @@
+#casting-episodes{
+  margin-right: 200px;
+}
+
+.unreleased{
+  color: #D00;
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+#casting-episodes h2 .remove{
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.full .episode{
+  padding-bottom: 18px;
+  border-bottom: solid 1px #e5e5e5;
+  margin-bottom: 20px;
+}
+
+.full .screenshot{
+  float: left;
+}
+
+.screenshot img{
+  border: solid 1px #999;
+  display: block;
+}
+
+.full .main{
+  margin-left: 215px;
+}
+
+.full .info{
+  color: #999;
+  font-size: 12px;
+}
+
+.full .info a{
+  color: #999;
+}
+
+.full .number{
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.full h2,.episode h2 a{
+  color: #E98C08;
+}
+
+.full h2 .star,.episode h2 a .star{
+  font-size: 16px;
+  text-decoration: none;
+  margin-left: 3px;
+}
+
+.full h2 .unstarred,.episode h2 a .unstarred{
+  color: #AAA;
+}
+
+.full h2 .starred,.episode h2 a .starred{
+  color: #E98C08;
+}
+
+.full h2{
+  margin: 3px 0;
+}
+
+.full .description{
+  margin-bottom: 17px;
+}
+
+.full .stats{
+  font-size: 11px;
+  color: #777;
+  font-weight: normal;
+  padding-left: 3px;
+}
+
+.full .notes{
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+.list{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.list .star{
+  font-size: 14px;
+  text-decoration: none;
+  margin-left: 0;
+}
+
+.list .unstarred{
+  color: #AAA;
+}
+
+.list .starred{
+  color: #E98C08;
+}
+
+.list td,.list th{
+  border-bottom: solid 1px #ccc;
+}
+
+.list td{
+  padding: 5px;
+}
+
+.list th{
+  padding: 5px;
+  text-align: left;
+  color: #777;
+}
+
+.list .comment_count{
+  color: #000;
+}
+
+.list em{
+  color: #777;
+  padding-left: 5px;
+}
+
+#casting-episodes .grid{
+  margin-right: -30px;
+}
+
+.grid .episode{
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.grid .name{
+  font-size: 13px;
+  position: absolute;
+  top: 135px;
+  left: 0;
+}
+
+.grid .name .star{
+  font-size: 14px;
+  text-decoration: none;
+  margin-left: 0;
+}
+
+.grid .name .unstarred{
+  color: #AAA;
+}
+
+.grid .name .starred{
+  color: #E98C08;
+}
+
+#casting-episodes .filters{
+  margin-bottom: 15px;
+}
+
+#casting-episodes .filter{
+  border: solid 1px #aaa;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-color: #EEE;
+  padding: 2px 8px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+#casting-episodes .filter a{
+  padding-left: 5px;
+}
