@@ -43,9 +43,12 @@
 }
 
 .episode_views .view a img {
+  background-color: #FFF;
   background: none;
-  /*padding: 7px;*/
-  border: none;
+  padding: 7px;
+  vertical-align: middle;
+  border-top: none;
+  border-bottom: none;
 }
 
 .episode_views .view a, .episode_views .view a:hover {

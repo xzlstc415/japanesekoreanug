@@ -1,4 +1,4 @@
-<div class="full">
+<div class="full" ng-if="episodes.getCurrentStyle() == 'full'">
   <div class="episode" id="episode_476">
     <div class="screenshot"><a href=""><img alt="Foundation" height="125" src="" width="200"></a></div>
     <div class="main">
@@ -67,5 +67,69 @@
       </div>
     </div>
     <div class="clear"></div>
+  </div>
+</div>
+
+<table class="list" ng-if="episodes.getCurrentStyle() == 'list'">
+  <tbody>
+    <tr>
+      <th class="position">#</th>
+      <th>Name</th>
+      <th>Comments</th>
+      <th>Duration</th>
+      <th>Released</th>
+    </tr>
+    <tr class="episode" id="episode_476">
+      <td class="position">
+        <a href="/stars?episode_id=476" class="star unstarred" data-method="post" data-remote="true" rel="nofollow">☆</a>
+        417
+      </td>
+      <td>
+        <a href="/episodes/417-foundation">Foundation</a>
+      </td>
+      <td><a href="/episodes/417-foundation?view=comments" class="comment_count">175 comments</a></td>
+      <td>11 minutes</td>
+      <td>Jun 16, 2013</td>
+    </tr>
+    <tr class="episode" id="episode_475">
+      <td class="position">
+        <a href="/stars?episode_id=475" class="star unstarred" data-method="post" data-remote="true" rel="nofollow">☆</a>
+        416
+      </td>
+      <td>
+        <a href="/episodes/416-form-objects">Form Objects</a>
+        <em>pro</em>
+      </td>
+      <td><a href="/episodes/416-form-objects?view=comments" class="comment_count">246 comments</a></td>
+      <td>18 minutes</td>
+      <td>Jun 03, 2013</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="grid" ng-if="episodes.getCurrentStyle() == 'grid'">
+  <div class="episode" id="episode_476">
+    <div class="screenshot"><a href="/episodes/417-foundation"><img alt="417-foundation" height="125" src="/static/episodes/stills/417-foundation.png" width="200"></a></div>
+    <div class="name">
+      #417
+      <a href="/episodes/417-foundation">Foundation</a>
+      <a href="/stars?episode_id=476" class="star unstarred" data-method="post" data-remote="true" rel="nofollow">☆</a>
+    </div>
+  </div>
+  <div class="episode" id="episode_475">
+    <div class="screenshot"><a href="/episodes/416-form-objects"><img alt="416-form-objects" height="125" src="/static/episodes/stills/416-form-objects.png" width="200"></a></div>
+    <div class="name">
+      #416
+      <a href="/episodes/416-form-objects">Form Objects</a>
+      <a href="/stars?episode_id=475" class="star unstarred" data-method="post" data-remote="true" rel="nofollow">☆</a>
+    </div>
+  </div>
+  <div class="episode" id="episode_474">
+    <div class="screenshot"><a href="/episodes/115-model-caching-revised"><img alt="115-model-caching-revised" height="125" src="/static/episodes/stills/115-model-caching-revised.png" width="200"></a></div>
+    <div class="name">
+      #115
+      <a href="/episodes/115-model-caching-revised">Model Caching (revised)</a>
+      <a href="/stars?episode_id=474" class="star unstarred" data-method="post" data-remote="true" rel="nofollow">☆</a>
+    </div>
   </div>
 </div>
