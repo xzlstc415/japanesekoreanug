@@ -4,7 +4,6 @@
   var stateConfig = function($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('yujihomo', {
-        url: '',
         abstract: true,
         views: {
           'header@': {

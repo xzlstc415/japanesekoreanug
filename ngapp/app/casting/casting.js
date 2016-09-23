@@ -15,7 +15,7 @@
             controller: 'sideBarCtrl as sideBar'
           },
           'episodes@home': {
-            templateUrl: 'app/casting/episodes/episodes.tmpl.html',
+            templateUrl: 'app/casting/episodes/index/index.tmpl.html',
             controller: 'episodesCtrl as episodes'
           }
         }
