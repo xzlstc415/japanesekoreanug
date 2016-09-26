@@ -8,7 +8,8 @@
         parent: 'yujihomo',
         views: {
           '@': {
-            templateUrl: 'app/casting/episodes/show/show.tmpl.html'
+            templateUrl: 'app/casting/episodes/show/show.tmpl.html',
+            controller: 'episodesShowCtrl as episodesShow'
           }
         }
       });

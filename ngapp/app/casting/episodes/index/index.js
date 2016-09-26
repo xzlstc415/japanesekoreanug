@@ -1,14 +1,14 @@
 (function() {
   'use strict';
 
-  var episodesCtrl = function(viewStyle) {
+  var episodesIndexCtrl = function(viewStyle) {
     var vm = this;
-    
+
     vm.getCurrentStyle = viewStyle.getCurrentStyle;
   };
 
-  episodesCtrl.$inject = ['viewStyle'];
+  episodesIndexCtrl.$inject = ['viewStyle'];
 
   angular.module('yujihomo')
-    .controller('episodesCtrl', episodesCtrl);
+    .controller('episodesIndexCtrl', episodesIndexCtrl);
 })();

@@ -16,7 +16,7 @@
           },
           'episodes@home': {
             templateUrl: 'app/casting/episodes/index/index.tmpl.html',
-            controller: 'episodesCtrl as episodes'
+            controller: 'episodesIndexCtrl as episodes'
           }
         }
       });

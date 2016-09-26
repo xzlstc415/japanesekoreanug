@@ -1,5 +1,42 @@
-<div class="content">
-  <div class="video-wrapper">
+<div id="episode">
+  <div class="info" ng-show="!episodesShow.showVideo">
+    <div class="screenshot">
+      <a class="play_video" href="javascript:void(0)" ng-click="episodesShow.playVideo()">
+        <img alt="Foundation" height="125" src="/assets/img/thumbnail1.jpg" width="200">
+      </a>
+    </div>
+    <h1>
+      <span class="position">#1</span> LOL講座 - レーン戦終わってからの動き方
+      <a href="/stars?episode_id=476" class="star unstarred" data-method="post" data-remote="true" rel="nofollow">☆</a>
+    </h1>
+    <div class="details">Jun 16, 2016 | 11 minutes | <a href="/?tag_id=4">Guide</a>, <a href="/?tag_id=13">Bottom</a></div>
+    <div class="description">
+      LOL講座 - レーン戦終わってからの動き方(Bottom lane)
+    </div>
+    <div class="watch"><a href="javascript:void(0)" ng-click="episodesShow.playVideo()" class="play_video watch_button">Click to Play Video ▶</a></div>
+    <div class="social">
+      <iframe
+        id="twitter-widget-0"
+        scrolling="no"
+        frameborder="0"
+        allowtransparency="true"
+        class="twitter-share-button twitter-share-button-rendered twitter-tweet-button"
+        title="Twitter Tweet Button"
+        src="http://platform.twitter.com/widgets/tweet_button.289140617d6d66fbee36bb5f0535b846.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Frailscasts.com%2Fepisodes%2F417-foundation&amp;size=m&amp;text=Watching%20Foundation%20on%20RailsCasts&amp;time=1474764550561&amp;type=share&amp;url=http%3A%2F%2Frailscasts.com%2Fepisodes%2F417-foundation&amp;via=railscasts"
+        style="position: static; visibility: visible; width: 61px; height: 20px;"
+        data-url="http://railscasts.com/episodes/417-foundation">
+      </iframe>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+    <div class="clear"></div>
+  </div>
+  <div class="video-wrapper" ng-show="episodesShow.showVideo">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/R9EpJSAlKsQ" frameborder="0" allowfullscreen class="video"></iframe>
   </div>
+  <ul class="nav horizontal">
+    <li class="selected"><a href="/episodes/417-foundation" class="tab">Show Notes</a></li>
+    <li><a href="/episodes/417-foundation?view=asciicast" class="tab">ASCIIcast</a></li>
+    <li><a href="/episodes/417-foundation?view=comments" class="selected tab">68 Comments</a></li>
+    <li><a href="/episodes/417-foundation?view=similar" class="tab">Similar Episodes</a></li>
+    <li class="previous"><a href="/episodes/416-form-objects">&lt; Previous Episode</a></li>
+  </ul>
 </div>
