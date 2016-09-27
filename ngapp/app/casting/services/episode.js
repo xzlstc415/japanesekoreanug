@@ -15,7 +15,8 @@
         description: "LOL講座 - レーン戦終わってからの動き方(Bottom lane)",
         thumbnail_url: "/assets/img/thumbnail1.jpg",
         type: "Beginner Episodes",
-        category: "LOL guide"
+        category: "LOL guide",
+        tags: ["guide", "bottom"]
       },
       {
         id: 2,
@@ -28,7 +29,8 @@
         description: "ウェーブマネージメント講座 (Wave Management)",
         thumbnail_url: "/assets/img/thumbnail3.jpg",
         type: "Intermediate Episodes",
-        category: "LOL guide"
+        category: "LOL guide",
+        tags: ["guide", "wave"]
       },
       {
         id: 3,
@@ -41,7 +43,8 @@
         description: "Warding講座(Warding lesson)",
         thumbnail_url: "/assets/img/thumbnail2.jpg",
         type: "Advanced Episodes",
-        category: "LOL guide"
+        category: "LOL guide",
+        tags: ["guide", "warding"]
       }
     ];
 
