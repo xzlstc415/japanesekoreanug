@@ -1,7 +1,7 @@
 <div id="episode">
-  <div class="info" ng-show="!episodesShow.showVideo">
+  <div class="info" ng-show="!vm.showVideo">
     <div class="screenshot">
-      <a class="play_video" href="javascript:void(0)" ng-click="episodesShow.playVideo()">
+      <a class="play_video" href="javascript:void(0)" ng-click="vm.playVideo()">
         <img alt="Foundation" height="125" src="/assets/img/thumbnail1.jpg" width="200">
       </a>
     </div>
@@ -13,7 +13,7 @@
     <div class="description">
       LOL講座 - レーン戦終わってからの動き方(Bottom lane)
     </div>
-    <div class="watch"><a href="javascript:void(0)" ng-click="episodesShow.playVideo()" class="play_video watch_button">Click to Play Video ▶</a></div>
+    <div class="watch"><a href="javascript:void(0)" ng-click="vm.playVideo()" class="play_video watch_button">Click to Play Video ▶</a></div>
     <div class="social">
       <iframe
         id="twitter-widget-0"
@@ -29,7 +29,7 @@
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
     <div class="clear"></div>
   </div>
-  <div class="video-wrapper" ng-show="episodesShow.showVideo">
+  <div class="video-wrapper" ng-show="vm.showVideo">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/R9EpJSAlKsQ" frameborder="0" allowfullscreen class="video"></iframe>
   </div>
   <ul class="nav horizontal">

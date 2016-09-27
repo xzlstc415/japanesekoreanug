@@ -9,7 +9,7 @@
         views: {
           '@': {
             templateUrl: 'app/casting/episodes/show/show.tmpl.html',
-            controller: 'episodesShowCtrl as episodesShow'
+            controller: 'episodesShowCtrl as vm'
           }
         }
       });

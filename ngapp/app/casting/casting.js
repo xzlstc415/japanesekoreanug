@@ -12,11 +12,16 @@
           },
           'side-bar@home': {
             templateUrl: 'app/casting/side-bar/side-bar.tmpl.html',
-            controller: 'sideBarCtrl as sideBar'
+            controller: 'sideBarCtrl as vm'
           },
           'episodes@home': {
             templateUrl: 'app/casting/episodes/index/index.tmpl.html',
-            controller: 'episodesIndexCtrl as episodes'
+            controller: 'episodesIndexCtrl as vm',
+            resolve: {
+              episodes: ['Episode', function(Episode) {
+                return Episode.query();
+              }]
+            }
           }
         }
       });
