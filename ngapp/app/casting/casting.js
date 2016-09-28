@@ -6,6 +6,10 @@
       .state('home', {
         url:'/',
         parent: 'yujihomo',
+        params: {
+          type: null,
+          tag: null
+        },
         views: {
           '@': {
             templateUrl: 'app/casting/casting.tmpl.html'
@@ -26,8 +30,8 @@
             templateUrl: 'app/casting/episodes/index/index.tmpl.html',
             controller: 'episodesIndexCtrl as vm',
             resolve: {
-              episodes: ['Episode', function(Episode) {
-                return Episode.query();
+              episodes: ['Episode', '$stateParams', function(Episode, $stateParams) {
+                return Episode.query($stateParams);
               }]
             }
           }
