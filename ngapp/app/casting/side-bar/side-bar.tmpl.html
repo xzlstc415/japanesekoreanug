@@ -21,7 +21,7 @@
   <ul>
     <li ng-repeat="episodetype in vm.episodeTypes">
       <a href="javascript:void(0)"
-         ui-sref="home">
+         ng-click="vm.setType(episodetype.name)">
         {{episodetype.name}}
       </a>
     </li>
@@ -32,7 +32,7 @@
   <ul>
     <li ng-repeat="tag in vm.tags">
       <a href="javascript:void(0)"
-         ui-sref="home">
+         ng-click="vm.setTag(tag.name)">
         {{tag.name}}
       </a>
     </li>

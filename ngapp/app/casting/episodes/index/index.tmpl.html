@@ -1,3 +1,14 @@
+<div class="filters" ng-if="vm.filters.tag || vm.filters.type">
+  <strong>Applied Filters:</strong>
+  <span class="filter" ng-if="vm.filters.tag">{{vm.filters.tag}}
+    <a href="javascript:void(0)"
+       ng-click="vm.removeTag()">x</a>
+  </span>
+  <span class="filter" ng-if="vm.filters.type">{{vm.filters.type}}
+    <a href="javascript:void(0)"
+       ng-click="vm.removeType()">x</a>
+  </span>
+</div>
 <div class="full" ng-if="vm.getCurrentStyle() == 'full'">
   <div class="episode" id="episode_{{episode.number}}" ng-repeat="episode in vm.episodes track by episode.id">
     <div class="screenshot">

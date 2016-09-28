@@ -28,7 +28,7 @@
         description: "ウェーブマネージメント講座 (Wave Management)",
         thumbnail_url: "/assets/img/thumbnail3.jpg",
         type: "Intermediate Episodes",
-        tags: ["guide", "wave"]
+        tags: ["guide", "wave", "bottom"]
       },
       {
         id: 3,
@@ -42,13 +42,49 @@
         thumbnail_url: "/assets/img/thumbnail2.jpg",
         type: "Advanced Episodes",
         tags: ["guide", "warding"]
+      },
+      {
+        id: 4,
+        number: 4,
+        published_at: "May 12, 2016",
+        comments_count: 553,
+        name: "Warding講座2",
+        starred: true,
+        duration: "25",
+        description: "Warding講座2(Warding lesson)",
+        thumbnail_url: "/assets/img/thumbnail2.jpg",
+        type: "Advanced Episodes",
+        tags: ["guide", "warding"]
       }
     ];
+
+    var findEpisodesByType = function(type, collection) {
+      return _.filter(collection, function(episode) {
+        return episode.type == type;
+      });
+    };
+
+    var findEpisodesByTag = function(tag, collection) {
+      return _.filter(collection, function(episode) {
+        return episode.tags.includes(tag);
+      });
+    };
 
     var query = function(params) {
       var deferred = $q.defer();
 
-      deferred.resolve({data: episodes});
+      if (params.tag || params.type) {
+        var tmpEp = episodes;
+        if (params.tag) {
+          tmpEp = findEpisodesByTag(params.tag, episodes);
+        }
+        if (params.type) {
+          tmpEp = findEpisodesByType(params.type, tmpEp);
+        }
+        deferred.resolve({data: tmpEp});
+      } else {
+        deferred.resolve({data: episodes});
+      }
 
       return deferred.promise;
     };
