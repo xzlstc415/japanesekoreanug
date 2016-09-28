@@ -12,7 +12,15 @@
           },
           'side-bar@home': {
             templateUrl: 'app/casting/side-bar/side-bar.tmpl.html',
-            controller: 'sideBarCtrl as vm'
+            controller: 'sideBarCtrl as vm',
+            resolve: {
+              tags: ['Tag', function(Tag) {
+                return Tag.query();
+              }],
+              episodeTypes: ['EpisodeType', function(EpisodeType) {
+                return EpisodeType.query();
+              }]
+            }
           },
           'episodes@home': {
             templateUrl: 'app/casting/episodes/index/index.tmpl.html',
