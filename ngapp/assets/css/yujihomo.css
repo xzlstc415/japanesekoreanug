@@ -5,6 +5,47 @@ body {
   margin: 0;
 }
 
+a img {
+  border: none;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+h4 {
+  font-size: 12px;
+}
+
+.clear {
+  clear: both;
+}
+
+ul {
+  margin: 4px 0;
+  padding-left: 17px;
+}
+
+ul.horizontal {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.horizontal li {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
 a {
   color: #4F534E;
 }
