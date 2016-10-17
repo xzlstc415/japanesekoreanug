@@ -7,7 +7,8 @@
         abstract: true,
         views: {
           'header@': {
-            templateUrl: 'app/header/header.tmpl.html'
+            templateUrl: 'app/header/header.tmpl.html',
+            controller: 'headerCtrl as vm'
           }
         }
       });
