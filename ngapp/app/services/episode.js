@@ -17,7 +17,8 @@
         type: "Beginner Episodes",
         tags: ["guide", "bottom"],
         previous_episode_id: null,
-        next_episode_id: 2
+        next_episode_id: 2,
+        similar_episode_ids: [2, 3]
       },
       {
         id: 2,
@@ -32,7 +33,8 @@
         type: "Intermediate Episodes",
         tags: ["guide", "wave", "bottom"],
         previous_episode_id: 1,
-        next_episode_id: 3
+        next_episode_id: 3,
+        similar_episode_ids: [1, 3]
       },
       {
         id: 3,
@@ -47,7 +49,8 @@
         type: "Advanced Episodes",
         tags: ["guide", "warding"],
         previous_episode_id: 2,
-        next_episode_id: 4
+        next_episode_id: 4,
+        similar_episode_ids: [1, 2]
       },
       {
         id: 4,
@@ -62,7 +65,8 @@
         type: "Advanced Episodes",
         tags: ["guide", "warding"],
         previous_episode_id: 3,
-        next_episode_id: null
+        next_episode_id: null,
+        similar_episode_ids: []
       }
     ];
 
@@ -78,16 +82,25 @@
       });
     };
 
+    var findEpisodesByIds = function(ids, collection) {
+      return _.filter(collection, function(episode) {
+        return ids.includes(episode.id);
+      });
+    };
+
     var query = function(params) {
       var deferred = $q.defer();
 
-      if (params.tag || params.type) {
+      if (params.tag || params.type || params.ids) {
         var tmpEp = episodes;
         if (params.tag) {
           tmpEp = findEpisodesByTag(params.tag, episodes);
         }
         if (params.type) {
           tmpEp = findEpisodesByType(params.type, tmpEp);
+        }
+        if (params.ids) {
+          tmpEp = findEpisodesByIds(params.ids, tmpEp);
         }
         deferred.resolve({data: tmpEp});
       } else {

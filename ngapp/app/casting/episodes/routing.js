@@ -10,13 +10,13 @@
         views: {
           '@': {
             templateUrl: 'app/casting/episodes/show/show.tmpl.html',
-            controller: 'episodesShowCtrl as vm',
-            resolve: {
-              episode: ['Episode', '$stateParams', function(Episode, $stateParams) {
-                return Episode.get($stateParams.id);
-              }]
-            }
+            controller: 'episodesShowCtrl as vm'
           }
+        },
+        resolve: {
+          episode: ['Episode', '$stateParams', function(Episode, $stateParams) {
+            return Episode.get($stateParams.id);
+          }]
         }
       });
   };

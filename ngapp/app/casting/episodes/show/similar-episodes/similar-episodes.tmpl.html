@@ -1,23 +1,35 @@
 <div class="full">
-  <div class="episode" id="episode_475">
-    <div class="screenshot"><a href="/episodes/416-form-objects"><img alt="Form Objects" height="125" src="/static/episodes/stills/416-form-objects.png" width="200"></a></div>
+  <div class="episode" ng-repeat="episode in vm.similarEpisodes track by episode.id" id="episode_{{episode.id}}">
+    <div class="screenshot">
+      <a href="javascirpt:void(0)">
+        <img alt="Form Objects" height="125" ng-src="{{episode.thumbnail_url}}" width="200">
+      </a>
+    </div>
     <div class="main">
       <div class="info">
-        <span class="number">Episode #416</span> –
-        <span class="published_at">Jun 03, 2013</span> –
-        <span class="comments"><a href="/episodes/416-form-objects?view=comments">48 comments</a></span>
+        <span class="number">Episode #{{episode.number}}</span> –
+        <span class="published_at">{{episode.published_at}}</span> –
+        <span class="comments">
+          <a href="javascript:void(0)" ui-sref="episodes-comments({id: episode.id})">{{episode.comments_count}} comments</a>
+        </span>
       </div>
       <h2>
-        <a href="/episodes/416-form-objects">Form Objects</a>
-        <a href="/stars?episode_id=475" class="star unstarred" data-method="post" data-remote="true" rel="nofollow">☆</a>
+        <a href="javascript:void(0)" ui-sref="episodes-comments({id: episode.id})">{{episode.name}}</a>
+        <a href=""
+           class="star"
+           ng-class="{starred: episode.starred, unstarred: !episode.starred}"
+           data-method="post"
+           data-remote="true"
+           rel="nofollow">☆</a>
       </h2>
       <div class="description">
-        Models have a tendency to become a complex mess as an application grows. In this episode you will learn a couple of techniques to extract form-behavior out into its own class.
-        <span class="stats">(18 minutes)</span>
+        {{episode.description}}
+        <span class="stats">({{episode.duration}} minutes)</span>
       </div>
       <div class="watch">
-        <a href="/episodes/416-form-objects?autoplay=true" class="pretty_button">Watch Episode</a>
-        <a href="/episodes/416-form-objects?view=asciicast" class="pretty_button read_button">Read Episode</a>
+          <a href="javascript:void(0)"
+             ui-sref="episodes-comments({id: {{episode.id}}})"
+             class="watch_button pretty_button">Watch Episode</a>
       </div>
     </div>
     <div class="clear"></div>
