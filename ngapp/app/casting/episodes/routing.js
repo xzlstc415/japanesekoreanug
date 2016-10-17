@@ -6,6 +6,7 @@
       .state('episodes-detail', {
         url:'/episodes/:id',
         parent: 'yujihomo',
+        abstract: true,
         views: {
           '@': {
             templateUrl: 'app/casting/episodes/show/show.tmpl.html',

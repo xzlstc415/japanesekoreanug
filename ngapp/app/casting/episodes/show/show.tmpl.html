@@ -42,8 +42,43 @@
     <iframe width="560" height="315" src="https://www.youtube.com/embed/R9EpJSAlKsQ" frameborder="0" allowfullscreen class="video"></iframe>
   </div>
   <ul class="nav horizontal">
-    <li><a href="/episodes/417-foundation?view=comments" class="selected tab">{{vm.episode.comments_count}} Comments</a></li>
-    <li><a href="/episodes/417-foundation?view=similar" class="tab">Similar Episodes</a></li>
-    <li class="previous"><a href="/episodes/416-form-objects">&lt; Previous Episode</a></li>
+    <li>
+      <a href="javascript:void(0)"
+         class="tab"
+         ng-class="{selected: vm.commentsSelected}"
+         ng-click="vm.commentsSelected = true; vm.similarEpisodesSelected = false;"
+         ui-sref="episodes-comments({id: {{vm.episode.id}}})">
+        {{vm.episode.comments_count}} Comments
+      </a>
+    </li>
+    <li>
+      <a href="javascript:void(0)"
+         class="tab"
+         ng-class="{selected: vm.similarEpisodesSelected}"
+         ng-click="vm.commentsSelected = false; vm.similarEpisodesSelected = true;"
+         ui-sref="episodes-similar-ep({id: {{vm.episode.id}}})">
+        Similar Episodes
+      </a>
+    </li>
+    <li class="next">
+      <a href="javascript:void(0)"
+         ui-sref="episodes-comments({id: {{vm.episode.next_episode_id}}})"
+         ng-if="!!vm.episode.next_episode_id">
+        Next Episode &gt;
+      </a>
+    </li>
+    <li class="previous">
+      <a href="javascript:void(0)"
+         ui-sref="episodes-comments({id: {{vm.episode.previous_episode_id}}})"
+         ng-if="!!vm.episode.previous_episode_id">
+        &lt; Previous Episode
+      </a>
+    </li>
   </ul>
+  <div class="nav_section">
+    <div class="inner">
+      <div ui-view="comments" id="comments"></div>
+      <div ui-view="similar-episodes" class="similar"></div>
+    </div>
+  </div>
 </div>

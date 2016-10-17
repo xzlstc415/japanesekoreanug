@@ -4,7 +4,7 @@
   var episodesShowCtrl = function(episode) {
     var vm = this;
     vm.episode = episode.data;
-
+    vm.commentsSelected = true;
     vm.showVideo = false;
 
     var playVideo = function() {
