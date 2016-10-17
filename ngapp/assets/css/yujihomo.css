@@ -67,3 +67,7 @@ a:hover {
 * html .clearfix { height: 1%; }
 .clearfix { display: block; }
 /* close commented backslash hack */
+
+.field {
+  margin: 10px 0;
+}

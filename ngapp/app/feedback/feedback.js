@@ -3,12 +3,12 @@
 
   var stateConfig = function($stateProvider) {
     $stateProvider
-      .state('about', {
-        url:'/about',
+      .state('feedback', {
+        url:'/feedback',
         parent: 'yujihomo',
         views: {
           '@': {
-            templateUrl: 'app/about/about.tmpl.html'
+            templateUrl: 'app/feedback/feedback.tmpl.html'
           }
         }
       });
