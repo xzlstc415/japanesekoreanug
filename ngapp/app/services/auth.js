@@ -1,6 +1,6 @@
 (function() {
 
-  var User = function($q) {
+  var Auth = function($q) {
     var vm = this;
 
     var current_user = {
@@ -22,8 +22,8 @@
     return vm;
   };
 
-  User.$inject = ['$q'];
+  Auth.$inject = ['$q'];
 
   angular.module('yujihomo')
-    .service('User', User);
+    .service('Auth', Auth);
 })();

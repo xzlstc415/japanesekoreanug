@@ -1,15 +1,15 @@
 (function() {
   'use strict';
 
-  var headerCtrl = function(User) {
+  var headerCtrl = function(Auth) {
     var vm = this;
 
-    User.getCurrentUser().then(function(res) {
+    Auth.getCurrentUser().then(function(res) {
       vm.currentUser = res.data;
     });
   };
 
-  headerCtrl.$inject = ['User'];
+  headerCtrl.$inject = ['Auth'];
 
   angular.module('yujihomo')
     .controller('headerCtrl', headerCtrl);

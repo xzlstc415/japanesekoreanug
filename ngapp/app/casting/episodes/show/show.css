@@ -166,7 +166,7 @@
 
 #episode .nav li a.selected {
   border: solid 1px #CCC;
-  border-bottom: none;
+  border-bottom: solid 1px #F5F5F5;
   background-color: #F5F5F5;
   color: #555;
   border-top-left-radius: 5px;
