@@ -8,13 +8,29 @@
         parent: 'episodes-detail',
         views: {
           'comments@episodes-detail': {
-            templateUrl: 'app/casting/episodes/show/comments/comments.tmpl.html'
+            templateUrl: 'app/casting/episodes/show/comments/comments.tmpl.html',
+            controller: 'commentCtrl as vm'
           }
+        },
+        resolve: {
+          comments: ['Comment', 'episode', function(Comment, episode) {
+            return Comment.query({episodeId: episode.data.id});
+          }]
         }
       });
   };
 
   stateConfig.$inject = ['$stateProvider'];
 
-  angular.module('yujihomo').config(stateConfig);
+  var commentCtrl = function(comments) {
+    var vm = this;
+
+    vm.comments = comments.data;
+  };
+
+  commentCtrl.$inject = ['comments'];
+
+  angular.module('yujihomo')
+    .config(stateConfig)
+    .controller('commentCtrl', commentCtrl);
 })();

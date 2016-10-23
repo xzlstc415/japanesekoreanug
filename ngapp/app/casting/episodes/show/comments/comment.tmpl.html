@@ -1,0 +1,35 @@
+<div class="comment" id="comment_{{comment.id}}">
+  <div class="avatar">
+    <img alt="Avatar"
+         height="64"
+         ng-src="{{comment.user.avatar_url}}"
+         width="64">
+  </div>
+  <div class="actions user_actions">
+
+  </div>
+  <div class="main">
+    <div class="headline">
+      <span class="name">
+        <a href="/users/{{comment.user.id}}">{{comment.user.name}}</a>
+      </span>
+      <a href="javascript:void(0)" class="created_at">
+        over 3 years ago
+      </a>
+    </div>
+
+    <div class="comment_content">
+      <p>{{comment.content}}</p>
+
+      <div class="actions">
+        <a href="javascript:void(0)">Reply</a>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="nested_comments" ng-if="!!comment.replies">
+  <div ng-repeat="comment in comment.replies"
+       ng-include="'/app/casting/episodes/show/comments/comment.tmpl.html'">
+  </div>
+</div>
