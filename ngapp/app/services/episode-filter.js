@@ -17,16 +17,12 @@
     };
 
     var setTag = function(tag) {
-      if (!filters.tag || tag === null) {
-        filters.tag = tag;
-      }
+      filters.tag = tag;
       refreshState();
     };
 
     var setType = function(type) {
-      if (!filters.type || type === null) {
-        filters.type = type;
-      }
+      filters.type = type;
       refreshState();
     };
 

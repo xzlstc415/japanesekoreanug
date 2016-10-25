@@ -12,7 +12,7 @@
 <div class="full" ng-if="vm.getCurrentStyle() == 'full'">
   <div class="episode" id="episode_{{episode.number}}" ng-repeat="episode in vm.episodes track by episode.id">
     <div class="screenshot">
-      <a href="javascript:void(0)" ui-sref="episodes-detail({id: {{episode.id}}})">
+      <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
         <img alt="{{episode.number}}-{{episode.name}}" height="125" ng-src="{{episode.thumbnail_url}}" width="200">
       </a>
     </div>
@@ -23,7 +23,7 @@
         <span class="comments"><a href="">{{episode.comments_count}} comments</a></span>
       </div>
       <h2>
-        <a href="javascript:void(0)" ui-sref="episodes-detail({id: {{episode.id}}})">{{episode.name}}</a>
+        <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">{{episode.name}}</a>
          <a href=""
             class="star"
             ng-class="{starred: episode.starred, unstarred: !episode.starred}"
@@ -37,7 +37,7 @@
       </div>
       <div class="watch">
           <a href="javascript:void(0)"
-             ui-sref="episodes-detail({id: {{episode.id}}})"
+             ui-sref="episodes-comments({id: {{episode.id}}})"
              class="watch_button pretty_button">Watch Episode</a>
       </div>
     </div>
@@ -65,7 +65,7 @@
         {{episode.number}}
       </td>
       <td>
-        <a href="javascript:void(0)" ui-sref="episodes-detail({id: {{episode.id}}})">
+        <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
           {{episode.name}}
         </a>
       </td>
@@ -83,13 +83,13 @@
 <div class="grid" ng-if="vm.getCurrentStyle() == 'grid'">
   <div class="episode" id="episode_{{episode.number}}" ng-repeat="episode in vm.episodes track by episode.id">
     <div class="screenshot">
-      <a href="javascript:void(0)" ui-sref="episodes-detail({id: {{episode.id}}})">
+      <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
         <img alt="{{episode.number}}-{{episode.name}}" height="125" ng-src="{{episode.thumbnail_url}}" width="200">
       </a>
     </div>
     <div class="name">
       #{{episode.number}}
-      <a href="javascript:void(0)" ui-sref="episodes-detail({id: {{episode.id}}})">
+      <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
         {{episode.name}}
       </a>
       <a href="javascript:void(0)"

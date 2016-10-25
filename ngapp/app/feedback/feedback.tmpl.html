@@ -1,0 +1,32 @@
+<div class="content" id="about">
+  <div id="feedback">
+    <h2 class="bar">Feedback</h2>
+    <form accept-charset="UTF-8" action="/feedback_messages" class="new_feedback_message" id="new_feedback_message" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="ykEogewSVn92F855kG5CF3uGBzLR/6NoBirpPUmsdxE="></div>
+
+      <div class="info">
+        <p>You can also contact <a href="http://twitter.com/railscasts">@railscasts</a> on Twitter, or send an email to<a href="mailto:feedback@railscasts.com">feedback@railscasts.com</a>.</p>
+      </div>
+      <div class="field">
+        <label for="feedback_message_name">Your Name</label>
+        <input id="feedback_message_name" name="feedback_message[name]" size="30" type="text" value="">
+      </div>
+      <div class="field">
+        <label for="feedback_message_email">Your Email Address</label>
+        <input id="feedback_message_email" name="feedback_message[email]" size="30" type="text" value="">
+      </div>
+      <div class="field">
+        <label for="feedback_message_content">Message</label>
+        <textarea cols="50" id="feedback_message_content" name="feedback_message[content]" rows="14"></textarea>
+      </div>
+      <div class="actions"><input name="commit" type="submit" value="Send Feedback"></div>
+    </form>
+  </div>
+  <div id="feedback_instructions">
+    <p><strong>Please send feedback about:</strong></p>
+    <ul>
+      <li>Suggestions of tutorial episodes</li>
+      <li>Ideas for future episodes</li>
+      <li>Anything about this site</li>
+    </ul>
+  </div>
+</div>

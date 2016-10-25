@@ -5,6 +5,47 @@ body {
   margin: 0;
 }
 
+a img {
+  border: none;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+h4 {
+  font-size: 12px;
+}
+
+.clear {
+  clear: both;
+}
+
+ul {
+  margin: 4px 0;
+  padding-left: 17px;
+}
+
+ul.horizontal {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.horizontal li {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
 a {
   color: #4F534E;
 }
@@ -26,3 +67,26 @@ a:hover {
 * html .clearfix { height: 1%; }
 .clearfix { display: block; }
 /* close commented backslash hack */
+
+.field {
+  margin: 10px 0;
+}
+
+.actions {
+  margin: 8px 0;
+}
+
+.actions a {
+  padding: 3px 8px 2px 8px;
+  font-size: 12px;
+  color: #000;
+  border: 1px solid #999;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  background: #DDD;
+  background: -webkit-gradient(linear, left top, left bottom, from(#F5F5F5), to(#DDD));
+  background: -moz-linear-gradient(top,  #F5F5F5, #DDD);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F5F5F5', endColorstr='#DDD');
+  text-decoration: none;
+}

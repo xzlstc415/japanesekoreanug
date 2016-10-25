@@ -6,9 +6,8 @@
     </a>
   </div>
   <div class="user_nav">
-      Logged in as <a href="/users/46996">filmocrats</a>
+      Logged in as <a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a>
       | <a href="/comments">Recent Comments</a>
-      | <a href="https://railscasts.com/subscriptions/current">Manage Subscription</a>
       | <a href="/logout">Log Out</a>
   </div>
   <ul class="subscribe horizontal">
@@ -28,10 +27,9 @@
 </div>
 <div id="nav-bar">
   <ul class="nav horizontal">
-    <li>Browse Episodes</li>
-    <li><a href="">Forum</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/feedback">Feedback</a></li>
+    <li><a href="javascript:void(0)" ui-sref="home">Browse Episodes</a></li>
+    <li><a href="javascript:void(0)" ui-sref="about">About</a></li>
+    <li><a href="javascript:void(0)" ui-sref="feedback">Feedback</a></li>
   </ul>
   <form accept-charset="UTF-8" action="" method="get">
     <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>

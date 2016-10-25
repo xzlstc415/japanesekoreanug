@@ -15,7 +15,10 @@
         description: "LOL講座 - レーン戦終わってからの動き方(Bottom lane)",
         thumbnail_url: "/assets/img/thumbnail1.jpg",
         type: "Beginner Episodes",
-        tags: ["guide", "bottom"]
+        tags: ["guide", "bottom"],
+        previous_episode_id: null,
+        next_episode_id: 2,
+        similar_episode_ids: [2, 3]
       },
       {
         id: 2,
@@ -28,7 +31,10 @@
         description: "ウェーブマネージメント講座 (Wave Management)",
         thumbnail_url: "/assets/img/thumbnail3.jpg",
         type: "Intermediate Episodes",
-        tags: ["guide", "wave", "bottom"]
+        tags: ["guide", "wave", "bottom"],
+        previous_episode_id: 1,
+        next_episode_id: 3,
+        similar_episode_ids: [1, 3]
       },
       {
         id: 3,
@@ -41,7 +47,10 @@
         description: "Warding講座(Warding lesson)",
         thumbnail_url: "/assets/img/thumbnail2.jpg",
         type: "Advanced Episodes",
-        tags: ["guide", "warding"]
+        tags: ["guide", "warding"],
+        previous_episode_id: 2,
+        next_episode_id: 4,
+        similar_episode_ids: [1, 2]
       },
       {
         id: 4,
@@ -54,7 +63,10 @@
         description: "Warding講座2(Warding lesson)",
         thumbnail_url: "/assets/img/thumbnail2.jpg",
         type: "Advanced Episodes",
-        tags: ["guide", "warding"]
+        tags: ["guide", "warding"],
+        previous_episode_id: 3,
+        next_episode_id: null,
+        similar_episode_ids: []
       }
     ];
 
@@ -70,16 +82,25 @@
       });
     };
 
+    var findEpisodesByIds = function(ids, collection) {
+      return _.filter(collection, function(episode) {
+        return ids.includes(episode.id);
+      });
+    };
+
     var query = function(params) {
       var deferred = $q.defer();
 
-      if (params.tag || params.type) {
+      if (params.tag || params.type || params.ids) {
         var tmpEp = episodes;
         if (params.tag) {
           tmpEp = findEpisodesByTag(params.tag, episodes);
         }
         if (params.type) {
           tmpEp = findEpisodesByType(params.type, tmpEp);
+        }
+        if (params.ids) {
+          tmpEp = findEpisodesByIds(params.ids, tmpEp);
         }
         deferred.resolve({data: tmpEp});
       } else {

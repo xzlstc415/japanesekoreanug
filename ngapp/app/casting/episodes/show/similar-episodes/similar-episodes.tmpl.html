@@ -1,0 +1,37 @@
+<div class="full">
+  <div class="episode" ng-repeat="episode in vm.similarEpisodes track by episode.id" id="episode_{{episode.id}}">
+    <div class="screenshot">
+      <a href="javascirpt:void(0)">
+        <img alt="Form Objects" height="125" ng-src="{{episode.thumbnail_url}}" width="200">
+      </a>
+    </div>
+    <div class="main">
+      <div class="info">
+        <span class="number">Episode #{{episode.number}}</span> –
+        <span class="published_at">{{episode.published_at}}</span> –
+        <span class="comments">
+          <a href="javascript:void(0)" ui-sref="episodes-comments({id: episode.id})">{{episode.comments_count}} comments</a>
+        </span>
+      </div>
+      <h2>
+        <a href="javascript:void(0)" ui-sref="episodes-comments({id: episode.id})">{{episode.name}}</a>
+        <a href=""
+           class="star"
+           ng-class="{starred: episode.starred, unstarred: !episode.starred}"
+           data-method="post"
+           data-remote="true"
+           rel="nofollow">☆</a>
+      </h2>
+      <div class="description">
+        {{episode.description}}
+        <span class="stats">({{episode.duration}} minutes)</span>
+      </div>
+      <div class="watch">
+          <a href="javascript:void(0)"
+             ui-sref="episodes-comments({id: {{episode.id}}})"
+             class="watch_button pretty_button">Watch Episode</a>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
