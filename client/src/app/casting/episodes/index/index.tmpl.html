@@ -1,0 +1,103 @@
+<div class="filters" ng-if="vm.filters.tag || vm.filters.type">
+  <strong>Applied Filters:</strong>
+  <span class="filter" ng-if="vm.filters.tag">{{vm.filters.tag}}
+    <a href="javascript:void(0)"
+       ng-click="vm.removeTag()">x</a>
+  </span>
+  <span class="filter" ng-if="vm.filters.type">{{vm.filters.type}}
+    <a href="javascript:void(0)"
+       ng-click="vm.removeType()">x</a>
+  </span>
+</div>
+<div class="full" ng-if="vm.getCurrentStyle() == 'full'">
+  <div class="episode" id="episode_{{episode.number}}" ng-repeat="episode in vm.episodes track by episode.id">
+    <div class="screenshot">
+      <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
+        <img alt="{{episode.number}}-{{episode.name}}" height="125" ng-src="{{episode.thumbnail_url}}" width="200">
+      </a>
+    </div>
+    <div class="main">
+      <div class="info">
+        <span class="number">Episode #{{episode.number}}</span> –
+        <span class="published_at">{{episode.published_at}}</span> –
+        <span class="comments"><a href="">{{episode.comments_count}} comments</a></span>
+      </div>
+      <h2>
+        <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">{{episode.name}}</a>
+         <a href=""
+            class="star"
+            ng-class="{starred: episode.starred, unstarred: !episode.starred}"
+            data-method="post"
+            data-remote="true"
+            rel="nofollow">☆</a>
+      </h2>
+      <div class="description">
+        {{episode.description}}
+        <span class="stats">({{episode.duration}} minutes)</span>
+      </div>
+      <div class="watch">
+          <a href="javascript:void(0)"
+             ui-sref="episodes-comments({id: {{episode.id}}})"
+             class="watch_button pretty_button">Watch Episode</a>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+
+<table class="list" ng-if="vm.getCurrentStyle() == 'list'">
+  <tbody>
+    <tr>
+      <th class="position">#</th>
+      <th>Name</th>
+      <th>Comments</th>
+      <th>Duration</th>
+      <th>Released</th>
+    </tr>
+    <tr class="episode" id="episode_{{episode.number}}" ng-repeat="episode in vm.episodes track by episode.id">
+      <td class="position">
+        <a href="javascript:void(0)"
+           class="star"
+           ng-class="{starred: episode.starred, unstarred: !episode.starred}"
+           data-method="post"
+           data-remote="true"
+           rel="nofollow">☆</a>
+        {{episode.number}}
+      </td>
+      <td>
+        <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
+          {{episode.name}}
+        </a>
+      </td>
+      <td>
+        <a href="/episodes/417-foundation?view=comments" class="comment_count">
+          {{episode.comments_count}} comments
+        </a>
+      </td>
+      <td>{{episode.duration}} minutes</td>
+      <td>{{episode.published_at}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="grid" ng-if="vm.getCurrentStyle() == 'grid'">
+  <div class="episode" id="episode_{{episode.number}}" ng-repeat="episode in vm.episodes track by episode.id">
+    <div class="screenshot">
+      <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
+        <img alt="{{episode.number}}-{{episode.name}}" height="125" ng-src="{{episode.thumbnail_url}}" width="200">
+      </a>
+    </div>
+    <div class="name">
+      #{{episode.number}}
+      <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
+        {{episode.name}}
+      </a>
+      <a href="javascript:void(0)"
+         class="star"
+         ng-class="{starred: episode.starred, unstarred: !episode.starred}"
+         data-method="post"
+         data-remote="true"
+         rel="nofollow">☆</a>
+    </div>
+  </div>
+</div>
