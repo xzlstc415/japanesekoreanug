@@ -80,7 +80,7 @@
     var query = function(params) {
       var deferred = $q.defer();
 
-      if (!!params.episodeId) {
+      if (params.episodeId) {
         deferred.resolve({data: findCommentsByEpisodeId(params.episodeId)});
       } else {
         deferred.reject({errors: ["params is empty"]});

@@ -117,7 +117,7 @@
         return episode.id == id;
       });
 
-      if (!!episode) {
+      if (episode) {
         deferred.resolve({data: episode});
       } else {
         deferred.resolve({errors: ["can't find episode"]});

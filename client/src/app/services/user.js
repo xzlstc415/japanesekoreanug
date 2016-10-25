@@ -12,7 +12,7 @@
       {id: 7, name: "Keil Miller Jr"}
     ];
 
-    var query = function(params) {
+    var query = function() {
       var deferred = $q.defer();
 
       deferred.resolve({data: users});
@@ -27,7 +27,7 @@
         return user.id == id;
       });
 
-      if (!!user) {
+      if (user) {
         deferred.resolve({data: user});
       } else {
         deferred.resolve({errors: ["can't find user"]});

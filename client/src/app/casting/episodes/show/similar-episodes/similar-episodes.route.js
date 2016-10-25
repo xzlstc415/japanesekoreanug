@@ -9,7 +9,7 @@
         views: {
           'similar-episodes@episodes-detail': {
             templateUrl: 'app/casting/episodes/show/similar-episodes/similar-episodes.tmpl.html',
-            controller: 'similarEpisodesCtrl as vm'
+            controller: 'SimilarEpisodesController as vm'
           }
         },
         resolve: {
@@ -22,15 +22,6 @@
 
   stateConfig.$inject = ['$stateProvider'];
 
-  var similarEpisodesCtrl = function(similarEpisodes) {
-    var vm = this;
-
-    vm.similarEpisodes = similarEpisodes.data;
-  };
-
-  similarEpisodesCtrl.$inject = ['similarEpisodes'];
-
   angular.module('yujihomo')
-    .config(stateConfig)
-    .controller('similarEpisodesCtrl', similarEpisodesCtrl);
+    .config(stateConfig);
 })();

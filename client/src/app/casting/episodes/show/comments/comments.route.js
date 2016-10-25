@@ -9,7 +9,7 @@
         views: {
           'comments@episodes-detail': {
             templateUrl: 'app/casting/episodes/show/comments/comments.tmpl.html',
-            controller: 'commentCtrl as vm'
+            controller: 'CommentController as vm'
           }
         },
         resolve: {
@@ -22,15 +22,6 @@
 
   stateConfig.$inject = ['$stateProvider'];
 
-  var commentCtrl = function(comments) {
-    var vm = this;
-
-    vm.comments = comments.data;
-  };
-
-  commentCtrl.$inject = ['comments'];
-
   angular.module('yujihomo')
-    .config(stateConfig)
-    .controller('commentCtrl', commentCtrl);
+    .config(stateConfig);
 })();

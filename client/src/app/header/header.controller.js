@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var headerCtrl = function(Auth) {
+  var HeaderController = function(Auth) {
     var vm = this;
 
     Auth.getCurrentUser().then(function(res) {
@@ -9,8 +9,8 @@
     });
   };
 
-  headerCtrl.$inject = ['Auth'];
+  HeaderController.$inject = ['Auth'];
 
   angular.module('yujihomo')
-    .controller('headerCtrl', headerCtrl);
+    .controller('HeaderController', HeaderController);
 })();

@@ -9,7 +9,7 @@
       {id: 3, name: "Advanced Episodes"}
     ];
 
-    var query = function(params) {
+    var query = function() {
       var deferred = $q.defer();
 
       deferred.resolve({data: episodeTypes});
@@ -24,7 +24,7 @@
         return episodeType.id == id;
       });
 
-      if (!!episodeType) {
+      if (episodeType) {
         deferred.resolve({data: episodeType});
       } else {
         deferred.resolve({errors: ["can't find episodeType"]});

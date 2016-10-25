@@ -8,9 +8,9 @@
         parent: 'yujihomo',
         abstract: true,
         views: {
-          '@': {
+          '@yujihomo': {
             templateUrl: 'app/casting/episodes/show/show.tmpl.html',
-            controller: 'episodesShowCtrl as vm'
+            controller: 'EpisodesShowController as vm'
           }
         },
         resolve: {

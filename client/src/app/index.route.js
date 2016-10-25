@@ -12,11 +12,11 @@
         abstract: true,
         views: {
           '@': {
-            template: "<header class='header' ui-view='header'></header><div id='main-container' ui-view></div><footer ui-view='footer'></footer>",
+            template: "<header class='header' ui-view='header'></header><div id='main-container' ui-view></div><footer ui-view='footer'></footer>"
           },
           'header@yujihomo': {
             templateUrl: 'app/header/header.tmpl.html',
-            controller: 'headerCtrl as vm'
+            controller: 'HeaderController as vm'
           }
         }
 

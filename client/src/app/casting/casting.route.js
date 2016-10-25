@@ -16,7 +16,7 @@
           },
           'side-bar@home': {
             templateUrl: 'app/casting/side-bar/side-bar.tmpl.html',
-            controller: 'sideBarCtrl as vm',
+            controller: 'SidebarController as vm',
             resolve: {
               tags: ['Tag', function(Tag) {
                 return Tag.query();
@@ -28,7 +28,7 @@
           },
           'episodes@home': {
             templateUrl: 'app/casting/episodes/index/index.tmpl.html',
-            controller: 'episodesIndexCtrl as vm',
+            controller: 'EpisodesIndexController as vm',
             resolve: {
               episodes: ['Episode', '$stateParams', function(Episode, $stateParams) {
                 return Episode.query($stateParams);

@@ -16,7 +16,7 @@
     };
 
     var setCurrentStyle = function(style) {
-      currentStyle = _.find(VIEW_STYLE, function(value, key) {
+      currentStyle = _.find(VIEW_STYLE, function(value) {
         return value == style;
       });
     };

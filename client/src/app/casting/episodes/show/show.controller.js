@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var episodesShowCtrl = function(episode) {
+  var EpisodesShowController = function(episode) {
     var vm = this;
     vm.episode = episode.data;
     vm.commentsSelected = true;
@@ -14,8 +14,8 @@
     vm.playVideo = playVideo;
   };
 
-  episodesShowCtrl.$inject = ['episode'];
+  EpisodesShowController.$inject = ['episode'];
 
   angular.module('yujihomo')
-    .controller('episodesShowCtrl', episodesShowCtrl);
+    .controller('EpisodesShowController', EpisodesShowController);
 })();

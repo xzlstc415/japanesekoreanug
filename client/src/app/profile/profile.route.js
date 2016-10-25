@@ -7,9 +7,9 @@
         url:'/profile',
         parent: 'yujihomo',
         views: {
-          '@': {
+          '@yujihomo': {
             templateUrl: 'app/profile/profile.tmpl.html',
-            controller: 'profileCtrl as vm',
+            controller: 'ProfileController as vm',
             resolve: {
               currentUser: ['Auth', function(Auth) {
                 return Auth.getCurrentUser();
@@ -22,15 +22,6 @@
 
   stateConfig.$inject = ['$stateProvider'];
 
-  var profileCtrl = function(currentUser) {
-    var vm = this;
-
-    vm.currentUser = currentUser.data;
-  };
-
-  profileCtrl.$inject = ['currentUser'];
-
   angular.module('yujihomo')
-    .config(stateConfig)
-    .controller('profileCtrl', profileCtrl);
+    .config(stateConfig);
 })();

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var episodesIndexCtrl = function(viewStyle, episodes, $stateParams, episodeFilter) {
+  var EpisodesIndexController = function(viewStyle, episodes, $stateParams, episodeFilter) {
     var vm = this;
     vm.episodes = episodes.data;
     vm.filters = $stateParams;
@@ -31,8 +31,8 @@
     vm.getCurrentStyle = viewStyle.getCurrentStyle;
   };
 
-  episodesIndexCtrl.$inject = ['viewStyle', 'episodes', '$stateParams', 'episodeFilter'];
+  EpisodesIndexController.$inject = ['viewStyle', 'episodes', '$stateParams', 'episodeFilter'];
 
   angular.module('yujihomo')
-    .controller('episodesIndexCtrl', episodesIndexCtrl);
+    .controller('EpisodesIndexController', EpisodesIndexController);
 })();

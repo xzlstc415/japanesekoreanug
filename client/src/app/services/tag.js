@@ -10,7 +10,7 @@
       {id: 4, name: "bottom"}
     ];
 
-    var query = function(params) {
+    var query = function() {
       var deferred = $q.defer();
 
       deferred.resolve({data: tags});
@@ -25,7 +25,7 @@
         return tag.id == id;
       });
 
-      if (!!tag) {
+      if (tag) {
         deferred.resolve({data: tag});
       } else {
         deferred.resolve({errors: ["can't find tag"]});

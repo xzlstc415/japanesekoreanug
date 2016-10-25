@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var sideBarCtrl = function(viewStyle, tags, episodeTypes, episodeFilter) {
+  var SidebarController = function(viewStyle, tags, episodeTypes, episodeFilter) {
     var vm = this;
     vm.tags = tags.data;
     vm.episodeTypes = episodeTypes.data;
@@ -12,9 +12,9 @@
     vm.setType = episodeFilter.setType;
   };
 
-  sideBarCtrl.$inject = ['viewStyle', 'tags', 'episodeTypes', 'episodeFilter'];
+  SidebarController.$inject = ['viewStyle', 'tags', 'episodeTypes', 'episodeFilter'];
 
   angular.module('yujihomo')
-    .controller('sideBarCtrl', sideBarCtrl);
+    .controller('SidebarController', SidebarController);
 
 })();

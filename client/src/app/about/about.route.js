@@ -7,7 +7,7 @@
         url:'/about',
         parent: 'yujihomo',
         views: {
-          '@': {
+          '@yujihomo': {
             templateUrl: 'app/about/about.tmpl.html'
           }
         }

@@ -7,7 +7,7 @@
         url:'/feedback',
         parent: 'yujihomo',
         views: {
-          '@': {
+          '@yujihomo': {
             templateUrl: 'app/feedback/feedback.tmpl.html'
           }
         }
