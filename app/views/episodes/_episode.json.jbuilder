@@ -7,5 +7,6 @@ json.(episode,
       :duration,
       :description,
       :thumbnail_url,
-      :next_episode_id)
-json.previous_episode_id, episode.previous_episode_id
+      :next_episode_id,
+      :previous_episode_id)
+json.similar_episode_ids episode.similar_episode_ids

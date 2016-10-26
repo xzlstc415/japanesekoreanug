@@ -1,7 +1,7 @@
 # EpisodesController
 class EpisodesController < ApplicationController
   def index
-    @episodes = episodes.all
+    @episodes = Episode.all
   end
 
   def show

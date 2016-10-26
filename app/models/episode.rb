@@ -1,10 +1,9 @@
 # Model of Episode
 class Episode < ApplicationRecord
-  has_one :next_episode, class_name: 'Episode',
-                         foreign_key: 'next_episode_id',
-                         inverse_of: :previous_episode
-  belongs_to :previous_episode, class_name: 'Episode',
-                                foreign_key: 'next_episode_id',
-                                inverse_of: :next_episode,
-                                optional: true
+  belongs_to :similar_episode_group, optional: true
+
+  def similar_episode_ids
+    return [] if similar_episode_group.nil?
+    similar_episode_group.similar_episode_ids(self)
+  end
 end

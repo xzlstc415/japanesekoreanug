@@ -31,7 +31,7 @@
             controller: 'EpisodesIndexController as vm',
             resolve: {
               episodes: ['Episode', '$stateParams', function(Episode, $stateParams) {
-                return Episode.query($stateParams);
+                return Episode.query($stateParams)
               }]
             }
           }
