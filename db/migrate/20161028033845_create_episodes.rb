@@ -7,7 +7,7 @@ class CreateEpisodes < ActiveRecord::Migration[5.0]
       t.boolean :starred, default: false
       t.integer :duration
       t.text :description
-      t.datetime :published_at
+      t.date :published_at
       t.string :thumbnail_url
       t.integer :next_episode_id
       t.integer :previous_episode_id

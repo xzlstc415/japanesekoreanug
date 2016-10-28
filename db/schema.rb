@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20161028041849) do
     t.boolean  "starred",                                default: false
     t.integer  "duration"
     t.text     "description",              limit: 65535
-    t.datetime "published_at"
+    t.date     "published_at"
     t.string   "thumbnail_url"
     t.integer  "next_episode_id"
     t.integer  "previous_episode_id"
