@@ -1,36 +1,24 @@
 (function() {
 
-  var EpisodeType = function($q) {
+  var EpisodeType = function($http) {
     var vm = this;
 
-    var episodeTypes = [
-      {id: 1, name: "Beginner Episodes"},
-      {id: 2, name: "Intermediate Episodes"},
-      {id: 3, name: "Advanced Episodes"}
-    ];
-
     var query = function() {
-      var deferred = $q.defer();
+      var req = {
+        method: 'GET',
+        url: '/api/episode_types'
+      };
 
-      deferred.resolve({data: episodeTypes});
-
-      return deferred.promise;
+      return $http(req);
     };
 
     var get = function(id) {
-      var deferred = $q.defer();
+      var req = {
+        method: 'GET',
+        url: '/api/episode_types/' + id
+      };
 
-      var episodeType = _.find(episodeTypes, function(episodeType) {
-        return episodeType.id == id;
-      });
-
-      if (episodeType) {
-        deferred.resolve({data: episodeType});
-      } else {
-        deferred.resolve({errors: ["can't find episodeType"]});
-      }
-
-      return deferred.promise;
+      return $http(req);
     };
 
     vm.query = query;
@@ -39,7 +27,7 @@
     return vm;
   };
 
-  EpisodeType.$inject = ['$q'];
+  EpisodeType.$inject = ['$http'];
 
   angular.module('yujihomo')
     .service('EpisodeType', EpisodeType);

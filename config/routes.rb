@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :tags, only: [:index], defaults: { format: :json }
     resources :episodes, only: [:index, :show], defaults: { format: :json }
+    resources :episode_types, only: [:index, :show], defaults: { format: :json }
   end
 end
