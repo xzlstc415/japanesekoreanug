@@ -1,37 +1,24 @@
 (function() {
 
-  var Tag = function($q) {
+  var Tag = function($http) {
     var vm = this;
 
-    var tags = [
-      {id: 1, name: "guide"},
-      {id: 2, name: "wave"},
-      {id: 3, name: "warding"},
-      {id: 4, name: "bottom"}
-    ];
-
     var query = function() {
-      var deferred = $q.defer();
+      var req = {
+        method: 'GET',
+        url: '/api/tags'
+      };
 
-      deferred.resolve({data: tags});
-
-      return deferred.promise;
+      return $http(req);
     };
 
     var get = function(id) {
-      var deferred = $q.defer();
+      var req = {
+        method: 'GET',
+        url: '/api/tags/' + id
+      };
 
-      var tag = _.find(tags, function(tag) {
-        return tag.id == id;
-      });
-
-      if (tag) {
-        deferred.resolve({data: tag});
-      } else {
-        deferred.resolve({errors: ["can't find tag"]});
-      }
-
-      return deferred.promise;
+      return $http(req);
     };
 
     vm.query = query;
@@ -40,7 +27,7 @@
     return vm;
   };
 
-  Tag.$inject = ['$q'];
+  Tag.$inject = ['$http'];
 
   angular.module('yujihomo')
     .service('Tag', Tag);

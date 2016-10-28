@@ -9,5 +9,7 @@ json.(episode,
       :thumbnail_url,
       :next_episode_id,
       :previous_episode_id,
-      :created_at)
+      :published_at)
 json.similar_episode_ids episode.similar_episode_ids
+json.type episode.episode_type.name
+json.tags episode.tags.map(&:name)

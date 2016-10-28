@@ -31,17 +31,20 @@ ActiveRecord::Schema.define(version: 20161028041849) do
 
   create_table "episodes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "number"
-    t.integer  "comments_count"
+    t.integer  "comments_count",                         default: 0
     t.string   "name"
     t.boolean  "starred",                                default: false
     t.integer  "duration"
     t.text     "description",              limit: 65535
+    t.datetime "published_at"
     t.string   "thumbnail_url"
     t.integer  "next_episode_id"
     t.integer  "previous_episode_id"
     t.integer  "similar_episode_group_id"
+    t.integer  "episode_type_id"
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
+    t.index ["episode_type_id"], name: "index_episodes_on_episode_type_id", using: :btree
     t.index ["similar_episode_group_id"], name: "index_episodes_on_similar_episode_group_id", using: :btree
   end
 
@@ -65,12 +68,17 @@ ActiveRecord::Schema.define(version: 20161028041849) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "avatar_url"
+    t.string   "email"
+    t.boolean  "receive_email", default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_foreign_key "comments", "episodes"
   add_foreign_key "comments", "users"
+  add_foreign_key "episodes", "episode_types"
   add_foreign_key "episodes", "similar_episode_groups"
   add_foreign_key "episodes_tags", "episodes"
   add_foreign_key "episodes_tags", "tags"
