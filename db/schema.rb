@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028033844) do
+ActiveRecord::Schema.define(version: 20161028035758) do
 
   create_table "episode_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20161028033844) do
     t.index ["similar_episode_group_id"], name: "index_episodes_on_similar_episode_group_id", using: :btree
   end
 
+  create_table "episodes_tags", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "episode_id"
+    t.integer "tag_id"
+    t.index ["episode_id"], name: "index_episodes_tags_on_episode_id", using: :btree
+    t.index ["tag_id"], name: "index_episodes_tags_on_tag_id", using: :btree
+  end
+
   create_table "similar_episode_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -47,4 +54,6 @@ ActiveRecord::Schema.define(version: 20161028033844) do
   end
 
   add_foreign_key "episodes", "similar_episode_groups"
+  add_foreign_key "episodes_tags", "episodes"
+  add_foreign_key "episodes_tags", "tags"
 end
