@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028035758) do
+ActiveRecord::Schema.define(version: 20161028041849) do
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "episode_id"
+    t.integer  "user_id"
+    t.integer  "parent_comment_id"
+    t.text     "content",           limit: 65535
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["episode_id"], name: "index_comments_on_episode_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
 
   create_table "episode_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -53,6 +64,13 @@ ActiveRecord::Schema.define(version: 20161028035758) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "comments", "episodes"
+  add_foreign_key "comments", "users"
   add_foreign_key "episodes", "similar_episode_groups"
   add_foreign_key "episodes_tags", "episodes"
   add_foreign_key "episodes_tags", "tags"
