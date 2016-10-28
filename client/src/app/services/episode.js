@@ -89,25 +89,6 @@
     // };
 
     var query = function(params) {
-      // var deferred = $q.defer();
-      //
-      // if (params.tag || params.type || params.ids) {
-      //   var tmpEp = episodes;
-      //   if (params.tag) {
-      //     tmpEp = findEpisodesByTag(params.tag, episodes);
-      //   }
-      //   if (params.type) {
-      //     tmpEp = findEpisodesByType(params.type, tmpEp);
-      //   }
-      //   if (params.ids) {
-      //     tmpEp = findEpisodesByIds(params.ids, tmpEp);
-      //   }
-      //   deferred.resolve({data: tmpEp});
-      // } else {
-      //   deferred.resolve({data: episodes});
-      // }
-      //
-      // return deferred.promise;
       var req = {
         method: 'GET',
         url: '/api/episodes'

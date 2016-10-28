@@ -1,0 +1,2 @@
+class EpisodeTypesController < ApplicationController
+end
