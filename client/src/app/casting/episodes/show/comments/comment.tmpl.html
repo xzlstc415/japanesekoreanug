@@ -2,7 +2,7 @@
   <div class="avatar">
     <img alt="Avatar"
          height="64"
-         ng-src="{{comment.user.avatar_url}}"
+         ng-src="{{comment.user.avatar_url || '/assets/images/guest.png'}}"
          width="64">
   </div>
   <div class="actions user_actions">

@@ -14,7 +14,7 @@
         },
         resolve: {
           comments: ['Comment', 'episode', function(Comment, episode) {
-            return Comment.query({episodeId: episode.data.id});
+            return Comment.query({episode_id: episode.data.id});
           }]
         }
       });
