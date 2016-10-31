@@ -4,8 +4,8 @@
     var vm = this;
 
     var filters = {
-      tag: null,
-      type: null
+      tags_name_eq: null,
+      episode_type_name_eq: null
     };
 
     var refreshState = function() {
@@ -16,13 +16,13 @@
       return filters;
     };
 
-    var setTag = function(tag) {
-      filters.tag = tag;
+    var setTag = function(tag_name) {
+      filters.tags_name_eq = tag_name;
       refreshState();
     };
 
-    var setType = function(type) {
-      filters.type = type;
+    var setType = function(type_name) {
+      filters.episode_type_name_eq = type_name;
       refreshState();
     };
 

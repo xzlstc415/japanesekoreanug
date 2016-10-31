@@ -5,8 +5,8 @@
     var vm = this;
     vm.episodes = episodes.data;
     vm.filters = $stateParams;
-    episodeFilter.setTag($stateParams.tag);
-    episodeFilter.setType($stateParams.type);
+    episodeFilter.setTag($stateParams.tags_name_eq);
+    episodeFilter.setType($stateParams.episode_type_name_eq);
 
     var removeTag = function() {
       episodeFilter.setTag(null);
@@ -16,16 +16,6 @@
       episodeFilter.setType(null);
     };
 
-    var addTag = function(tag) {
-      episodeFilter.setTag(tag);
-    };
-
-    var addType = function(type) {
-      episodeFilter.setType(type);
-    };
-
-    vm.addType = addType;
-    vm.addTag = addTag;
     vm.removeType = removeType;
     vm.removeTag = removeTag;
     vm.getCurrentStyle = viewStyle.getCurrentStyle;

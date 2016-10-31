@@ -1,10 +1,10 @@
-<div class="filters" ng-if="vm.filters.tag || vm.filters.type">
+<div class="filters" ng-if="vm.filters.tags_name_eq || vm.filters.episode_type_name_eq">
   <strong>Applied Filters:</strong>
-  <span class="filter" ng-if="vm.filters.tag">{{vm.filters.tag}}
+  <span class="filter" ng-if="vm.filters.tags_name_eq">{{vm.filters.tags_name_eq}}
     <a href="javascript:void(0)"
        ng-click="vm.removeTag()">x</a>
   </span>
-  <span class="filter" ng-if="vm.filters.type">{{vm.filters.type}}
+  <span class="filter" ng-if="vm.filters.episode_type_name_eq">{{vm.filters.episode_type_name_eq}}
     <a href="javascript:void(0)"
        ng-click="vm.removeType()">x</a>
   </span>

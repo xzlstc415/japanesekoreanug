@@ -6,26 +6,20 @@
     var query = function(params) {
       var req = {
         method: 'GET',
-        url: '/api/episodes'
+        url: '/api/episodes',
+        params: params
       };
 
       return $http(req);
     };
 
     var get = function(id) {
-      var deferred = $q.defer();
+      var req = {
+        method: 'GET',
+        url: '/api/episodes/' + id
+      };
 
-      var episode = _.find(episodes, function(episode) {
-        return episode.id == id;
-      });
-
-      if (episode) {
-        deferred.resolve({data: episode});
-      } else {
-        deferred.resolve({errors: ["can't find episode"]});
-      }
-
-      return deferred.promise;
+      return $http(req);
     };
 
     vm.query = query;

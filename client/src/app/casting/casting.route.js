@@ -7,8 +7,8 @@
         url:'/',
         parent: 'yujihomo',
         params: {
-          type: null,
-          tag: null
+          episode_type_name_eq: null,
+          tags_name_eq: null
         },
         views: {
           '@yujihomo': {
