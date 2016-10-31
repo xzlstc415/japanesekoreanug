@@ -1,5 +1,7 @@
 # EpisodesController
 class EpisodesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     if search_params[:episode_type_name_eq].blank? && search_params[:tags_name_eq].blank?
       @episodes = Episode

@@ -5,6 +5,8 @@ gem 'mysql2'
 gem 'puma', '~> 3.0'
 gem 'jbuilder'
 gem 'ransack'
+gem 'devise'
+gem 'jwt'
 
 group :development, :test do
   gem 'byebug'
