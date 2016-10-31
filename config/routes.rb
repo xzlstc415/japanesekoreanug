@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     resources :comments, only: [:index], defaults: { format: :json }
     get 'auth_user', to: 'authentication#authenticate_user'
   end
+  devise_for :users
 end
