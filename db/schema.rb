@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028041849) do
+ActiveRecord::Schema.define(version: 20161101030154) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "episode_id"
@@ -71,9 +71,21 @@ ActiveRecord::Schema.define(version: 20161028041849) do
     t.string   "name"
     t.string   "avatar_url"
     t.string   "email"
-    t.boolean  "receive_email", default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.boolean  "receive_email",                     default: true
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.string   "provider",                          default: "email", null: false
+    t.string   "uid",                               default: "",      null: false
+    t.string   "encrypted_password",                default: "",      null: false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                     default: 0,       null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.text     "tokens",              limit: 65535
+    t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
   add_foreign_key "comments", "episodes"

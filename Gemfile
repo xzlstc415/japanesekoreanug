@@ -5,6 +5,9 @@ gem 'mysql2'
 gem 'puma', '~> 3.0'
 gem 'jbuilder'
 gem 'ransack'
+gem 'omniauth'
+gem 'devise_token_auth'
+gem 'omniauth-twitch'
 
 group :development, :test do
   gem 'byebug'
