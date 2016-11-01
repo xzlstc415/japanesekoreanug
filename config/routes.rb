@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     resources :episodes, only: [:index, :show], defaults: { format: :json }
     resources :episode_types, only: [:index, :show], defaults: { format: :json }
     resources :comments, only: [:index], defaults: { format: :json }
-    get 'auth_user', to: 'authentication#authenticate_user'
+    get 'login', to: 'authentication#authenticate_user'
+    get 'me', to: 'authentication#me'
   end
   devise_for :users
 end

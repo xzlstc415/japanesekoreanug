@@ -103,7 +103,7 @@ ul.horizontal li {
   z-index: 5888999;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 20px 0px;
+  padding: 100px 0px;
   background: rgba(32, 28, 43, 0.901961);
 }
 
@@ -174,4 +174,15 @@ ul.horizontal li {
 .help a:hover {
   color: darken(#6441a4, 10%);
   text-decoration: none;
+}
+
+.modal-close-btn {
+  position: absolute;
+  right: 10px;
+  top: -2px;
+  fill: white;
+  cursor: pointer;
+  opacity: .75;
+  z-index: 99;
+  color: white;
 }

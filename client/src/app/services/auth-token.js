@@ -1,6 +1,6 @@
 (function() {
 
-  var AuthTokenFactory = function($window) {
+  var AuthToken = function($window) {
     var vm = this;
     var store = $window.localStorage;
     var key = 'auth-token';
@@ -20,8 +20,8 @@
     return vm;
   };
 
-  AuthTokenFactory.$inject = ['$window'];
+  AuthToken.$inject = ['$window'];
 
   angular.module('yujihomo')
-    .service('AuthTokenFactory', AuthTokenFactory);
+    .service('AuthToken', AuthToken);
 })();

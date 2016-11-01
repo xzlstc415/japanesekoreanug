@@ -1,6 +1,6 @@
 (function() {
 
-  var Auth = function($q) {
+  var Auth = function($http, AuthToken) {
     var vm = this;
 
     var current_user = {
@@ -10,19 +10,26 @@
     };
 
     var getCurrentUser = function() {
-      var deferred = $q.defer();
+      return $http.get('/api/me');
+    };
 
-      deferred.resolve({data: current_user});
-
-      return deferred.promise;
+    var login = function(email, password) {
+      return $http.post('/api/login', {
+        email: email,
+        password: password
+      }).then(function (response) {
+        AuthToken.setToken(response.data);
+        return response;
+      });
     };
 
     vm.getCurrentUser = getCurrentUser;
+    vm.login = login;
 
     return vm;
   };
 
-  Auth.$inject = ['$q'];
+  Auth.$inject = ['$http', 'AuthToken'];
 
   angular.module('yujihomo')
     .service('Auth', Auth);

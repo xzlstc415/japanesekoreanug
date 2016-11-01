@@ -27,6 +27,8 @@ module Yujihomo
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    config.navigational_formats = []
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: false,

@@ -6,9 +6,14 @@
     </a>
   </div>
   <div class="user_nav">
+    <div ng-if="vm.currentUser">
       Logged in as <a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a>
       | <a href="/comments">Recent Comments</a>
       | <a href="/logout">Log Out</a>
+    </div>
+    <div ng-if="!vm.currentUser">
+      <a href="javascript:void(0)" ng-click="vm.loginWndOpen = true">Sign in Now</a>
+    </div>
   </div>
   <ul class="subscribe horizontal">
     <li>
@@ -63,6 +68,9 @@
           </button>
         </div>
       </div>
+    </div>
+    <div class="modal-close-btn" ng-click="vm.closeLoginModal()">
+      &#10005;
     </div>
   </div>
 </div>
