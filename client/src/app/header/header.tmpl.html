@@ -6,9 +6,14 @@
     </a>
   </div>
   <div class="user_nav">
+    <div ng-if="vm.currentUser">
       Logged in as <a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a>
       | <a href="/comments">Recent Comments</a>
       | <a href="/logout">Log Out</a>
+    </div>
+    <div ng-if="!vm.currentUser">
+      <a href="javascript:void(0)" ng-click="vm.loginWndOpen = true">Sign in Now</a>
+    </div>
   </div>
   <ul class="subscribe horizontal">
     <li>
@@ -36,4 +41,36 @@
     <input id="search" name="search" size="35" type="text">
     <input type="submit" value="Search Episodes">
   </form>
+</div>
+<div class="login-container" ng-if="vm.loginWndOpen">
+  <div class="login-inner">
+    <div class="login-box" style="height: 417px;">
+      <div class="wrapper">
+        <div class="item">
+          <button class="twitch_button button" style="padding: 10px 12px;" ng-click="vm.loginWithTwitch()">
+            <span style="font-size:14px; cursor: pointer;">Connect with Twitch</span>
+          </button>
+        </div>
+        <div class="field item">
+          <label for="username">Username</label>
+          <input autocapitalize="none" type="text" name="username" id="username" class="text" value="" autofocus="">
+        </div>
+        <div class="field item">
+          <label for="password">Password</label>
+          <input autocapitalize="none" type="text" name="password" id="password" class="text" value="" autofocus="">
+        </div>
+        <div class="help">
+          <a>Trouble loggin in?</a>
+        </div>
+        <div class="buttons">
+          <button type="submit" style="cursor: pointer;">
+              Log In
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-close-btn" ng-click="vm.closeLoginModal()">
+      &#10005;
+    </div>
+  </div>
 </div>
