@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig) {
+  function config($logProvider, toastrConfig, $authProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -16,6 +16,11 @@
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.preventDuplicates = true;
     toastrConfig.progressBar = true;
+
+    // config of satellizer
+    $authProvider.twitch({
+      clientId: '2spt1bzwb5s6amg8fxnqrctif4p8p40'
+    });
   }
 
 })();
