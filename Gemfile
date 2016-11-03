@@ -7,6 +7,7 @@ gem 'jbuilder'
 gem 'ransack'
 gem 'devise'
 gem 'jwt'
+gem 'twitch', '~> 0.1.0'
 
 group :development, :test do
   gem 'byebug'

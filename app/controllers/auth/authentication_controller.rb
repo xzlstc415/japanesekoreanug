@@ -14,4 +14,11 @@ class AuthenticationController < ApplicationController
   def me
     @user = current_user
   end
+
+  def twitch
+    @data = TWITCH.auth(params[:code])
+    # ToDO
+    # add a model to save twitch user for user
+
+  end
 end
