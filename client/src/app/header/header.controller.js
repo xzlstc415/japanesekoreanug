@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var HeaderController = function($auth) {
+  var HeaderController = function($auth, toastr) {
     var vm = this;
     vm.loginWndOpen = false;
     vm.currentUser = $auth.getPayload();
@@ -15,9 +15,10 @@
         .then(function(res) {
           vm.currentUser = $auth.getPayload();
           closeLoginModal();
+          toastr.success('You have logged in successfully!');
         })
-        .catch(function(res) {
-          console.log('something is wrong');
+        .catch(function() {
+          toastr.error('Sorry we cannot connect to twitch :(')
         });
     };
 
@@ -25,23 +26,30 @@
       $auth.login(user).then(function(res) {
         vm.currentUser = $auth.getPayload();
         closeLoginModal();
-      }).catch(function(res) {
-        console.log('something is wrong');
+        toastr.success('You have logged in successfully!');
+      }).catch(function() {
+        toastr.error('Sorry we cannot connect to twitch :(')
       });
     };
 
     var logout = function() {
       $auth.logout();
       vm.currentUser = null;
+      toastr.success('You have logged out successfully!');
+    };
+
+    var signup = function() {
+
     };
 
     vm.closeLoginModal = closeLoginModal;
     vm.authenticate = authenticate;
     vm.login = login;
     vm.logout = logout;
+    vm.signup = signup;
   };
 
-  HeaderController.$inject = ['$auth'];
+  HeaderController.$inject = ['$auth', 'toastr'];
 
   angular.module('yujihomo')
     .controller('HeaderController', HeaderController);
