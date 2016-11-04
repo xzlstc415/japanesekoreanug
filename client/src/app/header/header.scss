@@ -147,7 +147,7 @@ ul.horizontal li {
   margin-bottom: 5px;
 }
 
-.item.field input[type=text] {
+.item.field input[type=text], .item.field input[type=password] {
   width: 100%;
   line-height: 28px;
   height: 30px;
@@ -185,4 +185,8 @@ ul.horizontal li {
   opacity: .75;
   z-index: 99;
   color: white;
+}
+
+.field .text {
+  font-size: 16px;
 }

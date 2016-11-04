@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:index], defaults: { format: :json }
   end
 
-  scope '/auth' do
-    get 'login', to: 'authentication#authenticate_user'
+  namespace 'auth', defaults: { format: :json } do
+    post 'login', to: 'authentication#authenticate_user'
     get 'me', to: 'authentication#me'
     post 'twitch', to: 'authentication#twitch'
+    devise_for :users, only: [:registrations]
   end
-  devise_for :users, path: 'auth'
 end

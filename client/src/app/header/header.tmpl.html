@@ -6,12 +6,12 @@
     </a>
   </div>
   <div class="user_nav">
-    <div ng-if="vm.currentUser">
+    <div ng-show="vm.currentUser">
       Logged in as <a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a>
       | <a href="/comments">Recent Comments</a>
-      | <a href="/logout">Log Out</a>
+      | <a href="javascript:void(0)" ng-click="vm.logout()">Log Out</a>
     </div>
-    <div ng-if="!vm.currentUser">
+    <div ng-show="!vm.currentUser">
       <a href="javascript:void(0)" ng-click="vm.loginWndOpen = true">Sign in Now</a>
     </div>
   </div>
@@ -52,18 +52,18 @@
           </button>
         </div>
         <div class="field item">
-          <label for="username">Username</label>
-          <input autocapitalize="none" type="text" name="username" id="username" class="text" value="" autofocus="">
+          <label for="email">Email</label>
+          <input autocapitalize="none" type="text" name="username" id="username" class="text" ng-model="user.email">
         </div>
         <div class="field item">
           <label for="password">Password</label>
-          <input autocapitalize="none" type="text" name="password" id="password" class="text" value="" autofocus="">
+          <input autocapitalize="none" type="password" name="password" id="password" class="text" ng-model="user.password">
         </div>
         <div class="help">
           <a>Trouble loggin in?</a>
         </div>
         <div class="buttons">
-          <button type="submit" style="cursor: pointer;">
+          <button type="button" style="cursor: pointer;" ng-click="vm.login(user)">
               Log In
           </button>
         </div>

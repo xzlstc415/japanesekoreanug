@@ -19,7 +19,8 @@
 
     // config of satellizer
     $authProvider.twitch({
-      clientId: '2spt1bzwb5s6amg8fxnqrctif4p8p40'
+      clientId: '2spt1bzwb5s6amg8fxnqrctif4p8p40',
+      url: '/auth/twitch'
     });
   }
 

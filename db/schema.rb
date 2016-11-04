@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031164553) do
+ActiveRecord::Schema.define(version: 20161104004232) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "episode_id"
@@ -67,20 +67,35 @@ ActiveRecord::Schema.define(version: 20161031164553) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "twitch_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "api_access_token"
+    t.string   "api_name"
+    t.string   "api_logo"
+    t.string   "api_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_twitch_users_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "avatar_url"
-    t.boolean  "receive_email",      default: true
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.string   "email",              default: "",   null: false
-    t.string   "encrypted_password", default: "",   null: false
-    t.integer  "sign_in_count",      default: 0,    null: false
+    t.boolean  "receive_email",          default: true
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "comments", "episodes"
@@ -89,4 +104,5 @@ ActiveRecord::Schema.define(version: 20161031164553) do
   add_foreign_key "episodes", "similar_episode_groups"
   add_foreign_key "episodes_tags", "episodes"
   add_foreign_key "episodes_tags", "tags"
+  add_foreign_key "twitch_users", "users"
 end
