@@ -12,8 +12,8 @@
       | <a href="javascript:void(0)" ng-click="vm.logout()">Log Out</a>
     </div>
     <div ng-show="!vm.currentUser">
-      <a href="javascript:void(0)" ng-click="vm.loginWndOpen = true">Sign in Now</a>
-      | <a href="javascript:void(0)" ng-click="vm.signup()">Sign Up</a>
+      <a href="javascript:void(0)" ng-click="vm.openLoginModal();">Sign in Now</a>
+      | <a href="javascript:void(0)" ng-click="vm.openSignupModal();">Sign Up</a>
     </div>
   </div>
   <ul class="subscribe horizontal">
@@ -63,6 +63,9 @@
         <div class="help">
           <a>Trouble loggin in?</a>
         </div>
+        <div class="help">
+          Doesn't have an account? <a href="javascript:void(0)" ng-click="vm.closeLoginModal();vm.openSignupModal();">sign up</a>
+        </div>
         <div class="buttons">
           <button type="button" style="cursor: pointer;" ng-click="vm.login(user)">
               Log In
@@ -71,6 +74,46 @@
       </div>
     </div>
     <div class="modal-close-btn" ng-click="vm.closeLoginModal()">
+      &#10005;
+    </div>
+  </div>
+</div>
+<div class="signup-container" ng-if="vm.signupWndOpen">
+  <div class="signup-inner">
+    <div class="signup-box" style="height: 500px;">
+      <div class="wrapper">
+        <div class="item">
+          <button class="twitch_button button" style="padding: 10px 12px;">
+            <span style="font-size:14px; cursor: pointer;" ng-click="vm.authenticate('twitch')">Connect with Twitch</span>
+          </button>
+        </div>
+        <div class="field item">
+          <label for="email">Email</label>
+          <input autocapitalize="none" type="email" name="email" id="email" class="text" ng-model="user.email">
+        </div>
+        <div class="field item">
+          <label for="name">Name</label>
+          <input autocapitalize="none" type="text" name="name" id="name" class="text" ng-model="user.name">
+        </div>
+        <div class="field item">
+          <label for="password">Password</label>
+          <input autocapitalize="none" type="password" name="password" id="password" class="text" ng-model="user.password">
+        </div>
+        <div class="field item">
+          <label for="password-confirmation">Password Confirmation</label>
+          <input autocapitalize="none" type="password" name="password" id="password-confirmation" class="text" ng-model="user.password_confirmation">
+        </div>
+        <div class="help">
+          Already have an account? <a href="javascript:void(0)" ng-click="vm.closeSignupModal();vm.openLoginModal()">sign in</a>
+        </div>
+        <div class="buttons">
+          <button type="button" style="cursor: pointer;" ng-click="vm.signup(user)">
+              Sign up
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-close-btn" ng-click="vm.closeSignupModal()">
       &#10005;
     </div>
   </div>

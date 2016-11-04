@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     post 'login', to: 'authentication#authenticate_user'
     get 'me', to: 'authentication#me'
     post 'twitch', to: 'authentication#twitch'
-    devise_for :users, only: [:registrations]
+    devise_for :users, only: [:registrations], controllers: { registrations: 'auth/registrations' }
   end
 end

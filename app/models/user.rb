@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :trackable, :validatable
 
   validates :email, uniqueness: true
+  validates :name, presence: true
 end

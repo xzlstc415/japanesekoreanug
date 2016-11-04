@@ -1,48 +1,24 @@
 (function() {
 
-  var User = function($q) {
+  var User = function($http) {
     var vm = this;
 
-    var users = [
-      {id: 2, name: "Stephanie Hekker"},
-      {id: 3, name: "Thomas Hopkins"},
-      {id: 4, name: "Sourv Kumar"},
-      {id: 5, name: "Référencemen à Marseille"},
-      {id: 6, name: "James Chevalier"},
-      {id: 7, name: "Keil Miller Jr"}
-    ];
+    var signup = function(user) {
+      var req = {
+        method: 'POST',
+        url: '/auth/users',
+        data: user
+      };
 
-    var query = function() {
-      var deferred = $q.defer();
-
-      deferred.resolve({data: users});
-
-      return deferred.promise;
+      return $http(req);
     };
 
-    var get = function(id) {
-      var deferred = $q.defer();
-
-      var user = _.find(users, function(user) {
-        return user.id == id;
-      });
-
-      if (user) {
-        deferred.resolve({data: user});
-      } else {
-        deferred.resolve({errors: ["can't find user"]});
-      }
-
-      return deferred.promise;
-    };
-
-    vm.query = query;
-    vm.get = get;
+    vm.signup = signup;
 
     return vm;
   };
 
-  User.$inject = ['$q'];
+  User.$inject = ['$http'];
 
   angular.module('yujihomo')
     .service('User', User);

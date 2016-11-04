@@ -94,20 +94,20 @@ ul.horizontal li {
   text-decoration: underline;;
 }
 
-.login-container {
+.login-container, .signup-container {
   position: fixed;
   top: 0px;
   bottom: 0px;
   left: 0px;
   width: 100%;
-  z-index: 5888999;
+  z-index: 99;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 100px 0px;
   background: rgba(32, 28, 43, 0.901961);
 }
 
-.login-inner {
+.login-inner, .signup-inner {
   position: relative;
   width: 420px;
   padding-right: 3rem;
@@ -120,13 +120,13 @@ ul.horizontal li {
   padding: 2px 12px 2px 4px;
 }
 
-.login-box {
+.login-box, .signup-box {
   background: white;
   padding: 25px 25px 5px;
   box-sizing: border-box;
 }
 
-.login-box .wrapper {
+.login-box .wrapper, .signup-box .wrapper {
   margin-top: 20px;
 }
 
@@ -147,7 +147,7 @@ ul.horizontal li {
   margin-bottom: 5px;
 }
 
-.item.field input[type=text], .item.field input[type=password] {
+.item.field input[type=text], .item.field input[type=password], .item.field input[type=email] {
   width: 100%;
   line-height: 28px;
   height: 30px;

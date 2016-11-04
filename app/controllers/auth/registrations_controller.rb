@@ -10,7 +10,13 @@ class Auth::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    build_resource(sign_up_params)
+
+    if resource.save
+      render json: { token: JWTWrapper.encode(resource.attributes) }
+    else
+      render json: { errors: resource.errors.full_messages }, status: :unauthorized
+    end
   end
 
   # GET /resource/edit
@@ -37,12 +43,11 @@ class Auth::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def sign_up_params
+    params.permit(:email, :password, :password_confirmation, :name)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

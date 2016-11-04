@@ -11,8 +11,8 @@
             templateUrl: 'app/profile/profile.tmpl.html',
             controller: 'ProfileController as vm',
             resolve: {
-              currentUser: ['Auth', function(Auth) {
-                return Auth.getCurrentUser();
+              currentUser: ['$auth', function($auth) {
+                return $auth.getPayload();
               }]
             }
           }
