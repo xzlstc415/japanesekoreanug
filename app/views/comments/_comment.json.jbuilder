@@ -1,4 +1,4 @@
-json.(comment, :id, :episode_id, :content, :created_at)
+json.(comment, :id, :episode_id, :content, :created_at, :deleted)
 
 json.user comment.user, :id, :name, :avatar_url
 

@@ -22,8 +22,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.update_attributes(content: 'this message has been deleted!')
-    head :ok
+    if @comment.destroy
+      head :ok
+    else
+      render json: { errors: @comment.errors.full_messages }, status: :Forbidden
+    end
   end
 
   private

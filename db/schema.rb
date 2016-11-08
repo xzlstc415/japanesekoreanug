@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104004232) do
+ActiveRecord::Schema.define(version: 20161108074425) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "episode_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20161104004232) do
     t.text     "content",           limit: 65535
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.boolean  "deleted"
     t.index ["episode_id"], name: "index_comments_on_episode_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
