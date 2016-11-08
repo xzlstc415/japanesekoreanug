@@ -12,7 +12,8 @@
       'ngResource',
       'ui.router',
       'toastr',
-      'satellizer'
+      'satellizer',
+      'angularSpinner'
     ]);
 
 })();

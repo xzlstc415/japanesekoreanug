@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var HeaderController = function($auth, toastr, User) {
+  var HeaderController = function($auth, toastr, User, $state, usSpinnerService) {
     var vm = this;
     vm.loginWndOpen = false;
     vm.signupWndOpen = false;
@@ -28,39 +28,52 @@
     };
 
     var authenticate = function(provider) {
+      usSpinnerService.spin('spinner-1');
       $auth.authenticate(provider)
         .then(function(res) {
+          usSpinnerService.stop('spinner-1');
           vm.currentUser = $auth.getPayload();
           closeLoginModal();
           toastr.success('You have logged in successfully!');
         })
         .catch(function() {
+          usSpinnerService.stop('spinner-1');
           toastr.error('Sorry we cannot connect to twitch :(')
         });
     };
 
     var login = function(user) {
+      usSpinnerService.spin('spinner-1');
       $auth.login(user).then(function(res) {
         vm.currentUser = $auth.getPayload();
+        usSpinnerService.stop('spinner-1');
         closeLoginModal();
         toastr.success('You have logged in successfully!');
       }).catch(function() {
+        usSpinnerService.stop('spinner-1');
         toastr.error('Sorry we cannot connect to twitch :(')
       });
     };
 
     var logout = function() {
+      usSpinnerService.spin('spinner-1');
       $auth.logout();
       vm.currentUser = null;
       toastr.success('You have logged out successfully!');
+      usSpinnerService.stop('spinner-1');
     };
 
     var signup = function(user) {
+      usSpinnerService.spin('spinner-1');
       User.signup(user).then(function(res) {
+        $auth.setToken(res.data.token);
         closeSignupModal();
+        $state.reload();
         toastr.success('You have signed up successfully!');
+        usSpinnerService.stop('spinner-1');
       }).catch(function(res) {
         toastr.error.apply(this, res.data.errors);
+        usSpinnerService.stop('spinner-1');
       });
     };
 
@@ -74,7 +87,7 @@
     vm.signup = signup;
   };
 
-  HeaderController.$inject = ['$auth', 'toastr', 'User'];
+  HeaderController.$inject = ['$auth', 'toastr', 'User', '$state', 'usSpinnerService'];
 
   angular.module('yujihomo')
     .controller('HeaderController', HeaderController);

@@ -17,7 +17,8 @@
     "animate.css": "~3.4.0",
     "angular": "~1.5.3",
     "lodash": "latest",
-    "satellizer": "latest"
+    "satellizer": "latest",
+    "angular-spinner": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

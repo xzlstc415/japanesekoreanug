@@ -17,11 +17,7 @@ class Auth::AuthenticationController < ApplicationController
   end
 
   def twitch
-    @user = User.new(name: @raw_data['name'],
-                     password: SecureRandom.hex,
-                     email: @raw_data['email'],
-                     avatar_url: @raw_data['logo'],
-                     receive_email: true)
+    find_or_initialize_user(@raw_data)
 
     if @user.save
       TwitchUser.create(user: @user,
@@ -40,10 +36,21 @@ class Auth::AuthenticationController < ApplicationController
   def setup_from_twitch
     data = TWITCH.auth(params[:code])
     @access_token = data[:body]['access_token']
-    @raw_data = Twitch.new(access_token: @access_token).user[:body]
-    twitch_user = TwitchUser.find_by_api_id(@raw_data['_id'])
-    if twitch_user
-      render json: { token: JWTWrapper.encode(twitch_user.user.attributes) }
+    if !@access_token.blank?
+      @raw_data = Twitch.new(access_token: @access_token).user[:body]
+      twitch_user = TwitchUser.find_by_api_id(@raw_data['_id'])
+      render json: { token: JWTWrapper.encode(twitch_user.user.attributes) } if twitch_user
+    else
+      render json: { errors: ["Sorry We can't connect with your twitch account"] },
+             status: :unauthorized
     end
+  end
+
+  def find_or_initialize_user(raw_data)
+    @user = User.find_or_initialize_by(email: @raw_data['email'])
+    @user.name = @raw_data['name']
+    @user.avatar_url = @raw_data['logo']
+    @user.receive_email = true
+    @user.password = SecureRandom.hex
   end
 end
