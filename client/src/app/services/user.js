@@ -1,6 +1,6 @@
 (function() {
 
-  var User = function($http) {
+  var User = function($http, $auth) {
     var vm = this;
 
     var signup = function(user) {
@@ -18,7 +18,7 @@
     return vm;
   };
 
-  User.$inject = ['$http'];
+  User.$inject = ['$http', '$auth'];
 
   angular.module('yujihomo')
     .service('User', User);

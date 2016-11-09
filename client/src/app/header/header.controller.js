@@ -34,6 +34,7 @@
           usSpinnerService.stop('spinner-1');
           vm.currentUser = $auth.getPayload();
           closeLoginModal();
+          $state.reload();
           toastr.success('You have logged in successfully!');
         })
         .catch(function() {
@@ -48,6 +49,7 @@
         vm.currentUser = $auth.getPayload();
         usSpinnerService.stop('spinner-1');
         closeLoginModal();
+        $state.reload();
         toastr.success('You have logged in successfully!');
       }).catch(function() {
         usSpinnerService.stop('spinner-1');
@@ -59,6 +61,7 @@
       usSpinnerService.spin('spinner-1');
       $auth.logout();
       vm.currentUser = null;
+      $state.reload();
       toastr.success('You have logged out successfully!');
       usSpinnerService.stop('spinner-1');
     };
