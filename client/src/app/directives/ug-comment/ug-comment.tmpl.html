@@ -22,14 +22,14 @@
       <p>{{vm.comment.content}}</p>
 
       <div class="actions" ng-if="vm.currentUser">
-        <a href="javascript:void(0)" ng-click="comment.isReplying = true">Reply</a>
+        <a href="javascript:void(0)" ng-click="vm.openReplyBlock()">Reply</a>
       </div>
     </div>
   </div>
   <div class="clear"></div>
 </div>
 <div class="nested_comments">
-  <div class="comment" ng-if="comment.isReplying">
+  <div class="comment" ng-if="vm.isReplying">
     <div class="avatar"><img alt="Avatar" height="64" ng-src="{{vm.currentUser.avatar_url || '/assets/images/guest.png'}}" width="64"></div>
     <div class="main">
       <div class="headline">
@@ -40,10 +40,14 @@
       </div>
       <div class="comment_content">
         <div class="field">
-          <textarea cols="65" id="comment_content" name="comment[content]" rows="12"></textarea>
+          <textarea cols="65"
+                    id="comment_content"
+                    rows="12"
+                    ng-model="newComment.content">
+          </textarea>
         </div>
         <div class="actions">
-          <input name="commit" type="submit" value="Post Comment">
+          <input name="commit" type="button" value="Post Comment" ng-click="vm.reply(newComment)">
         </div>
       </div>
     </div>

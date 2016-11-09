@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :tags, only: [:index], defaults: { format: :json }
     resources :episodes, only: [:index, :show], defaults: { format: :json }
     resources :episode_types, only: [:index, :show], defaults: { format: :json }
-    resources :comments, only: [:index], defaults: { format: :json }
+    resources :comments, only: [:index, :create, :update, :destroy], defaults: { format: :json }
   end
 
   namespace 'auth', defaults: { format: :json } do

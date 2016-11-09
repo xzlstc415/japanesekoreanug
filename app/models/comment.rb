@@ -10,6 +10,8 @@ class Comment < ApplicationRecord
 
   scope :root, -> { where(root: true) }
 
+  validates :content, presence: true
+
   def destroy
     update_attributes(content: 'this message has been deleted!', deleted: true)
   end
@@ -17,7 +19,9 @@ class Comment < ApplicationRecord
   private
 
   def check_if_deleted
-    errors.add(:content, message: 'has been deleted') if deleted?
-    raise ActiveRecord::RecordInvalid
+    if deleted?
+      errors.add(:content, message: 'has been deleted')
+      raise ActiveRecord::RecordInvalid
+    end
   end
 end

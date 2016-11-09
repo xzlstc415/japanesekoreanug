@@ -14,8 +14,10 @@
     toastrConfig.allowHtml = true;
     toastrConfig.timeOut = 1000;
     toastrConfig.positionClass = 'toast-top-center';
-    toastrConfig.preventDuplicates = true;
+    toastrConfig.preventDuplicates = false;
+    toastrConfig.preventOpenDuplicates = true;
     toastrConfig.progressBar = true;
+
 
     // config of satellizer
     $authProvider.twitch({
