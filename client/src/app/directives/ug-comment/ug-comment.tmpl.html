@@ -1,0 +1,54 @@
+<div class="comment" id="comment_{{vm.comment.id}}">
+  <div class="avatar">
+    <img alt="Avatar"
+         height="64"
+         ng-src="{{vm.comment.user.avatar_url || '/assets/images/guest.png'}}"
+         width="64">
+  </div>
+  <div class="actions user_actions">
+
+  </div>
+  <div class="main">
+    <div class="headline">
+      <span class="name">
+        <a class="blue-text" href="/users/{{vm.comment.user.id}}">{{vm.comment.user.name}}</a>
+      </span>
+      <span class="created_at">
+        {{vm.comment.created_at}} ago
+      </span>
+    </div>
+
+    <div class="comment_content">
+      <p>{{vm.comment.content}}</p>
+
+      <div class="actions" ng-if="vm.currentUser">
+        <a href="javascript:void(0)" ng-click="comment.isReplying = true">Reply</a>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="nested_comments">
+  <div class="comment" ng-if="comment.isReplying">
+    <div class="avatar"><img alt="Avatar" height="64" ng-src="{{vm.currentUser.avatar_url || '/assets/images/guest.png'}}" width="64"></div>
+    <div class="main">
+      <div class="headline">
+        <span class="position">New comment as</span>
+        <span class="name">
+          <a class="blue-text" href="javascript:void(0)">{{vm.currentUser.name}}</a>
+        </span>
+      </div>
+      <div class="comment_content">
+        <div class="field">
+          <textarea cols="65" id="comment_content" name="comment[content]" rows="12"></textarea>
+        </div>
+        <div class="actions">
+          <input name="commit" type="submit" value="Post Comment">
+        </div>
+      </div>
+    </div>
+  </div>
+  <ug-comment ng-repeat="comment in vm.comment.replies"
+              comment="comment">
+  </ug-comment>
+</div>

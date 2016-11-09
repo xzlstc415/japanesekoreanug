@@ -48,10 +48,12 @@ ul.horizontal li {
 
 a {
   color: #4F534E;
+  text-decoration: none;
 }
 
 a:hover {
   color: #5bc0de;
+  text-decoration: underline;
 }
 
 .clearfix:after {
