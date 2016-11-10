@@ -8,7 +8,6 @@ gem 'ransack'
 gem 'devise'
 gem 'jwt'
 gem 'twitch', '~> 0.1.0'
-gem 'ransack'
 
 group :development, :test do
   gem 'byebug'

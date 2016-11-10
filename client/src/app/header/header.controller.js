@@ -80,6 +80,12 @@
       });
     };
 
+    var searchEpisodes = function () {
+      $state.go('home', {name_or_tags_name_or_episode_type_name_cont: vm.keyword});
+      vm.keyword = ""
+    };
+
+    vm.searchEpisodes = searchEpisodes;
     vm.closeLoginModal = closeLoginModal;
     vm.closeSignupModal = closeSignupModal;
     vm.openLoginModal = openLoginModal;

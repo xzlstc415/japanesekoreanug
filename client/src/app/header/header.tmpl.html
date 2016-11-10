@@ -37,9 +37,8 @@
     <li><a href="javascript:void(0)" ui-sref="about">About</a></li>
     <li><a href="javascript:void(0)" ui-sref="feedback">Feedback</a></li>
   </ul>
-  <form accept-charset="UTF-8" action="" method="get">
-    <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
-    <input id="search" name="search" size="35" type="text">
+  <form ng-submit="vm.searchEpisodes()">
+    <input name="search" size="35" type="text" ng-model="vm.keyword">
     <input type="submit" value="Search Episodes">
   </form>
 </div>
