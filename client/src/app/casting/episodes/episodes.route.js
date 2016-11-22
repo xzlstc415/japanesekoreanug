@@ -18,6 +18,16 @@
             return Episode.get($stateParams.id);
           }]
         }
+      })
+      .state('episodes-create', {
+        url:'/episodes/new',
+        parent: 'yujihomo',
+        views: {
+          '@yujihomo': {
+            templateUrl: 'app/casting/episodes/create/create.tmpl.html',
+            controller: 'EpisodesCreateController as vm'
+          }
+        }
       });
   };
 

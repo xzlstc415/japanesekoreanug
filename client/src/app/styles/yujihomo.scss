@@ -92,3 +92,17 @@ a:hover {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F5F5F5', endColorstr='#DDD');
   text-decoration: none;
 }
+
+.label {
+  display: inline-block;
+  width: 140px;
+  text-align: right;
+}
+
+.form-group {
+  margin: 10px 0;
+}
+
+.form-input {
+  width: 200px;
+}
