@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109081521) do
+ActiveRecord::Schema.define(version: 20161122043519) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "episode_id"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20161109081521) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "role"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

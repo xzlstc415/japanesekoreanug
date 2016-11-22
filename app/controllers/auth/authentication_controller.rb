@@ -52,5 +52,6 @@ class Auth::AuthenticationController < ApplicationController
     @user.avatar_url = @raw_data['logo']
     @user.receive_email = true
     @user.password = SecureRandom.hex
+    @user.role = :user
   end
 end

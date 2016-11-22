@@ -8,13 +8,14 @@
 User.create(name: 'Yuji Ogasawara',
             password: '123123123',
             email: 'jkug@gmail.com',
-            receive_email: true)
-user1 = User.create(name: 'Stephanie Hekker', password: "test_password", email: 'test1@email.com')
-user2 = User.create(name: 'Thomas Hopkins', password: "test_password", email: 'test2@email.com')
-user3 = User.create(name: 'Sourav Kumar', password: "test_password", email: 'test3@email.com')
-user4 = User.create(name: 'Référencemen à Marseille', password: "test_password", email: 'test4@email.com')
-user5 = User.create(name: 'James Chevalier', password: "test_password", email: 'test5@email.com')
-user6 = User.create(name: 'Keil Miller Jr', password: "test_password", email: 'test6@email.com')
+            receive_email: true,
+            role: :admin)
+user1 = User.create(name: 'Stephanie Hekker', password: "test_password", email: 'test1@email.com', role: :user)
+user2 = User.create(name: 'Thomas Hopkins', password: "test_password", email: 'test2@email.com', role: :user)
+user3 = User.create(name: 'Sourav Kumar', password: "test_password", email: 'test3@email.com', role: :user)
+user4 = User.create(name: 'Référencemen à Marseille', password: "test_password", email: 'test4@email.com', role: :user)
+user5 = User.create(name: 'James Chevalier', password: "test_password", email: 'test5@email.com', role: :user)
+user6 = User.create(name: 'Keil Miller Jr', password: "test_password", email: 'test6@email.com', role: :user)
 
 beginner_type = EpisodeType.create(name: 'Beginner Episodes')
 intermediate_type = EpisodeType.create(name: 'Intermediate Episodes')

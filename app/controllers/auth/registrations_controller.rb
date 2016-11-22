@@ -11,6 +11,7 @@ class Auth::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
+    resource.role = :user
 
     if resource.save
       render json: { token: JWTWrapper.encode(resource.attributes) }

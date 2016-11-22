@@ -10,7 +10,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    authorize @comment
     @comment.user = current_auth_user
+    @comment.root = true if params[:comment][:parent_comment_id]
 
     unless @comment.save
       render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
