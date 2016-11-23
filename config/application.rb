@@ -29,6 +29,8 @@ module Yujihomo
 
     config.navigational_formats = []
 
+    config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: false,

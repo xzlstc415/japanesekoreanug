@@ -22,8 +22,30 @@
       return $http(req);
     };
 
+    var save = function(params) {
+      var req = {
+        method: 'POST',
+        url: '/api/episodes',
+        data: params
+      };
+
+      return $http(req);
+    };
+
+    var update = function(id, params) {
+      var req = {
+        method: 'PUT',
+        url: '/api/episodes/' + id,
+        data: params
+      };
+
+      return $http(req);
+    };
+
     vm.query = query;
     vm.get = get;
+    vm.save = save;
+    vm.update = update;
 
     return vm;
   };

@@ -1,15 +1,15 @@
 <div class="content">
   <div class="headline">
-    Create a new episode
+    Edit episode
   </div>
   <div class="form_container">
-    <form id="newEpisodeForm" novalidate ng-submit="vm.saveEpisode()">
+    <form id="editEpisodeForm" novalidate ng-submit="vm.updateEpisode()">
       <ng-include src="'app/casting/episodes/templates/episode-form.tmpl.html'">
       </ng-include>
       <div class="form-group">
         <input class="form-submit-button"
                type="submit"
-               value="create"/>
+               value="update"/>
       </div>
     </form>
   </div>

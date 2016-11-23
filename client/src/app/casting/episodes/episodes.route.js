@@ -28,6 +28,21 @@
             controller: 'EpisodesCreateController as vm'
           }
         }
+      })
+      .state('episodes-update', {
+        url:'/episodes/:id/edit',
+        parent: 'yujihomo',
+        views: {
+          '@yujihomo': {
+            templateUrl: 'app/casting/episodes/edit/edit.tmpl.html',
+            controller: 'EpisodesUpdateController as vm'
+          }
+        },
+        resolve: {
+          episode: ['Episode', '$stateParams', function(Episode, $stateParams) {
+            return Episode.get($stateParams.id);
+          }]
+        }
       });
   };
 

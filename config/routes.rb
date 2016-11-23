@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope '/api', defaults: { format: :json } do
     resources :tags, only: [:index]
-    resources :episodes, only: [:index, :show]
+    resources :episodes, only: [:index, :show, :create, :update, :destroy]
     resources :episode_types, only: [:index, :show]
     resources :comments, only: [:index, :create, :update, :destroy]
   end

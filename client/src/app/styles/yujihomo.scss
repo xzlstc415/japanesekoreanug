@@ -104,5 +104,22 @@ a:hover {
 }
 
 .form-input {
-  width: 200px;
+  width: 400px;
+  line-height: 28px;
+  border: 1px solid #dad8de;
+  color: #706a7c;
+}
+
+textarea {
+  resize: none;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  font-size: 16px;
 }
