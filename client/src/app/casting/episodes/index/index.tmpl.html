@@ -43,15 +43,16 @@
            class="watch_button pretty_button">Watch Episode</a>
         <a href="javascript:void(0)"
            ui-sref="episodes-update({id: {{episode.id}}})"
-           class="edit_button pretty_button">Edit Episode</a>
+           class="edit_button pretty_button"
+           ng-if="vm.currentUser.role == 'admin'">Edit Episode</a>
         <a href="javascript:void(0)"
            ng-click="vm.publishEpisode(episode)"
            class="publish_button pretty_button"
-           ng-if="!episode.published_at">Publish Episode</a>
+           ng-if="!episode.published_at && vm.currentUser.role == 'admin'">Publish Episode</a>
         <a href="javascript:void(0)"
            ng-click="vm.unPublishEpisode(episode)"
            class="unpublish_button pretty_button"
-           ng-if="episode.published_at">Unpublish Episode</a>
+           ng-if="episode.published_at && vm.currentUser.role == 'admin'">Unpublish Episode</a>
       </div>
     </div>
     <div class="clear"></div>

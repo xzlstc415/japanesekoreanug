@@ -10,7 +10,7 @@
         $state.go('home');
         toastr.success('Episode is updated');
       }).catch(function(res) {
-        toastr.error.apply(this, res.data.errors);
+        toastr.error(res.data.error);
       });
     };
 

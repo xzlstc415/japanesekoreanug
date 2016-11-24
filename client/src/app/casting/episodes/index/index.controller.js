@@ -1,10 +1,11 @@
 (function() {
   'use strict';
 
-  var EpisodesIndexController = function(viewStyle, episodes, $stateParams, episodeFilter, Episode, toastr, $state, usSpinnerService) {
+  var EpisodesIndexController = function($auth, viewStyle, episodes, $stateParams, episodeFilter, Episode, toastr, $state, usSpinnerService) {
     var vm = this;
     vm.episodes = episodes.data;
     vm.filters = $stateParams;
+    vm.currentUser = $auth.getPayload();
     episodeFilter.setTag($stateParams.tags_name_eq);
     episodeFilter.setType($stateParams.episode_type_name_eq);
 
@@ -47,7 +48,7 @@
     vm.unPublishEpisode = unPublishEpisode;
   };
 
-  EpisodesIndexController.$inject = ['viewStyle', 'episodes', '$stateParams', 'episodeFilter', 'Episode', 'toastr', '$state', 'usSpinnerService'];
+  EpisodesIndexController.$inject = ['$auth', 'viewStyle', 'episodes', '$stateParams', 'episodeFilter', 'Episode', 'toastr', '$state', 'usSpinnerService'];
 
   angular.module('yujihomo')
     .controller('EpisodesIndexController', EpisodesIndexController);

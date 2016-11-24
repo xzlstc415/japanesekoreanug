@@ -9,7 +9,7 @@
         $state.go('home');
         toastr.success('You have created a new episode');
       }).catch(function(res) {
-        toastr.error.apply(this, res.data.errors);
+        toastr.error(res.data.error);
       });
     };
 
