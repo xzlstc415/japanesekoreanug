@@ -14,8 +14,14 @@ class Episode < ApplicationRecord
     similar_episode_group.similar_episode_ids(self)
   end
 
-  def publish
+  def publish!
     self.published_at = Date.current
+    save
+  end
+
+  def unpublish!
+    self.published_at = nil
+    save
   end
 
   def published?

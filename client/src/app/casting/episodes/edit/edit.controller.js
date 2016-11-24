@@ -1,20 +1,23 @@
 (function() {
   'use strict';
 
-  var EpisodesUpdateController = function(Episode, episode) {
+  var EpisodesUpdateController = function(Episode, episode, $state, toastr) {
     var vm = this;
     vm.episode = episode.data;
 
     var updateEpisode = function() {
       Episode.update(vm.episode.id, vm.episode).then(function(res) {
-        console.log("success");
+        $state.go('home');
+        toastr.success('Episode is updated');
+      }).catch(function(res) {
+        toastr.error.apply(this, res.data.errors);
       });
     };
 
     vm.updateEpisode = updateEpisode;
   };
 
-  EpisodesUpdateController.$inject = ['Episode', 'episode'];
+  EpisodesUpdateController.$inject = ['Episode', 'episode', '$state', 'toastr'];
 
   angular.module('yujihomo')
     .controller('EpisodesUpdateController', EpisodesUpdateController);

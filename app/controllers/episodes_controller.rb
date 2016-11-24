@@ -37,8 +37,13 @@ class EpisodesController < ApplicationController
   def update
     @episode = Episode.find(params[:id])
     authorize @episode
-
-    if @episode.update_attributes(episode_params)
+    if params[:episode][:publish]
+      @episode.publish!
+      head :ok
+    elsif params[:episode][:unpublish]
+      @episode.unpublish!
+      head :ok
+    elsif @episode.update_attributes(episode_params)
       head :ok
     else
       render json: { error: @episode.errors.full_messages },

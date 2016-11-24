@@ -1,19 +1,22 @@
 (function() {
   'use strict';
 
-  var EpisodesCreateController = function(Episode) {
+  var EpisodesCreateController = function(Episode, $state, toastr) {
     var vm = this;
 
     var saveEpisode = function() {
       Episode.save(vm.episode).then(function(res) {
-        console.log("success");
+        $state.go('home');
+        toastr.success('You have created a new episode');
+      }).catch(function(res) {
+        toastr.error.apply(this, res.data.errors);
       });
     };
 
     vm.saveEpisode = saveEpisode;
   };
 
-  EpisodesCreateController.$inject = ['Episode'];
+  EpisodesCreateController.$inject = ['Episode', '$state', 'toastr'];
 
   angular.module('yujihomo')
     .controller('EpisodesCreateController', EpisodesCreateController);
