@@ -18,7 +18,8 @@
     "angular": "~1.5.3",
     "lodash": "latest",
     "satellizer": "latest",
-    "angular-spinner": "latest"
+    "angular-spinner": "latest",
+    "ngInfiniteScroll": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

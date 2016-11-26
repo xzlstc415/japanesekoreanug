@@ -26,9 +26,7 @@ tag2 = Tag.create(name: 'bottom')
 tag3 = Tag.create(name: 'wave')
 tag4 = Tag.create(name: 'warding')
 
-ep1 = Episode.create(number: 1,
-                     published_at: DateTime.now - 10.days,
-                     name: "LOL講座 - レーン戦終わってからの動き方",
+ep1 = Episode.create(name: "LOL講座 - レーン戦終わってからの動き方",
                      starred: false,
                      duration: 11,
                      description: "LOL講座 - レーン戦終わってからの動き方(Bottom lane)",
@@ -36,9 +34,7 @@ ep1 = Episode.create(number: 1,
                      episode_type: beginner_type,
                      tags: [tag1, tag2])
 
-ep2 = Episode.create(number: 2,
-                     published_at: DateTime.now - 8.days,
-                     name: "ウェーブマネージメント講座",
+ep2 = Episode.create(name: "ウェーブマネージメント講座",
                      starred: false,
                      duration: 5,
                      description: "ウェーブマネージメント講座 (Wave Management)",
@@ -46,9 +42,7 @@ ep2 = Episode.create(number: 2,
                      episode_type: intermediate_type,
                      tags: [tag1, tag3, tag2])
 
-ep3 = Episode.create(number: 3,
-                     published_at: DateTime.now - 6.days,
-                     name: "Warding講座",
+ep3 = Episode.create(name: "Warding講座",
                      starred: true,
                      duration: 30,
                      description: "Warding講座(Warding lesson)",
@@ -56,15 +50,23 @@ ep3 = Episode.create(number: 3,
                      episode_type: advanced_type,
                      tags: [tag1, tag4])
 
-ep4 = Episode.create(number: 4,
-                     published_at: DateTime.now - 2.days,
-                     name: "Warding講座2",
+ep4 = Episode.create(name: "Warding講座2",
                      starred: true,
                      duration: 25,
                      description: "Warding講座2(Warding lesson)",
                      thumbnail_url: "/assets/images/thumbnail2.jpg",
                      episode_type: advanced_type,
                      tags: [tag1, tag4])
+
+50.times do |i|
+  ep4 = Episode.create(name: "Warding講座#{i}",
+                       starred: true,
+                       duration: 25,
+                       description: "Warding講座#{i}(Warding lesson)",
+                       thumbnail_url: "/assets/images/thumbnail2.jpg",
+                       episode_type: advanced_type,
+                       tags: [tag1, tag4])
+end
 
 ep1.next_episode_id = ep2.id
 ep2.previous_episode_id = ep1.id

@@ -9,6 +9,7 @@ gem 'devise'
 gem 'jwt'
 gem 'twitch', '~> 0.1.0'
 gem 'pundit'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug'

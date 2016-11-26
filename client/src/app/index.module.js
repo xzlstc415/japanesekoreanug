@@ -13,7 +13,8 @@
       'ui.router',
       'toastr',
       'satellizer',
-      'angularSpinner'
+      'angularSpinner',
+      'infinite-scroll'
     ]);
 
 })();

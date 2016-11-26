@@ -6,6 +6,8 @@
     vm.episodes = episodes.data;
     vm.filters = $stateParams;
     vm.currentUser = $auth.getPayload();
+    vm.busy = false;
+    vm.end = false;
     episodeFilter.setTag($stateParams.tags_name_eq);
     episodeFilter.setType($stateParams.episode_type_name_eq);
 
@@ -41,11 +43,26 @@
       })
     };
 
+    var nextPage = function() {
+      if (vm.busy) { return; }
+      vm.busy = true;
+      var params = $stateParams;
+      params.page = Math.ceil(vm.episodes.length / 30) + 1;
+      Episode.query(params).then(function(res) {
+        if (res.data.length < 30) {
+          vm.end = true;
+        }
+        vm.episodes = vm.episodes.concat(res.data);
+        vm.busy = false
+      });
+    };
+
     vm.removeType = removeType;
     vm.removeTag = removeTag;
     vm.getCurrentStyle = viewStyle.getCurrentStyle;
     vm.publishEpisode = publishEpisode;
     vm.unPublishEpisode = unPublishEpisode;
+    vm.nextPage = nextPage;
   };
 
   EpisodesIndexController.$inject = ['$auth', 'viewStyle', 'episodes', '$stateParams', 'episodeFilter', 'Episode', 'toastr', '$state', 'usSpinnerService'];

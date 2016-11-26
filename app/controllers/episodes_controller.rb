@@ -7,13 +7,14 @@ class EpisodesController < ApplicationController
     if search_params[:episode_type_name_eq].blank? &&
        search_params[:tags_name_eq].blank? &&
        search_params[:name_or_tags_name_or_episode_type_name_cont].blank?
-      @episodes = policy_scope(Episode)
+      episodes = policy_scope(Episode)
     else
-      @episodes = policy_scope(Episode)
+      episodes = policy_scope(Episode)
                   .search(search_params)
                   .result
                   .uniq
     end
+    @episodes = episodes.page(params[:page]).order('number DESC')
     authorize @episodes
   end
 

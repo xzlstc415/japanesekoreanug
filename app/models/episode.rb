@@ -1,6 +1,8 @@
 # Model of Episode
 class Episode < ApplicationRecord
+  self.per_page = 30
   before_create :set_episode_number
+  before_create :set_published_at
 
   scope :published, -> { where('published_at IS NOT NULL') }
 
@@ -31,6 +33,12 @@ class Episode < ApplicationRecord
   private
 
   def set_episode_number
-    self.number = Episode.last.number + 1
+    last_episode = Episode.last
+    return self.number = 1 if last_episode.blank?
+    self.number = last_episode.number + 1
+  end
+
+  def set_published_at
+    self.published_at = Date.current
   end
 end
