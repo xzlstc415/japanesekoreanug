@@ -28,7 +28,7 @@
       }).catch(function(res) {
         usSpinnerService.stop('spinner-1');
         toastr.error.apply(this, res.data.errors);
-      })
+      });
     };
 
     var unPublishEpisode = function(episode) {
@@ -40,7 +40,7 @@
       }).catch(function(res) {
         usSpinnerService.stop('spinner-1');
         toastr.error.apply(this, res.data.errors);
-      })
+      });
     };
 
     var nextPage = function() {
@@ -53,7 +53,7 @@
           vm.end = true;
         }
         vm.episodes = vm.episodes.concat(res.data);
-        vm.busy = false
+        vm.busy = false;
       });
     };
 
