@@ -58,7 +58,7 @@ ep4 = Episode.create(name: "Warding講座2",
                      episode_type: advanced_type,
                      tags: [tag1, tag4])
 
-50.times do |i|
+200.times do |i|
   ep4 = Episode.create(name: "Warding講座#{i}",
                        starred: true,
                        duration: 25,

@@ -205,3 +205,10 @@
   background: -moz-linear-gradient(top,  #322f2f,  #4a4a4a);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#322f2f', endColorstr='#4a4a4a');
 }
+
+.loading-indicator {
+  width: 10%;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 30px;
+}
