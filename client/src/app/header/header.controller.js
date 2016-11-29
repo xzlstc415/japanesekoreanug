@@ -62,9 +62,9 @@
       usSpinnerService.spin('spinner-1');
       $auth.logout();
       vm.currentUser = null;
-      $state.reload();
       toastr.success('You have logged out successfully!');
       usSpinnerService.stop('spinner-1');
+      $state.go('home');
     };
 
     var signup = function(user) {
