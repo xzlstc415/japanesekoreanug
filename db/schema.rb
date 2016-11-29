@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122043519) do
+ActiveRecord::Schema.define(version: 20161128040308) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "episode_id"
@@ -95,6 +95,25 @@ ActiveRecord::Schema.define(version: 20161122043519) do
     t.string   "last_sign_in_ip"
     t.integer  "role"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+  end
+
+  create_table "youtube_clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "api_client_id"
+    t.string   "api_access_token"
+    t.string   "api_redirect_uri"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "youtube_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "api_id"
+    t.string   "api_thumbnail_url"
+    t.string   "api_privacy_status"
+    t.integer  "api_duration"
+    t.text     "api_embed_html",     limit: 65535
+    t.boolean  "api_processed"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_foreign_key "comments", "episodes"

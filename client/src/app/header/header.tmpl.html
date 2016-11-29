@@ -37,7 +37,7 @@
     <li><a href="javascript:void(0)" ui-sref="about">About</a></li>
     <li><a href="javascript:void(0)" ui-sref="feedback">Feedback</a></li>
   </ul>
-  <form ng-submit="vm.searchEpisodes()">
+  <form ng-submit="vm.searchEpisodes()" ng-show="vm.$state.current.name == 'home'">
     <input name="search" size="35" type="text" ng-model="vm.keyword">
     <input type="submit" value="Search Episodes">
   </form>

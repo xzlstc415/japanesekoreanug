@@ -1,0 +1,8 @@
+<button class="youtube_button button" style="padding: 10px 12px;" ng-if="!vm.connected">
+  <span style="font-size:14px; cursor: pointer;" ng-click="vm.authenticate('google')">Connect with Google</span>
+</button>
+<div ng-show="vm.connected">
+  you are connected
+  <button ng-click="vm.importAllVideos()"
+          ng-disabled="vm.busy">import all videos from Youtube</button>
+</div>

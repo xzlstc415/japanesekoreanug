@@ -27,7 +27,21 @@ class Auth::AuthenticationController < ApplicationController
                         api_access_token: @access_token)
       render json: { token: JWTWrapper.encode(@user.attributes) }
     else
-      render json: { errors: ["We can't connect with your twitch account"] }, status: :unauthorized
+      render json: { errors: ["We can't connect with your twitch account"] },
+             status: :unauthorized
+    end
+  end
+
+  def google
+    YoutubeClient.delete_all
+    @youtube_client = YoutubeClient.new(api_access_token: params[:code],
+                                        api_redirect_uri: params[:redirectUri],
+                                        api_client_id: params[:clientId])
+    if @youtube_client.save
+      head :ok
+    else
+      render json: { errors: ["Sorry We can't connect with your google account"] },
+             status: :unauthorized
     end
   end
 

@@ -10,6 +10,8 @@ gem 'jwt'
 gem 'twitch', '~> 0.1.0'
 gem 'pundit'
 gem 'will_paginate'
+gem 'yt'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'byebug'

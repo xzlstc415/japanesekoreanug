@@ -10,9 +10,9 @@ class EpisodesController < ApplicationController
       episodes = policy_scope(Episode)
     else
       episodes = policy_scope(Episode)
-                  .search(search_params)
-                  .result
-                  .uniq
+                 .search(search_params)
+                 .result
+                 .uniq
     end
     @episodes = episodes.page(params[:page]).order('number DESC')
     authorize @episodes

@@ -6,6 +6,7 @@
     vm.loginWndOpen = false;
     vm.signupWndOpen = false;
     vm.currentUser = $auth.getPayload();
+    vm.$state = $state;
 
     var closeLoginModal = function() {
       vm.loginWndOpen = false;
@@ -39,7 +40,7 @@
         })
         .catch(function() {
           usSpinnerService.stop('spinner-1');
-          toastr.error('Sorry we cannot connect to twitch :(')
+          toastr.error('Sorry we cannot connect to twitch :(');
         });
     };
 
@@ -53,7 +54,7 @@
         toastr.success('You have logged in successfully!');
       }).catch(function() {
         usSpinnerService.stop('spinner-1');
-        toastr.error('Sorry we cannot connect to twitch :(')
+        toastr.error('Sorry we cannot connect to twitch :(');
       });
     };
 
@@ -82,7 +83,7 @@
 
     var searchEpisodes = function () {
       $state.go('home', {name_or_tags_name_or_episode_type_name_cont: vm.keyword});
-      vm.keyword = ""
+      vm.keyword = "";
     };
 
     vm.searchEpisodes = searchEpisodes;

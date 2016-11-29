@@ -1,0 +1,2 @@
+class YoutubeClient < ApplicationRecord
+end
