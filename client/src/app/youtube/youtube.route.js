@@ -6,6 +6,9 @@
       .state('youtube', {
         url:'/youtube',
         parent: 'yujihomo',
+        data: {
+          roles: ['admin']
+        },
         views: {
           '@yujihomo': {
             templateUrl: 'app/youtube/youtube.tmpl.html',

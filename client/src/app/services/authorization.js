@@ -5,20 +5,11 @@
 
     var authorize = function(event) {
       var currentUser = $auth.getPayload();
-      switch($rootScope.toState.name) {
-        case 'youtube':
-          if (!(currentUser && currentUser.role == 'admin')) {
+      if ($rootScope.toState.data.roles && $rootScope.toState.data.roles.length &&
+          (!currentUser || $rootScope.toState.data.roles.indexOf(currentUser.role) == -1)) {
             event.preventDefault();
             $state.go('unauthorized');
           }
-          break;
-        case 'profile':
-          if (!currentUser) {
-            event.preventDefault();
-            $state.go('unauthorized');
-          }
-          break;
-      }
     };
 
     vm.authorize = authorize;

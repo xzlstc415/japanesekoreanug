@@ -6,6 +6,9 @@
       .state('profile', {
         url:'/profile',
         parent: 'yujihomo',
+        data: {
+          roles: ['admin', 'user', 'moderator']
+        },
         views: {
           '@yujihomo': {
             templateUrl: 'app/profile/profile.tmpl.html',
