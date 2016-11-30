@@ -3,7 +3,11 @@
 
   var CommentController = function(comments, $auth) {
     var vm = this;
-    vm.currentUser = $auth.getPayload();
+    if ($auth.isAuthenticated()) {
+      vm.currentUser = $auth.getPayload();
+    } else {
+      vm.currentUser = null;
+    }
 
     vm.comments = comments.data;
   };

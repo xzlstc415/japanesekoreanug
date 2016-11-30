@@ -2,10 +2,17 @@
 
   var Authorization = function($rootScope, $state, $auth) {
     var vm = this;
+    var currentUser;
 
     var authorize = function(event) {
-      var currentUser = $auth.getPayload();
-      if ($rootScope.toState.data.roles && $rootScope.toState.data.roles.length &&
+      if ($auth.isAuthenticated()) {
+        currentUser = $auth.getPayload();
+      } else {
+        currentUser = null;
+      }
+
+      if ($rootScope.toState.data &&
+          $rootScope.toState.data.roles && $rootScope.toState.data.roles.length &&
           (!currentUser || $rootScope.toState.data.roles.indexOf(currentUser.role) == -1)) {
             event.preventDefault();
             $state.go('unauthorized');

@@ -12,6 +12,7 @@ gem 'pundit'
 gem 'will_paginate'
 gem 'yt'
 gem 'sidekiq'
+gem 'yajl-ruby', require: 'yajl'
 
 group :development, :test do
   gem 'byebug'
