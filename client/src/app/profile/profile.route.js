@@ -15,7 +15,11 @@
             controller: 'ProfileController as vm',
             resolve: {
               currentUser: ['$auth', function($auth) {
-                return $auth.getPayload();
+                if ($auth.isAuthenticated()) {
+                  return $auth.getPayload();
+                } else {
+                  return null;
+                }
               }]
             }
           }

@@ -5,7 +5,12 @@
     var vm = this;
     vm.episodes = episodes.data;
     vm.filters = $stateParams;
-    vm.currentUser = $auth.getPayload();
+    if ($auth.isAuthenticated()) {
+      vm.currentUser = $auth.getPayload();
+    } else {
+      vm.currentUser = null;
+    }
+
     vm.busy = false;
     vm.end = false;
     episodeFilter.setTag($stateParams.tags_name_eq);

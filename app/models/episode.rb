@@ -6,7 +6,7 @@ class Episode < ApplicationRecord
 
   scope :published, -> { where('published_at IS NOT NULL') }
 
-  belongs_to :similar_episode_group, optional: true
+  belongs_to :similar_episode_group
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :tags
   belongs_to :episode_type
