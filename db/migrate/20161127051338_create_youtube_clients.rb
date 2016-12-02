@@ -1,4 +1,4 @@
-class CreateYoutubeClients < ActiveRecord::Migration[5.0]
+class CreateYoutubeClients < ActiveRecord::Migration
   def change
     create_table :youtube_clients do |t|
       t.string :api_client_id

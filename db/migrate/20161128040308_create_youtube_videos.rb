@@ -1,4 +1,4 @@
-class CreateYoutubeVideos < ActiveRecord::Migration[5.0]
+class CreateYoutubeVideos < ActiveRecord::Migration
   def change
     create_table :youtube_videos do |t|
       t.string :api_id

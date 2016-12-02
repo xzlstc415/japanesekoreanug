@@ -1,4 +1,4 @@
-class CreateTwitchUsers < ActiveRecord::Migration[5.0]
+class CreateTwitchUsers < ActiveRecord::Migration
   def change
     create_table :twitch_users do |t|
       t.belongs_to :user, foreign_key: true

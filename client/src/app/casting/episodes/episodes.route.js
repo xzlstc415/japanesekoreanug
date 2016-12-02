@@ -22,6 +22,9 @@
       .state('episodes-create', {
         url:'/episodes/new',
         parent: 'yujihomo',
+        data: {
+          roles: ['admin', 'moderator']
+        },
         views: {
           '@yujihomo': {
             templateUrl: 'app/casting/episodes/create/create.tmpl.html',

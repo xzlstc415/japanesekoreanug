@@ -1,4 +1,4 @@
-class AddRootCommentToComments < ActiveRecord::Migration[5.0]
+class AddRootCommentToComments < ActiveRecord::Migration
   def change
     add_column :comments, :root, :boolean
   end

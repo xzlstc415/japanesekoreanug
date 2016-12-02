@@ -18,7 +18,7 @@
 
   ugComment.$inject = ['RecursionHelper'];
 
-  var ugCommentController = function(Comment, $auth, toastr, $state) {
+  var ugCommentController = function(Comment, $auth, toastr, $state, ErrorMessageHandler) {
     var vm = this;
     vm.currentUser = $auth.getPayload();
     vm.isReplying = false;
@@ -28,16 +28,17 @@
     };
 
     var reply = function(comment) {
-      if (!comment) {
-        var comment = {};
+      if (!comment || (comment && comment.content.length === 0)) {
+        toastr.error('message is empty!');
+        return;
       }
       comment.parent_comment_id = vm.comment.id;
       comment.episode_id = vm.comment.episode_id;
-      Comment.save(comment).then(function(res) {
+      Comment.save({comment: comment}).then(function(res) {
         $state.reload();
         toastr.success('You have left a new reply!');
       }).catch(function(res) {
-        toastr.error.apply(this, res.data.errors);
+        ErrorMessageHandler.displayErrors(res);
       });
     };
 
@@ -45,7 +46,7 @@
     vm.reply = reply;
   };
 
-  ugCommentController.$inject = ['Comment', '$auth', 'toastr', '$state'];
+  ugCommentController.$inject = ['Comment', '$auth', 'toastr', '$state', 'ErrorMessageHandler'];
 
   angular.module('yujihomo')
          .directive('ugComment', ugComment)

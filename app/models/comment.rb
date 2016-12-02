@@ -8,7 +8,7 @@ class Comment < ApplicationRecord
   belongs_to :parent_comment, class_name: 'Comment'
   has_many :replies, class_name: 'Comment', foreign_key: 'parent_comment_id'
 
-  scope :root, -> { where(root: true) }
+  scope :root, -> { where('parent_comment_id IS NULL') }
 
   validates :content, presence: true
 

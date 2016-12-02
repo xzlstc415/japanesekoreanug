@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var HeaderController = function($auth, toastr, User, $state, usSpinnerService) {
+  var HeaderController = function($auth, toastr, User, $state, usSpinnerService, ErrorMessageHandler) {
     var vm = this;
     vm.loginWndOpen = false;
     vm.signupWndOpen = false;
@@ -81,7 +81,7 @@
         toastr.success('You have signed up successfully!');
         usSpinnerService.stop('spinner-1');
       }).catch(function(res) {
-        toastr.error.apply(this, res.data.errors);
+        ErrorMessageHandler.displayErrors(res);
         usSpinnerService.stop('spinner-1');
       });
     };
@@ -102,7 +102,7 @@
     vm.signup = signup;
   };
 
-  HeaderController.$inject = ['$auth', 'toastr', 'User', '$state', 'usSpinnerService'];
+  HeaderController.$inject = ['$auth', 'toastr', 'User', '$state', 'usSpinnerService', 'ErrorMessageHandler'];
 
   angular.module('yujihomo')
     .controller('HeaderController', HeaderController);

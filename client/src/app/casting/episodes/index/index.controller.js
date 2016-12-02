@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var EpisodesIndexController = function($auth, viewStyle, episodes, $stateParams, episodeFilter, Episode, toastr, $state, usSpinnerService) {
+  var EpisodesIndexController = function($auth, viewStyle, episodes, $stateParams, episodeFilter, Episode, toastr, $state, usSpinnerService, ErrorMessageHandler) {
     var vm = this;
     vm.episodes = episodes.data;
     vm.filters = $stateParams;
@@ -32,7 +32,7 @@
         toastr.success('You have published a new episode');
       }).catch(function(res) {
         usSpinnerService.stop('spinner-1');
-        toastr.error.apply(this, res.data.errors);
+        ErrorMessageHandler.displayErrors(res);
       });
     };
 
@@ -44,7 +44,7 @@
         toastr.success('You have unpublished an episode');
       }).catch(function(res) {
         usSpinnerService.stop('spinner-1');
-        toastr.error.apply(this, res.data.errors);
+        ErrorMessageHandler.displayErrors(res);
       });
     };
 
@@ -70,7 +70,7 @@
     vm.nextPage = nextPage;
   };
 
-  EpisodesIndexController.$inject = ['$auth', 'viewStyle', 'episodes', '$stateParams', 'episodeFilter', 'Episode', 'toastr', '$state', 'usSpinnerService'];
+  EpisodesIndexController.$inject = ['$auth', 'viewStyle', 'episodes', '$stateParams', 'episodeFilter', 'Episode', 'toastr', '$state', 'usSpinnerService', 'ErrorMessageHandler'];
 
   angular.module('yujihomo')
     .controller('EpisodesIndexController', EpisodesIndexController);

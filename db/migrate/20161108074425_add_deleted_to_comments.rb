@@ -1,4 +1,4 @@
-class AddDeletedToComments < ActiveRecord::Migration[5.0]
+class AddDeletedToComments < ActiveRecord::Migration
   def change
     add_column :comments, :deleted, :boolean
   end

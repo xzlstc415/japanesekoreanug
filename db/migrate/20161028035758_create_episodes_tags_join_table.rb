@@ -1,4 +1,4 @@
-class CreateEpisodesTagsJoinTable < ActiveRecord::Migration[5.0]
+class CreateEpisodesTagsJoinTable < ActiveRecord::Migration
   def change
     create_join_table :episodes, :tags do |t|
       t.references :episode, foreign_key: true
