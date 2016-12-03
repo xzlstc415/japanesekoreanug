@@ -22,4 +22,8 @@ class YoutubeVideoPolicy < ApplicationPolicy
   def create?
     user.admin? || user.moderator?
   end
+
+  def autocomplete?
+    user.admin? || user.moderator?
+  end
 end

@@ -21,8 +21,19 @@
       return $http(req);
     };
 
+    var autocomplete = function(keyParams) {
+      var req = {
+        method: 'GET',
+        url: '/api/tags/autocomplete',
+        params: keyParams
+      };
+
+      return $http(req);
+    };
+
     vm.query = query;
     vm.get = get;
+    vm.autocomplete = autocomplete;
 
     return vm;
   };

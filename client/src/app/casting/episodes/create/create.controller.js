@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var EpisodesCreateController = function(Episode, $state, toastr) {
+  var EpisodesCreateController = function(Episode, $state, toastr, Tag, YoutubeVideo) {
     var vm = this;
 
     var saveEpisode = function() {
@@ -13,10 +13,20 @@
       });
     };
 
+    var searchTags = function(key) {
+      return Tag.autocomplete({name_cont: key});
+    };
+
+    var searchYoutubeVideos = function(key) {
+      return YoutubeVideo.autocomplete({api_title_cont: key});
+    };
+
     vm.saveEpisode = saveEpisode;
+    vm.searchTags = searchTags;
+    vm.searchYoutubeVideos = searchYoutubeVideos;
   };
 
-  EpisodesCreateController.$inject = ['Episode', '$state', 'toastr'];
+  EpisodesCreateController.$inject = ['Episode', '$state', 'toastr', 'Tag', 'YoutubeVideo'];
 
   angular.module('yujihomo')
     .controller('EpisodesCreateController', EpisodesCreateController);

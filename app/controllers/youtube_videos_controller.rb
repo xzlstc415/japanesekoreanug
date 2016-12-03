@@ -7,7 +7,9 @@ class YoutubeVideosController < ApplicationController
   end
 
   def autocomplete
-    YoutubeVideo.search
+    authorize YoutubeVideo
+    @youtube_videos = YoutubeVideo.search(search_params)
+                                  .result
   end
 
   def create

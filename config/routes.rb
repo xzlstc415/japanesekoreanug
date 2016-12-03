@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     resources :episode_types, only: [:index, :show]
     resources :comments, only: [:index, :create, :update, :destroy]
     resources :youtube_videos, only: [:index, :create] do
-      get 'autocomplete'
+      collection do
+        get 'autocomplete'
+      end
     end
     mount Sidekiq::Web, at: '/sidekiq'
   end

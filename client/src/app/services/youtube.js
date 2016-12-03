@@ -22,8 +22,19 @@
       return $http(req);
     };
 
+    var autocomplete = function(keyParams) {
+      var req = {
+        method: 'GET',
+        url: '/api/youtube_videos/autocomplete',
+        params: keyParams
+      };
+
+      return $http(req);
+    };
+
     // vm.query = query;
     vm.save = save;
+    vm.autocomplete = autocomplete;
 
     return vm;
   };
