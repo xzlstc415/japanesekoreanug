@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202223550) do
+ActiveRecord::Schema.define(version: 20161203052159) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "episode_id",        limit: 4
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20161202223550) do
   end
 
   create_table "youtube_videos", force: :cascade do |t|
+    t.string   "api_title",          limit: 255
     t.string   "api_id",             limit: 255
     t.string   "api_thumbnail_url",  limit: 255
     t.string   "api_privacy_status", limit: 255
