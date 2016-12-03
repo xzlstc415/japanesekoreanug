@@ -6,9 +6,21 @@ class YoutubeVideosController < ApplicationController
   def index
   end
 
+  def autocomplete
+    YoutubeVideo.search
+  end
+
   def create
     authorize YoutubeVideo
     YoutubeVideosWorker.perform_async(YoutubeClient.first.id)
     render json: { message: 'Process started, it make take a while to finish' }
+  end
+
+  private
+
+  def search_params
+    params.permit(
+      :api_title_cont
+    )
   end
 end
