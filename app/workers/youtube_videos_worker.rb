@@ -1,6 +1,9 @@
 # worker for youtube video import
 class YoutubeVideosWorker
   include Sidekiq::Worker
+
+  sidekiq_options unique: :until_executed, retry: true
+
   def perform(youtube_client_id)
     youtube_client = YoutubeClient.find(youtube_client_id)
     account = Yt::Account.new authorization_code: youtube_client.api_access_token,
