@@ -14,6 +14,11 @@ gem 'yt'
 gem 'sidekiq'
 gem 'yajl-ruby', require: 'yajl'
 gem 'rails-api'
+gem 'capistrano', '~> 3.6'
+gem 'capistrano-rails', '~> 1.2'
+gem 'capistrano-rvm'
+gem 'capistrano-sidekiq'
+gem 'capistrano-passenger'
 
 group :development, :test do
   gem 'byebug'
@@ -23,11 +28,6 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'capistrano', '~> 3.6'
-  gem 'capistrano-rails', '~> 1.2'
-  gem 'capistrano-rvm'
-  gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
-  gem 'capistrano-passenger'
 end
 
 group :test do

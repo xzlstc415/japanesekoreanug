@@ -1,16 +1,18 @@
 # config valid only for current version of Capistrano
 lock '3.6.1'
+# server '139.162.74.33', roles: [:web, :app, :db], primary: true
 
 set :application, 'yujihomo'
 set :repo_url, 'git@github.com:xzlstc415/yujihomo.git'
+set :user, 'deployer'
 
-set :rails_env, 'staging'
 set :migration_role, :app
 set :migration_servers, -> { primary(fetch(:migration_role)) }
 set :conditionally_migrate, true
+set :pty,  false
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
@@ -41,9 +43,7 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-set :rvm_ruby_version, '2.3.1'
-set :passenger_environment_variables, { 'TWITCH_CLIENT_ID' => ENV['TWITCH_CLIENT_ID'],
-                                        'TWITCH_CLIENT_SECRET' => ENV['TWITCH_CLIENT_SECRET']}
+set :rvm_ruby_version, '2.3.1@yuji'
 set :passenger_roles, :app
 set :passenger_restart_runner, :sequence
 set :passenger_restart_wait, 5

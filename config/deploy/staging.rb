@@ -3,7 +3,20 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-# server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
+server '139.162.74.33', user: 'deployer', roles: %w{app db web}
+
+set :rails_env, 'staging'
+
+namespace :deploy do
+  desc 'Upload YAML files.'
+  task :upload_yml do
+    on roles(:app) do
+      execute "mkdir #{shared_path}/config -p"
+      upload! StringIO.new(File.read("config/database.yml")), "#{shared_path}/config/database.yml"
+      upload! StringIO.new(File.read("config/secrets.yml")), "#{shared_path}/config/secrets.yml"
+    end
+  end
+end
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
