@@ -6,3 +6,30 @@
   <label class="label" for="description">description</label>
   <textarea class="form-input" rows="10" id="description" ng-model="vm.episode.description"/>
 </div>
+<div class="form-group">
+  <label class="label" for="tags">tags</label>
+  <tags-input ng-model="vm.episodes.tags"
+              key-property="id"
+              tpye="text"
+              min-tags="1"
+              style="display:inline-block; width:406px">
+    <auto-complete source="vm.searchTags($query)"
+                   min-length="1">
+    </auto-complete>
+  </tags-input>
+</div>
+<div class="form-group">
+  <label class="label" for="youtube_videos">youtube_videos</label>
+  <tags-input ng-model="vm.episodes.youtube_videos"
+              key-property="id"
+              tpye="text"
+              min-tags="1"
+              max-tags="1"
+              on-tag-adding="vm.canAddVideo($tag)"
+              style="display:inline-block; width:406px"
+              placeholder="Add a youtube video">
+    <auto-complete source="vm.searchYoutubeVideos($query)"
+                   min-length="3">
+    </auto-complete>
+  </tags-input>
+</div>

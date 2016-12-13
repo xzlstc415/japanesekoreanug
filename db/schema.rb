@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202223550) do
+ActiveRecord::Schema.define(version: 20161213043751) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "episode_id",        limit: 4
@@ -111,6 +111,8 @@ ActiveRecord::Schema.define(version: 20161202223550) do
   end
 
   create_table "youtube_videos", force: :cascade do |t|
+    t.integer  "episode_id",         limit: 4
+    t.string   "api_title",          limit: 255
     t.string   "api_id",             limit: 255
     t.string   "api_thumbnail_url",  limit: 255
     t.string   "api_privacy_status", limit: 255
@@ -121,6 +123,8 @@ ActiveRecord::Schema.define(version: 20161202223550) do
     t.datetime "updated_at"
   end
 
+  add_index "youtube_videos", ["episode_id"], name: "index_youtube_videos_on_episode_id", using: :btree
+
   add_foreign_key "comments", "episodes"
   add_foreign_key "comments", "users"
   add_foreign_key "episodes", "episode_types"
@@ -128,4 +132,5 @@ ActiveRecord::Schema.define(version: 20161202223550) do
   add_foreign_key "episodes_tags", "episodes"
   add_foreign_key "episodes_tags", "tags"
   add_foreign_key "twitch_users", "users"
+  add_foreign_key "youtube_videos", "episodes"
 end

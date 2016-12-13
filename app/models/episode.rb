@@ -10,6 +10,14 @@ class Episode < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :tags
   belongs_to :episode_type
+  has_one :youtube_video
+
+  validates :tags,
+            :episode_type,
+            :youtube_video,
+            :name,
+            :description,
+            presence: true
 
   def similar_episode_ids
     return [] if similar_episode_group.nil?

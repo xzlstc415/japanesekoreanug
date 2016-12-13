@@ -30,7 +30,7 @@ class EpisodesController < ApplicationController
     if @episode.save
       head :created
     else
-      render json: { error: @episode.errors.full_messages },
+      render json: { errors: @episode.errors.full_messages },
              status: :unprocessable_entity
     end
   end
@@ -47,7 +47,7 @@ class EpisodesController < ApplicationController
     elsif @episode.update_attributes(episode_params)
       head :ok
     else
-      render json: { error: @episode.errors.full_messages },
+      render json: { errors: @episode.errors.full_messages },
              status: :unprocessable_entity
     end
   end

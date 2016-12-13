@@ -14,7 +14,8 @@
       'toastr',
       'satellizer',
       'angularSpinner',
-      'infinite-scroll'
+      'infinite-scroll',
+      'ngTagsInput'
     ]);
 
 })();
