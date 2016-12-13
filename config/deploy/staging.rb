@@ -6,7 +6,6 @@
 server '139.162.74.33', user: 'deployer', roles: %w{app db web}
 
 set :rails_env, 'staging'
-set :stage, :staging
 
 namespace :deploy do
   desc 'Upload YAML files.'
