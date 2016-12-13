@@ -11,10 +11,10 @@
   <tags-input ng-model="vm.episodes.tags"
               key-property="id"
               tpye="text"
-              minTags="1"
+              min-tags="1"
               style="display:inline-block; width:406px">
     <auto-complete source="vm.searchTags($query)"
-                   min-Length="1">
+                   min-length="1">
     </auto-complete>
   </tags-input>
 </div>
@@ -23,11 +23,13 @@
   <tags-input ng-model="vm.episodes.youtube_videos"
               key-property="id"
               tpye="text"
-              minTags="1"
+              min-tags="1"
+              max-tags="1"
+              on-tag-adding="vm.canAddVideo($tag)"
               style="display:inline-block; width:406px"
               placeholder="Add a youtube video">
     <auto-complete source="vm.searchYoutubeVideos($query)"
-                   min-Length="1">
+                   min-length="3">
     </auto-complete>
   </tags-input>
 </div>
