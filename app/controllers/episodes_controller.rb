@@ -67,6 +67,9 @@ class EpisodesController < ApplicationController
           .permit(:name,
                   :duration,
                   :thumbnail_url,
-                  :description)
+                  :description,
+                  :episode_type_id,
+                  :youtube_video_id,
+                  tag_ids: [])
   end
 end

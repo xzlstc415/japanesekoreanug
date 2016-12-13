@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20161213043751) do
   end
 
   create_table "episodes", force: :cascade do |t|
+    t.integer  "youtube_video_id",         limit: 4
     t.integer  "number",                   limit: 4
     t.integer  "comments_count",           limit: 4,     default: 0
     t.string   "name",                     limit: 255
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 20161213043751) do
 
   add_index "episodes", ["episode_type_id"], name: "fk_rails_fbae6c65b1", using: :btree
   add_index "episodes", ["similar_episode_group_id"], name: "index_episodes_on_similar_episode_group_id", using: :btree
+  add_index "episodes", ["youtube_video_id"], name: "index_episodes_on_youtube_video_id", using: :btree
 
   create_table "episodes_tags", id: false, force: :cascade do |t|
     t.integer "episode_id", limit: 4
@@ -111,7 +113,6 @@ ActiveRecord::Schema.define(version: 20161213043751) do
   end
 
   create_table "youtube_videos", force: :cascade do |t|
-    t.integer  "episode_id",         limit: 4
     t.string   "api_title",          limit: 255
     t.string   "api_id",             limit: 255
     t.string   "api_thumbnail_url",  limit: 255
@@ -123,14 +124,12 @@ ActiveRecord::Schema.define(version: 20161213043751) do
     t.datetime "updated_at"
   end
 
-  add_index "youtube_videos", ["episode_id"], name: "index_youtube_videos_on_episode_id", using: :btree
-
   add_foreign_key "comments", "episodes"
   add_foreign_key "comments", "users"
   add_foreign_key "episodes", "episode_types"
   add_foreign_key "episodes", "similar_episode_groups"
+  add_foreign_key "episodes", "youtube_videos"
   add_foreign_key "episodes_tags", "episodes"
   add_foreign_key "episodes_tags", "tags"
   add_foreign_key "twitch_users", "users"
-  add_foreign_key "youtube_videos", "episodes"
 end

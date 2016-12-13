@@ -1,6 +1,5 @@
 # TagsController
 class TagsController < ApplicationController
-
   def autocomplete
     @tags = Tag.search(autocomplete_params)
                .result

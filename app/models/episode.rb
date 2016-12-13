@@ -10,11 +10,9 @@ class Episode < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :tags
   belongs_to :episode_type
-  has_one :youtube_video
+  belongs_to :youtube_video
 
-  validates :tags,
-            :episode_type,
-            :youtube_video,
+  validates :episode_type,
             :name,
             :description,
             presence: true

@@ -1,8 +1,12 @@
 (function() {
   'use strict';
 
-  var EpisodesCreateController = function(Episode, $state, toastr, Tag, YoutubeVideo, ErrorMessageHandler) {
+  var EpisodesCreateController = function(Episode, $state, toastr, Tag, YoutubeVideo, ErrorMessageHandler, episodeTypes) {
     var vm = this;
+    vm.episodeTypes = episodeTypes.data;
+    vm.youtubeVideos = [];
+    vm.episode = {};
+    vm.episode.tag_ids = [];
 
     var saveEpisode = function() {
       Episode.save({episode: vm.episode}).then(function(res) {
@@ -22,16 +26,36 @@
     };
 
     var canAddVideo = function() {
-      if (vm.episodes.youtube_videos.length > 0) { return false; }
+      if (vm.youtubeVideos.length > 0) { return false; }
+    };
+
+    var setYoutubeVideo = function($tag) {
+      if ($tag) {
+        vm.episode.youtube_video_id = $tag.id;
+      } else {
+        delete vm.episode.youtube_video_id;
+      }
+    };
+
+    var addTag = function($tag) {
+      vm.episode.tag_ids.push($tag.id);
+    };
+
+    var removeTag = function($tag) {
+      var index = vm.episode.tag_ids.indexOf($tag);
+      vm.episode.tag_ids.splice(index, 1);
     };
 
     vm.saveEpisode = saveEpisode;
     vm.searchTags = searchTags;
     vm.searchYoutubeVideos = searchYoutubeVideos;
     vm.canAddVideo = canAddVideo;
+    vm.setYoutubeVideo = setYoutubeVideo;
+    vm.addTag = addTag;
+    vm.removeTag = removeTag;
   };
 
-  EpisodesCreateController.$inject = ['Episode', '$state', 'toastr', 'Tag', 'YoutubeVideo', 'ErrorMessageHandler'];
+  EpisodesCreateController.$inject = ['Episode', '$state', 'toastr', 'Tag', 'YoutubeVideo', 'ErrorMessageHandler', 'episodeTypes'];
 
   angular.module('yujihomo')
     .controller('EpisodesCreateController', EpisodesCreateController);

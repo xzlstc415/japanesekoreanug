@@ -30,6 +30,11 @@
             templateUrl: 'app/casting/episodes/create/create.tmpl.html',
             controller: 'EpisodesCreateController as vm'
           }
+        },
+        resolve: {
+          episodeTypes: ['EpisodeType', function(EpisodeType) {
+            return EpisodeType.query();
+          }]
         }
       })
       .state('episodes-update', {
@@ -44,6 +49,9 @@
         resolve: {
           episode: ['Episode', '$stateParams', function(Episode, $stateParams) {
             return Episode.get($stateParams.id);
+          }],
+          episodeTypes: ['EpisodeType', function(EpisodeType) {
+            return EpisodeType.query();
           }]
         }
       });

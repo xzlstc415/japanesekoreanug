@@ -1,4 +1,4 @@
 # YoutubeVideo Model
 class YoutubeVideo < ApplicationRecord
-  belongs_to :episode
+  has_one :episode
 end
