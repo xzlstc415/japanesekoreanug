@@ -38,7 +38,13 @@
     };
 
     var addTag = function($tag) {
-      vm.episode.tag_ids.push($tag.id);
+      if ($tag.id) {
+        vm.episode.tag_ids.push($tag.id);
+      } else {
+        Tag.save({tag: {name: $tag.text}}).then(function(res) {
+          vm.episode.tag_ids.push(res.data.id);
+        });
+      }
     };
 
     var removeTag = function($tag) {
