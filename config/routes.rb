@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :episodes, only: [:index, :show, :create, :update, :destroy]
     resources :episode_types, only: [:index, :show]
     resources :comments, only: [:index, :create, :update, :destroy]
-    resources :youtube_videos, only: [:index, :create] do
+    resources :youtube_videos, only: [:index, :create, :update] do
       collection do
         get 'autocomplete'
       end

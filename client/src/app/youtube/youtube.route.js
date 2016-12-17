@@ -14,6 +14,11 @@
             templateUrl: 'app/youtube/youtube.tmpl.html',
             controller: 'YoutubeController as vm'
           }
+        },
+        resolve: {
+          youtubeVideos: ['YoutubeVideo', function(YoutubeVideo) {
+            return YoutubeVideo.query();
+          }]
         }
       });
   };

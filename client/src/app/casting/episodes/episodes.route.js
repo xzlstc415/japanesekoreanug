@@ -40,6 +40,9 @@
       .state('episodes-update', {
         url:'/episodes/:id/edit',
         parent: 'yujihomo',
+        data: {
+          roles: ['admin', 'moderator']
+        },
         views: {
           '@yujihomo': {
             templateUrl: 'app/casting/episodes/edit/edit.tmpl.html',

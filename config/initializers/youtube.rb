@@ -1,5 +1,6 @@
 Yt.configure do |config|
-  config.client_id = '853689657196-i21roetdbidgcs42ch6bgnu1kn9jfqgh.apps.googleusercontent.com'
-  config.client_secret = 'A3G4RJS_GDhgvdI70HC8U1l-'
+  config.client_id = ENV['GOOGLE_CLIENT_ID']
+  config.client_secret = ENV['GOOGLE_CLIENT_SECRET']
   config.log_level = :debug
+  config.api_key = ENV['GOOGLE_API_KEY']
 end

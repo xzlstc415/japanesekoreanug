@@ -1,10 +1,11 @@
 (function() {
   'use strict';
 
-  var YoutubeController = function($auth, toastr, $state, usSpinnerService, YoutubeVideo, ErrorMessageHandler) {
+  var YoutubeController = function($auth, toastr, $state, usSpinnerService, YoutubeVideo, ErrorMessageHandler, youtubeVideos) {
     var vm = this;
     vm.connected = false;
     vm.busy = false;
+    vm.youtubeVideos = youtubeVideos.data;
 
     var authenticate = function(provider) {
       usSpinnerService.spin('spinner-1');
@@ -36,11 +37,27 @@
       });
     };
 
+    var refreshVideo = function(youtubeVideo) {
+      usSpinnerService.spin('spinner-1');
+      YoutubeVideo.update(youtubeVideo.id)
+        .then(function(res) {
+          usSpinnerService.stop('spinner-1');
+          var index = vm.youtubeVideos.indexOf(youtubeVideo);
+          vm.youtubeVideos[index] = res.data;
+          toastr.success('video is updated');
+        })
+        .catch(function() {
+          usSpinnerService.stop('spinner-1');
+          toastr.error('something went wrong!');
+        });
+    };
+
     vm.authenticate = authenticate;
     vm.importAllVideos = importAllVideos;
+    vm.refreshVideo = refreshVideo;
   };
 
-  YoutubeController.$inject = ['$auth', 'toastr', '$state', 'usSpinnerService', 'YoutubeVideo', 'ErrorMessageHandler'];
+  YoutubeController.$inject = ['$auth', 'toastr', '$state', 'usSpinnerService', 'YoutubeVideo', 'ErrorMessageHandler', 'youtubeVideos'];
 
   angular.module('yujihomo')
     .controller('YoutubeController', YoutubeController);

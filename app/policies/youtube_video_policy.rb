@@ -23,6 +23,10 @@ class YoutubeVideoPolicy < ApplicationPolicy
     user.admin? || user.moderator?
   end
 
+  def update?
+    user.admin? || user.moderator?
+  end
+
   def autocomplete?
     user.admin? || user.moderator?
   end
