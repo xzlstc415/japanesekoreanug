@@ -23,7 +23,7 @@
         <th>Duration</th>
         <th>action</th>
       </tr>
-      <tr class="youtube_video" ng-repeat="youtube_video in vm.youtubeVideos track by youtube_video.api_title">
+      <tr class="youtube_video" ng-repeat="youtube_video in vm.youtubeVideos track by youtube_video.id">
         <td>{{youtube_video.api_title}}</td>
         <td>{{youtube_video.api_privacy_status}}</td>
         <td>{{youtube_video.api_processed}}</td>

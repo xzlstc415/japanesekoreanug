@@ -1,0 +1,19 @@
+<div class="episode-type-list">
+  <h3>List of Episode Types</h3>
+  <form id="newEpisodeTypeForm">
+    <input type="text" ng-model="episode_type.name"/>
+    <button ng-click="vm.addNewEpisodeType(episode_type)">add new episode type</button>
+  </form>
+  <table class="list">
+    <tbody>
+      <tr>
+        <th>Episode Type Name</th>
+        <th>Delete</th>
+      </tr>
+      <tr class="episodeType" ng-repeat="episodeType in vm.episodeTypes track by episodeType.id">
+        <td>{{episodeType.name}}</td>
+        <td><button ng-click="vm.removeEpisodeType(episodeType)">delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
