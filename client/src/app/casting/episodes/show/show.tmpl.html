@@ -38,8 +38,8 @@
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
     <div class="clear"></div>
   </div>
-  <div class="video-wrapper" ng-show="vm.showVideo">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/R9EpJSAlKsQ" frameborder="0" allowfullscreen class="video"></iframe>
+  <div class="video-wrapper" ng-show="vm.showVideo && vm.episode.youtube_video">
+    <div ng-bind-html="vm.embedHtml"></div>
   </div>
   <ul class="nav horizontal">
     <li>
