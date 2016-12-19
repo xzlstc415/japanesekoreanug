@@ -14,7 +14,7 @@
         },
         resolve: {
           similarEpisodes: ['Episode', 'episode', function(Episode, episode) {
-            return Episode.query({ids: episode.data.similar_episode_ids});
+            return Episode.query({'id_in[]': episode.data.similar_episode_ids});
           }]
         }
       });

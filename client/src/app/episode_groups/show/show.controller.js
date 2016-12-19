@@ -18,7 +18,7 @@
 
     var addNewEpisodes = function() {
       usSpinnerService.spin('spinner-1');
-      vm.episodeGroup.episode_ids = vm.episodeGroup.episode_ids.concat(getEpisodeId(episodes));
+      vm.episodeGroup.episode_ids = vm.episodeGroup.episode_ids.concat(getEpisodeId(vm.newEpisodes));
       vm.episodes = vm.episodes.concat(vm.newEpisodes);
       updateEpisodeGroup();
     };

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var EpisodeGroupsIndexController = function(episodeGroups, SimilarEpisodeGroup, usSpinnerService, ErrorMessageHandler, toastr) {
+  var EpisodeGroupsIndexController = function($state, episodeGroups, SimilarEpisodeGroup, usSpinnerService, ErrorMessageHandler, toastr) {
     var vm = this;
     vm.episodeGroups = episodeGroups.data;
 
@@ -34,11 +34,16 @@
         });
     };
 
+    var goToDetail = function(episodeGroup) {
+      $state.go('episode_groups_detail', {id: episodeGroup.id});
+    };
+
+    vm.goToDetail = goToDetail;
     vm.addNewEpisodeGroup = addNewEpisodeGroup;
     vm.removeEpisodeGroup = removeEpisodeGroup;
   };
 
-  EpisodeGroupsIndexController.$inject = ['episodeGroups', 'SimilarEpisodeGroup', 'usSpinnerService', 'ErrorMessageHandler', 'toastr'];
+  EpisodeGroupsIndexController.$inject = ['$state', 'episodeGroups', 'SimilarEpisodeGroup', 'usSpinnerService', 'ErrorMessageHandler', 'toastr'];
 
   angular.module('yujihomo')
     .controller('EpisodeGroupsIndexController', EpisodeGroupsIndexController);

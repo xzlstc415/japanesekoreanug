@@ -3,7 +3,6 @@
 
   var SimilarEpisodesController = function(similarEpisodes) {
     var vm = this;
-
     vm.similarEpisodes = similarEpisodes.data;
   };
 
