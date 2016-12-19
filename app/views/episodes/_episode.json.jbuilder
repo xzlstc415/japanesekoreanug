@@ -17,3 +17,5 @@ json.type episode.episode_type.name if episode.episode_type
 if episode.tags
   json.tags episode.tags.map { |tag| { id: tag.id, name: tag.name, text: tag.name, value: tag.id } }
 end
+json.text episode.name
+json.value episode.id
