@@ -1,5 +1,5 @@
-# policy for YoutubeVideoPolicy
-class YoutubeVideoPolicy < ApplicationPolicy
+# policy for SimilarEpisodeGroupPolicy
+class SimilarEpisodeGroupPolicy < ApplicationPolicy
   # Scope class inherited from ApplicationPolicy
   # class Scope < Scope
   #   def resolve
@@ -27,7 +27,11 @@ class YoutubeVideoPolicy < ApplicationPolicy
     user.admin? || user.moderator?
   end
 
-  def autocomplete?
+  def show?
+    user.admin? || user.moderator?
+  end
+
+  def destroy?
     user.admin? || user.moderator?
   end
 end

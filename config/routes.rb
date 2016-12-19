@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         get 'autocomplete'
       end
     end
+    resources :similar_episode_groups, only: [:index, :show, :update, :create, :destroy]
     mount Sidekiq::Web, at: '/sidekiq'
   end
 
