@@ -9,12 +9,12 @@
         views: {
           '@yujihomo': {
             templateUrl: 'app/episode_groups/episode_groups.tmpl.html',
-            controller: 'EpisodeGroupController as vm'
+            controller: 'EpisodeGroupsController as vm'
           }
         },
         resolve: {
-          episodeTypes: ['EpisodeType', function(EpisodeType) {
-            return EpisodeType.query();
+          episodeGroups: ['SimilarEpisodeGroup', function(SimilarEpisodeGroup) {
+            return SimilarEpisodeGroup.query();
           }]
         }
       });
