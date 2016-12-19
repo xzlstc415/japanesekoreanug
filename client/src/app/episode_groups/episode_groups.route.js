@@ -3,12 +3,12 @@
 
   var stateConfig = function($stateProvider) {
     $stateProvider
-      .state('episode_group', {
-        url:'/episode_group',
+      .state('episode_groups', {
+        url:'/episode_groups',
         parent: 'yujihomo',
         views: {
           '@yujihomo': {
-            templateUrl: 'app/episode_group/episode_group.tmpl.html',
+            templateUrl: 'app/episode_groups/episode_groups.tmpl.html',
             controller: 'EpisodeGroupController as vm'
           }
         },
