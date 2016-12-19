@@ -9,12 +9,15 @@
       <tr>
         <th>Episode Group Name</th>
         <th>Number of Episodes</th>
-        <th>Delete</th>
+        <th>Action</th>
       </tr>
       <tr class="episodeGroup" ng-repeat="episodeGroup in vm.episodeGroups track by episodeGroup.id">
         <td>{{episodeGroup.name}}</td>
         <td>{{episodeGroup.episode_count}}</td>
-        <td><button ng-click="vm.removeEpisodeGroup(episodeGroup)">delete</button></td>
+        <td>
+          <button ng-click="vm.editEpisodeGroup(episodeGroup)">update</button>
+          <button ng-click="vm.removeEpisodeGroup(episodeGroup)">delete</button>
+        </td>
       </tr>
     </tbody>
   </table>

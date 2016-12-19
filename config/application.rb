@@ -30,6 +30,8 @@ module Yujihomo
 
     config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
 
+    config.action_dispatch.perform_deep_munge = false
+    
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: false,

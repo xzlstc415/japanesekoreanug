@@ -1,0 +1,29 @@
+<div class="episode-groups">
+  <h3>List of Episodes</h3>
+  <form id="newEpisodeForm">
+    <tags-input ng-model="vm.newEpisodes"
+                id="new-episodes"
+                key-property="id"
+                tpye="text"
+                add-from-autocomplete-only="true"
+                style="display:inline-block; width:406px"
+                placeholder="Add new episodes">
+      <auto-complete source="vm.getEpisodes($query)"
+                     min-length="3">
+      </auto-complete>
+    </tags-input>
+    <button ng-click="vm.addNewEpisodes()">add new episodes</button>
+  </form>
+  <table class="list episode-list">
+    <tbody>
+      <tr>
+        <th>Episode Name</th>
+        <th>Delete</th>
+      </tr>
+      <tr class="episode" ng-repeat="episode in vm.episodes track by episode.id">
+        <td>{{episode.name}}</td>
+        <td><button ng-click="vm.removeEpisode(episode)">delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

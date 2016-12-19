@@ -31,6 +31,16 @@
       return $http(req);
     };
 
+    var update = function(id, params) {
+      var req = {
+        method: 'PUT',
+        url: '/api/similar_episode_groups/' + id,
+        data: params
+      };
+
+      return $http(req);
+    };
+
     var destroy = function(id) {
       var req = {
         method: 'DELETE',
@@ -43,6 +53,7 @@
     vm.query = query;
     vm.get = get;
     vm.save = save;
+    vm.update = update;
     vm.destroy = destroy;
 
     return vm;

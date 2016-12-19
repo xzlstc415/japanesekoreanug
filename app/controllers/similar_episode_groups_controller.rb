@@ -37,7 +37,7 @@ class SimilarEpisodeGroupsController < ApplicationController
   def similar_episode_group_params
     params.require(:similar_episode_group).permit(
       :name,
-      :episode_ids
+      episode_ids: []
     )
   end
 end

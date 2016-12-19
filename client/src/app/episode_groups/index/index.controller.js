@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var EpisodeGroupsController = function(episodeGroups, SimilarEpisodeGroup, usSpinnerService, ErrorMessageHandler, toastr) {
+  var EpisodeGroupsIndexController = function(episodeGroups, SimilarEpisodeGroup, usSpinnerService, ErrorMessageHandler, toastr) {
     var vm = this;
     vm.episodeGroups = episodeGroups.data;
 
@@ -38,8 +38,8 @@
     vm.removeEpisodeGroup = removeEpisodeGroup;
   };
 
-  EpisodeGroupsController.$inject = ['episodeGroups', 'SimilarEpisodeGroup', 'usSpinnerService', 'ErrorMessageHandler', 'toastr'];
+  EpisodeGroupsIndexController.$inject = ['episodeGroups', 'SimilarEpisodeGroup', 'usSpinnerService', 'ErrorMessageHandler', 'toastr'];
 
   angular.module('yujihomo')
-    .controller('EpisodeGroupsController', EpisodeGroupsController);
+    .controller('EpisodeGroupsIndexController', EpisodeGroupsIndexController);
 })();
