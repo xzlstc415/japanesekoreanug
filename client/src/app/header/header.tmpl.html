@@ -8,7 +8,6 @@
   <div class="user_nav">
     <div ng-show="vm.currentUser">
       Logged in as <a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a>
-      | <a href="/comments">Recent Comments</a>
       | <a href="javascript:void(0)" ng-click="vm.logout()">Log Out</a>
     </div>
     <div ng-show="!vm.currentUser">
