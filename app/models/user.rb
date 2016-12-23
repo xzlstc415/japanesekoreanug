@@ -9,4 +9,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   validates :name, presence: true
+
+  has_many :starred_episode_users, dependent: :destroy
+  has_many :favourite_episodes, through: :starred_episode_users, source: :episode
 end

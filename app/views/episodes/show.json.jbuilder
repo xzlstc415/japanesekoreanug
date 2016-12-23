@@ -1,4 +1,4 @@
-json.partial! 'episode', episode: @episode
+json.partial! 'episode', locals: { episode: @episode, current_user: @current_user }
 
 if @episode.youtube_video
   json.youtube_video do

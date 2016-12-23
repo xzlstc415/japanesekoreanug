@@ -11,6 +11,8 @@ class Episode < ApplicationRecord
   has_and_belongs_to_many :tags
   belongs_to :episode_type
   belongs_to :youtube_video
+  has_many :starred_episode_users, dependent: :destroy
+  has_many :liked_users, through: :starred_episode_users, source: :user
 
   validates :episode_type,
             :name,

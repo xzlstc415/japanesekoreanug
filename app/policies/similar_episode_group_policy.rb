@@ -16,7 +16,7 @@ class SimilarEpisodeGroupPolicy < ApplicationPolicy
   # end
 
   def index?
-    user.admin? || user.moderator?
+    true
   end
 
   def create?
@@ -28,7 +28,7 @@ class SimilarEpisodeGroupPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin? || user.moderator?
+    true
   end
 
   def destroy?

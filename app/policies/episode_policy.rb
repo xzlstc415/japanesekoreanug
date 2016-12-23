@@ -6,11 +6,13 @@ class EpisodePolicy < ApplicationPolicy
       if user && user.admin?
         scope.includes([similar_episode_group: :episodes],
                        :tags,
-                       :episode_type).all
+                       :episode_type,
+                       :liked_users).all
       else
         scope.includes([similar_episode_group: :episodes],
                        :tags,
-                       :episode_type).published
+                       :episode_type,
+                       :liked_users).published
       end
     end
   end

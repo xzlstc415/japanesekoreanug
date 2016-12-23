@@ -2,6 +2,7 @@
 class EpisodesController < ApplicationController
   before_action :authenticate_auth_user!, only: [:create, :update, :destroy]
   after_action :verify_authorized
+  before_action :set_current_user
 
   def index
     if search_params[:episode_type_name_eq].blank? &&
@@ -75,5 +76,9 @@ class EpisodesController < ApplicationController
                   :episode_type_id,
                   :youtube_video_id,
                   tag_ids: [])
+  end
+
+  def set_current_user
+    @current_user = current_auth_user
   end
 end

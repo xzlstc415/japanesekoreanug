@@ -3,7 +3,6 @@ json.(episode,
       :number,
       :comments_count,
       :name,
-      :starred,
       :duration,
       :description,
       :thumbnail_url,
@@ -19,3 +18,4 @@ if episode.tags
 end
 json.text episode.name
 json.value episode.id
+json.starred episode.liked_users.include?(current_user)
