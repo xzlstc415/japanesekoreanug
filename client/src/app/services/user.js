@@ -13,7 +13,14 @@
       return $http(req);
     };
 
+    var currentUser = function() {
+      if ($auth.isAuthenticated()) {
+        return $auth.getPayload();
+      } 
+    };
+
     vm.signup = signup;
+    vm.currentUser = currentUser;
 
     return vm;
   };

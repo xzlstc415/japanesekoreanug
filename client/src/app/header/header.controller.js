@@ -5,11 +5,7 @@
     var vm = this;
     vm.loginWndOpen = false;
     vm.signupWndOpen = false;
-    if ($auth.isAuthenticated()) {
-      vm.currentUser = $auth.getPayload();
-    } else {
-      vm.currentUser = null;
-    }
+    vm.currentUser = User.currentUser();
 
     vm.$state = $state;
 

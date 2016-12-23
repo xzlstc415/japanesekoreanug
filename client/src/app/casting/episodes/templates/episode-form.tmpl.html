@@ -27,6 +27,10 @@
           ng-model="vm.episode.episode_type_id"
           ng-options="episodeType.id as episodeType.name for episodeType in vm.episodeTypes">
   </select>
+  <div class="form-link">
+    Need a new episode type?
+    <a href="javascript:void(0)" ui-sref="episode_type_management" ng-if="vm.currentUser.role=='admin'">Create Episode Type</a>
+  </div>
 </div>
 <div class="form-group">
   <label class="label" for="youtube_videos">Youtube Video</label>

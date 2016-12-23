@@ -32,6 +32,8 @@
 </div>
 <div id="nav-bar">
   <ul class="nav horizontal">
+    <li><a href="javascript:void(0)" ui-sref="episodes-create" ng-if="vm.currentUser.role=='admin'">Create New Episode</a></li>
+    <li><a href="javascript:void(0)" ui-sref="youtube" ng-if="vm.currentUser.role=='admin'">Youtube Import</a></li>
     <li><a href="javascript:void(0)" ui-sref="home">Browse Episodes</a></li>
     <li><a href="javascript:void(0)" ui-sref="about">About</a></li>
     <li><a href="javascript:void(0)" ui-sref="feedback">Feedback</a></li>

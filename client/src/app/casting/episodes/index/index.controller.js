@@ -1,15 +1,11 @@
 (function() {
   'use strict';
 
-  var EpisodesIndexController = function($auth, viewStyle, episodes, $stateParams, episodeFilter, Episode, toastr, $state, usSpinnerService, ErrorMessageHandler) {
+  var EpisodesIndexController = function(User, viewStyle, episodes, $stateParams, episodeFilter, Episode, toastr, $state, usSpinnerService, ErrorMessageHandler) {
     var vm = this;
     vm.episodes = episodes.data;
     vm.filters = $stateParams;
-    if ($auth.isAuthenticated()) {
-      vm.currentUser = $auth.getPayload();
-    } else {
-      vm.currentUser = null;
-    }
+    vm.currentUser = User.currentUser();
 
     vm.busy = false;
     vm.end = false;
@@ -70,7 +66,7 @@
     vm.nextPage = nextPage;
   };
 
-  EpisodesIndexController.$inject = ['$auth', 'viewStyle', 'episodes', '$stateParams', 'episodeFilter', 'Episode', 'toastr', '$state', 'usSpinnerService', 'ErrorMessageHandler'];
+  EpisodesIndexController.$inject = ['User', 'viewStyle', 'episodes', '$stateParams', 'episodeFilter', 'Episode', 'toastr', '$state', 'usSpinnerService', 'ErrorMessageHandler'];
 
   angular.module('yujihomo')
     .controller('EpisodesIndexController', EpisodesIndexController);

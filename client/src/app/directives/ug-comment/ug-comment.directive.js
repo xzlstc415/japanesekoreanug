@@ -18,9 +18,9 @@
 
   ugComment.$inject = ['RecursionHelper'];
 
-  var ugCommentController = function(Comment, $auth, toastr, $state, ErrorMessageHandler) {
+  var ugCommentController = function(Comment, User, toastr, $state, ErrorMessageHandler) {
     var vm = this;
-    vm.currentUser = $auth.getPayload();
+    vm.currentUser = User.currentUser();
     vm.isReplying = false;
 
     var openReplyBlock = function() {
@@ -46,7 +46,7 @@
     vm.reply = reply;
   };
 
-  ugCommentController.$inject = ['Comment', '$auth', 'toastr', '$state', 'ErrorMessageHandler'];
+  ugCommentController.$inject = ['Comment', 'User', 'toastr', '$state', 'ErrorMessageHandler'];
 
   angular.module('yujihomo')
          .directive('ugComment', ugComment)

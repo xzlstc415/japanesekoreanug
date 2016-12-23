@@ -1,14 +1,9 @@
 (function() {
   'use strict';
 
-  var CommentController = function(comments, $auth, ErrorMessageHandler, toastr, episode, Comment, $state) {
+  var CommentController = function(comments, User, ErrorMessageHandler, toastr, episode, Comment, $state) {
     var vm = this;
-    if ($auth.isAuthenticated()) {
-      vm.currentUser = $auth.getPayload();
-    } else {
-      vm.currentUser = null;
-    }
-
+    vm.currentUser = User.currentUser();
     vm.comments = comments.data;
 
     var reply = function(comment) {
@@ -28,7 +23,7 @@
     vm.reply = reply;
   };
 
-  CommentController.$inject = ['comments', '$auth', 'ErrorMessageHandler', 'toastr', 'episode', 'Comment', '$state'];
+  CommentController.$inject = ['comments', 'User', 'ErrorMessageHandler', 'toastr', 'episode', 'Comment', '$state'];
 
   angular.module('yujihomo')
     .controller('CommentController', CommentController);

@@ -1,13 +1,14 @@
 (function() {
   'use strict';
 
-  var EpisodesUpdateController = function(Episode, episode, $state, toastr, Tag, YoutubeVideo, ErrorMessageHandler, episodeTypes) {
+  var EpisodesUpdateController = function(User, Episode, episode, $state, toastr, Tag, YoutubeVideo, ErrorMessageHandler, episodeTypes) {
     var vm = this;
     vm.episode = episode.data;
     vm.episodeTypes = episodeTypes.data;
     vm.youtubeVideos = [vm.episode.youtube_video];
     vm.tag_ids = vm.episode.tag_ids;
     vm.tags = vm.episode.tags;
+    vm.currentUser = User.currentUser();
 
     var updateEpisode = function() {
       Episode.update(vm.episode.id, {episode: vm.episode}).then(function(res) {
@@ -62,7 +63,7 @@
     vm.removeTag = removeTag;
   };
 
-  EpisodesUpdateController.$inject = ['Episode', 'episode', '$state', 'toastr', 'Tag', 'YoutubeVideo', 'ErrorMessageHandler', 'episodeTypes'];
+  EpisodesUpdateController.$inject = ['User', 'Episode', 'episode', '$state', 'toastr', 'Tag', 'YoutubeVideo', 'ErrorMessageHandler', 'episodeTypes'];
 
   angular.module('yujihomo')
     .controller('EpisodesUpdateController', EpisodesUpdateController);

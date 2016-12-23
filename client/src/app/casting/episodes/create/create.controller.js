@@ -1,12 +1,13 @@
 (function() {
   'use strict';
 
-  var EpisodesCreateController = function(Episode, $state, toastr, Tag, YoutubeVideo, ErrorMessageHandler, episodeTypes) {
+  var EpisodesCreateController = function(User, Episode, $state, toastr, Tag, YoutubeVideo, ErrorMessageHandler, episodeTypes) {
     var vm = this;
     vm.episodeTypes = episodeTypes.data;
     vm.youtubeVideos = [];
     vm.episode = {};
     vm.episode.tag_ids = [];
+    vm.currentUser = User.currentUser();
 
     var saveEpisode = function() {
       Episode.save({episode: vm.episode}).then(function(res) {
@@ -61,7 +62,7 @@
     vm.removeTag = removeTag;
   };
 
-  EpisodesCreateController.$inject = ['Episode', '$state', 'toastr', 'Tag', 'YoutubeVideo', 'ErrorMessageHandler', 'episodeTypes'];
+  EpisodesCreateController.$inject = ['User', 'Episode', '$state', 'toastr', 'Tag', 'YoutubeVideo', 'ErrorMessageHandler', 'episodeTypes'];
 
   angular.module('yujihomo')
     .controller('EpisodesCreateController', EpisodesCreateController);
