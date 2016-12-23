@@ -35,8 +35,7 @@
          <a href=""
             class="star"
             ng-class="{starred: episode.starred, unstarred: !episode.starred}"
-            data-method="post"
-            data-remote="true"
+            ng-click="vm.toggleStar(episode)"
             rel="nofollow">☆</a>
       </h2>
       <div class="description">

@@ -1,7 +1,10 @@
 (function() {
   'use strict';
 
-  var EpisodesIndexController = function(User, viewStyle, episodes, $stateParams, episodeFilter, Episode, toastr, $state, usSpinnerService, ErrorMessageHandler) {
+  var EpisodesIndexController = function(User, viewStyle, episodes, $stateParams,
+                                         episodeFilter, Episode, toastr, $state,
+                                         usSpinnerService, ErrorMessageHandler,
+                                         StarredEpisodeUser) {
     var vm = this;
     vm.episodes = episodes.data;
     vm.filters = $stateParams;
@@ -58,15 +61,58 @@
       });
     };
 
+    var starEpisode = function(episode) {
+      StarredEpisodeUser.save({starred_episode_user: {episode_id: episode.id}})
+        .then(function(res) {
+          var index = vm.episodes.indexOf(episode);
+          vm.episodes[index].starred = true;
+        })
+        .catch(function(res) {
+          ErrorMessageHandler.displayErrors(res);
+        });
+    };
+
+    var unstarEpisode = function(episode) {
+      StarredEpisodeUser.destroy(episode.id)
+        .then(function(res) {
+          var index = vm.episodes.indexOf(episode);
+          vm.episodes[index].starred = false;
+        })
+        .catch(function(res) {
+          ErrorMessageHandler.displayErrors(res);
+        });
+    };
+
+    var toggleStar = function(episode) {
+      if (!episode.starred) {
+        starEpisode(episode);
+      } else {
+        unstarEpisode(episode);
+      }
+    };
+
     vm.removeType = removeType;
     vm.removeTag = removeTag;
     vm.getCurrentStyle = viewStyle.getCurrentStyle;
     vm.publishEpisode = publishEpisode;
     vm.unPublishEpisode = unPublishEpisode;
     vm.nextPage = nextPage;
+    vm.toggleStar = toggleStar;
   };
 
-  EpisodesIndexController.$inject = ['User', 'viewStyle', 'episodes', '$stateParams', 'episodeFilter', 'Episode', 'toastr', '$state', 'usSpinnerService', 'ErrorMessageHandler'];
+  EpisodesIndexController.$inject = [
+    'User',
+    'viewStyle',
+    'episodes',
+    '$stateParams',
+    'episodeFilter',
+    'Episode',
+    'toastr',
+    '$state',
+    'usSpinnerService',
+    'ErrorMessageHandler',
+    'StarredEpisodeUser'
+  ];
 
   angular.module('yujihomo')
     .controller('EpisodesIndexController', EpisodesIndexController);

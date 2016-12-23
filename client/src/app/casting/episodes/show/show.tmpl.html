@@ -10,8 +10,7 @@
       <a href="javascript:void(0)"
          class="star"
          ng-class="{starred: vm.episode.starred, unstarred: !vm.episode.starred}"
-         data-method="post"
-         data-remote="true"
+         ng-click="vm.toggleStar()"
          rel="nofollow">☆</a>
     </h1>
     <div class="details">{{vm.episode.published_at}} | {{vm.episode.comments_count}} comments | {{vm.episode.duration | secondsToTimeFormat}} |

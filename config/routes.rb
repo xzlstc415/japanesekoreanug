@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       end
     end
     resources :similar_episode_groups, only: [:index, :show, :update, :create, :destroy]
+    resources :starred_episode_users, only: [:create, :destroy]
     mount Sidekiq::Web, at: '/sidekiq'
   end
 
