@@ -5,7 +5,11 @@ class EpisodesController < ApplicationController
   before_action :set_current_user
 
   def index
-    if search_params[:episode_type_name_eq].blank? &&
+    if params[:starred]
+      episodes = policy_scope(Episode)
+                 .joins(:starred_episode_users)
+                 .where(starred_episode_users: { user: current_auth_user })
+    elsif search_params[:episode_type_name_eq].blank? &&
        search_params[:tags_name_eq].blank? &&
        search_params[:similar_episode_group_id_eq].blank? &&
        search_params[:id_in].blank? &&
@@ -17,8 +21,8 @@ class EpisodesController < ApplicationController
                  .result
                  .uniq
     end
+    authorize episodes
     @episodes = episodes.page(params[:page]).order('number DESC')
-    authorize @episodes
   end
 
   def show

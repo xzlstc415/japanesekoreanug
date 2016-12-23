@@ -9,7 +9,8 @@
         params: {
           episode_type_name_eq: null,
           tags_name_eq: null,
-          name_or_tags_name_or_episode_type_name_cont: null
+          name_or_tags_name_or_episode_type_name_cont: null,
+          starred: null
         },
         views: {
           '@yujihomo': {

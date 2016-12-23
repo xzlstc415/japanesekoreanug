@@ -1,6 +1,6 @@
 <div id="top">
   <div class="logo">
-    <a class="no-underline" href="/">
+    <a class="no-underline" ui-sref="home({starred: null})">
       <img alt="Yuji profile Logo" height="56" src="/assets/images/japanesekoreanug-profile_image.jpeg">
       <img class="yuji-logo-tagline" alt="JapaneseKoreanUG" height="40" src="/assets/images/Logomakr_7vEWEF.jpg">
     </a>
@@ -8,6 +8,7 @@
   <div class="user_nav">
     <div ng-show="vm.currentUser">
       Logged in as <a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a>
+      | <a href="javascript:void(0)" ui-sref="home({starred: true})">Favourite Episodes</a>
       | <a href="javascript:void(0)" ng-click="vm.logout()">Log Out</a>
     </div>
     <div ng-show="!vm.currentUser">
@@ -34,7 +35,7 @@
   <ul class="nav horizontal">
     <li><a href="javascript:void(0)" ui-sref="episodes-create" ng-if="vm.currentUser.role=='admin'">Create New Episode</a></li>
     <li><a href="javascript:void(0)" ui-sref="youtube" ng-if="vm.currentUser.role=='admin'">Youtube Import</a></li>
-    <li><a href="javascript:void(0)" ui-sref="home">Browse Episodes</a></li>
+    <li><a href="javascript:void(0)" ui-sref="home({starred: null})">Browse Episodes</a></li>
     <li><a href="javascript:void(0)" ui-sref="about">About</a></li>
     <li><a href="javascript:void(0)" ui-sref="feedback">Feedback</a></li>
   </ul>
