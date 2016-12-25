@@ -13,6 +13,14 @@
       <input id="user_email" ng-model="vm.currentUser.email" size="30" type="text">
     </p>
     <p>
+      <label for="password">Password</label>
+      <input id="password" ng-model="vm.currentUser.password" size="30" type="password">
+    </p>
+    <p>
+      <label for="password_confirmation">Password Confirmation</label>
+      <input id="password_confirmation" ng-model="vm.currentUser.password_confirmation" size="30" type="password">
+    </p>
+    <p>
       <label for="user_avatar">Avatar</label>
       <input type="file" ngf-select ng-model="vm.avatar" name="file"
              accept="image/*" ngf-max-size="200KB"

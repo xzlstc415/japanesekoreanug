@@ -66,7 +66,6 @@
       toastr.success('You have logged out successfully!');
       usSpinnerService.stop('spinner-1');
       $state.go('home');
-      $state.reload();
     };
 
     var signup = function(user) {
