@@ -1,10 +1,9 @@
 (function() {
   'use strict';
 
-  var ProfileController = function(currentUser, User, $auth, toastr, usSpinnerService, ErrorMessageHandler, API_URL) {
+  var ProfileController = function(currentUser, User, $auth, toastr, usSpinnerService, ErrorMessageHandler) {
     var vm = this;
     vm.currentUser = currentUser;
-    vm.API_URL = API_URL;
 
     var updateUser = function() {
       usSpinnerService.spin('spinner-1');
