@@ -15,7 +15,8 @@
       'satellizer',
       'angularSpinner',
       'infinite-scroll',
-      'ngTagsInput'
+      'ngTagsInput',
+      'ngFileUpload'
     ]);
 
 })();

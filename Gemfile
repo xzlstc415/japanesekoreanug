@@ -15,6 +15,7 @@ gem 'sidekiq'
 gem 'yajl-ruby', require: 'yajl'
 gem 'rails-api'
 gem 'sidekiq-unique-jobs'
+gem 'paperclip'
 
 group :development, :test do
   gem 'byebug'
