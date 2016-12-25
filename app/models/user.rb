@@ -7,12 +7,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :trackable, :validatable
 
-  validates :email, uniqueness: true
-  validates :name, presence: true
-  validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}
-
   has_many :starred_episode_users, dependent: :destroy
   has_many :favourite_episodes, through: :starred_episode_users, source: :episode
   has_attached_file :avatar, styles: { thumb: '64x64>' },
                              default_url: '/images/:style/missing.png'
+
+  validates :email, uniqueness: true
+  validates :name, presence: true
+  validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}
 end

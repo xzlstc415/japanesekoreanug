@@ -31,7 +31,9 @@ module Yujihomo
     config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
 
     config.action_dispatch.perform_deep_munge = false
-    
+
+    config.active_record.raise_in_transactional_callbacks = true
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: false,

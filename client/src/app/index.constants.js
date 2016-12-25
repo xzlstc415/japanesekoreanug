@@ -5,6 +5,6 @@
   angular
     .module('yujihomo')
     .constant('malarkey', malarkey)
-    .constant('moment', moment);
-
+    .constant('moment', moment)
+    .constant('API_URL', 'http://localhost:3000');
 })();

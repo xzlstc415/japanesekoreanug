@@ -24,7 +24,7 @@ class Auth::AuthenticationController < ApplicationController
                         api_name: @raw_data['name'],
                         api_logo: @raw_data['logo'],
                         api_access_token: @access_token)
-      render json: { token: JWTWrapper.encode(@user.as_json) }
+      render json: { token: JWTWrapper.encode(@user.as_json.merge(avatar_url: @user.avatar.url(:thumb))) }
     else
       render json: { errors: ["We can't connect with your twitch account"] },
              status: :unauthorized
