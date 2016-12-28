@@ -6,7 +6,7 @@ class Auth::AuthenticationController < ApplicationController
   def authenticate_user
     user = User.find_for_database_authentication(email: params[:email])
     if !user.nil? && user.valid_password?(params[:password])
-      render json: { token: JWTWrapper.encode(user.as_json.merge(avatar_url: user.avatar.url(:thumb))) }
+      render json: { token: JWTWrapper.encode(user.as_json) }
     else
       render json: { errors: ['Invalid Username/Password'] }, status: :unauthorized
     end

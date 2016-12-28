@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def update
     @user = current_auth_user
     if @user.update_attributes(user_params)
-      render json: { token: JWTWrapper.encode(@user.as_json.merge(avatar_url: @user.avatar.url(:thumb))) }
+      render json: { token: JWTWrapper.encode(@user.as_json) }
     else
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
