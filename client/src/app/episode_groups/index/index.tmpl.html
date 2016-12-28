@@ -1,0 +1,24 @@
+<div class="episode-groups">
+  <h3>List of Episode Groups</h3>
+  <form id="newEpisodeGroupForm">
+    <input type="text" ng-model="similar_episode_group.name"/>
+    <button ng-click="vm.addNewEpisodeGroup(similar_episode_group)">add new episode group</button>
+  </form>
+  <table class="list">
+    <tbody>
+      <tr>
+        <th>Episode Group Name</th>
+        <th>Number of Episodes</th>
+        <th>Action</th>
+      </tr>
+      <tr class="episodeGroup" ng-repeat="episodeGroup in vm.episodeGroups track by episodeGroup.id">
+        <td>{{episodeGroup.name}}</td>
+        <td>{{episodeGroup.episode_count}}</td>
+        <td>
+          <button ng-click="vm.goToDetail(episodeGroup)">update</button>
+          <button ng-click="vm.removeEpisodeGroup(episodeGroup)">delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,8 +1,37 @@
-<button class="youtube_button button" style="padding: 10px 12px;" ng-if="!vm.connected">
-  <span style="font-size:14px; cursor: pointer;" ng-click="vm.authenticate('google')">Connect with Google</span>
-</button>
-<div ng-show="vm.connected">
-  you are connected
-  <button ng-click="vm.importAllVideos()"
-          ng-disabled="vm.busy">import all videos from Youtube</button>
+<div class="content">
+  <h3>Import Videos From Youtube</h3>
+  <button class="youtube_button button" style="padding: 10px 12px;" ng-if="!vm.connected">
+    <span style="font-size:14px; cursor: pointer;" ng-click="vm.authenticate('google')">Connect with Google</span>
+  </button>
+  <div ng-show="vm.connected">
+    you are connected
+    <button ng-click="vm.importAllVideos()"
+            ng-disabled="vm.busy">import all videos from Youtube</button>
+  </div>
+
+  <h3>List of Videos</h3>
+  <table class="list">
+         <!-- ng-if="vm.getCurrentStyle() == 'list'"
+         infinite-scroll='vm.nextPage()'
+         infinite-scroll-disabled='vm.busy || vm.end'
+         infinite-scroll-distance='1'> -->
+    <tbody>
+      <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Processed by Youtube</th>
+        <th>Duration</th>
+        <th>action</th>
+      </tr>
+      <tr class="youtube_video" ng-repeat="youtube_video in vm.youtubeVideos track by youtube_video.id">
+        <td>{{youtube_video.api_title}}</td>
+        <td>{{youtube_video.api_privacy_status}}</td>
+        <td>{{youtube_video.api_processed}}</td>
+        <td>{{youtube_video.api_duration | secondsToTimeFormat}}</td>
+        <td>
+          <button ng-click="vm.refreshVideo(youtube_video)">refresh</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

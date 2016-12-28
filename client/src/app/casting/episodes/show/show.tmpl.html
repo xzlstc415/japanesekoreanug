@@ -10,13 +10,12 @@
       <a href="javascript:void(0)"
          class="star"
          ng-class="{starred: vm.episode.starred, unstarred: !vm.episode.starred}"
-         data-method="post"
-         data-remote="true"
+         ng-click="vm.toggleStar()"
          rel="nofollow">☆</a>
     </h1>
-    <div class="details">{{vm.episode.published_at}} | {{vm.episode.comments_count}} minutes |
+    <div class="details">{{vm.episode.published_at}} | {{vm.episode.comments_count}} comments | {{vm.episode.duration | secondsToTimeFormat}} |
       <span ng-repeat="tag in vm.episode.tags track by $index">
-        <a href="javascript:void(0)">{{tag}}</a><span ng-if="!$last">,</span>
+        <a href="javascript:void(0)">{{tag.name}}</a><span ng-if="!$last">,</span>
       </span>
     </div>
     <div class="description">
@@ -38,8 +37,8 @@
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
     <div class="clear"></div>
   </div>
-  <div class="video-wrapper" ng-show="vm.showVideo">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/R9EpJSAlKsQ" frameborder="0" allowfullscreen class="video"></iframe>
+  <div class="video-wrapper" ng-show="vm.showVideo && vm.episode.youtube_video">
+    <div ng-bind-html="vm.embedHtml"></div>
   </div>
   <ul class="nav horizontal">
     <li>

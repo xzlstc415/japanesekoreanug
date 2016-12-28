@@ -35,13 +35,12 @@
          <a href=""
             class="star"
             ng-class="{starred: episode.starred, unstarred: !episode.starred}"
-            data-method="post"
-            data-remote="true"
+            ng-click="vm.toggleStar(episode)"
             rel="nofollow">☆</a>
       </h2>
       <div class="description">
         {{episode.description}}
-        <span class="stats">({{episode.duration}} minutes)</span>
+        <span class="stats">({{episode.duration | secondsToTimeFormat}})</span>
       </div>
       <div class="watch">
         <a href="javascript:void(0)"
@@ -98,7 +97,7 @@
           {{episode.comments_count}} comments
         </a>
       </td>
-      <td>{{episode.duration}} minutes</td>
+      <td>{{episode.duration | secondsToTimeFormat}}</td>
       <td>{{episode.published_at}}</td>
     </tr>
   </tbody>

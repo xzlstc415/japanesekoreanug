@@ -3,11 +3,22 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope '/api', defaults: { format: :json } do
-    resources :tags, only: [:index]
+    resources :tags, only: [:index, :create] do
+      collection do
+        get 'autocomplete'
+      end
+    end
     resources :episodes, only: [:index, :show, :create, :update, :destroy]
-    resources :episode_types, only: [:index, :show]
+    resources :episode_types, only: [:index, :show, :create, :destroy]
     resources :comments, only: [:index, :create, :update, :destroy]
-    resources :youtube_videos, only: [:index, :create]
+    resources :youtube_videos, only: [:index, :create, :update] do
+      collection do
+        get 'autocomplete'
+      end
+    end
+    resource :users, only: [:update]
+    resources :similar_episode_groups, only: [:index, :show, :update, :create, :destroy]
+    resources :starred_episode_users, only: [:create, :destroy]
     mount Sidekiq::Web, at: '/sidekiq'
   end
 

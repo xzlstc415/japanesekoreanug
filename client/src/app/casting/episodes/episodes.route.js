@@ -30,11 +30,19 @@
             templateUrl: 'app/casting/episodes/create/create.tmpl.html',
             controller: 'EpisodesCreateController as vm'
           }
+        },
+        resolve: {
+          episodeTypes: ['EpisodeType', function(EpisodeType) {
+            return EpisodeType.query();
+          }]
         }
       })
       .state('episodes-update', {
         url:'/episodes/:id/edit',
         parent: 'yujihomo',
+        data: {
+          roles: ['admin', 'moderator']
+        },
         views: {
           '@yujihomo': {
             templateUrl: 'app/casting/episodes/edit/edit.tmpl.html',
@@ -44,6 +52,9 @@
         resolve: {
           episode: ['Episode', '$stateParams', function(Episode, $stateParams) {
             return Episode.get($stateParams.id);
+          }],
+          episodeTypes: ['EpisodeType', function(EpisodeType) {
+            return EpisodeType.query();
           }]
         }
       });

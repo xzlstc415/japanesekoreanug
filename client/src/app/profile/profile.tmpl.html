@@ -1,19 +1,43 @@
 <h1 class="content">xzlstc415's Profile</h1>
 <div class="content">
-  <form accept-charset="UTF-8" action="/users/46996" class="edit_user" id="edit_user_46996" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="_method" type="hidden" value="put"><input name="authenticity_token" type="hidden" value="ykEogewSVn92F855kG5CF3uGBzLR/6NoBirpPUmsdxE="></div>
-
+  <form name="userForm" class="edit_user">
+    <div>
+      <img ng-show="vm.currentUser.avatar_url" ng-src="{{vm.currentUser.avatar_url}}" class="thumb"/>
+    </div>
     <p>
       <label for="user_name">Name</label>
-      <input id="user_name" name="user[name]" size="30" type="text" value="{{ vm.currentUser.name }}">
+      <input id="user_name" ng-model="vm.currentUser.name" size="30" type="text">
     </p>
     <p>
       <label for="user_email">Email</label>
-      <input id="user_email" name="user[email]" size="30" type="text" value="{{ vm.currentUser.email }}">
+      <input id="user_email" ng-model="vm.currentUser.email" size="30" type="text">
     </p>
     <p>
-      <input id="user_email_on_reply" name="user[email_on_reply]" type="checkbox" ng-checked="{{ vm.currentUser.receive_email }}" value="{{ vm.currentUser.receive_email }}">
-      <label class="check_box" for="user_email_on_reply">Receive email when a user replies to your comment</label>
+      <label for="password">Password</label>
+      <input id="password" ng-model="vm.currentUser.password" size="30" type="password">
     </p>
-    <p><input name="commit" type="submit" value="Update Profile"></p>
+    <p>
+      <label for="password_confirmation">Password Confirmation</label>
+      <input id="password_confirmation" ng-model="vm.currentUser.password_confirmation" size="30" type="password">
+    </p>
+    <p>
+      <label for="user_avatar">Avatar</label>
+      <input type="file" ngf-select ng-model="vm.avatar" name="file"
+             accept="image/*" ngf-max-size="200KB"
+             ngf-resize="{width: 64, height: 64, quality: 1, type: 'image/jpeg',
+               ratio: '1:1', centerCrop: true, pattern='.jpg', restoreExif: false}"
+             ngf-model-invalid="errorFile">
+      <i ng-show="userForm.file.$error.maxSize">File too large
+          {{errorFile.size / 1000|number:1}}KB: max 200KB</i>
+      <div>
+        <img ng-if="userForm.file.$valid" ngf-thumbnail="vm.avatar" class="thumb"
+             ngf-size="{quality: 1, ratio: '1:1', centerCrop: true}" />
+      </div>
+      <br />
+      <button ng-click="vm.avatar = null" ng-show="vm.avatar">Remove</button>
+    </p>
+    <!-- <button ng-disabled="!userForm.$valid"
+            ng-click="uploadPic(picFile)">Submit</button> -->
+    <p><input name="commit" type="submit" ng-click="vm.updateUser()" value="Update Profile"></p>
   </form>
 </div>

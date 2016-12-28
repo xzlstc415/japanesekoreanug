@@ -27,3 +27,22 @@
   -moz-border-radius-bottomleft: 5px;
   -moz-border-radius-bottomright: 5px;
 }
+
+select.form-input {
+  height: 34px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.form-link {
+  padding-left: 150px;
+}
+
+.form-link a {
+  color: #5be4cc;
+  text-decoration: underline;
+}
+
+.form-link a:hover {
+  color: #00866e;
+}

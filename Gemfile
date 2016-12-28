@@ -19,6 +19,8 @@ gem 'capistrano-rails', '~> 1.2'
 gem 'capistrano-rvm'
 gem 'capistrano-sidekiq'
 gem 'capistrano-passenger'
+gem 'sidekiq-unique-jobs'
+gem 'paperclip'
 
 group :development, :test do
   gem 'byebug'

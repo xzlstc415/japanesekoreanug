@@ -1,4 +1,4 @@
-# policy for episodes
+# policy for YoutubeVideoPolicy
 class YoutubeVideoPolicy < ApplicationPolicy
   # Scope class inherited from ApplicationPolicy
   # class Scope < Scope
@@ -20,6 +20,14 @@ class YoutubeVideoPolicy < ApplicationPolicy
   end
 
   def create?
+    user.admin? || user.moderator?
+  end
+
+  def update?
+    user.admin? || user.moderator?
+  end
+
+  def autocomplete?
     user.admin? || user.moderator?
   end
 end

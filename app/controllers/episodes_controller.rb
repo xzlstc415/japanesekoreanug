@@ -2,11 +2,18 @@
 class EpisodesController < ApplicationController
   before_action :authenticate_auth_user!, only: [:create, :update, :destroy]
   after_action :verify_authorized
+  before_action :set_current_user
 
   def index
-    if search_params[:episode_type_name_eq].blank? &&
-       search_params[:tags_name_eq].blank? &&
-       search_params[:name_or_tags_name_or_episode_type_name_cont].blank?
+    if params[:starred]
+      episodes = policy_scope(Episode)
+                 .joins(:starred_episode_users)
+                 .where(starred_episode_users: { user: current_auth_user })
+    elsif search_params[:episode_type_name_eq].blank? &&
+          search_params[:tags_name_eq].blank? &&
+          search_params[:similar_episode_group_id_eq].blank? &&
+          search_params[:id_in].blank? &&
+          search_params[:name_or_tags_name_or_episode_type_name_cont].blank?
       episodes = policy_scope(Episode)
     else
       episodes = policy_scope(Episode)
@@ -14,8 +21,8 @@ class EpisodesController < ApplicationController
                  .result
                  .uniq
     end
+    authorize episodes
     @episodes = episodes.page(params[:page]).order('number DESC')
-    authorize @episodes
   end
 
   def show
@@ -30,7 +37,7 @@ class EpisodesController < ApplicationController
     if @episode.save
       head :created
     else
-      render json: { error: @episode.errors.full_messages },
+      render json: { errors: @episode.errors.full_messages },
              status: :unprocessable_entity
     end
   end
@@ -47,7 +54,7 @@ class EpisodesController < ApplicationController
     elsif @episode.update_attributes(episode_params)
       head :ok
     else
-      render json: { error: @episode.errors.full_messages },
+      render json: { errors: @episode.errors.full_messages },
              status: :unprocessable_entity
     end
   end
@@ -58,7 +65,9 @@ class EpisodesController < ApplicationController
     params.permit(
       :episode_type_name_eq,
       :tags_name_eq,
-      :name_or_tags_name_or_episode_type_name_cont
+      :name_or_tags_name_or_episode_type_name_cont,
+      :similar_episode_group_id_eq,
+      id_in: []
     )
   end
 
@@ -67,6 +76,13 @@ class EpisodesController < ApplicationController
           .permit(:name,
                   :duration,
                   :thumbnail_url,
-                  :description)
+                  :description,
+                  :episode_type_id,
+                  :youtube_video_id,
+                  tag_ids: [])
+  end
+
+  def set_current_user
+    @current_user = current_auth_user
   end
 end

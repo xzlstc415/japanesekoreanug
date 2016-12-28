@@ -4,6 +4,7 @@ tmp
 private
 coverage
 ngapp/index.html
+public/**
 
 # ignore the .ruby-gemset file, but you can use one if you want
 .ruby-gemset

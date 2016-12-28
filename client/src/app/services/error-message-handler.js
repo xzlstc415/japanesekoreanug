@@ -5,7 +5,9 @@
 
     var displayErrors = function(res) {
       if (res.data.errors) {
-        toastr.error.apply(this, res.data.errors);
+        res.data.errors.forEach(function(error) {
+          toastr.error(error);
+        });
       } else {
         toastr.error(res.data.error);
       }

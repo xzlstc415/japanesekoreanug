@@ -123,3 +123,21 @@ label {
 input, textarea {
   font-size: 16px;
 }
+
+.star{
+  font-size: 16px;
+  text-decoration: none;
+  margin-left: 3px;
+}
+
+.unstarred{
+  color: #AAA !important;
+}
+
+.starred{
+  color: #E98C08 !important;
+}
+
+.no-underline:hover{
+  text-decoration: none;
+}

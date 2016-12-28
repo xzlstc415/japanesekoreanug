@@ -21,8 +21,30 @@
       return $http(req);
     };
 
+    var save = function(params) {
+      var req = {
+        method: 'POST',
+        url: '/api/tags',
+        data: params
+      };
+
+      return $http(req);
+    };
+
+    var autocomplete = function(keyParams) {
+      var req = {
+        method: 'GET',
+        url: '/api/tags/autocomplete',
+        params: keyParams
+      };
+
+      return $http(req);
+    };
+
     vm.query = query;
     vm.get = get;
+    vm.save = save;
+    vm.autocomplete = autocomplete;
 
     return vm;
   };

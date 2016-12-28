@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202223550) do
+ActiveRecord::Schema.define(version: 20161225093845) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "episode_id",        limit: 4
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20161202223550) do
   end
 
   create_table "episodes", force: :cascade do |t|
+    t.integer  "youtube_video_id",         limit: 4
     t.integer  "number",                   limit: 4
     t.integer  "comments_count",           limit: 4,     default: 0
     t.string   "name",                     limit: 255
-    t.boolean  "starred",                                default: false
     t.integer  "duration",                 limit: 4
     t.text     "description",              limit: 65535
     t.date     "published_at"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20161202223550) do
 
   add_index "episodes", ["episode_type_id"], name: "fk_rails_fbae6c65b1", using: :btree
   add_index "episodes", ["similar_episode_group_id"], name: "index_episodes_on_similar_episode_group_id", using: :btree
+  add_index "episodes", ["youtube_video_id"], name: "index_episodes_on_youtube_video_id", using: :btree
 
   create_table "episodes_tags", id: false, force: :cascade do |t|
     t.integer "episode_id", limit: 4
@@ -65,6 +66,16 @@ ActiveRecord::Schema.define(version: 20161202223550) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "starred_episode_users", force: :cascade do |t|
+    t.integer  "episode_id", limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "starred_episode_users", ["episode_id"], name: "index_starred_episode_users_on_episode_id", using: :btree
+  add_index "starred_episode_users", ["user_id"], name: "index_starred_episode_users_on_user_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -85,19 +96,23 @@ ActiveRecord::Schema.define(version: 20161202223550) do
   add_index "twitch_users", ["user_id"], name: "fk_rails_6b3b7d36b0", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",               limit: 255
-    t.string   "avatar_url",         limit: 255
-    t.boolean  "receive_email",                  default: true
+    t.string   "name",                limit: 255
+    t.boolean  "receive_email",                   default: true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",              limit: 255, default: "",   null: false
-    t.string   "encrypted_password", limit: 255, default: "",   null: false
-    t.integer  "sign_in_count",      limit: 4,   default: 0,    null: false
+    t.string   "email",               limit: 255, default: "",   null: false
+    t.string   "encrypted_password",  limit: 255, default: "",   null: false
+    t.integer  "sign_in_count",       limit: 4,   default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip", limit: 255
-    t.string   "last_sign_in_ip",    limit: 255
-    t.integer  "role",               limit: 4
+    t.string   "current_sign_in_ip",  limit: 255
+    t.string   "last_sign_in_ip",     limit: 255
+    t.integer  "role",                limit: 4
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
+    t.datetime "avatar_updated_at"
+    t.string   "avatar_url",          limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -111,6 +126,7 @@ ActiveRecord::Schema.define(version: 20161202223550) do
   end
 
   create_table "youtube_videos", force: :cascade do |t|
+    t.string   "api_title",          limit: 255
     t.string   "api_id",             limit: 255
     t.string   "api_thumbnail_url",  limit: 255
     t.string   "api_privacy_status", limit: 255
@@ -125,7 +141,10 @@ ActiveRecord::Schema.define(version: 20161202223550) do
   add_foreign_key "comments", "users"
   add_foreign_key "episodes", "episode_types"
   add_foreign_key "episodes", "similar_episode_groups"
+  add_foreign_key "episodes", "youtube_videos"
   add_foreign_key "episodes_tags", "episodes"
   add_foreign_key "episodes_tags", "tags"
+  add_foreign_key "starred_episode_users", "episodes"
+  add_foreign_key "starred_episode_users", "users"
   add_foreign_key "twitch_users", "users"
 end
