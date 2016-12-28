@@ -16,7 +16,7 @@
     var currentUser = function() {
       if ($auth.isAuthenticated()) {
         var currentUser = $auth.getPayload();
-        if (!currentUser.avatar_url.match(/http/g)) {
+        if (currentUser.avatar_url && !currentUser.avatar_url.match(/http/g)) {
           currentUser.avatar_url = API_URL + currentUser.avatar_url;
         }
         return currentUser;
