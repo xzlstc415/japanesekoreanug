@@ -1,10 +1,16 @@
 (function() {
   'use strict';
 
-  var EpisodesShowController = function(episode, $sce, StarredEpisodeUser) {
+  var EpisodesShowController = function(episode, $sce, StarredEpisodeUser, $state) {
     var vm = this;
     vm.episode = episode.data;
-    vm.commentsSelected = true;
+    if ($state.current.name == 'episodes-similar-ep') {
+      vm.similarEpisodesSelected = true;
+      vm.commentsSelected = false;
+    } else {
+      vm.similarEpisodesSelected = false;
+      vm.commentsSelected = true;
+    }
     vm.showVideo = false;
     if (vm.episode.youtube_video) {
       vm.embedHtml = $sce.trustAsHtml(vm.episode.youtube_video.api_embed_html);
@@ -46,7 +52,7 @@
     vm.toggleStar = toggleStar;
   };
 
-  EpisodesShowController.$inject = ['episode', '$sce', 'StarredEpisodeUser'];
+  EpisodesShowController.$inject = ['episode', '$sce', 'StarredEpisodeUser', '$state'];
 
   angular.module('yujihomo')
     .controller('EpisodesShowController', EpisodesShowController);

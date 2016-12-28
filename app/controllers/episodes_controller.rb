@@ -10,10 +10,10 @@ class EpisodesController < ApplicationController
                  .joins(:starred_episode_users)
                  .where(starred_episode_users: { user: current_auth_user })
     elsif search_params[:episode_type_name_eq].blank? &&
-       search_params[:tags_name_eq].blank? &&
-       search_params[:similar_episode_group_id_eq].blank? &&
-       search_params[:id_in].blank? &&
-       search_params[:name_or_tags_name_or_episode_type_name_cont].blank?
+          search_params[:tags_name_eq].blank? &&
+          search_params[:similar_episode_group_id_eq].blank? &&
+          search_params[:id_in].blank? &&
+          search_params[:name_or_tags_name_or_episode_type_name_cont].blank?
       episodes = policy_scope(Episode)
     else
       episodes = policy_scope(Episode)

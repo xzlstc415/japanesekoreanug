@@ -14,7 +14,9 @@
         },
         resolve: {
           similarEpisodes: ['Episode', 'episode', function(Episode, episode) {
-            return Episode.query({'id_in[]': episode.data.similar_episode_ids});
+            var simiarEpisodeIds = episode.data.similar_episode_ids;
+            if (simiarEpisodeIds.length === 0) { simiarEpisodeIds = [0]; }
+            return Episode.query({'id_in[]': simiarEpisodeIds});
           }]
         }
       });
