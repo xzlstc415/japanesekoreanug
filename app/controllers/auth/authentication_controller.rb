@@ -32,10 +32,10 @@ class Auth::AuthenticationController < ApplicationController
   end
 
   def google
-    YoutubeClient.delete_all
-    @youtube_client = YoutubeClient.new(api_access_token: params[:code],
-                                        api_redirect_uri: params[:redirectUri],
-                                        api_client_id: params[:clientId])
+    @youtube_client = YoutubeClient.first
+    @youtube_client.api_access_token = params[:code]
+    @youtube_client.api_redirect_uri = params[:redirectUri]
+    @youtube_client.api_client_id = params[:clientId]
     if @youtube_client.save
       head :ok
     else
