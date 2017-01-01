@@ -21,6 +21,7 @@ gem 'capistrano-sidekiq'
 gem 'capistrano-passenger'
 gem 'sidekiq-unique-jobs'
 gem 'paperclip'
+gem 'google-api-client'
 
 group :development, :test do
   gem 'byebug'

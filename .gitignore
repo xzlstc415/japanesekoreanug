@@ -12,6 +12,7 @@ public/**
 .byebug_history
 .envrc
 dump.rdb
+client_secrets.json
 
 /config/database.yml
 /config/secrets.yml

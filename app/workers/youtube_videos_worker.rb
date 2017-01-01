@@ -6,8 +6,7 @@ class YoutubeVideosWorker
 
   def perform(youtube_client_id)
     youtube_client = YoutubeClient.find(youtube_client_id)
-    account = Yt::Account.new authorization_code: youtube_client.api_access_token,
-                              redirect_uri: youtube_client.api_redirect_uri
+    account = Yt::Account.new refresh_token: youtube_client.api_refresh_token
     ActiveRecord::Base.transaction do
       account.videos.each do |video|
         youtube_video = YoutubeVideo.find_by(api_id: video.id)

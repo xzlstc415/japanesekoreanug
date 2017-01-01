@@ -2,6 +2,7 @@
 class Auth::AuthenticationController < ApplicationController
   before_action :authenticate_auth_user!, only: [:me]
   before_action :setup_from_twitch, only: [:twitch]
+  before_action :setup_google_client, only: [:google]
 
   def authenticate_user
     user = User.find_for_database_authentication(email: params[:email])
@@ -33,9 +34,8 @@ class Auth::AuthenticationController < ApplicationController
 
   def google
     @youtube_client = YoutubeClient.first
-    @youtube_client.api_access_token = params[:code]
-    @youtube_client.api_redirect_uri = params[:redirectUri]
-    @youtube_client.api_client_id = params[:clientId]
+    @youtube_client.api_access_token = @raw_data['access_token']
+    @youtube_client.api_refresh_token = @raw_data['refresh_token']
     if @youtube_client.save
       head :ok
     else
@@ -55,6 +55,17 @@ class Auth::AuthenticationController < ApplicationController
       render json: { token: JWTWrapper.encode(twitch_user.user.as_json) } if twitch_user
     else
       render json: { errors: ["Sorry We can't connect with your twitch account"] },
+             status: :unauthorized
+    end
+  end
+
+  def setup_google_client
+    auth_client = GOOGLE_CLIENT_SECRET.to_authorization
+    if params[:code].present?
+      auth_client.code = params[:code]
+      @raw_data = auth_client.fetch_access_token!
+    else
+      render json: { errors: ["Sorry We can't connect with your google account"] },
              status: :unauthorized
     end
   end

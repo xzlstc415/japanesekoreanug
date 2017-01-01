@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
-  var YoutubeController = function($auth, toastr, $state, usSpinnerService, YoutubeVideo, ErrorMessageHandler, youtubeVideos) {
+  var YoutubeController = function($auth, toastr, $state, usSpinnerService, YoutubeVideo, ErrorMessageHandler, youtubeVideos, youtubeAccountStatus) {
     var vm = this;
-    vm.connected = false;
+    vm.connected = youtubeAccountStatus.data.connected;
     vm.busy = false;
     vm.youtubeVideos = youtubeVideos.data;
 
@@ -57,7 +57,16 @@
     vm.refreshVideo = refreshVideo;
   };
 
-  YoutubeController.$inject = ['$auth', 'toastr', '$state', 'usSpinnerService', 'YoutubeVideo', 'ErrorMessageHandler', 'youtubeVideos'];
+  YoutubeController.$inject = [
+    '$auth',
+    'toastr',
+    '$state',
+    'usSpinnerService',
+    'YoutubeVideo',
+    'ErrorMessageHandler',
+    'youtubeVideos',
+    'youtubeAccountStatus'
+  ];
 
   angular.module('yujihomo')
     .controller('YoutubeController', YoutubeController);

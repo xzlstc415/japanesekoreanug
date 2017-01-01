@@ -30,4 +30,8 @@ class YoutubeVideoPolicy < ApplicationPolicy
   def autocomplete?
     user.admin? || user.moderator?
   end
+
+  def status?
+    user.admin? || user.moderator?
+  end
 end

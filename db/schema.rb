@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161225093845) do
+ActiveRecord::Schema.define(version: 20170101081508) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "episode_id",        limit: 4
@@ -118,11 +118,10 @@ ActiveRecord::Schema.define(version: 20161225093845) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "youtube_clients", force: :cascade do |t|
-    t.string   "api_client_id",    limit: 255
-    t.string   "api_access_token", limit: 255
-    t.string   "api_redirect_uri", limit: 255
+    t.string   "api_access_token",  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "api_refresh_token", limit: 255
   end
 
   create_table "youtube_videos", force: :cascade do |t|

@@ -18,7 +18,10 @@
         resolve: {
           youtubeVideos: ['YoutubeVideo', function(YoutubeVideo) {
             return YoutubeVideo.query();
-          }]
+          }],
+          youtubeAccountStatus: ['YoutubeVideo', function(YoutubeVideo) {
+            return YoutubeVideo.accountStatus();
+          }],
         }
       });
   };

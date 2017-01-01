@@ -38,6 +38,20 @@ class YoutubeVideosController < ApplicationController
     end
   end
 
+  def status
+    authorize YoutubeVideo
+    youtube_client = YoutubeClient.first
+    account = Yt::Account.new refresh_token: youtube_client.api_refresh_token
+    name = account.name
+    if name.present?
+      render json: { connected: true }
+    else
+      render json: { connected: false }
+    end
+  rescue Yt::Errors::RequestError
+    render json: { error: 'refresh token is no more valid!' }
+  end
+
   private
 
   def search_params

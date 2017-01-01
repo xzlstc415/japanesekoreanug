@@ -42,10 +42,20 @@
       return $http(req);
     };
 
+    var accountStatus = function() {
+      var req = {
+        method: 'GET',
+        url: '/api/youtube_videos/status'
+      };
+
+      return $http(req);
+    };
+
     vm.query = query;
     vm.save = save;
     vm.update = update;
     vm.autocomplete = autocomplete;
+    vm.accountStatus = accountStatus;
 
     return vm;
   };

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :youtube_videos, only: [:index, :create, :update] do
       collection do
         get 'autocomplete'
+        get 'status'
       end
     end
     resource :users, only: [:update]

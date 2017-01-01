@@ -35,8 +35,10 @@
         'https://www.googleapis.com/auth/youtube.upload	',
         'https://www.googleapis.com/auth/youtubepartner',
         'https://www.googleapis.com/auth/youtubepartner-channel-audit'
-      ]
+      ],
+      optionalUrlParams: ['access_type', 'approval_prompt'],
+      accessType: 'offline',
+      approvalPrompt: 'force'
     });
   }
-
 })();
