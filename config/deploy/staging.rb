@@ -16,6 +16,12 @@ namespace :deploy do
       upload! StringIO.new(File.read("config/secrets.yml")), "#{shared_path}/config/secrets.yml"
     end
   end
+  desc 'Upload GOOGLE api secrets.'
+  task :upload_google_secrets do
+    on roles(:app) do
+      upload! StringIO.new(File.read("client_secrets.json")), "#{release_path}/client_secrets.json"
+    end
+  end
 end
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
