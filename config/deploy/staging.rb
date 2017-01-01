@@ -19,7 +19,7 @@ namespace :deploy do
   desc 'Upload GOOGLE api secrets.'
   task :upload_google_secrets do
     on roles(:app) do
-      upload! StringIO.new(File.read("client_secrets.json")), "#{release_path}/client_secrets.json"
+      upload! StringIO.new(File.read("client_secrets.json")), "#{shared_path}/client_secrets.json"
     end
   end
 end

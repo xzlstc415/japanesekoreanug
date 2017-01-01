@@ -27,8 +27,8 @@ function browserSyncInit(baseDir, browser) {
     baseDir: baseDir,
     routes: routes,
     middleware: [
-      proxyMiddleware('/api', { target: 'http://localhost:3000' }),
-      proxyMiddleware('/auth', { target: 'http://localhost:3000' })
+      proxyMiddleware('/api', { target: 'http://139.162.74.33/' }),
+      proxyMiddleware('/auth', { target: 'http://139.162.74.33/' })
     ]
   };
 

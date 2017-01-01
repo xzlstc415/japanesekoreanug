@@ -6,6 +6,7 @@
     vm.connected = youtubeAccountStatus.data.connected;
     vm.busy = false;
     vm.youtubeVideos = youtubeVideos.data;
+    usSpinnerService.stop('spinner-1');
 
     var authenticate = function(provider) {
       usSpinnerService.spin('spinner-1');

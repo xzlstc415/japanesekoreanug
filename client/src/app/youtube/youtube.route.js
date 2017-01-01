@@ -19,7 +19,8 @@
           youtubeVideos: ['YoutubeVideo', function(YoutubeVideo) {
             return YoutubeVideo.query();
           }],
-          youtubeAccountStatus: ['YoutubeVideo', function(YoutubeVideo) {
+          youtubeAccountStatus: ['YoutubeVideo', 'usSpinnerService', function(YoutubeVideo, usSpinnerService) {
+            usSpinnerService.spin('spinner-1');
             return YoutubeVideo.accountStatus();
           }],
         }
