@@ -36,8 +36,15 @@
           usSpinnerService.stop('spinner-1');
           vm.currentUser = $auth.getPayload();
           closeLoginModal();
-          $state.go('home');
+          $state.go('home', {
+            episode_type_name_eq: null,
+            tags_name_eq: null,
+            name_or_tags_name_or_episode_type_name_cont: null,
+            starred: null
+          });
+          $state.reload();
           toastr.success('You have logged in successfully!');
+          $state.reload();
         })
         .catch(function() {
           usSpinnerService.stop('spinner-1');
@@ -51,8 +58,15 @@
         vm.currentUser = $auth.getPayload();
         usSpinnerService.stop('spinner-1');
         closeLoginModal();
-        $state.go('home');
+        $state.go('home', {
+          episode_type_name_eq: null,
+          tags_name_eq: null,
+          name_or_tags_name_or_episode_type_name_cont: null,
+          starred: null
+        });
+        $state.reload();
         toastr.success('You have logged in successfully!');
+        $state.reload();
       }).catch(function() {
         usSpinnerService.stop('spinner-1');
         toastr.error('Sorry we cannot connect to twitch :(');
@@ -65,7 +79,12 @@
       vm.currentUser = null;
       toastr.success('You have logged out successfully!');
       usSpinnerService.stop('spinner-1');
-      $state.go('home');
+      $state.go('home', {
+        episode_type_name_eq: null,
+        tags_name_eq: null,
+        name_or_tags_name_or_episode_type_name_cont: null,
+        starred: null
+      }, { reload: true });
     };
 
     var signup = function(user) {
@@ -73,9 +92,14 @@
       User.signup(user).then(function(res) {
         $auth.setToken(res.data.token);
         closeSignupModal();
-        $state.reload();
         toastr.success('You have signed up successfully!');
         usSpinnerService.stop('spinner-1');
+        $state.go('home', {
+          episode_type_name_eq: null,
+          tags_name_eq: null,
+          name_or_tags_name_or_episode_type_name_cont: null,
+          starred: null
+        });
       }).catch(function(res) {
         ErrorMessageHandler.displayErrors(res);
         usSpinnerService.stop('spinner-1');
