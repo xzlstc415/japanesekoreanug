@@ -1,5 +1,8 @@
 <div class="content">
   <h3>Import Videos From Youtube</h3>
+  <button class="youtube_button button" style="padding: 10px 12px;margin-bottom: 10px;" ng-if="vm.connected">
+    <span style="font-size:14px; cursor: pointer;" ng-click="vm.authenticate('google')">Switch Google Account</span>
+  </button>
   <button class="youtube_button button" style="padding: 10px 12px;" ng-if="!vm.connected">
     <span style="font-size:14px; cursor: pointer;" ng-click="vm.authenticate('google')">Connect with Google</span>
   </button>

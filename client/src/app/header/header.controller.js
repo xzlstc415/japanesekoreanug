@@ -41,10 +41,9 @@
             tags_name_eq: null,
             name_or_tags_name_or_episode_type_name_cont: null,
             starred: null
-          });
+          }, { reload: true });
           $state.reload();
           toastr.success('You have logged in successfully!');
-          $state.reload();
         })
         .catch(function() {
           usSpinnerService.stop('spinner-1');
@@ -63,10 +62,9 @@
           tags_name_eq: null,
           name_or_tags_name_or_episode_type_name_cont: null,
           starred: null
-        });
+        }, { reload: true });
         $state.reload();
         toastr.success('You have logged in successfully!');
-        $state.reload();
       }).catch(function() {
         usSpinnerService.stop('spinner-1');
         toastr.error('Sorry we cannot connect to twitch :(');
@@ -99,7 +97,7 @@
           tags_name_eq: null,
           name_or_tags_name_or_episode_type_name_cont: null,
           starred: null
-        });
+        }, { reload: true });
       }).catch(function(res) {
         ErrorMessageHandler.displayErrors(res);
         usSpinnerService.stop('spinner-1');
