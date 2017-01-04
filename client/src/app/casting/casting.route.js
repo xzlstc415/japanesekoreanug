@@ -4,14 +4,8 @@
   var stateConfig = function($stateProvider) {
     $stateProvider
       .state('home', {
-        url:'/',
+        url:'/?episode_type_name_eq&tags_name_eq&name_or_tags_name_or_episode_type_name_cont&starred',
         parent: 'yujihomo',
-        params: {
-          episode_type_name_eq: null,
-          tags_name_eq: null,
-          name_or_tags_name_or_episode_type_name_cont: null,
-          starred: null
-        },
         views: {
           '@yujihomo': {
             templateUrl: 'app/casting/casting.tmpl.html'
