@@ -1,12 +1,12 @@
 (function() {
 
-  var Comment = function($http) {
+  var Comment = function($http, API_URL) {
     var vm = this;
 
     var query = function(params) {
       var req = {
         method: 'GET',
-        url: '/api/comments',
+        url: API_URL + '/api/comments',
         params: params
       };
 
@@ -16,7 +16,7 @@
     var save = function(params) {
       var req = {
         method: 'POST',
-        url: '/api/comments',
+        url: API_URL + '/api/comments',
         data: params
       };
 
@@ -26,7 +26,7 @@
     var update = function(id, params) {
       var req = {
         method: 'PUT',
-        url: '/api/comments/' + id,
+        url: API_URL + '/api/comments/' + id,
         data: params
       };
 
@@ -36,7 +36,7 @@
     var destroy = function(id) {
       var req = {
         method: 'DELETE',
-        url: '/api/comments/' + id
+        url: API_URL + '/api/comments/' + id
       };
 
       return $http(req);
@@ -50,7 +50,7 @@
     return vm;
   };
 
-  Comment.$inject = ['$http'];
+  Comment.$inject = ['$http', 'API_URL'];
 
   angular.module('yujihomo')
     .service('Comment', Comment);

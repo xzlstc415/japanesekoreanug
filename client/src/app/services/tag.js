@@ -1,12 +1,12 @@
 (function() {
 
-  var Tag = function($http) {
+  var Tag = function($http, API_URL) {
     var vm = this;
 
     var query = function() {
       var req = {
         method: 'GET',
-        url: '/api/tags'
+        url: API_URL + '/api/tags'
       };
 
       return $http(req);
@@ -15,7 +15,7 @@
     var get = function(id) {
       var req = {
         method: 'GET',
-        url: '/api/tags/' + id
+        url: API_URL + '/api/tags/' + id
       };
 
       return $http(req);
@@ -24,7 +24,7 @@
     var save = function(params) {
       var req = {
         method: 'POST',
-        url: '/api/tags',
+        url: API_URL + '/api/tags',
         data: params
       };
 
@@ -34,7 +34,7 @@
     var autocomplete = function(keyParams) {
       var req = {
         method: 'GET',
-        url: '/api/tags/autocomplete',
+        url: API_URL + '/api/tags/autocomplete',
         params: keyParams
       };
 
@@ -49,7 +49,7 @@
     return vm;
   };
 
-  Tag.$inject = ['$http'];
+  Tag.$inject = ['$http', 'API_URL'];
 
   angular.module('yujihomo')
     .service('Tag', Tag);
