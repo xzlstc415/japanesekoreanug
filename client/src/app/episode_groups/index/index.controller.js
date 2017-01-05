@@ -35,7 +35,7 @@
     };
 
     var goToDetail = function(episodeGroup) {
-      $state.go('episode_groups_detail', {id: episodeGroup.id});
+      $state.go('episode-groups-detail', {id: episodeGroup.id});
     };
 
     vm.goToDetail = goToDetail;

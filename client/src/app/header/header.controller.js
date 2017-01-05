@@ -65,7 +65,7 @@
         }, { reload: true });
         $state.reload();
         toastr.success('You have logged in successfully!');
-      }).catch(function() {
+      }).catch(function(res) {
         usSpinnerService.stop('spinner-1');
         toastr.error('Sorry we cannot connect to twitch :(');
       });

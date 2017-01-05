@@ -3,7 +3,7 @@
 
   var stateConfig = function($stateProvider) {
     $stateProvider
-      .state('episode_groups', {
+      .state('episode-groups', {
         url:'/episode_groups',
         parent: 'yujihomo',
         views: {
@@ -18,7 +18,7 @@
           }]
         }
       })
-      .state('episode_groups_detail', {
+      .state('episode-groups-detail', {
         url:'/episode_groups/:id',
         parent: 'yujihomo',
         views: {

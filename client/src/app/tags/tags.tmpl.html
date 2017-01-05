@@ -1,0 +1,15 @@
+<div class="tag-list">
+  <h3>List of Tags</h3>
+  <table class="list">
+    <tbody>
+      <tr>
+        <th>Tag Name</th>
+        <th>Delete</th>
+      </tr>
+      <tr class="tag" ng-repeat="tag in vm.tags track by tag.id">
+        <td>{{tag.name}}</td>
+        <td><button ng-click="vm.removeTag(tag)">delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

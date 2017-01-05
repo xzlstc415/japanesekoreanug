@@ -18,15 +18,16 @@
     toastrConfig.preventOpenDuplicates = true;
     toastrConfig.progressBar = true;
 
+    $authProvider.baseUrl = API_URL;
 
     // config of satellizer
     $authProvider.twitch({
-      url: API_URL + '/auth/twitch',
+      url: '/auth/twitch',
       clientId: '2spt1bzwb5s6amg8fxnqrctif4p8p40'
     });
 
     $authProvider.google({
-      url: API_URL + '/auth/google',
+      url: '/auth/google',
       clientId: '853689657196-i21roetdbidgcs42ch6bgnu1kn9jfqgh.apps.googleusercontent.com',
       scope: [
         'profile',
