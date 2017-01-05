@@ -38,14 +38,23 @@
       }
     };
 
-    var addTag = function($tag) {
+    var createTag = function($tag) {
       if ($tag.id) {
-        vm.episode.tag_ids.push($tag.id);
+        return true;
       } else {
-        Tag.save({tag: {name: $tag.text}}).then(function(res) {
-          vm.episode.tag_ids.push(res.data.id);
-        });
+        return Tag.save({tag: {name: $tag.text}})
+          .then(function(res) {
+            $tag.id = res.data.id;
+            return true;
+          })
+          .catch(function(res) {
+            return false;
+          });
       }
+    };
+
+    var addTag = function($tag) {
+      vm.episode.tag_ids.push($tag.id);
     };
 
     var removeTag = function($tag) {
@@ -59,6 +68,7 @@
     vm.canAddVideo = canAddVideo;
     vm.setYoutubeVideo = setYoutubeVideo;
     vm.addTag = addTag;
+    vm.createTag = createTag;
     vm.removeTag = removeTag;
   };
 

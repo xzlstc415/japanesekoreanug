@@ -11,8 +11,9 @@
   <tags-input ng-model="vm.tags"
               id="tags"
               key-property="id"
-              tpye="text"
+              type="text"
               min-tags="1"
+              on-tag-adding="vm.createTag($tag)"
               on-tag-added="vm.addTag($tag)"
               on-tag-removed="vm.removeTag($tag)"
               style="display:inline-block; width:406px">
@@ -44,7 +45,8 @@
               on-tag-added="vm.setYoutubeVideo($tag)"
               on-tag-removed="vm.setYoutubeVideo()"
               style="display:inline-block; width:406px"
-              placeholder="Add a youtube video">
+              placeholder="Add a youtube video"
+              add-from-autocomplete-only="true">
     <auto-complete source="vm.searchYoutubeVideos($query)"
                    min-length="3">
     </auto-complete>

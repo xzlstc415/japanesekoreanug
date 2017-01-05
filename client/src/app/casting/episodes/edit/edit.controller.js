@@ -39,6 +39,20 @@
       }
     };
 
+    var createTag = function($tag) {
+      if ($tag.id) {
+        return true;
+      } else {
+        Tag.save({tag: {name: $tag.text}})
+          .then(function(res) {
+            return true;
+          })
+          .catch(function(res) {
+            return false;
+          });
+      }
+    };
+
     var addTag = function($tag) {
       if ($tag.id) {
         vm.episode.tag_ids.push($tag.id);
@@ -59,6 +73,7 @@
     vm.searchTags = searchTags;
     vm.searchYoutubeVideos = searchYoutubeVideos;
     vm.setYoutubeVideo = setYoutubeVideo;
+    vm.createTag = createTag;
     vm.addTag = addTag;
     vm.removeTag = removeTag;
   };
