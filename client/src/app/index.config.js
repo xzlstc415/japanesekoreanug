@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, $authProvider) {
+  function config($logProvider, toastrConfig, $authProvider, API_URL) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -21,10 +21,12 @@
 
     // config of satellizer
     $authProvider.twitch({
+      url: API_URL + '/auth/twitch',
       clientId: '2spt1bzwb5s6amg8fxnqrctif4p8p40'
     });
 
     $authProvider.google({
+      url: API_URL + '/auth/google',
       clientId: '853689657196-i21roetdbidgcs42ch6bgnu1kn9jfqgh.apps.googleusercontent.com',
       scope: [
         'profile',

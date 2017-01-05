@@ -6,7 +6,7 @@
     var signup = function(user) {
       var req = {
         method: 'POST',
-        url: '/auth/users',
+        url: API_URL + '/auth/users',
         data: user
       };
 
@@ -25,7 +25,7 @@
 
     var update = function(params, file) {
       return Upload.upload({
-        url: '/api/users',
+        url: API_URL + '/api/users',
         method: 'PUT',
         data: {
           user: {

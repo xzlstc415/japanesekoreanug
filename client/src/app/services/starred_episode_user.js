@@ -1,12 +1,12 @@
 (function() {
 
-  var StarredEpisodeUser = function($http) {
+  var StarredEpisodeUser = function($http, API_URL) {
     var vm = this;
 
     var save = function(params) {
       var req = {
         method: 'POST',
-        url: '/api/starred_episode_users',
+        url: API_URL + '/api/starred_episode_users',
         data: params
       };
 
@@ -16,7 +16,7 @@
     var destroy = function(episode_id) {
       var req = {
         method: 'DELETE',
-        url: '/api/starred_episode_users/' + episode_id
+        url: API_URL + '/api/starred_episode_users/' + episode_id
       };
 
       return $http(req);
@@ -28,7 +28,7 @@
     return vm;
   };
 
-  StarredEpisodeUser.$inject = ['$http'];
+  StarredEpisodeUser.$inject = ['$http', 'API_URL'];
 
   angular.module('yujihomo')
     .service('StarredEpisodeUser', StarredEpisodeUser);

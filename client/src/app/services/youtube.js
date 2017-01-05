@@ -1,12 +1,12 @@
 (function() {
 
-  var YoutubeVideo = function($http) {
+  var YoutubeVideo = function($http, API_URL) {
     var vm = this;
 
     var query = function(params) {
       var req = {
         method: 'GET',
-        url: '/api/youtube_videos',
+        url: API_URL + '/api/youtube_videos',
         params: params
       };
 
@@ -16,7 +16,7 @@
     var save = function() {
       req = {
         method: 'POST',
-        url: '/api/youtube_videos'
+        url: API_URL + '/api/youtube_videos'
       };
 
       return $http(req);
@@ -25,7 +25,7 @@
     var update = function(id, params) {
       var req = {
         method: 'PUT',
-        url: '/api/youtube_videos/' + id,
+        url: API_URL + '/api/youtube_videos/' + id,
         data: params
       };
 
@@ -35,7 +35,7 @@
     var autocomplete = function(keyParams) {
       var req = {
         method: 'GET',
-        url: '/api/youtube_videos/autocomplete',
+        url: API_URL + '/api/youtube_videos/autocomplete',
         params: keyParams
       };
 
@@ -45,7 +45,7 @@
     var accountStatus = function() {
       var req = {
         method: 'GET',
-        url: '/api/youtube_videos/status'
+        url: API_URL + '/api/youtube_videos/status'
       };
 
       return $http(req);
@@ -60,7 +60,7 @@
     return vm;
   };
 
-  YoutubeVideo.$inject = ['$http'];
+  YoutubeVideo.$inject = ['$http', 'API_URL'];
 
   angular.module('yujihomo')
     .service('YoutubeVideo', YoutubeVideo);

@@ -1,12 +1,12 @@
 (function() {
 
-  var SimilarEpisodeGroup = function($http) {
+  var SimilarEpisodeGroup = function($http, API_URL) {
     var vm = this;
 
     var query = function() {
       var req = {
         method: 'GET',
-        url: '/api/similar_episode_groups'
+        url: API_URL + '/api/similar_episode_groups'
       };
 
       return $http(req);
@@ -15,7 +15,7 @@
     var get = function(id) {
       var req = {
         method: 'GET',
-        url: '/api/similar_episode_groups/' + id
+        url: API_URL + '/api/similar_episode_groups/' + id
       };
 
       return $http(req);
@@ -24,7 +24,7 @@
     var save = function(params) {
       var req = {
         method: 'POST',
-        url: '/api/similar_episode_groups',
+        url: API_URL + '/api/similar_episode_groups',
         data: params
       };
 
@@ -34,7 +34,7 @@
     var update = function(id, params) {
       var req = {
         method: 'PUT',
-        url: '/api/similar_episode_groups/' + id,
+        url: API_URL + '/api/similar_episode_groups/' + id,
         data: params
       };
 
@@ -44,7 +44,7 @@
     var destroy = function(id) {
       var req = {
         method: 'DELETE',
-        url: '/api/similar_episode_groups/' + id
+        url: API_URL + '/api/similar_episode_groups/' + id
       };
 
       return $http(req);
@@ -59,7 +59,7 @@
     return vm;
   };
 
-  SimilarEpisodeGroup.$inject = ['$http'];
+  SimilarEpisodeGroup.$inject = ['$http', 'API_URL'];
 
   angular.module('yujihomo')
     .service('SimilarEpisodeGroup', SimilarEpisodeGroup);

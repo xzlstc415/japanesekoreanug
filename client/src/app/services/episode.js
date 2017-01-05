@@ -1,12 +1,12 @@
 (function() {
 
-  var Episode = function($http) {
+  var Episode = function($http, API_URL) {
     var vm = this;
 
     var query = function(params) {
       var req = {
         method: 'GET',
-        url: '/api/episodes',
+        url: API_URL + '/api/episodes',
         params: params
       };
 
@@ -16,7 +16,7 @@
     var get = function(id) {
       var req = {
         method: 'GET',
-        url: '/api/episodes/' + id
+        url: API_URL + '/api/episodes/' + id
       };
 
       return $http(req);
@@ -25,7 +25,7 @@
     var save = function(params) {
       var req = {
         method: 'POST',
-        url: '/api/episodes',
+        url: API_URL + '/api/episodes',
         data: params
       };
 
@@ -35,7 +35,7 @@
     var update = function(id, params) {
       var req = {
         method: 'PUT',
-        url: '/api/episodes/' + id,
+        url: API_URL + '/api/episodes/' + id,
         data: params
       };
 
@@ -50,7 +50,7 @@
     return vm;
   };
 
-  Episode.$inject = ['$http'];
+  Episode.$inject = ['$http', 'API_URL'];
 
   angular.module('yujihomo')
     .service('Episode', Episode);

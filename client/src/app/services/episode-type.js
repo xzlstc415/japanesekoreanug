@@ -1,12 +1,12 @@
 (function() {
 
-  var EpisodeType = function($http) {
+  var EpisodeType = function($http, API_URL) {
     var vm = this;
 
     var query = function() {
       var req = {
         method: 'GET',
-        url: '/api/episode_types'
+        url: API_URL + '/api/episode_types'
       };
 
       return $http(req);
@@ -15,7 +15,7 @@
     var get = function(id) {
       var req = {
         method: 'GET',
-        url: '/api/episode_types/' + id
+        url: API_URL + '/api/episode_types/' + id
       };
 
       return $http(req);
@@ -24,7 +24,7 @@
     var save = function(params) {
       var req = {
         method: 'POST',
-        url: '/api/episode_types',
+        url: API_URL + '/api/episode_types',
         data: params
       };
 
@@ -34,7 +34,7 @@
     var destroy = function(id) {
       var req = {
         method: 'DELETE',
-        url: '/api/episode_types/' + id
+        url: API_URL + '/api/episode_types/' + id
       };
 
       return $http(req);
@@ -48,7 +48,7 @@
     return vm;
   };
 
-  EpisodeType.$inject = ['$http'];
+  EpisodeType.$inject = ['$http', 'API_URL'];
 
   angular.module('yujihomo')
     .service('EpisodeType', EpisodeType);
