@@ -16,3 +16,5 @@ client_secrets.json
 
 /config/database.yml
 /config/secrets.yml
+
+/client/gulp/aws.js
