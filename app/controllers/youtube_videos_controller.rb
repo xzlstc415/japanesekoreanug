@@ -48,8 +48,6 @@ class YoutubeVideosController < ApplicationController
     else
       render json: { connected: false }
     end
-  rescue Yt::Errors::RequestError
-    render json: { error: 'refresh token is no more valid!' }
   end
 
   private
