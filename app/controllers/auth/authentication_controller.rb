@@ -33,7 +33,7 @@ class Auth::AuthenticationController < ApplicationController
   end
 
   def google
-    @youtube_client = YoutubeClient.first
+    @youtube_client = YoutubeClient.first || YoutubeClient.new
     @youtube_client.api_access_token = @raw_data['access_token']
     @youtube_client.api_refresh_token = @raw_data['refresh_token']
     if @youtube_client.save
