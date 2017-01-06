@@ -41,15 +41,17 @@ class YoutubeVideosController < ApplicationController
   def status
     authorize YoutubeVideo
     youtube_client = YoutubeClient.first
-    account = Yt::Account.new refresh_token: youtube_client.api_refresh_token
-    name = account.name
+    if youtube_client.present?
+      account = Yt::Account.new refresh_token: youtube_client.api_refresh_token
+      name = account.name
+    else
+      name = nil
+    end
     if name.present?
       render json: { connected: true }
     else
       render json: { connected: false }
     end
-  rescue Yt::Errors::RequestError
-    render json: { connected: false }
   end
 
   private
