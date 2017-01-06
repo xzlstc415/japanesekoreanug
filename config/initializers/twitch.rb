@@ -3,7 +3,7 @@ require 'twitch'
 ::TWITCH = Twitch.new({
   client_id: ENV['TWITCH_CLIENT_ID'],
   secret_key: ENV['TWITCH_CLIENT_SECRET'],
-  redirect_uri: 'http://' + ENV['S3_URL'],
+  redirect_uri: 'http://yujihomo-angularjs-app.s3-website-ap-northeast-1.amazonaws.com',
   scope: ['user_read']
 })
 
