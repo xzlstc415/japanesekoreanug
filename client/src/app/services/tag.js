@@ -41,10 +41,20 @@
       return $http(req);
     };
 
+    var destroy = function(id) {
+      var req = {
+        method: 'DELETE',
+        url: API_URL + '/api/tags/' + id
+      };
+
+      return $http(req);
+    };
+
     vm.query = query;
     vm.get = get;
     vm.save = save;
     vm.autocomplete = autocomplete;
+    vm.destroy = destroy;
 
     return vm;
   };

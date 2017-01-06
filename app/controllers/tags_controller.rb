@@ -1,5 +1,7 @@
 # TagsController
 class TagsController < ApplicationController
+  before_action :authenticate_auth_user!, only: [:create, :destroy]
+  after_action :verify_authorized, only: [:create, :destroy]
   def autocomplete
     @tags = Tag.search(autocomplete_params)
                .result
@@ -11,11 +13,23 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.new(tag_params)
+    authorize @tag
 
     unless @tag.save
       render json: { errors: @tag.errors.full_messages },
              status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @tag = Tag.find(params[:id])
+    authorize @tag
+    @tag.destroy
+
+    head :ok
+  rescue
+    render json: { error: 'please remove this tag from all episodes first' },
+           status: :bad_request
   end
 
   private

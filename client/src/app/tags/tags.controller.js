@@ -7,7 +7,7 @@
 
     var removeTag = function(tag) {
       usSpinnerService.spin('spinner-1');
-      EpisodeType.destroy(tag.id)
+      Tag.destroy(tag.id)
         .then(function(res) {
           usSpinnerService.stop('spinner-1');
           var index = vm.tags.indexOf(tag);
