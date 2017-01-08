@@ -19,7 +19,7 @@
     </div>
   </div>
 </div>
-<div>
+<div ng-if="!vm.currentUser">
   Log in to leave a comment
 </div>
 <ug-comment ng-repeat="comment in vm.comments | orderBy:'-created_at'"
