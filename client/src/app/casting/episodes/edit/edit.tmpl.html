@@ -3,13 +3,14 @@
     Edit episode
   </div>
   <div class="form_container">
-    <form id="editEpisodeForm" novalidate ng-submit="vm.updateEpisode()">
+    <form id="editEpisodeForm" novalidate>
       <ng-include src="'app/casting/episodes/templates/episode-form.tmpl.html'">
       </ng-include>
       <div class="form-group">
         <input class="form-submit-button"
                type="button"
-               value="update"/>
+               value="update"
+               ng-click="vm.updateEpisode()"/>
       </div>
     </form>
   </div>
