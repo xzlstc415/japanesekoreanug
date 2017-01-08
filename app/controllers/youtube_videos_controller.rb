@@ -27,6 +27,7 @@ class YoutubeVideosController < ApplicationController
 
     if refreshed_video
       unless @youtube_video.update_attributes(api_title: refreshed_video.title,
+                                              api_description: refreshed_video.description,  
                                               api_thumbnail_url: refreshed_video.thumbnail_url,
                                               api_privacy_status: refreshed_video.privacy_status,
                                               api_duration: refreshed_video.duration,
