@@ -2,7 +2,7 @@
 class Episode < ApplicationRecord
   self.per_page = 30
   before_create :set_episode_number, :set_published_at
-  before_save :set_thumbnail_url, :set_duration
+  before_save :initialize_from_youtube_video
 
   scope :published, -> { where('published_at IS NOT NULL') }
 
@@ -13,11 +13,6 @@ class Episode < ApplicationRecord
   belongs_to :youtube_video
   has_many :starred_episode_users, dependent: :destroy
   has_many :liked_users, through: :starred_episode_users, source: :user
-
-  validates :episode_type,
-            :name,
-            :description,
-            presence: true
 
   def similar_episode_ids
     return [] if similar_episode_group.nil?
@@ -50,11 +45,10 @@ class Episode < ApplicationRecord
     self.published_at = Date.current
   end
 
-  def set_thumbnail_url
+  def initialize_from_youtube_video
     self.thumbnail_url = youtube_video.api_thumbnail_url
-  end
-
-  def set_duration
     self.duration = youtube_video.api_duration
+    self.name = youtube_video.api_title if name.blank?
+    self.description = youtube_video.api_description if description.blank?
   end
 end

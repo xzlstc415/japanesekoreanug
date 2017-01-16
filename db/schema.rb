@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170101081508) do
+ActiveRecord::Schema.define(version: 20170108084828) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "episode_id",        limit: 4
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20170101081508) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                limit: 255
+    t.string   "avatar_url",          limit: 255
     t.boolean  "receive_email",                   default: true
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -112,7 +113,6 @@ ActiveRecord::Schema.define(version: 20170101081508) do
     t.string   "avatar_content_type", limit: 255
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
-    t.string   "avatar_url",          limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20170101081508) do
 
   create_table "youtube_videos", force: :cascade do |t|
     t.string   "api_title",          limit: 255
+    t.text     "api_description",    limit: 65535
     t.string   "api_id",             limit: 255
     t.string   "api_thumbnail_url",  limit: 255
     t.string   "api_privacy_status", limit: 255

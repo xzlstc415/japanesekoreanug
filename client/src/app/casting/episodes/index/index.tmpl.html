@@ -32,11 +32,12 @@
       </div>
       <h2>
         <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">{{episode.name}}</a>
-         <a href=""
+         <a href="javascript:void(0)"
             class="star"
             ng-class="{starred: episode.starred, unstarred: !episode.starred}"
             ng-click="vm.toggleStar(episode)"
-            rel="nofollow">☆</a>
+            rel="nofollow"
+            ng-if="vm.currentUser">☆</a>
       </h2>
       <div class="description">
         {{episode.description}}
@@ -82,9 +83,9 @@
         <a href="javascript:void(0)"
            class="star"
            ng-class="{starred: episode.starred, unstarred: !episode.starred}"
-           data-method="post"
-           data-remote="true"
-           rel="nofollow">☆</a>
+           ng-click="vm.toggleStar(episode)"
+           rel="nofollow"
+           ng-if="vm.currentUser">☆</a>
         {{episode.number}}
       </td>
       <td>
@@ -122,9 +123,9 @@
       <a href="javascript:void(0)"
          class="star"
          ng-class="{starred: episode.starred, unstarred: !episode.starred}"
-         data-method="post"
-         data-remote="true"
-         rel="nofollow">☆</a>
+         ng-click="vm.toggleStar(episode)"
+         rel="nofollow"
+         ng-if="vm.currentUser">☆</a>
     </div>
   </div>
 </div>

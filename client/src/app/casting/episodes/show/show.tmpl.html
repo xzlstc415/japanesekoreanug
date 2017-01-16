@@ -11,7 +11,8 @@
          class="star"
          ng-class="{starred: vm.episode.starred, unstarred: !vm.episode.starred}"
          ng-click="vm.toggleStar()"
-         rel="nofollow">☆</a>
+         rel="nofollow"
+         ng-if="vm.currentUser">☆</a>
     </h1>
     <div class="details">{{vm.episode.published_at}} | {{vm.episode.comments_count}} comments | {{vm.episode.duration | secondsToTimeFormat}} |
       <span ng-repeat="tag in vm.episode.tags track by $index">

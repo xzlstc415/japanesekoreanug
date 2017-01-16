@@ -1,4 +1,4 @@
-<div class="comment ng-scope">
+<div class="comment ng-scope" ng-if="vm.currentUser">
   <div class="avatar">
     <img alt="Avatar" height="64" ng-src="{{vm.currentUser.avatar_url || '/assets/images/guest.png'}}" width="64">
   </div>
@@ -18,6 +18,9 @@
       </div>
     </div>
   </div>
+</div>
+<div ng-if="!vm.currentUser">
+  Log in to leave a comment
 </div>
 <ug-comment ng-repeat="comment in vm.comments | orderBy:'-created_at'"
             comment="comment">

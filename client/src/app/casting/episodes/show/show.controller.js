@@ -1,9 +1,10 @@
 (function() {
   'use strict';
 
-  var EpisodesShowController = function(episode, $sce, StarredEpisodeUser, $state) {
+  var EpisodesShowController = function(User, episode, $sce, StarredEpisodeUser, $state) {
     var vm = this;
     vm.episode = episode.data;
+    vm.currentUser = User.currentUser();
     if ($state.current.name == 'episodes-similar-ep') {
       vm.similarEpisodesSelected = true;
       vm.commentsSelected = false;
@@ -52,7 +53,7 @@
     vm.toggleStar = toggleStar;
   };
 
-  EpisodesShowController.$inject = ['episode', '$sce', 'StarredEpisodeUser', '$state'];
+  EpisodesShowController.$inject = ['User', 'episode', '$sce', 'StarredEpisodeUser', '$state'];
 
   angular.module('yujihomo')
     .controller('EpisodesShowController', EpisodesShowController);
