@@ -7,10 +7,10 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'www.japanesekoreanug.com.s3-website-ap-northeast-1.amazonaws.com',
-            'japanesekoreanug.com.s3-website-ap-northeast-1.amazonaws.com',
-            'www.japanesekoreanug.com',
-            'japanesekoreanug.com'
+    origins 'http://www.japanesekoreanug.com.s3-website-ap-northeast-1.amazonaws.com',
+            'http://japanesekoreanug.com.s3-website-ap-northeast-1.amazonaws.com',
+            'http://www.japanesekoreanug.com',
+            'http://japanesekoreanug.com'
 
     resource '*',
       headers: :any,
