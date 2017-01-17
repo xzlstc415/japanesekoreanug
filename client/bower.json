@@ -21,7 +21,9 @@
     "angular-spinner": "latest",
     "ngInfiniteScroll": "latest",
     "ng-tags-input": "latest",
-    "ng-file-upload": "latest"
+    "ng-file-upload": "latest",
+    "angulartics": "latest",
+    "angulartics-google-analytics": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

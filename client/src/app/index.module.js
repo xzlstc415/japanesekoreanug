@@ -16,7 +16,9 @@
       'angularSpinner',
       'infinite-scroll',
       'ngTagsInput',
-      'ngFileUpload'
+      'ngFileUpload',
+      'angulartics',
+      'angulartics.google.analytics'
     ]);
 
 })();
