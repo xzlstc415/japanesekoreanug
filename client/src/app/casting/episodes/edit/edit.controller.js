@@ -45,6 +45,7 @@
       } else {
         Tag.save({tag: {name: $tag.text}})
           .then(function(res) {
+            $tag.id = res.data.id;
             return true;
           })
           .catch(function(res) {
@@ -54,13 +55,7 @@
     };
 
     var addTag = function($tag) {
-      if ($tag.id) {
-        vm.episode.tag_ids.push($tag.id);
-      } else {
-        Tag.save({tag: {name: $tag.text}}).then(function(res) {
-          vm.episode.tag_ids.push(res.data.id);
-        });
-      }
+      vm.episode.tag_ids.push($tag.id);
     };
 
     var removeTag = function($tag) {
