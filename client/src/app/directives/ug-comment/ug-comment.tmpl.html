@@ -14,7 +14,7 @@
         <a class="blue-text" href="/users/{{vm.comment.user.id}}">{{vm.comment.user.name}}</a>
       </span>
       <span class="created_at">
-        {{vm.comment.created_at_in_words}} ago
+        {{vm.comment.created_at_in_words}} 前
       </span>
     </div>
 
@@ -22,7 +22,7 @@
       <p>{{vm.comment.content}}</p>
 
       <div class="actions" ng-if="vm.currentUser">
-        <a href="javascript:void(0)" ng-click="vm.openReplyBlock()">Reply</a>
+        <a href="javascript:void(0)" ng-click="vm.openReplyBlock()">返信</a>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
     <div class="avatar"><img alt="Avatar" height="64" ng-src="{{vm.currentUser.avatar_url || '/assets/images/guest.png'}}" width="64"></div>
     <div class="main">
       <div class="headline">
-        <span class="position">New comment as</span>
+        <span class="position">新しいコメント</span>
         <span class="name">
           <a class="blue-text" href="javascript:void(0)">{{vm.currentUser.name}}</a>
         </span>
@@ -47,7 +47,7 @@
           </textarea>
         </div>
         <div class="actions">
-          <input name="commit" type="button" value="Post Comment" ng-click="vm.reply(newComment)">
+          <input name="commit" type="button" value="コメントする" ng-click="vm.reply(newComment)">
         </div>
       </div>
     </div>

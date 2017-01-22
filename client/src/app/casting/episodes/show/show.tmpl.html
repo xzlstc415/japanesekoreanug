@@ -22,7 +22,7 @@
     <div class="description">
       {{vm.episode.name}}
     </div>
-    <div class="watch"><a href="javascript:void(0)" ng-click="vm.playVideo()" class="play_video watch_button">Click to Play Video ▶</a></div>
+    <div class="watch"><a href="javascript:void(0)" ng-click="vm.playVideo()" class="play_video watch_button">動画を見る ▶</a></div>
     <div class="social">
       <iframe
         id="twitter-widget-0"
@@ -31,7 +31,7 @@
         allowtransparency="true"
         class="twitter-share-button twitter-share-button-rendered twitter-tweet-button"
         title="Twitter Tweet Button"
-        src="http://platform.twitter.com/widgets/tweet_button.289140617d6d66fbee36bb5f0535b846.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Frailscasts.com%2Fepisodes%2F417-foundation&amp;size=m&amp;text=Watching%20Foundation%20on%20RailsCasts&amp;time=1474764550561&amp;type=share&amp;url=http%3A%2F%2Frailscasts.com%2Fepisodes%2F417-foundation&amp;via=railscasts"
+        ng-src="http://platform.twitter.com/widgets/tweet_button.289140617d6d66fbee36bb5f0535b846.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fjapanesekoreanug.com%2Fepisodes%2F{{vm.episode.id}}&amp;size=m&amp;text=%40JPKR_UG%20%E3%81%95%E3%82%93%E3%81%AE%%E5%8B%95%E7%94%BB%E3%82%92%E9%AB%98%E3%81%8F%E8%A9%95%E4%BE%A1%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%EF%BC%9A%20{{vm.episode.name}}&amp;type=share&amp;url=http%3A%2F%2Fjapanesekoreanug.com%2Fepisodes%2F{{vm.episode.id}}&amp;"
         style="position: static; visibility: visible; width: 61px; height: 20px;"
         data-url="http://railscasts.com/episodes/417-foundation">
       </iframe>
@@ -48,7 +48,7 @@
          ng-class="{selected: vm.commentsSelected}"
          ng-click="vm.commentsSelected = true; vm.similarEpisodesSelected = false;"
          ui-sref="episodes-comments({id: {{vm.episode.id}}})">
-        {{vm.episode.comments_count}} Comments
+        {{vm.episode.comments_count}} コメント
       </a>
     </li>
     <li>
@@ -57,21 +57,21 @@
          ng-class="{selected: vm.similarEpisodesSelected}"
          ng-click="vm.commentsSelected = false; vm.similarEpisodesSelected = true;"
          ui-sref="episodes-similar-ep({id: {{vm.episode.id}}})">
-        Similar Episodes
+        関連エピソード
       </a>
     </li>
     <li class="next">
       <a href="javascript:void(0)"
          ui-sref="episodes-comments({id: {{vm.episode.next_episode_id}}})"
          ng-if="!!vm.episode.next_episode_id">
-        Next Episode &gt;
+        次のエピソード &gt;
       </a>
     </li>
     <li class="previous">
       <a href="javascript:void(0)"
          ui-sref="episodes-comments({id: {{vm.episode.previous_episode_id}}})"
          ng-if="!!vm.episode.previous_episode_id">
-        &lt; Previous Episode
+        &lt; 前回のエピソード
       </a>
     </li>
   </ul>

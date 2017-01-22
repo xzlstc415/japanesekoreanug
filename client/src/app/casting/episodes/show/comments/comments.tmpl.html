@@ -4,7 +4,7 @@
   </div>
   <div class="main">
     <div class="headline">
-      <span class="position">New comment as</span>
+      <span class="position">新しいコメント</span>
       <span class="name">
         <a class="blue-text ng-binding" href="/users/{{vm.comment.user.id}}">{{vm.currentUser.name}}</a>
       </span>
@@ -14,13 +14,13 @@
         <textarea cols="65" id="comment_content" rows="6" ng-model="newComment.content" class="ng-pristine ng-valid ng-empty ng-touched" aria-invalid="false" style=""></textarea>
       </div>
       <div class="actions">
-        <input name="commit" type="button" value="Post Comment" ng-click="vm.reply(newComment)">
+        <input name="commit" type="button" value="コメントする" ng-click="vm.reply(newComment)">
       </div>
     </div>
   </div>
 </div>
 <div ng-if="!vm.currentUser">
-  Log in to leave a comment
+  ログインしてコメントする
 </div>
 <ug-comment ng-repeat="comment in vm.comments | orderBy:'-created_at'"
             comment="comment">

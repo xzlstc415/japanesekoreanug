@@ -9,27 +9,27 @@
   </div>
   <div class="user_nav">
     <div ng-show="vm.currentUser">
-      Logged in as <a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a>
-      | <a href="javascript:void(0)" ui-sref="home({starred: true})">Favourite Episodes</a>
-      | <a href="javascript:void(0)" ng-click="vm.logout()">Log Out</a>
+      <a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a>
+      | <a href="javascript:void(0)" ui-sref="home({starred: true})">お気に入り動画</a>
+      | <a href="javascript:void(0)" ng-click="vm.logout()">ログアウト</a>
     </div>
     <div ng-show="!vm.currentUser">
-      <a href="javascript:void(0)" ng-click="vm.openLoginModal();">Sign in Now</a>
-      | <a href="javascript:void(0)" ng-click="vm.openSignupModal();">Sign Up</a>
+      <a href="javascript:void(0)" ng-click="vm.openLoginModal();">ログイン</a>
+      | <a href="javascript:void(0)" ng-click="vm.openSignupModal();">新規会員登録</a>
     </div>
   </div>
   <ul class="subscribe horizontal">
     <li>
       <a href="https://twitter.com/jpkr_ug"><img alt="Twitter" height="34" src="/assets/images/twitter.png" width="34"></a>
-      <span class="name">follow on Twitter</span>
+      <span class="name">Twitterをフォローする</span>
     </li>
     <li>
       <a href="https://www.youtube.com/channel/UCPLVTmdgB-ljT3S5xGBhBQA"><img alt="Youtube" height="34" src="/assets/images/youtube.jpg" width="34"></a>
-      <span class="name">subscribe on Youtube</span>
+      <span class="name">Youtubeチャンネル登録</span>
     </li>
     <li>
       <a href="https://www.twitch.tv/japanesekoreanug"><img alt="Twitch" height="34" src="/assets/images/twitch.png" width="34"></a>
-      <span class="name">subscribe on Twitch</span>
+      <span class="name">Twitchをフォローする</span>
     </li>
   </ul>
 </div>
@@ -40,13 +40,13 @@
     <li><a href="javascript:void(0)" ui-sref="episodes-create" ng-if="vm.currentUser.role=='admin'">Create Episode</a></li>
     <li><a href="javascript:void(0)" ui-sref="youtube" ng-if="vm.currentUser.role=='admin'">Youtube Import</a></li>
     <li>|</li>
-    <li><a href="javascript:void(0)" ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">Browse Episodes</a></li>
-    <li><a href="javascript:void(0)" ui-sref="about">About</a></li>
-    <li><a href="javascript:void(0)" ui-sref="feedback">Feedback</a></li>
+    <li><a href="javascript:void(0)" ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">講座エピソード</a></li>
+    <li><a href="javascript:void(0)" ui-sref="about">このサイトについて</a></li>
+    <li><a href="javascript:void(0)" ui-sref="feedback">フィードバック</a></li>
   </ul>
   <form ng-submit="vm.searchEpisodes()" ng-show="vm.$state.current.name == 'home'">
     <input name="search" size="35" type="text" ng-model="vm.keyword">
-    <input type="submit" value="Search Episodes">
+    <input type="submit" value="エピソード検索">
   </form>
 </div>
 <div class="login-container" ng-if="vm.loginWndOpen">
@@ -55,26 +55,26 @@
       <div class="wrapper">
         <div class="item">
           <button class="twitch_button button" style="padding: 10px 12px;">
-            <span style="font-size:14px; cursor: pointer;" ng-click="vm.authenticate('twitch')">Connect with Twitch</span>
+            <span style="font-size:14px; cursor: pointer;" ng-click="vm.authenticate('twitch')">Twitchでログイン</span>
           </button>
         </div>
         <div class="field item">
-          <label for="email">Email</label>
+          <label for="email">メールアドレス</label>
           <input autocapitalize="none" type="text" name="username" id="username" class="text" ng-model="user.email">
         </div>
         <div class="field item">
-          <label for="password">Password</label>
+          <label for="password">パスワード</label>
           <input autocapitalize="none" type="password" name="password" id="password" class="text" ng-model="user.password">
         </div>
-        <div class="help">
+        <!-- <div class="help">
           <a>Trouble loggin in?</a>
-        </div>
+        </div> -->
         <div class="help">
-          Doesn't have an account? <a href="javascript:void(0)" ng-click="vm.closeLoginModal();vm.openSignupModal();">sign up</a>
+          初めての方は登録手続きへお進みください。 <a href="javascript:void(0)" ng-click="vm.closeLoginModal();vm.openSignupModal();">新規会員登録</a>
         </div>
         <div class="buttons">
           <button type="button" style="cursor: pointer;" ng-click="vm.login(user)">
-              Log In
+              ログイン
           </button>
         </div>
       </div>
@@ -90,31 +90,31 @@
       <div class="wrapper">
         <div class="item">
           <button class="twitch_button button" style="padding: 10px 12px;">
-            <span style="font-size:14px; cursor: pointer;" ng-click="vm.authenticate('twitch')">Connect with Twitch</span>
+            <span style="font-size:14px; cursor: pointer;" ng-click="vm.authenticate('twitch')">Twitchでログイン</span>
           </button>
         </div>
         <div class="field item">
-          <label for="email">Email</label>
+          <label for="email">メールアドレス</label>
           <input autocapitalize="none" type="email" name="email" id="email" class="text" ng-model="user.email">
         </div>
         <div class="field item">
-          <label for="name">Name</label>
+          <label for="name">アカウント名</label>
           <input autocapitalize="none" type="text" name="name" id="name" class="text" ng-model="user.name">
         </div>
         <div class="field item">
-          <label for="password">Password</label>
+          <label for="password">パスワード</label>
           <input autocapitalize="none" type="password" name="password" id="password" class="text" ng-model="user.password">
         </div>
         <div class="field item">
-          <label for="password-confirmation">Password Confirmation</label>
+          <label for="password-confirmation">パスワードの再確認</label>
           <input autocapitalize="none" type="password" name="password" id="password-confirmation" class="text" ng-model="user.password_confirmation">
         </div>
         <div class="help">
-          Already have an account? <a href="javascript:void(0)" ng-click="vm.closeSignupModal();vm.openLoginModal()">sign in</a>
+          アカウントをすでにお持ちの方　<a href="javascript:void(0)" ng-click="vm.closeSignupModal();vm.openLoginModal()">ログイン</a>
         </div>
         <div class="buttons">
           <button type="button" style="cursor: pointer;" ng-click="vm.signup(user)">
-              Sign up
+              新規会員登録
           </button>
         </div>
       </div>

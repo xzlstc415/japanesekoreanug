@@ -5,9 +5,9 @@
         var second = seconds % 60;
         var minute = Math.floor(seconds / 60);
         if (minute > 0) {
-          return minute.toString() + ' minutes ' + second.toString() + ' seconds';
+          return minute.toString() + ' 分 ' + second.toString() + ' 秒';
         } else {
-          return second.toString() + ' seconds';
+          return second.toString() + ' 秒';
         }
       };
   };

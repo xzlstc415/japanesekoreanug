@@ -1,5 +1,5 @@
 <div class="filters" ng-if="vm.filters.tags_name_eq || vm.filters.episode_type_name_eq">
-  <strong>Applied Filters:</strong>
+  <strong>フィルター検索:</strong>
   <span class="filter" ng-if="vm.filters.tags_name_eq">{{vm.filters.tags_name_eq}}
     <a href="javascript:void(0)"
        ng-click="vm.removeTag()">x</a>
@@ -24,11 +24,11 @@
     </div>
     <div class="main">
       <div class="info">
-        <span class="number">Episode #{{episode.number}}</span> –
+        <span class="number">エピソード #{{episode.number}}</span> –
         <span class="published_at">{{episode.published_at}}</span>
         <span ng-show="episode.published_at">–</span>
         <span ng-show="!episode.published_at" style="color: red;"><b>Unpublished</b></span>
-        <span class="comments"><a href="">{{episode.comments_count}} comments</a></span>
+        <span class="comments"><a href="">{{episode.comments_count}} コメント</a></span>
       </div>
       <h2>
         <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">{{episode.name}}</a>
@@ -46,7 +46,7 @@
       <div class="watch">
         <a href="javascript:void(0)"
            ui-sref="episodes-comments({id: {{episode.id}}})"
-           class="watch_button pretty_button">Watch Episode</a>
+           class="watch_button pretty_button">エピソードを見る</a>
         <a href="javascript:void(0)"
            ui-sref="episodes-update({id: {{episode.id}}})"
            class="edit_button pretty_button"
@@ -73,10 +73,10 @@
   <tbody>
     <tr>
       <th class="position">#</th>
-      <th>Name</th>
-      <th>Comments</th>
-      <th>Duration</th>
-      <th>Released</th>
+      <th>タイトル</th>
+      <th>コメント</th>
+      <th>動画時間</th>
+      <th>公開日</th>
     </tr>
     <tr class="episode" id="episode_{{episode.number}}" ng-repeat="episode in vm.episodes track by episode.id">
       <td class="position">
@@ -95,7 +95,7 @@
       </td>
       <td>
         <a href="/episodes/417-foundation?view=comments" class="comment_count">
-          {{episode.comments_count}} comments
+          {{episode.comments_count}} コメント
         </a>
       </td>
       <td>{{episode.duration | secondsToTimeFormat}}</td>
@@ -129,4 +129,4 @@
     </div>
   </div>
 </div>
-<div class="loading-indicator" ng-if="vm.busy">loading more...</div>
+<div class="loading-indicator" ng-if="vm.busy">もっと見る...</div>
