@@ -49,13 +49,13 @@
       }
     };
     
-    var getIframeSrc = function() {
-      return 'http://platform.twitter.com/widgets/tweet_button.289140617d6d66fbee36bb5f0535b846.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fjapanesekoreanug.com%2Fepisodes%2F'+ vm.episode.id + '&amp;size=m&amp;text=%40JPKR_UG%20%E3%81%95%E3%82%93%E3%81%AE%%E5%8B%95%E7%94%BB%E3%82%92%E9%AB%98%E3%81%8F%E8%A9%95%E4%BE%A1%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%EF%BC%9A%20{{vm.episode.name}}&amp;type=share&amp;url=http%3A%2F%2Fjapanesekoreanug.com%2Fepisodes%2F'+ vm.episode.id
-    };
+    // var getIframeSrc = function() {
+    //   return $sce.trustAsResourceUrl(window.encodeURIComponent( 'http://platform.twitter.com/widgets/tweet_button.289140617d6d66fbee36bb5f0535b846.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=ja&amp;original_referer=http://japanesekoreanug.com/episodes/'+ vm.episode.id + '&amp;size=m&amp;text=この動画' + vm.episode.name + '&amp;type=share&amp;url=http://japanesekoreanug.com/episodes/'+ vm.episode.id));
+    // };
 
     vm.playVideo = playVideo;
     vm.toggleStar = toggleStar;
-    vm.getIframeSrc = getIframeSrc;
+    // vm.getIframeSrc = getIframeSrc;
   };
 
   EpisodesShowController.$inject = ['User', 'episode', '$sce', 'StarredEpisodeUser', '$state'];
