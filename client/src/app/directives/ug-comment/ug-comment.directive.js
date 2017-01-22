@@ -4,7 +4,7 @@
   var ugComment = function(RecursionHelper) {
     return {
       restrict: 'E',
-      templateUrl: '/app/directives/ug-comment/ug-comment.tmpl.html',
+      templateUrl: 'app/directives/ug-comment/ug-comment.tmpl.html',
       scope: {
         comment: '='
       },
