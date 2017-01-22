@@ -14,7 +14,7 @@
         <textarea cols="65" id="comment_content" rows="6" ng-model="newComment.content" class="ng-pristine ng-valid ng-empty ng-touched" aria-invalid="false" style=""></textarea>
       </div>
       <div class="actions">
-        <input name="commit" type="button" value="コメントする" ng-click="vm.reply(newComment)">
+        <input name="commit" type="button" value="コメントする" ng-disabled="newComment.content.length == 0" ng-click="vm.reply(newComment)">
       </div>
     </div>
   </div>

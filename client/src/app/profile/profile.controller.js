@@ -12,7 +12,7 @@
           usSpinnerService.stop('spinner-1');
           $auth.setToken(res.data.token);
           vm.currentUser = User.currentUser();
-          toastr.success('You have updated your profile successfully!')
+          toastr.success('プロフィールを更新しました!')
         })
         .catch(function(res) {
           usSpinnerService.stop('spinner-1');

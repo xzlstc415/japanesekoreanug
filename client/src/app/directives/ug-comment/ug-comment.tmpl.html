@@ -47,7 +47,7 @@
           </textarea>
         </div>
         <div class="actions">
-          <input name="commit" type="button" value="コメントする" ng-click="vm.reply(newComment)">
+          <input name="commit" type="button" ng-disabled="newComment.content.length == 0" value="コメントする" ng-click="vm.reply(newComment)">
         </div>
       </div>
     </div>

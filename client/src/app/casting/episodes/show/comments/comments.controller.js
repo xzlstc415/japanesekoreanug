@@ -8,13 +8,13 @@
 
     var reply = function(comment) {
       if (!comment) {
-        toastr.error('message is empty!');
+        toastr.error('空白コメントはできません!');
         return;
       }
       comment.episode_id = episode.data.id;
       Comment.save({comment: comment}).then(function(res) {
         $state.reload();
-        toastr.success('You have left a new reply!');
+        toastr.success('コメントしました!');
       }).catch(function(res) {
         ErrorMessageHandler.displayErrors(res);
       });

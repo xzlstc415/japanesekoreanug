@@ -29,14 +29,14 @@
 
     var reply = function(comment) {
       if (!comment || (comment && comment.content.length === 0)) {
-        toastr.error('message is empty!');
+        toastr.error('空白コメントはできません!');
         return;
       }
       comment.parent_comment_id = vm.comment.id;
       comment.episode_id = vm.comment.episode_id;
       Comment.save({comment: comment}).then(function(res) {
         $state.reload();
-        toastr.success('You have left a new reply!');
+        toastr.success('コメントしました!');
       }).catch(function(res) {
         ErrorMessageHandler.displayErrors(res);
       });

@@ -43,11 +43,11 @@
             starred: null
           }, { reload: true });
           $state.reload();
-          toastr.success('You have logged in successfully!');
+          toastr.success('ログインに成功しました!');
         })
         .catch(function() {
           usSpinnerService.stop('spinner-1');
-          toastr.error('Sorry we cannot connect to twitch :(');
+          toastr.error('Twitchに接続できません、もう一回お試しください');
         });
     };
 
@@ -64,10 +64,10 @@
           starred: null
         }, { reload: true });
         $state.reload();
-        toastr.success('You have logged in successfully!');
+        toastr.success('ログインに成功しました!');
       }).catch(function(res) {
         usSpinnerService.stop('spinner-1');
-        toastr.error('Sorry we cannot connect to twitch :(');
+        toastr.error('メールアドレスまたはパスワードが間違っています');
       });
     };
 
@@ -75,7 +75,7 @@
       usSpinnerService.spin('spinner-1');
       $auth.logout();
       vm.currentUser = null;
-      toastr.success('You have logged out successfully!');
+      toastr.success('ログアウトしました!');
       usSpinnerService.stop('spinner-1');
       $state.go('home', {
         episode_type_name_eq: null,
@@ -90,7 +90,7 @@
       User.signup(user).then(function(res) {
         $auth.setToken(res.data.token);
         closeSignupModal();
-        toastr.success('You have signed up successfully!');
+        toastr.success('新規登録に成功しました!');
         usSpinnerService.stop('spinner-1');
         $state.go('home', {
           episode_type_name_eq: null,
