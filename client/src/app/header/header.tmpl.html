@@ -42,7 +42,8 @@
     <li>|</li>
     <li><a href="javascript:void(0)" ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">講座エピソード</a></li>
     <li><a href="javascript:void(0)" ui-sref="about">このサイトについて</a></li>
-    <li><a href="javascript:void(0)" ui-sref="feedback">フィードバック</a></li>
+    <li><a href="javascript:void(0)" ui-sref="feedback-create" ng-if="!vm.currentUser||vm.currentUser.role=='user'">フィードバック</a></li>
+    <li><a href="javascript:void(0)" ui-sref="feedback-index" ng-if="vm.currentUser.role=='admin'">フィードバック</a></li>
   </ul>
   <form ng-submit="vm.searchEpisodes()" ng-show="vm.$state.current.name == 'home'">
     <input name="search" size="35" type="text" ng-model="vm.keyword">

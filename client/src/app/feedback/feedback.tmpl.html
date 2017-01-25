@@ -8,25 +8,35 @@
       </div> -->
       <div class="field">
         <label for="feedback_message_name">名前</label>
-        <input id="feedback_message_name" name="feedback_message[name]" size="30" type="text" value="">
+        <input id="feedback_message_name"
+               size="30"
+               type="text"
+               ng-model="vm.feedback.name">
       </div>
       <div class="field">
         <label for="feedback_message_email">メールアドレス</label>
-        <input id="feedback_message_email" name="feedback_message[email]" size="30" type="text" value="">
+        <input id="feedback_message_email"
+               size="30"
+               type="text"
+               ng-model="vm.feedback.email">
       </div>
       <div class="field">
         <label for="feedback_message_content">メッセージ</label>
-        <textarea cols="50" id="feedback_message_content" name="feedback_message[content]" rows="14"></textarea>
+        <textarea cols="50" rows="14"
+                  id="feedback_message_content"
+                  ng-model="vm.feedback.content"></textarea>
       </div>
-      <div class="actions"><input name="commit" type="submit" value="Send Feedback"></div>
+      <div class="actions">
+        <input name="commit" type="button" value="送信" ng-click="vm.saveFeedback()">
+      </div>
     </form>
   </div>
   <div id="feedback_instructions">
-    <p><strong>Please send feedback about:</strong></p>
+    <p><strong>ご意見をお聞かせください:</strong></p>
     <ul>
-      <li>Suggestions of tutorial episodes</li>
-      <li>Ideas for future episodes</li>
-      <li>Anything about this site</li>
+      <li>既存のエピソードについて</li>
+      <li>今後の動画についてのご要望</li>
+      <li>その他このサイトについて</li>
     </ul>
   </div>
 </div>

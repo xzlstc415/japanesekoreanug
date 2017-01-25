@@ -3,13 +3,29 @@
 
   var stateConfig = function($stateProvider) {
     $stateProvider
-      .state('feedback', {
+      .state('feedback-create', {
         url:'/feedback',
         parent: 'yujihomo',
         views: {
           '@yujihomo': {
-            templateUrl: 'app/feedback/feedback.tmpl.html'
+            templateUrl: 'app/feedback/feedback.tmpl.html',
+            controller: 'FeedbacksCreateController as vm'
           }
+        }
+      })
+      .state('feedback-index', {
+        url:'/feedbacks',
+        parent: 'yujihomo',
+        views: {
+          '@yujihomo': {
+            templateUrl: 'app/feedback/feedbacks.tmpl.html',
+            controller: 'FeedbacksIndexController as vm'
+          }
+        },
+        resolve: {
+          feedbacks: ['Feedback', function(Feedback) {
+            return Feedback.query();
+          }]
         }
       });
   };

@@ -1,0 +1,17 @@
+<div class="feedbacks">
+  <h3>List of Feedbacks</h3>
+  <table class="list">
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Content</th>
+      </tr>
+      <tr class="feedback-item" ng-repeat="feedback in vm.feedbacks track by feedback.id">
+        <td>{{feedback.name}}</td>
+        <td>{{feedback.email}}</td>
+        <td>{{feedback.content}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
