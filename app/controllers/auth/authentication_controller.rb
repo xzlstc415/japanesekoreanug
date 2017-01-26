@@ -71,10 +71,9 @@ class Auth::AuthenticationController < ApplicationController
   end
 
   def find_or_initialize_user
-    @user = User.find_or_initialize_by(twitch_api_id: @raw_data['_id'])
+    @user = User.find_or_initialize_by(email: @raw_data['email'])
     @user.name = @raw_data['name']
     @user.avatar_url = @raw_data['logo']
-    @user.email = @raw_data['email']
     @user.receive_email = true
     @user.password = SecureRandom.hex
     @user.role = :user
