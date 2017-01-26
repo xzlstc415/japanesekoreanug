@@ -27,7 +27,7 @@ class Auth::AuthenticationController < ApplicationController
                         api_access_token: @access_token)
       render json: { token: JWTWrapper.encode(@user.as_json) }
     else
-      render json: { errors: ["We can't connect with your twitch account"] },
+      render json: { errors: @user.errors.full_messages },
              status: :unauthorized
     end
   end
