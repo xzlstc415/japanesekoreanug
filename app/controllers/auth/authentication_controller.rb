@@ -75,7 +75,7 @@ class Auth::AuthenticationController < ApplicationController
     @user.name = @raw_data['name']
     @user.avatar_url = @raw_data['logo']
     @user.receive_email = true
-    @user.password = SecureRandom.hex
+    @user.password = SecureRandom.hex unless @user.encrypted_password.present?
     @user.role = :user
   end
 end
