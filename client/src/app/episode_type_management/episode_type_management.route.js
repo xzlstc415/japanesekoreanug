@@ -6,6 +6,9 @@
       .state('episode_type_management', {
         url:'/episode_type_management',
         parent: 'yujihomo',
+        data: {
+          roles: ['admin']
+        },
         views: {
           '@yujihomo': {
             templateUrl: 'app/episode_type_management/episode_type_management.tmpl.html',

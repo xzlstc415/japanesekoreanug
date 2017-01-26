@@ -6,6 +6,9 @@
       .state('episode-groups', {
         url:'/episode_groups',
         parent: 'yujihomo',
+        data: {
+          roles: ['admin']
+        },
         views: {
           '@yujihomo': {
             templateUrl: 'app/episode_groups/index/index.tmpl.html',
@@ -21,6 +24,9 @@
       .state('episode-groups-detail', {
         url:'/episode_groups/:id',
         parent: 'yujihomo',
+        data: {
+          roles: ['admin']
+        },
         views: {
           '@yujihomo': {
             templateUrl: 'app/episode_groups/show/show.tmpl.html',
