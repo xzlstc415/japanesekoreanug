@@ -45,9 +45,9 @@
           $state.reload();
           toastr.success('ログインに成功しました!');
         })
-        .catch(function() {
+        .catch(function(res) {
           usSpinnerService.stop('spinner-1');
-          toastr.error('Twitchに接続できません、もう一回お試しください');
+          ErrorMessageHandler.displayErrors(res);
         });
     };
 

@@ -12,7 +12,6 @@ class User < ApplicationRecord
   has_attached_file :avatar, styles: { thumb: '64x64#' },
                              default_url: '/images/:style/missing.png'
 
-  validates :email, uniqueness: true
   validates :name, presence: true
   validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}
 

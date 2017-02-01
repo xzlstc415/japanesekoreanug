@@ -11,25 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125025532) do
+ActiveRecord::Schema.define(version: 20170126205852) do
+
+  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
+    t.string   "value",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "episode_id",        limit: 4
     t.integer  "user_id",           limit: 4
     t.integer  "parent_comment_id", limit: 4
     t.text     "content",           limit: 65535
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.boolean  "deleted"
   end
 
-  add_index "comments", ["episode_id"], name: "fk_rails_54055a1a28", using: :btree
-  add_index "comments", ["user_id"], name: "fk_rails_03de2dc08c", using: :btree
+  add_index "comments", ["episode_id"], name: "index_comments_on_episode_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "episode_types", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "episodes", force: :cascade do |t|
@@ -45,11 +51,11 @@ ActiveRecord::Schema.define(version: 20170125025532) do
     t.integer  "previous_episode_id",      limit: 4
     t.integer  "similar_episode_group_id", limit: 4
     t.integer  "episode_type_id",          limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
-  add_index "episodes", ["episode_type_id"], name: "fk_rails_fbae6c65b1", using: :btree
+  add_index "episodes", ["episode_type_id"], name: "index_episodes_on_episode_type_id", using: :btree
   add_index "episodes", ["similar_episode_group_id"], name: "index_episodes_on_similar_episode_group_id", using: :btree
   add_index "episodes", ["youtube_video_id"], name: "index_episodes_on_youtube_video_id", using: :btree
 
@@ -58,8 +64,8 @@ ActiveRecord::Schema.define(version: 20170125025532) do
     t.integer "tag_id",     limit: 4
   end
 
-  add_index "episodes_tags", ["episode_id"], name: "fk_rails_6a7d400b54", using: :btree
-  add_index "episodes_tags", ["tag_id"], name: "fk_rails_59e2c75c6f", using: :btree
+  add_index "episodes_tags", ["episode_id"], name: "index_episodes_tags_on_episode_id", using: :btree
+  add_index "episodes_tags", ["tag_id"], name: "index_episodes_tags_on_tag_id", using: :btree
 
   create_table "feedbacks", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -71,8 +77,8 @@ ActiveRecord::Schema.define(version: 20170125025532) do
 
   create_table "similar_episode_groups", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "starred_episode_users", force: :cascade do |t|
@@ -87,8 +93,8 @@ ActiveRecord::Schema.define(version: 20170125025532) do
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "twitch_users", force: :cascade do |t|
@@ -97,17 +103,18 @@ ActiveRecord::Schema.define(version: 20170125025532) do
     t.string   "api_name",         limit: 255
     t.string   "api_logo",         limit: 255
     t.string   "api_id",           limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
-  add_index "twitch_users", ["user_id"], name: "fk_rails_6b3b7d36b0", using: :btree
+  add_index "twitch_users", ["user_id"], name: "index_twitch_users_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                limit: 255
+    t.string   "avatar_url",          limit: 255
     t.boolean  "receive_email",                   default: true
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.string   "email",               limit: 255, default: "",   null: false
     t.string   "encrypted_password",  limit: 255, default: "",   null: false
     t.integer  "sign_in_count",       limit: 4,   default: 0,    null: false
@@ -120,15 +127,14 @@ ActiveRecord::Schema.define(version: 20170125025532) do
     t.string   "avatar_content_type", limit: 255
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
-    t.string   "avatar_url",          limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "youtube_clients", force: :cascade do |t|
     t.string   "api_access_token",  limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "api_refresh_token", limit: 255
   end
 
@@ -141,8 +147,8 @@ ActiveRecord::Schema.define(version: 20170125025532) do
     t.integer  "api_duration",       limit: 4
     t.text     "api_embed_html",     limit: 65535
     t.boolean  "api_processed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_foreign_key "comments", "episodes"

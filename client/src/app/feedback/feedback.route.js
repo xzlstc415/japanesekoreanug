@@ -16,6 +16,9 @@
       .state('feedback-index', {
         url:'/feedbacks',
         parent: 'yujihomo',
+        data: {
+          roles: ['admin']
+        },
         views: {
           '@yujihomo': {
             templateUrl: 'app/feedback/feedbacks.tmpl.html',

@@ -18,7 +18,7 @@ class Auth::AuthenticationController < ApplicationController
   end
 
   def twitch
-    find_or_initialize_user(@raw_data)
+    find_or_initialize_user
     if @user.save
       TwitchUser.create(user: @user,
                         api_id: @raw_data['_id'],
@@ -27,7 +27,7 @@ class Auth::AuthenticationController < ApplicationController
                         api_access_token: @access_token)
       render json: { token: JWTWrapper.encode(@user.as_json) }
     else
-      render json: { errors: ["We can't connect with your twitch account"] },
+      render json: { errors: @user.errors.full_messages },
              status: :unauthorized
     end
   end
@@ -70,12 +70,12 @@ class Auth::AuthenticationController < ApplicationController
     end
   end
 
-  def find_or_initialize_user(raw_data)
+  def find_or_initialize_user
     @user = User.find_or_initialize_by(email: @raw_data['email'])
     @user.name = @raw_data['name']
     @user.avatar_url = @raw_data['logo']
     @user.receive_email = true
-    @user.password = SecureRandom.hex
+    @user.password = SecureRandom.hex unless @user.encrypted_password.present?
     @user.role = :user
   end
 end
