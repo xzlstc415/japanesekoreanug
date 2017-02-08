@@ -1,46 +1,131 @@
-<div id="top">
-  <div class="logo">
-    <a class="no-underline"
-       style="cursor:pointer"
-       ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">
-      <img alt="Yuji profile Logo" height="56" src="/assets/images/yuji_profile.jpg">
-      <img class="yuji-logo-tagline" alt="JapaneseKoreanUG" height="40" src="/assets/images/Logomakr_7vEWEF.jpg">
-    </a>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" ng-click="vm.isNavCollapsed = !vm.isNavCollapsed">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">JPKR UG</a>
   </div>
-  <div class="user_nav">
-    <div ng-show="vm.currentUser">
-      <a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a>
-      | <a href="javascript:void(0)" ui-sref="home({starred: true})">お気に入り動画</a>
-      | <a href="javascript:void(0)" ng-click="vm.logout()">ログアウト</a>
-    </div>
-    <div ng-show="!vm.currentUser">
-      <a href="javascript:void(0)" ng-click="vm.openLoginModal();">ログイン</a>
-      | <a href="javascript:void(0)" ng-click="vm.openSignupModal();">新規会員登録</a>
+  <div class="collapse navbar-collapse" uib-collapse="vm.isNavCollapsed">
+    <ul class="nav navbar-nav navbar-right" ng-show="vm.currentUser">
+      <li><a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a></li>
+      <li><a href="javascript:void(0)" ui-sref="home({starred: true})">お気に入り動画</a></li>
+      <li><a href="javascript:void(0)" ng-click="vm.logout()">ログアウト</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-show="!vm.currentUser">
+      <li><a href="javascript:void(0)" ng-click="vm.openLoginModal();">ログイン</a></li>
+      <li><a href="javascript:void(0)" ng-click="vm.openSignupModal();">新規会員登録</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron">
+  <div class="container-fluid" style="padding-top: 50px;">
+    <div class="col-md-5 col-md-offset-1 col-sm-7 col-sm-offset-1">
+      <a class="no-underline"
+         style="cursor:pointer"
+         ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">
+        <img class="col-md-2 hidden-xs hidden-sm img-responsive" style="margin:10px 0;" alt="Yuji profile Logo" src="/assets/images/yuji_profile.jpg">
+        <img class="col-md-10 img-responsive" style="margin:10px 0;" alt="JapaneseKoreanUG" src="/assets/images/Logomakr_7vEWEF.jpg">
+      </a>
     </div>
   </div>
-  <ul class="subscribe horizontal">
-    <li><a href="https://twitter.com/jpkr_ug"><img alt="Twitter" height="34" src="/assets/images/twitter.png" width="34"></a></li>
-    <li><a href="https://www.youtube.com/channel/UCPLVTmdgB-ljT3S5xGBhBQA"><img alt="Youtube" height="34" src="/assets/images/youtube.jpg" width="34"></a></li>
-    <li><a href="https://www.twitch.tv/japanesekoreanug"><img alt="Twitch" height="34" src="/assets/images/twitch.png" width="34"></a></li>
-  </ul>
+  <div class="col-sm-3 col-sm-offset-10 col-md-2 col-md-offset-9 hidden-xs">
+    <span><a href="https://twitter.com/jpkr_ug"><img alt="Twitter" height="34" src="/assets/images/twitter.png" width="34"></a></span>
+    <span><a href="https://www.youtube.com/channel/UCPLVTmdgB-ljT3S5xGBhBQA"><img alt="Youtube" height="34" src="/assets/images/youtube.jpg" width="34"></a></span>
+    <span><a href="https://www.twitch.tv/japanesekoreanug"><img alt="Twitch" height="34" src="/assets/images/twitch.png" width="34"></a></span>
+  </div>
 </div>
-<div id="nav-bar">
-  <ul class="nav horizontal">
-    <li><a href="javascript:void(0)" ui-sref="tags" ng-if="vm.currentUser.role=='admin'">Tags</a></li>
-    <li><a href="javascript:void(0)" ui-sref="episode-groups" ng-if="vm.currentUser.role=='admin'">Episode Groups</a></li>
-    <li><a href="javascript:void(0)" ui-sref="episodes-create" ng-if="vm.currentUser.role=='admin'">Create Episode</a></li>
-    <li><a href="javascript:void(0)" ui-sref="youtube" ng-if="vm.currentUser.role=='admin'">Youtube Import</a></li>
-    <li>|</li>
-    <li><a href="javascript:void(0)" ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">講座エピソード</a></li>
-    <li><a href="javascript:void(0)" ui-sref="about">このサイトについて</a></li>
-    <li><a href="javascript:void(0)" ui-sref="feedback-create" ng-if="!vm.currentUser||vm.currentUser.role=='user'">フィードバック</a></li>
-    <li><a href="javascript:void(0)" ui-sref="feedback-index" ng-if="vm.currentUser.role=='admin'">フィードバック</a></li>
-  </ul>
-  <form ng-submit="vm.searchEpisodes()" ng-show="vm.$state.current.name == 'home'">
-    <input name="search" size="35" type="text" ng-model="vm.keyword">
-    <input type="submit" value="エピソード検索">
-  </form>
-</div>
+<nav class="navbar navbar-inverse no-border-radius yellow-bot-border hidden-xs" role="navigation">
+  <div style="padding:0 5%">
+    <form class="navbar-form navbar-left" ng-submit="vm.searchEpisodes()" ng-show="vm.$state.current.name == 'home'">
+      <div class="form-group">
+        <input name="search" type="text" ng-model="vm.keyword" class="form-control">
+      </div>
+
+      <button type="submit" class="btn btn-default">エピソード検索</button>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="javascript:void(0)" ui-sref="tags" ng-if="vm.currentUser.role=='admin'">Tags</a></li>
+      <li><a href="javascript:void(0)" ui-sref="episode-groups" ng-if="vm.currentUser.role=='admin'">Episode Groups</a></li>
+      <li><a href="javascript:void(0)" ui-sref="episodes-create" ng-if="vm.currentUser.role=='admin'">Create Episode</a></li>
+      <li><a href="javascript:void(0)" ui-sref="youtube" ng-if="vm.currentUser.role=='admin'">Youtube Import</a></li>
+      <li ng-if="vm.currentUser.role=='admin'" class="split">|</li>
+      <li><a href="javascript:void(0)" ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">講座エピソード</a></li>
+      <li><a href="javascript:void(0)" ui-sref="about">このサイトについて</a></li>
+      <li><a href="javascript:void(0)" ui-sref="feedback-create" ng-if="!vm.currentUser||vm.currentUser.role=='user'">フィードバック</a></li>
+      <li><a href="javascript:void(0)" ui-sref="feedback-index" ng-if="vm.currentUser.role=='admin'">フィードバック</a></li>
+    </ul>
+  </div>
+</nav>
+<nav class="navbar navbar-grey navbar-fixed-bottom no-border-radius visible-xs" role="navigation">
+  <div class="container-fluid">
+    <form class="navbar-form navbar-left row" ng-submit="vm.searchEpisodes()" ng-show="vm.mobileSearchOpen">
+      <div class="col-xs-7">
+        <input name="search" type="text" class="form-control" ng-model="vm.keyword">
+      </div>
+      <div class="col-xs-5">
+        <button type="submit" class="btn btn-sm btn-default">エピソード検索</button>
+      </div>
+    </form>
+    <ul class="row" style="padding-left:0;padding-top:15px;" ng-if="vm.$state.current.name == 'home'">
+      <li class="col-xs-3 mobile-nav border-right">
+        <div class="center-item">
+          <a href="javascript:void(0)">
+            <span class="glyphicon glyphicon-search" aria-hidden="true" ng-click="vm.mobileSearchOpen = true"></span>
+          </a>
+        </div>
+      </li>
+      <li class="col-xs-3 mobile-nav border-right" ng-click="vm.closeMobileSearch()">
+        <div class="center-item">
+          <a href="javascript:void(0)"
+             ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">
+            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
+          </a>
+        </div>
+      </li>
+      <li class="col-xs-3 mobile-nav border-right">
+        <div class="center-item">
+          <a href="javascript:void(0)" ui-sref="about" ng-click="vm.closeMobileSearch()">
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </a>
+        </div>
+      </li>
+      <li class="col-xs-3 mobile-nav">
+        <div class="center-item">
+          <a href="javascript:void(0)" ui-sref="feedback-create" ng-click="vm.closeMobileSearch()">
+            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+          </a>
+        </div>
+      </li>
+    </ul>
+    <ul class="row" style="padding-left:0;padding-top:15px;" ng-if="vm.$state.current.name != 'home'">
+      <li class="col-xs-4 mobile-nav border-right">
+        <div class="center-item">
+          <a href="javascript:void(0)"
+             ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">
+            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
+          </a>
+        </div>
+      </li>
+      <li class="col-xs-4 mobile-nav border-right">
+        <div class="center-item">
+          <a href="javascript:void(0)" ui-sref="about">
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </a>
+        </div>
+      </li>
+      <li class="col-xs-4 mobile-nav">
+        <div class="center-item">
+          <a href="javascript:void(0)" ui-sref="feedback-create">
+            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div class="login-container" ng-if="vm.loginWndOpen">
   <div class="login-inner">
     <div class="login-box" style="height: 417px;">

@@ -18,7 +18,8 @@
       'ngTagsInput',
       'ngFileUpload',
       'angulartics',
-      'angulartics.google.analytics'
+      'angulartics.google.analytics',
+      'ui.bootstrap'
     ]);
 
 })();

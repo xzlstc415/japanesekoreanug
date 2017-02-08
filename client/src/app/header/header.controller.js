@@ -3,6 +3,8 @@
 
   var HeaderController = function($auth, toastr, User, $state, usSpinnerService, ErrorMessageHandler) {
     var vm = this;
+    vm.isNavCollapsed = true;
+    vm.mobileSearchOpen = false;
     vm.loginWndOpen = false;
     vm.signupWndOpen = false;
     vm.currentUser = User.currentUser();
@@ -109,6 +111,10 @@
       vm.keyword = "";
     };
 
+    var closeMobileSearch = function() {
+      vm.mobileSearchOpen = false;
+    };
+
     vm.searchEpisodes = searchEpisodes;
     vm.closeLoginModal = closeLoginModal;
     vm.closeSignupModal = closeSignupModal;
@@ -118,6 +124,7 @@
     vm.login = login;
     vm.logout = logout;
     vm.signup = signup;
+    vm.closeMobileSearch = closeMobileSearch;
   };
 
   HeaderController.$inject = ['$auth', 'toastr', 'User', '$state', 'usSpinnerService', 'ErrorMessageHandler'];

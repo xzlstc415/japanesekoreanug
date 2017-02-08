@@ -23,7 +23,8 @@
     "ng-tags-input": "latest",
     "ng-file-upload": "latest",
     "angulartics": "latest",
-    "angulartics-google-analytics": "latest"
+    "angulartics-google-analytics": "latest",
+    "angular-bootstrap": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

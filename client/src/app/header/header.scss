@@ -1,3 +1,56 @@
+.jumbotron {
+  background-color: #ffffff !important;
+}
+
+.horizontal {
+  list-style: none;
+}
+
+.horizontal li {
+  float: left;
+  margin: 0 1px;
+}
+
+@media all and (max-width: 700px)
+{
+  .jumbotron
+  {
+    height: 120px;
+  }
+}
+
+.yellow-bot-border {
+  border-bottom: 4px solid rgb(255, 189, 0) !important;
+}
+
+.nav .split {
+  color: white;
+  padding: 15px 0;
+}
+
+.mobile-nav {
+  height: 35px;
+  list-style: none;
+  font-size: 1.5em;
+}
+
+.mobile-nav a {
+  color: rgb(100, 100, 100);
+}
+
+.mobile-nav a:hover {
+  color: rgb(100, 100, 100);
+}
+
+.navbar-grey {
+  background-color: rgb(245, 245, 245);
+}
+
+.center-item {
+  width: 28px;
+  margin: 0 auto;
+}
+
 .user_nav {
   position: absolute;
   top: 15px;
@@ -22,7 +75,7 @@
 }
 
 .yuji-logo-tagline {
-  margin-left: 20px;
+  margin-left: 10%;
 }
 
 #top .subscribe {
@@ -37,17 +90,9 @@
   font-size: 12px;
 }
 
-ul.horizontal {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 
-ul.horizontal li {
-  margin: 0;
-  padding: 0;
-  float: left;
-}
+
+
 
 #nav-bar {
   position: relative;
