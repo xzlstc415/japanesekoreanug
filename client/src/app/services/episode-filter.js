@@ -12,8 +12,12 @@
       $state.go('home', filters);
     };
 
-    var getFilters = function() {
-      return filters;
+    var getTag = function() {
+      return filters.tags_name_eq;
+    };
+
+    var getType = function() {
+      return filters.episode_type_name_eq;
     };
 
     var setTag = function(tag_name) {
@@ -26,7 +30,8 @@
       refreshState();
     };
 
-    vm.getFilters = getFilters;
+    vm.getTag = getTag;
+    vm.getType = getType;
     vm.setTag = setTag;
     vm.setType = setType;
 

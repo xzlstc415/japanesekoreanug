@@ -1,4 +1,4 @@
-<div class="filters" ng-if="vm.filters.tags_name_eq || vm.filters.episode_type_name_eq">
+<!-- <div class="filters" ng-if="vm.filters.tags_name_eq || vm.filters.episode_type_name_eq">
   <strong>フィルター検索:</strong>
   <span class="filter" ng-if="vm.filters.tags_name_eq">{{vm.filters.tags_name_eq}}
     <a href="javascript:void(0)"
@@ -8,9 +8,8 @@
     <a href="javascript:void(0)"
        ng-click="vm.removeType()">x</a>
   </span>
-</div>
-<div class="full"
-     ng-if="vm.getCurrentStyle() == 'full'"
+</div> -->
+<div class="full hidden-xs"
      infinite-scroll='vm.nextPage()'
      infinite-scroll-disabled='vm.busy || vm.end'
      infinite-scroll-distance='1'>
@@ -65,8 +64,7 @@
   </div>
 </div>
 
-<table class="list"
-       ng-if="vm.getCurrentStyle() == 'list'"
+<!-- <table class="list"
        infinite-scroll='vm.nextPage()'
        infinite-scroll-disabled='vm.busy || vm.end'
        infinite-scroll-distance='1'>
@@ -102,20 +100,21 @@
       <td>{{episode.published_at}}</td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
-<div class="grid"
-     ng-if="vm.getCurrentStyle() == 'grid'"
+<div class="grid visible-xs row"
      infinite-scroll='vm.nextPage()'
      infinite-scroll-disabled='vm.busy || vm.end'
      infinite-scroll-distance='1'>
-  <div class="episode" id="episode_{{episode.number}}" ng-repeat="episode in vm.episodes track by episode.id">
+  <div class="col-xs-12 grid-content" id="episode_{{episode.number}}" ng-repeat="episode in vm.episodes track by episode.id">
     <div class="screenshot">
       <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
-        <img alt="{{episode.number}}-{{episode.name}}" height="125" ng-src="{{episode.thumbnail_url}}" width="200">
+        <img class="img-responsive"
+             alt="{{episode.number}}-{{episode.name}}"
+             ng-src="{{episode.thumbnail_url}}">
       </a>
     </div>
-    <div class="name">
+    <div class="">
       #{{episode.number}}
       <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
         {{episode.name}}

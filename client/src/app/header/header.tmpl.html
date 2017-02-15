@@ -70,29 +70,21 @@
       </div>
     </form>
     <ul class="row" style="padding-left:0;padding-top:15px;" ng-if="vm.$state.current.name == 'home'">
-      <li class="col-xs-3 mobile-nav border-right">
+      <li class="col-xs-4 mobile-nav border-right">
         <div class="center-item">
           <a href="javascript:void(0)">
-            <span class="glyphicon glyphicon-search" aria-hidden="true" ng-click="vm.mobileSearchOpen = true"></span>
+            <span class="glyphicon glyphicon-search" aria-hidden="true" ng-click="vm.mobileSearchOpen = !vm.mobileSearchOpen"></span>
           </a>
         </div>
       </li>
-      <li class="col-xs-3 mobile-nav border-right" ng-click="vm.closeMobileSearch()">
-        <div class="center-item">
-          <a href="javascript:void(0)"
-             ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">
-            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
-          </a>
-        </div>
-      </li>
-      <li class="col-xs-3 mobile-nav border-right">
+      <li class="col-xs-4 mobile-nav border-right">
         <div class="center-item">
           <a href="javascript:void(0)" ui-sref="about" ng-click="vm.closeMobileSearch()">
             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
           </a>
         </div>
       </li>
-      <li class="col-xs-3 mobile-nav">
+      <li class="col-xs-4 mobile-nav">
         <div class="center-item">
           <a href="javascript:void(0)" ui-sref="feedback-create" ng-click="vm.closeMobileSearch()">
             <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
