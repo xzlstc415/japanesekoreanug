@@ -1,28 +1,30 @@
 <div id="episode">
-  <div class="info" ng-show="!vm.showVideo">
-    <div class="screenshot">
+  <div class="info row" ng-show="!vm.showVideo">
+    <div class="col-md-2">
       <a class="play_video" href="javascript:void(0)" ng-click="vm.playVideo()">
-        <img alt="{{vm.episode.number}}-{{vm.episode.name}}" height="125" src="{{vm.episode.thumbnail_url}}" width="200">
+        <img class="img-responsive" alt="{{vm.episode.number}}-{{vm.episode.name}}" height="125" src="{{vm.episode.thumbnail_url}}">
       </a>
     </div>
-    <h1>
-      <span class="position">#{{vm.episode.number}}</span> {{vm.episode.name}}
-      <a href="javascript:void(0)"
-         class="star"
-         ng-class="{starred: vm.episode.starred, unstarred: !vm.episode.starred}"
-         ng-click="vm.toggleStar()"
-         rel="nofollow"
-         ng-if="vm.currentUser">☆</a>
-    </h1>
-    <div class="details">{{vm.episode.published_at}} | {{vm.episode.comments_count}} comments | {{vm.episode.duration | secondsToTimeFormat}} |
-      <span ng-repeat="tag in vm.episode.tags track by $index">
-        <a href="javascript:void(0)">{{tag.name}}</a><span ng-if="!$last">,</span>
-      </span>
+    <div class="col-md-4 info-right-splash">
+      <h1>
+        <span class="position">#{{vm.episode.number}}</span> {{vm.episode.name}}
+        <a href="javascript:void(0)"
+           class="star"
+           ng-class="{starred: vm.episode.starred, unstarred: !vm.episode.starred}"
+           ng-click="vm.toggleStar()"
+           rel="nofollow"
+           ng-if="vm.currentUser">☆</a>
+      </h1>
+      <div class="details">{{vm.episode.published_at}} | {{vm.episode.comments_count}} comments | {{vm.episode.duration | secondsToTimeFormat}} |
+        <span ng-repeat="tag in vm.episode.tags track by $index">
+          <a href="javascript:void(0)">{{tag.name}}</a><span ng-if="!$last">,</span>
+        </span>
+      </div>
+      <div class="description">
+        {{vm.episode.name}}
+      </div>
+      <div class="watch"><a href="javascript:void(0)" ng-click="vm.playVideo()" class="play_video watch_button">動画を見る ▶</a></div>
     </div>
-    <div class="description">
-      {{vm.episode.name}}
-    </div>
-    <div class="watch"><a href="javascript:void(0)" ng-click="vm.playVideo()" class="play_video watch_button">動画を見る ▶</a></div>
     <!-- <div class="social">
       <iframe
         id="twitter-widget-0"
