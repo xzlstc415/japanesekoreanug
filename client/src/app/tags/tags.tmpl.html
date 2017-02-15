@@ -1,6 +1,6 @@
-<div class="tag-list">
+<div class="well well-lg">
   <h3>List of Tags</h3>
-  <table class="list">
+  <table class="table">
     <tbody>
       <tr>
         <th>Tag Name</th>
@@ -8,7 +8,7 @@
       </tr>
       <tr class="tag" ng-repeat="tag in vm.tags track by tag.id">
         <td>{{tag.name}}</td>
-        <td><button ng-click="vm.removeTag(tag)">delete</button></td>
+        <td><button ng-click="vm.removeTag(tag)" class="btn btn-danger">delete</button></td>
       </tr>
     </tbody>
   </table>

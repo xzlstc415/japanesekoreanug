@@ -45,18 +45,18 @@
       <div class="watch">
         <a href="javascript:void(0)"
            ui-sref="episodes-comments({id: {{episode.id}}})"
-           class="watch_button pretty_button">エピソードを見る</a>
+           class="btn btn-success">エピソードを見る</a>
         <a href="javascript:void(0)"
            ui-sref="episodes-update({id: {{episode.id}}})"
-           class="edit_button pretty_button"
+           class="btn btn-primary"
            ng-if="vm.currentUser.role == 'admin'">Edit Episode</a>
         <a href="javascript:void(0)"
            ng-click="vm.publishEpisode(episode)"
-           class="publish_button pretty_button"
+           class="btn btn-info"
            ng-if="!episode.published_at && vm.currentUser.role == 'admin'">Publish Episode</a>
         <a href="javascript:void(0)"
            ng-click="vm.unPublishEpisode(episode)"
-           class="unpublish_button pretty_button"
+           class="btn btn-danger"
            ng-if="episode.published_at && vm.currentUser.role == 'admin'">Unpublish Episode</a>
       </div>
     </div>

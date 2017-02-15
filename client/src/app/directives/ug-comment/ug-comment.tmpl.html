@@ -22,7 +22,9 @@
       <p>{{vm.comment.content}}</p>
 
       <div class="actions" ng-if="vm.currentUser">
-        <a href="javascript:void(0)" ng-click="vm.openReplyBlock()">返信</a>
+        <a href="javascript:void(0)"
+           ng-click="vm.openReplyBlock()"
+           class="btn btn-success">返信</a>
       </div>
     </div>
   </div>
@@ -39,15 +41,21 @@
         </span>
       </div>
       <div class="comment_content">
-        <div class="field">
+        <div class="form-group">
           <textarea cols="65"
                     id="comment_content"
                     rows="12"
-                    ng-model="newComment.content">
+                    ng-model="newComment.content"
+                    class="form-control">
           </textarea>
         </div>
-        <div class="actions">
-          <input name="commit" type="button" ng-disabled="newComment.content.length == 0" value="コメントする" ng-click="vm.reply(newComment)">
+        <div class="form-group">
+          <input name="commit"
+                 class="btn btn-success"
+                 type="button"
+                 ng-disabled="newComment.content.length == 0"
+                 value="コメントする"
+                 ng-click="vm.reply(newComment)">
         </div>
       </div>
     </div>

@@ -18,6 +18,25 @@
 .container {
   margin-bottom: 100px;
 }
+
+.unstarred{
+  color: #AAA !important;
+}
+
+.starred{
+  color: #E98C08 !important;
+}
+
+.star{
+  font-size: 16px;
+  text-decoration: none;
+  margin-left: 3px;
+}
+
+.star:hover {
+  text-decoration: none;
+}
+
 // body {
 //   background-color: #FFF;
 //   font-family: Verdana, Helvetica, Arial;
@@ -144,17 +163,5 @@
 //   font-size: 16px;
 // }
 //
-// .star{
-//   font-size: 16px;
-//   text-decoration: none;
-//   margin-left: 3px;
-// }
 //
-// .unstarred{
-//   color: #AAA !important;
-// }
-//
-// .starred{
-//   color: #E98C08 !important;
-// }
 //

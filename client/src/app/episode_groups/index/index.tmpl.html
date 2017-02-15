@@ -1,10 +1,14 @@
-<div class="episode-groups">
+<div class="well well-lg">
   <h3>List of Episode Groups</h3>
-  <form id="newEpisodeGroupForm">
-    <input type="text" ng-model="similar_episode_group.name"/>
-    <button ng-click="vm.addNewEpisodeGroup(similar_episode_group)">add new episode group</button>
+  <form id="newEpisodeGroupForm" class="form-inline">
+    <div class="form-group">
+      <input type="text" class="form-control" ng-model="similar_episode_group.name"/>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success" ng-click="vm.addNewEpisodeGroup(similar_episode_group)">add new episode group</button>
+    </div>
   </form>
-  <table class="list">
+  <table class="table">
     <tbody>
       <tr>
         <th>Episode Group Name</th>
@@ -15,8 +19,8 @@
         <td>{{episodeGroup.name}}</td>
         <td>{{episodeGroup.episode_count}}</td>
         <td>
-          <button ng-click="vm.goToDetail(episodeGroup)">update</button>
-          <button ng-click="vm.removeEpisodeGroup(episodeGroup)">delete</button>
+          <button class="btn btn-primary" ng-click="vm.goToDetail(episodeGroup)">update</button>
+          <button class="btn btn-danger" ng-click="vm.removeEpisodeGroup(episodeGroup)">delete</button>
         </td>
       </tr>
     </tbody>

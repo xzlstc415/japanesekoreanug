@@ -16,7 +16,7 @@
 }
 
 .form_container {
-  padding: 1px 15px;
+  padding: 3em 3em;
   background-color: #FFF;
   border: solid 1px #CCC;
   border-top: none;
@@ -26,16 +26,6 @@
   -webkit-border-bottom-right-radius: 5px;
   -moz-border-radius-bottomleft: 5px;
   -moz-border-radius-bottomright: 5px;
-}
-
-select.form-input {
-  height: 34px;
-  font-size: 14px;
-  background-color: white;
-}
-
-.form-link {
-  padding-left: 150px;
 }
 
 .form-link a {

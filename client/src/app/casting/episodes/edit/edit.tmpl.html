@@ -1,17 +1,17 @@
-<div class="content">
-  <div class="headline">
-    Edit episode
-  </div>
-  <div class="form_container">
-    <form id="editEpisodeForm" novalidate>
-      <ng-include src="'app/casting/episodes/templates/episode-form.tmpl.html'">
-      </ng-include>
-      <div class="form-group">
-        <input class="form-submit-button"
+<div class="headline">
+  Edit episode
+</div>
+<div class="form_container">
+  <form id="editEpisodeForm" class="form-horizontal" name="editEpisodeForm" novalidate>
+    <ng-include src="'app/casting/episodes/templates/episode-form.tmpl.html'">
+    </ng-include>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-2">
+        <input class="btn btn-primary"
                type="button"
                value="update"
                ng-click="vm.updateEpisode()"/>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>

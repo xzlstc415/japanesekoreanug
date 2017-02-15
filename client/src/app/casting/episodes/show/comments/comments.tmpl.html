@@ -10,11 +10,20 @@
       </span>
     </div>
     <div class="comment_content">
-      <div class="field">
-        <textarea cols="65" id="comment_content" rows="6" ng-model="newComment.content" class="ng-pristine ng-valid ng-empty ng-touched" aria-invalid="false" style=""></textarea>
+      <div class="form-group">
+        <textarea cols="65"
+                  id="comment_content"
+                  rows="6"
+                  ng-model="newComment.content"
+                  class="form-control"></textarea>
       </div>
-      <div class="actions">
-        <input name="commit" type="button" value="コメントする" ng-disabled="newComment.content.length == 0" ng-click="vm.reply(newComment)">
+      <div class="form-group">
+        <input name="commit"
+               class="btn btn-success"
+               type="button"
+               value="コメントする"
+               ng-disabled="newComment.content.length == 0"
+               ng-click="vm.reply(newComment)">
       </div>
     </div>
   </div>

@@ -1,11 +1,11 @@
 <div id="episode">
   <div class="info row" ng-show="!vm.showVideo">
-    <div class="col-md-2">
+    <div class="col-sm-2">
       <a class="play_video" href="javascript:void(0)" ng-click="vm.playVideo()">
         <img class="img-responsive" alt="{{vm.episode.number}}-{{vm.episode.name}}" height="125" src="{{vm.episode.thumbnail_url}}">
       </a>
     </div>
-    <div class="col-md-4 info-right-splash">
+    <div class="col-sm-4 info-right-splash">
       <h1>
         <span class="position">#{{vm.episode.number}}</span> {{vm.episode.name}}
         <a href="javascript:void(0)"
@@ -23,7 +23,7 @@
       <div class="description">
         {{vm.episode.name}}
       </div>
-      <div class="watch"><a href="javascript:void(0)" ng-click="vm.playVideo()" class="play_video watch_button">動画を見る ▶</a></div>
+      <div class="watch"><a href="javascript:void(0)" ng-click="vm.playVideo()" class="play_video btn btn-success">動画を見る ▶</a></div>
     </div>
     <!-- <div class="social">
       <iframe

@@ -1,54 +1,66 @@
 <div class="form-group">
-  <label class="label" for="name">Name</label>
-  <input class="form-input text" id="name" type="text" ng-model="vm.episode.name"/>
+  <label class="col-sm-2 control-label" for="name">Name</label>
+  <div class="col-sm-10">
+    <input class="form-control text" id="name" type="text" ng-model="vm.episode.name"/>
+  </div>
 </div>
 <div class="form-group">
-  <label class="label" for="description">Description</label>
-  <textarea class="form-input" rows="10" id="description" ng-model="vm.episode.description"></textarea>
+  <label class="col-sm-2 control-label" for="description">Description</label>
+  <div class="col-sm-10">
+    <textarea class="form-control" rows="10" id="description" ng-model="vm.episode.description"></textarea>
+  </div>
 </div>
 <div class="form-group">
-  <label class="label" for="tags">tags</label>
-  <tags-input ng-model="vm.tags"
-              id="tags"
-              key-property="id"
-              type="text"
-              min-tags="1"
-              on-tag-adding="vm.createTag($tag)"
-              on-tag-added="vm.addTag($tag)"
-              on-tag-removed="vm.removeTag($tag)"
-              style="display:inline-block; width:406px">
-    <auto-complete source="vm.searchTags($query)"
-                   min-length="2">
-    </auto-complete>
-  </tags-input>
+  <label class="col-sm-2 control-label" for="tags">tags</label>
+  <div class="col-sm-10">
+    <tags-input ng-model="vm.tags"
+                id="tags"
+                key-property="id"
+                type="text"
+                min-tags="1"
+                on-tag-adding="vm.createTag($tag)"
+                on-tag-added="vm.addTag($tag)"
+                on-tag-removed="vm.removeTag($tag)"
+                style="display:inline-block; width:406px">
+      <auto-complete source="vm.searchTags($query)"
+                     min-length="2">
+      </auto-complete>
+    </tags-input>
+  </div>
 </div>
 <div class="form-group">
-  <label class="label" for="episode_types">Episode Type</label>
-  <select class="form-input"
-          ng-model="vm.episode.episode_type_id"
-          ng-options="episodeType.id as episodeType.name for episodeType in vm.episodeTypes">
-  </select>
-  <div class="form-link">
+  <label class="col-sm-2 control-label" for="episode_types">Episode Type</label>
+  <div class="col-sm-10">
+    <select class="form-control"
+            ng-model="vm.episode.episode_type_id"
+            ng-options="episodeType.id as episodeType.name for episodeType in vm.episodeTypes">
+    </select>
+  </div>
+</div>
+<div class="form-group">
+  <div class="form-link col-sm-offset-2 col-sm-10">
     Need a new episode type?
     <a href="javascript:void(0)" ui-sref="episode_type_management" ng-if="vm.currentUser.role=='admin'">Create Episode Type</a>
   </div>
 </div>
 <div class="form-group">
-  <label class="label" for="youtube_videos">Youtube Video</label>
-  <tags-input ng-model="vm.youtubeVideos"
-              id="youtube_videos"
-              key-property="id"
-              tpye="text"
-              min-tags="1"
-              max-tags="1"
-              on-tag-adding="vm.canAddVideo()"
-              on-tag-added="vm.setYoutubeVideo($tag)"
-              on-tag-removed="vm.setYoutubeVideo()"
-              style="display:inline-block; width:406px"
-              placeholder="Add a youtube video"
-              add-from-autocomplete-only="true">
-    <auto-complete source="vm.searchYoutubeVideos($query)"
-                   min-length="3">
-    </auto-complete>
-  </tags-input>
+  <label class="col-sm-2 control-label" for="youtube_videos">Youtube Video</label>
+  <div class="col-sm-10">
+    <tags-input ng-model="vm.youtubeVideos"
+                id="youtube_videos"
+                key-property="id"
+                tpye="text"
+                min-tags="1"
+                max-tags="1"
+                on-tag-adding="vm.canAddVideo()"
+                on-tag-added="vm.setYoutubeVideo($tag)"
+                on-tag-removed="vm.setYoutubeVideo()"
+                style="display:inline-block; width:406px"
+                placeholder="Add a youtube video"
+                add-from-autocomplete-only="true">
+      <auto-complete source="vm.searchYoutubeVideos($query)"
+                     min-length="3">
+      </auto-complete>
+    </tags-input>
+  </div>
 </div>
