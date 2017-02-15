@@ -1,38 +1,40 @@
-<div class="content" id="about">
-  <div id="feedback">
+<div class="row">
+  <div class="col-md-8">
     <h2 class="bar">フィードバック</h2>
-    <form accept-charset="UTF-8" action="/feedback_messages" class="new_feedback_message" id="new_feedback_message" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="ykEogewSVn92F855kG5CF3uGBzLR/6NoBirpPUmsdxE="></div>
-
+    <form accept-charset="UTF-8" action="/feedback_messages" id="new_feedback_message" method="post" class="well well-lg">
       <!-- <div class="info">
         <p>You can also contact <a href="http://twitter.com/railscasts">@railscasts</a> on Twitter, or send an email to<a href="mailto:feedback@railscasts.com">feedback@railscasts.com</a>.</p>
       </div> -->
-      <div class="field">
+      <div class="form-group">
         <label for="feedback_message_name">名前</label>
         <input id="feedback_message_name"
+               class="form-control"
                size="30"
                type="text"
                ng-model="vm.feedback.name">
       </div>
-      <div class="field">
+      <div class="form-group">
         <label for="feedback_message_email">メールアドレス</label>
         <input id="feedback_message_email"
+               class="form-control"
                size="30"
                type="text"
                ng-model="vm.feedback.email">
       </div>
-      <div class="field">
+      <div class="form-group">
         <label for="feedback_message_content">メッセージ</label>
         <textarea cols="50" rows="14"
                   id="feedback_message_content"
+                  class="form-control"
                   ng-model="vm.feedback.content"></textarea>
       </div>
-      <div class="actions">
-        <input name="commit" type="button" value="送信" ng-click="vm.saveFeedback()">
+      <div class="form-group">
+        <input name="commit" class="btn btn-default" type="button" value="送信" ng-click="vm.saveFeedback()">
       </div>
     </form>
   </div>
-  <div id="feedback_instructions">
-    <p><strong>ご意見をお聞かせください:</strong></p>
+  <div class="col-md-4">
+    <h4 style="margin-top:20px;"><strong>ご意見をお聞かせください:</strong></h4>
     <ul>
       <li>既存のエピソードについて</li>
       <li>今後の動画についてのご要望</li>
