@@ -24,7 +24,8 @@
     "ng-file-upload": "latest",
     "angulartics": "latest",
     "angulartics-google-analytics": "latest",
-    "angular-bootstrap": "latest"
+    "angular-bootstrap": "latest",
+    "ng-disable-scroll": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

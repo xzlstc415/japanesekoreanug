@@ -19,7 +19,8 @@
       'ngFileUpload',
       'angulartics',
       'angulartics.google.analytics',
-      'ui.bootstrap'
+      'ui.bootstrap',
+      'ngDisableScroll'
     ]);
 
 })();

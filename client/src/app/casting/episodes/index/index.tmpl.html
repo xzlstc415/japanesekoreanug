@@ -114,17 +114,23 @@
              ng-src="{{episode.thumbnail_url}}">
       </a>
     </div>
-    <div class="">
-      #{{episode.number}}
-      <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
-        {{episode.name}}
-      </a>
-      <a href="javascript:void(0)"
-         class="star"
-         ng-class="{starred: episode.starred, unstarred: !episode.starred}"
-         ng-click="vm.toggleStar(episode)"
-         rel="nofollow"
-         ng-if="vm.currentUser">☆</a>
+    <div class="well">
+      <div>
+        #{{episode.number}}
+        <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})">
+          {{episode.name}}
+        </a>
+        <a href="javascript:void(0)"
+           class="star"
+           ng-class="{starred: episode.starred, unstarred: !episode.starred}"
+           ng-click="vm.toggleStar(episode)"
+           rel="nofollow"
+           ng-if="vm.currentUser">☆</a>
+      </div>
+      <div>
+        {{episode.description}}
+        <span class="stats">({{episode.duration | secondsToTimeFormat}})</span>
+      </div>
     </div>
   </div>
 </div>
