@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<div class="hidden-menu container visibile-xs" ng-show="vm.hiddenMenuIsVisible">
+<div class="hidden-menu container visibile-xs mobile-sidebar" ng-show="vm.hiddenMenuIsVisible">
   <div class="col-xs-11 hidden-menu-body">
     <div class="search_option">
       <h2>レベル分け</h2>
@@ -71,8 +71,7 @@
     </div>
   </div>
 </div>
-<div style="position: fixed;right: 2em;top: 0;bottom: 0;z-index: 100;"
-     class="visible-xs">
+<div class="visible-xs side-button-container">
   <button type="button"
           class="btn btn-warning btn-xs hidden-menu-button"
           ng-click="vm.hiddenMenuIsVisible = true"
