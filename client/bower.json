@@ -25,7 +25,8 @@
     "angulartics": "latest",
     "angulartics-google-analytics": "latest",
     "angular-bootstrap": "latest",
-    "ng-disable-scroll": "latest"
+    "ng-disable-scroll": "latest",
+    "angular-ui-calendar": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

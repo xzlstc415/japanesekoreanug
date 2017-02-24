@@ -1,0 +1,51 @@
+<div class="row" ng-if="vm.currentUser.role == 'admin' || vm.currentUser.role == 'moderator'">
+  <div class="col-md-5">
+    <div class="well">
+      <p class="input-group">
+        <input type="text" class="form-control"
+               uib-datepicker-popup
+               ng-model="vm.dt"
+               is-open="vm.datePopup.opened"
+               datepicker-options="vm.dateOptions"
+               close-text="Close" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default"
+                  ng-click="vm.openDatePopup()">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </p>
+      <button type="button" class="btn btn-sm btn-info" ng-click="vm.getToday()">Today</button>
+      <button type="button" class="btn btn-sm btn-warning" ng-click="vm.getTomorrow()">Tomorrow</button>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="well">
+          <label>Start At</label>
+          <div uib-timepicker
+               ng-model="vm.startTime"
+               hour-step="1"
+               minute-step="1"
+               show-meridian="true"></div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="well">
+          <label>Finished At</label>
+          <div uib-timepicker
+               ng-model="vm.endTime"
+               hour-step="1"
+               minute-step="1"
+               show-meridian="true"></div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-sm btn-success" ng-click="vm.createEvent()">Add Event</button>
+  </div>
+  <div class="col-md-7">
+    <div ui-calendar="vm.uiConfig.calendar" ng-model="vm.eventSources"></div>
+  </div>
+</div>
+<div class="row" ng-if="vm.currentUser.role == 'user'">
+  <div ui-calendar="vm.uiConfig.calendar" ng-model="vm.eventSources" calendar="userCalendar"></div>
+</div>

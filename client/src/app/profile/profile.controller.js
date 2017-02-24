@@ -29,8 +29,7 @@
     '$auth',
     'toastr',
     'usSpinnerService',
-    'ErrorMessageHandler',
-    'API_URL'
+    'ErrorMessageHandler'
   ];
 
   angular.module('yujihomo')
