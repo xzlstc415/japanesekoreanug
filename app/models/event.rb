@@ -1,3 +1,3 @@
 class Event < ActiveRecord::Base
-  enum type: [:streaming, :editing, :school, :others]
+  enum event_type: [:streaming, :editing, :school, :others]
 end
