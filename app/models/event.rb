@@ -7,6 +7,6 @@ class Event < ActiveRecord::Base
   private
 
   def end_is_later_than_start
-    errors.add(:end, 'must be later than start') if self.start >= self.end
+    errors.add(:end, ' must be later than start') if self.start <= self.end
   end
 end
