@@ -1,5 +1,5 @@
 # policy for comments
-class CommentPolicy < ApplicationPolicy
+class EventPolicy < ApplicationPolicy
   def index?
     true
   end
