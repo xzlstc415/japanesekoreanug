@@ -9,18 +9,22 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+
+    authorize @event
     return if @event.save
     render json: { errors: @event.errors.full_messages },
            status: :unprocessable_entity
   end
 
   def update
+    authorize @event
     return if @event.update_attributes(event_params)
     render json: { errors: @event.errors.full_messages },
            status: :unprocessable_entity
   end
 
   def destroy
+    authorize @event
     @event.destroy
     head :ok
   end
