@@ -36,7 +36,7 @@ class EventsController < ApplicationController
       :title,
       :start,
       :end,
-      :type
+      :event_type
     )
   end
 
