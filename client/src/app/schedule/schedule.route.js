@@ -6,9 +6,6 @@
       .state('schedule', {
         url:'/schedule',
         parent: 'yujihomo',
-        data: {
-          roles: ['admin', 'user', 'moderator']
-        },
         views: {
           '@yujihomo': {
             templateUrl: 'app/schedule/schedule.tmpl.html',
@@ -16,8 +13,8 @@
           }
         },
         resolve: {
-          currentUser: ['User', function(User) {
-            return User.currentUser();
+          events : ['Event', function(Event) {
+            return Event.query();
           }]
         }
       });

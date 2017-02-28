@@ -6,5 +6,6 @@
     .module('yujihomo')
     .constant('malarkey', malarkey)
     .constant('moment', moment)
+    // .constant('API_URL', 'http://localhost:3000');
     .constant('API_URL', 'http://139.162.74.33');
 })();
