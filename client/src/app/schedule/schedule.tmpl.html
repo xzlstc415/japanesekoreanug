@@ -4,7 +4,7 @@
       <p class="input-group">
         <input type="text" class="form-control"
                uib-datepicker-popup
-               ng-model="scheduleEvent.date"
+               ng-model="vm.scheduleEvent.date"
                is-open="vm.datePopup.opened"
                datepicker-options="vm.dateOptions"
                close-text="Close" />
@@ -23,7 +23,7 @@
         <div class="well">
           <label>Start At</label>
           <div uib-timepicker
-               ng-model="scheduleEvent.start"
+               ng-model="vm.scheduleEvent.start"
                hour-step="1"
                minute-step="1"
                show-meridian="true"></div>
@@ -33,7 +33,7 @@
         <div class="well">
           <label>Finished At</label>
           <div uib-timepicker
-               ng-model="scheduleEvent.end"
+               ng-model="vm.scheduleEvent.end"
                hour-step="1"
                minute-step="1"
                show-meridian="true"></div>
@@ -42,17 +42,17 @@
     </div>
     <div class="form-group">
       <label for="eventTitle">Event Title</label>
-      <input id="eventTitle" type="text" ng-model="scheduleEvent.title" class="form-control">
+      <input id="eventTitle" type="text" ng-model="vm.scheduleEvent.title" class="form-control">
     </div>
     <div class="form-group">
       <label for="eventType">Event Type</label>
       <select id="eventType"
-              ng-model="scheduleEvent.event_type"
+              ng-model="vm.scheduleEvent.event_type"
               class="form-control"
               ng-options="key as value for (key, value) in vm.eventTypeMap">
       </select>
     </div>
-    <button type="button" class="btn btn-sm btn-success" ng-click="vm.createEvent(scheduleEvent)">Add Event</button>
+    <button type="button" class="btn btn-sm btn-success" ng-click="vm.createEvent(vm.scheduleEvent)">Add Event</button>
   </div>
   <div class="col-md-7">
     <div ui-calendar="vm.calendarUiConfig.calendar"
@@ -61,7 +61,7 @@
          calendar-initialized="vm.onCalendar"></div>
   </div>
 </div>
-<div class="row">
+<div class="row" ng-if="!vm.currentUser || vm.currentUser.role == 'user'">
   <div ui-calendar="vm.calendarUiConfig.calendar"
        ng-model="vm.eventSources"
        calendar="userCalendar"

@@ -1,12 +1,20 @@
 (function() {
   'use strict';
 
-  var ScheduleController = function($auth, toastr, usSpinnerService, ErrorMessageHandler, uiCalendarConfig, Event, events, User) {
+  var ScheduleController = function($auth, toastr, usSpinnerService, ErrorMessageHandler, uiCalendarConfig, Event, events, User, $window, $state) {
     var vm = this;
     var today = new Date();
     var tomorrow = (new Date()).setDate(today.getDate() + 1);
     var minDate = today;
     var maxDate = new Date(2030, 5, 22);
+    var streamingEvents = [];
+    var editingEvents = [];
+    var schoolEvents = [];
+    var otherEvents = [];
+    var newEvents = [];
+    vm.scheduleEvent = {
+      date: null
+    }
 
     vm.currentUser = User.currentUser();
     vm.datePopup = {
@@ -24,11 +32,6 @@
       showWeeks: true
     };
 
-    /* alert on eventClick */
-    var alertOnEventClick = function( date, jsEvent, view){
-      vm.alertMessage = (date.title + ' was clicked ');
-    };
-
     var eventRender = function(event, element, view ) {
       if (vm.eventType == 'streaming') {
         element.style = "color: yellow"
@@ -43,18 +46,32 @@
       return scheduleEvents;
     };
 
-    var streamingEvents = assignEvents('streaming');
-    var editingEvents = assignEvents('editing');
-    var schoolEvents = assignEvents('school');
-    var otherEvents = assignEvents('others');
-    var newEvents = [];
-    vm.eventSources = [
-      streamingEvents,
-      editingEvents,
-      schoolEvents,
-      otherEvents,
-      newEvents
-    ];
+    var initEvents = function() {
+      var streamingEvents = assignEvents('streaming');
+      var editingEvents = assignEvents('editing');
+      var schoolEvents = assignEvents('school');
+      var otherEvents = assignEvents('others');
+      vm.eventSources = [
+        streamingEvents,
+        editingEvents,
+        schoolEvents,
+        otherEvents,
+        newEvents
+      ];
+    }
+
+    /* alert on eventClick */
+    var onEventClick = function(date, jsEvent, view){
+      if (vm.currentUser.role == 'admin') {
+        var deleteEvent = $window.confirm('Are you sure you want to delete?');
+
+        if (deleteEvent) {
+          Event.destroy(date.id).then(function(res) {
+            $state.reload();
+          });
+        }
+      }
+    };
 
     vm.calendarUiConfig = {
       calendar:{
@@ -66,7 +83,7 @@
           right: 'today prev,next'
         },
         timezone: 'local',
-        eventClick: alertOnEventClick,
+        eventClick: onEventClick,
         eventRender: eventRender
       }
     };
@@ -83,11 +100,11 @@
     };
 
     var getToday = function() {
-      vm.dt = today;
+      vm.scheduleEvent.date = today;
     };
 
     var getTomorrow = function() {
-      vm.dt = tomorrow;
+      vm.scheduleEvent.date = tomorrow;
     };
 
     var setDateTime = function(date, time) {
@@ -126,6 +143,7 @@
     vm.createEvent = createEvent;
     vm.uiCalendarConfig = uiCalendarConfig;
     vm.onCalendar = onCalendar;
+    initEvents();
   };
 
   ScheduleController.$inject = [
@@ -136,7 +154,9 @@
     'uiCalendarConfig',
     'Event',
     'events',
-    'User'
+    'User',
+    '$window',
+    '$state'
   ];
 
   angular.module('yujihomo')
