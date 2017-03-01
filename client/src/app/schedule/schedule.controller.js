@@ -76,6 +76,7 @@
     vm.calendarUiConfig = {
       calendar:{
         height: 1190,
+        contentHeight: 1190,
         editable: false,
         header:{
           left: 'title',
