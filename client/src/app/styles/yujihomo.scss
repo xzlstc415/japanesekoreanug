@@ -37,6 +37,10 @@
   text-decoration: none;
 }
 
+#toast-container {
+  z-index: 9999 !important;
+}
+
 .navbar-fixed-top {
   z-index: 999 !important;
 }

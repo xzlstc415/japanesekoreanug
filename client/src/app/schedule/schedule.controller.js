@@ -4,7 +4,7 @@
   var ScheduleController = function($auth, toastr, usSpinnerService, ErrorMessageHandler, uiCalendarConfig, Event, events, User, $window, $state) {
     var vm = this;
     var today = new Date();
-    var tomorrow = (new Date()).setDate(today.getDate() + 1);
+    var tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
     var minDate = today;
     var maxDate = new Date(2030, 5, 22);
     var newEvents = [];
