@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var EpisodesShowController = function(User, episode, $sce, StarredEpisodeUser, $state) {
+  var EpisodesShowController = function(User, episode, $sce, StarredEpisodeUser, $state, ErrorMessageHandler) {
     var vm = this;
     vm.episode = episode.data;
     vm.currentUser = User.currentUser();
@@ -58,7 +58,7 @@
     // vm.getIframeSrc = getIframeSrc;
   };
 
-  EpisodesShowController.$inject = ['User', 'episode', '$sce', 'StarredEpisodeUser', '$state'];
+  EpisodesShowController.$inject = ['User', 'episode', '$sce', 'StarredEpisodeUser', '$state', 'ErrorMessageHandler'];
 
   angular.module('yujihomo')
     .controller('EpisodesShowController', EpisodesShowController);
