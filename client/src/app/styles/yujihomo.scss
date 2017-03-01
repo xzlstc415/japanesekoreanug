@@ -38,9 +38,7 @@
 }
 
 #toast-container {
-  position: fixed;
-  z-index: 999999;
-  /*overrides*/
+  z-index: 1000 !important;
 }
 
 // body {
