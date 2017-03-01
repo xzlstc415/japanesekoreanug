@@ -7,10 +7,6 @@
     var tomorrow = (new Date()).setDate(today.getDate() + 1);
     var minDate = today;
     var maxDate = new Date(2030, 5, 22);
-    var streamingEvents = [];
-    var editingEvents = [];
-    var schoolEvents = [];
-    var otherEvents = [];
     var newEvents = [];
     vm.scheduleEvent = {
       date: null
