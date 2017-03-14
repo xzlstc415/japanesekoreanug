@@ -21,7 +21,8 @@
       'angulartics.google.analytics',
       'ui.bootstrap',
       'ngDisableScroll',
-      'ui.calendar'
+      'ui.calendar',
+      'textAngular'
     ]);
 
 })();

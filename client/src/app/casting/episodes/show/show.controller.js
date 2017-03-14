@@ -5,6 +5,7 @@
     var vm = this;
     vm.episode = episode.data;
     vm.currentUser = User.currentUser();
+
     if ($state.current.name == 'episodes-similar-ep') {
       vm.similarEpisodesSelected = true;
       vm.commentsSelected = false;
@@ -48,7 +49,7 @@
         unstarEpisode();
       }
     };
-    
+
     // var getIframeSrc = function() {
     //   return $sce.trustAsResourceUrl(window.encodeURIComponent( 'http://platform.twitter.com/widgets/tweet_button.289140617d6d66fbee36bb5f0535b846.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=ja&amp;original_referer=http://japanesekoreanug.com/episodes/'+ vm.episode.id + '&amp;size=m&amp;text=この動画' + vm.episode.name + '&amp;type=share&amp;url=http://japanesekoreanug.com/episodes/'+ vm.episode.id));
     // };

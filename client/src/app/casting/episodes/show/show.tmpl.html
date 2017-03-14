@@ -43,7 +43,10 @@
   <div class="video-wrapper" ng-show="vm.showVideo && vm.episode.youtube_video">
     <div ng-bind-html="vm.embedHtml"></div>
   </div>
-  <ul class="nav horizontal">
+  <div class="blog-wrapper blog-content">
+    <div ng-bind-html="vm.episode.blog"></div>
+  </div>
+  <ul class="nav horizontal" style="margin-top: 1em;">
     <li>
       <a href="javascript:void(0)"
          class="tab"

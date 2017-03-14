@@ -9,6 +9,7 @@ json.(episode,
       :next_episode_id,
       :previous_episode_id,
       :episode_type_id,
+      :blog,
       :tag_ids)
 json.published_at episode.published_at.strftime('%Y/%m/%d') if episode.published_at
 json.similar_episode_ids episode.similar_episode_ids

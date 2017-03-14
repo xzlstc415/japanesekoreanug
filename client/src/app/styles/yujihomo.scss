@@ -45,6 +45,102 @@
   z-index: 999 !important;
 }
 
+body {
+  padding-top: 50px;
+  -webkit-font-smoothing: antialiased;
+  font-family: Arial, 'mplus-2p-regular';
+}
+
+@font-face
+{
+font-family: 'mplus-2p-regular';
+src: url('../fonts/mplus-2p-regular.eot');
+src: url('../fonts/mplus-2p-regular.eot?#iefix') format('embedded-opentype'),
+url('../fonts/mplus-2p-regular.woff') format('woff'),
+url('../fonts/mplus-2p-regular.ttf') format('truetype');
+}
+
+@font-face
+{
+font-family: 'mplus-2p-light';
+src: url('../fonts/mplus-2p-light.eot');
+src: url('../fonts/mplus-2p-light.eot?#iefix') format('embedded-opentype'),
+url('../fonts/mplus-2p-light.woff') format('woff'),
+url('../fonts/mplus-2p-light.ttf') format('truetype');
+}
+
+.bs-callout {
+padding: 20px;
+margin: 20px 0;
+border: 1px solid #eee;
+border-left-width: 5px;
+border-radius: 3px;
+}
+
+.bs-callout h4 {
+margin-top: 0;
+margin-bottom: 5px;
+}
+
+.bs-callout p:last-child {
+margin-bottom: 0;
+}
+
+.bs-callout code {
+border-radius: 3px;
+}
+
+.bs-callout+.bs-callout {
+margin-top: -5px;
+}
+
+$gray-base:              #000 !default;
+$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:              lighten($gray-base, 20%) !default;   // #333
+$gray:                   lighten($gray-base, 33.5%) !default; // #555
+$gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+
+$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
+$brand-success:         #5cb85c !default;
+$brand-info:            #5bc0de !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;
+
+@mixin bs-mixin($name, $callout-color) {
+
+// Callout border color
+.#{$name} {
+  border-left-color: $callout-color;
+}
+// Callout header color
+.#{$name} h4 {
+  color: $callout-color;
+  }
+}
+
+@include bs-mixin(bs-callout-default, $gray);
+@include bs-mixin(bs-callout-primary, $brand-primary);
+@include bs-mixin(bs-callout-info, $brand-info);
+@include bs-mixin(bs-callout-danger, $brand-danger);
+@include bs-mixin(bs-callout-warning, $brand-warning);
+@include bs-mixin(bs-callout-success, $brand-success);
+
+.blog-wrapper h3:before {
+  content: "\f0eb";
+  font-family: FontAwesome;
+  position: relative;
+  padding-right: 10px;
+  color: #6C9FCE;
+}
+
+.blog-wrapper strong, .blog-wrapper b {
+	margin: auto .2em;
+	background: linear-gradient(transparent 80%, #ffc6fa 80%);
+	background: -webkit-linear-gradient(transparent 80%, #ffc6fa 80%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(80%,#fff), color-stop(80%,#ffc6fa));
+}
+
 // body {
 //   background-color: #FFF;
 //   font-family: Verdana, Helvetica, Arial;

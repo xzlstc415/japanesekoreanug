@@ -79,6 +79,7 @@ class EpisodesController < ApplicationController
                   :description,
                   :episode_type_id,
                   :youtube_video_id,
+                  :blog,
                   tag_ids: [])
   end
 

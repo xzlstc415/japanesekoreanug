@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226010357) do
+ActiveRecord::Schema.define(version: 20170314023815) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "episode_id",        limit: 4
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170226010357) do
     t.integer  "episode_type_id",          limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "blog",                     limit: 65535
   end
 
   add_index "episodes", ["episode_type_id"], name: "fk_rails_fbae6c65b1", using: :btree
