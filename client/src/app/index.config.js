@@ -56,31 +56,46 @@
       taRegisterTool('calloutDanger', {
         iconclass: "fa fa-exclamation-triangle",
         action: function() {
-          this.$editor().wrapSelection('insertHtml', '<div class="bs-callout bs-callout-danger"></div>', true);
+          this.$editor().wrapSelection('formatBlock', '<div class="bs-callout bs-callout-danger"></div>', true);
         }
       });
       taRegisterTool('calloutInfo', {
         iconclass: "fa fa-info-circle",
         action: function() {
-          this.$editor().wrapSelection('insertHtml', '<div class="bs-callout bs-callout-info"></div>', true);
+          this.$editor().wrapSelection('formatBlock', '<div class="bs-callout bs-callout-info"></div>', true);
         }
       });
       taRegisterTool('calloutWarning', {
         iconclass: "fa fa-hashtag",
         action: function() {
-          this.$editor().wrapSelection('insertHtml', '<div class="bs-callout bs-callout-warning"></div>', true);
+          this.$editor().wrapSelection('formatBlock', '<div class="bs-callout bs-callout-warning"></div>', true);
         }
       });
-      // taRegisterTool('underline_strong', {
-      //   iconclass: "fa fa-star",
-      //   action: function() {
-      //     this.$editor().wrapSelection('formatBlock', '<strong>', true);
-      //   }
-      // });
+      taRegisterTool('blackText', {
+        iconclass: "fa fa-font",
+        action: function() {
+          this.$editor().wrapSelection('forecolor', 'black');
+        }
+      });
+      taRegisterTool('redText', {
+        iconclass: "fa fa-font red-text",
+        action: function() {
+          this.$editor().wrapSelection('forecolor', '#b22222');
+        }
+      });
+      taRegisterTool('greenText', {
+        iconclass: "fa fa-font green-text",
+        action: function() {
+          this.$editor().wrapSelection('forecolor', '#149b14');
+        }
+      });
       // add the button to the default toolbar definition
       taOptions.toolbar[4].push('calloutDanger');
       taOptions.toolbar[4].push('calloutInfo');
       taOptions.toolbar[4].push('calloutWarning');
+      taOptions.toolbar[1].push('blackText');
+      taOptions.toolbar[1].push('redText');
+      taOptions.toolbar[1].push('greenText');
       return taOptions;
     }]);
   }

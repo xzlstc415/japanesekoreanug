@@ -141,6 +141,22 @@ $brand-danger:          #d9534f !default;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(80%,#fff), color-stop(80%,#ffc6fa));
 }
 
+.blog-wrapper p {
+  font-size: 1.14em;
+}
+
+.blog-wrapper li {
+  font-size: 1.08em;
+}
+
+.red-text {
+  color: #b22222;
+}
+
+.green-text {
+  color: #149b14;
+}
+
 // body {
 //   background-color: #FFF;
 //   font-family: Verdana, Helvetica, Arial;
