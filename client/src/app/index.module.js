@@ -18,7 +18,7 @@
       'ngTagsInput',
       'ngFileUpload',
       'angulartics',
-      'angulartics.google.analytics',
+      'angulartics.google.tagmanager',
       'ui.bootstrap',
       'ngDisableScroll',
       'ui.calendar',

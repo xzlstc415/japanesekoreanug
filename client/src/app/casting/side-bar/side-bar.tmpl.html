@@ -24,7 +24,10 @@
          class="list-group-item"
          ng-class="{active: vm.getType() == episodetype.name}"
          href="javascript:void(0)"
-         ng-click="vm.toggleType(episodetype.name)">
+         ng-click="vm.toggleType(episodetype.name)"
+         analytics-on="click"
+         analytics-event="Select {{episodetype.name}}"
+         analytics-category="Sidebar Filter">
         {{episodetype.name}}
       </a>
     </div>
