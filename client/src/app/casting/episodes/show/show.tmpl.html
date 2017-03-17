@@ -16,7 +16,10 @@
              rel="nofollow"
              ng-if="vm.currentUser">☆</a>
           <a class="twitter-share-button btn btn-xs btn-primary"
-             ng-href="https://twitter.com/intent/tweet?text={{vm.episode.name}}&via=jpkr_ug">
+             ng-href="https://twitter.com/intent/tweet?text={{vm.episode.name}}&via=jpkr_ug"
+             analytics-on="click"
+             analytics-event="Shared on Twitter"
+             analytics-category="social sharing">
             Share on Twitter
           </a>
         </h1>
