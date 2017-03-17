@@ -10,7 +10,7 @@
     vm.currentUser = User.currentUser();
 
     var saveEpisode = function() {
-      Episode.save({episode: vm.episode}).then(function(res) {
+      Episode.save({episode: vm.episode}).then(function() {
         $state.go('home');
         toastr.success('You have created a new episode');
       }).catch(function(res) {
@@ -47,7 +47,7 @@
             $tag.id = res.data.id;
             return true;
           })
-          .catch(function(res) {
+          .catch(function() {
             return false;
           });
       }

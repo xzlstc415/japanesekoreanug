@@ -22,7 +22,7 @@
     var removeEpisodeType = function(episodeType) {
       usSpinnerService.spin('spinner-1');
       EpisodeType.destroy(episodeType.id)
-        .then(function(res) {
+        .then(function() {
           usSpinnerService.stop('spinner-1');
           var index = vm.episodeTypes.indexOf(episodeType);
           vm.episodeTypes.splice(index, 1);

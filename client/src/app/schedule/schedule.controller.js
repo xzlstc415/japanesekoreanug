@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var ScheduleController = function($auth, toastr, usSpinnerService, ErrorMessageHandler, uiCalendarConfig, Event, events, User, $window, $state) {
+  var ScheduleController = function($auth, toastr, usSpinnerService, ErrorMessageHandler, uiCalendarConfig, Event, events, User, $window, $state, _) {
     var vm = this;
     var today = new Date();
     var tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
@@ -10,7 +10,7 @@
     var newEvents = [];
     vm.scheduleEvent = {
       date: null
-    }
+    };
 
     vm.currentUser = User.currentUser();
     vm.datePopup = {
@@ -28,9 +28,9 @@
       showWeeks: true
     };
 
-    var eventRender = function(event, element, view ) {
+    var eventRender = function(event, element) {
       if (vm.eventType == 'streaming') {
-        element.style = "color: yellow"
+        element.style = "color: yellow";
       }
     };
 
@@ -54,15 +54,15 @@
         otherEvents,
         newEvents
       ];
-    }
+    };
 
     /* alert on eventClick */
-    var onEventClick = function(date, jsEvent, view){
+    var onEventClick = function(date){
       if (vm.currentUser.role == 'admin') {
         var deleteEvent = $window.confirm('Are you sure you want to delete?');
 
         if (deleteEvent) {
-          Event.destroy(date.id).then(function(res) {
+          Event.destroy(date.id).then(function() {
             $state.reload();
           });
         }
@@ -119,20 +119,20 @@
         Event.save({event: scheduleEvent})
         .then(function(res) {
           var event = res.data;
-          event.className = event.event_type
+          event.className = event.event_type;
           newEvents.push(event);
         })
         .catch(function(res) {
           ErrorMessageHandler.displayErrors(res);
-        })
+        });
       } else {
         toastr.error('Date or Start At or Finished At is Empty!');
       }
     };
 
     var onCalendar = function(calendar) {
-      calendar.fullCalendar('changeView', 'agendaWeek')
-    }
+      calendar.fullCalendar('changeView', 'agendaWeek');
+    };
 
     vm.openDatePopup = openDatePopup;
     vm.getToday = getToday;
@@ -153,7 +153,8 @@
     'events',
     'User',
     '$window',
-    '$state'
+    '$state',
+    '_'
   ];
 
   angular.module('yujihomo')

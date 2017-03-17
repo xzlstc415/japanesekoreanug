@@ -12,7 +12,7 @@
         return;
       }
       comment.episode_id = episode.data.id;
-      Comment.save({comment: comment}).then(function(res) {
+      Comment.save({comment: comment}).then(function() {
         $state.reload();
         toastr.success('コメントしました!');
       }).catch(function(res) {

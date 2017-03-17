@@ -1,6 +1,6 @@
 (function() {
 
-  var viewStyle = function() {
+  var viewStyle = function(_) {
     var vm = this;
 
     var VIEW_STYLE = {
@@ -26,6 +26,8 @@
 
     return vm;
   };
+
+  viewStyle.$inject = ['_'];
 
   angular.module('yujihomo')
     .service('viewStyle', viewStyle);

@@ -11,7 +11,7 @@
     var authenticate = function(provider) {
       usSpinnerService.spin('spinner-1');
       $auth.authenticate(provider)
-        .then(function(res) {
+        .then(function() {
           usSpinnerService.stop('spinner-1');
           toastr.success('You have connected to google successfully!');
           vm.connected = true;

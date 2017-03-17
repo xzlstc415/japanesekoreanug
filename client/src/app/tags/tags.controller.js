@@ -8,7 +8,7 @@
     var removeTag = function(tag) {
       usSpinnerService.spin('spinner-1');
       Tag.destroy(tag.id)
-        .then(function(res) {
+        .then(function() {
           usSpinnerService.stop('spinner-1');
           var index = vm.tags.indexOf(tag);
           vm.tags.splice(index, 1);

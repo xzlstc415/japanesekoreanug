@@ -22,7 +22,7 @@
           youtubeAccountStatus: ['YoutubeVideo', 'usSpinnerService', function(YoutubeVideo, usSpinnerService) {
             usSpinnerService.spin('spinner-1');
             return YoutubeVideo.accountStatus();
-          }],
+          }]
         }
       });
   };

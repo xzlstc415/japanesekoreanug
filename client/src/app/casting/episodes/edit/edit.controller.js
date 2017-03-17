@@ -11,7 +11,7 @@
     vm.currentUser = User.currentUser();
 
     var updateEpisode = function() {
-      Episode.update(vm.episode.id, {episode: vm.episode}).then(function(res) {
+      Episode.update(vm.episode.id, {episode: vm.episode}).then(function() {
         $state.go('home');
         toastr.success('Episode is updated');
       }).catch(function(res) {
@@ -48,7 +48,7 @@
             $tag.id = res.data.id;
             return true;
           })
-          .catch(function(res) {
+          .catch(function() {
             return false;
           });
       }

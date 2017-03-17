@@ -24,7 +24,7 @@
 
     var starEpisode = function() {
       StarredEpisodeUser.save({starred_episode_user: {episode_id: vm.episode.id}})
-        .then(function(res) {
+        .then(function() {
           vm.episode.starred = true;
         })
         .catch(function(res) {
@@ -34,7 +34,7 @@
 
     var unstarEpisode = function() {
       StarredEpisodeUser.destroy(vm.episode.id)
-        .then(function(res) {
+        .then(function() {
           vm.episode.starred = false;
         })
         .catch(function(res) {

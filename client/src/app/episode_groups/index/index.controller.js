@@ -22,7 +22,7 @@
     var removeEpisodeGroup = function(episodeGroup) {
       usSpinnerService.spin('spinner-1');
       SimilarEpisodeGroup.destroy(episodeGroup.id)
-        .then(function(res) {
+        .then(function() {
           usSpinnerService.stop('spinner-1');
           var index = vm.episodeGroups.indexOf(episodeGroup);
           vm.episodeGroups.splice(index, 1);

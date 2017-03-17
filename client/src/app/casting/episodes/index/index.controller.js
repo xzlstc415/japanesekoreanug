@@ -50,7 +50,7 @@
 
     var starEpisode = function(episode) {
       StarredEpisodeUser.save({starred_episode_user: {episode_id: episode.id}})
-        .then(function(res) {
+        .then(function() {
           var index = vm.episodes.indexOf(episode);
           vm.episodes[index].starred = true;
         })
@@ -61,7 +61,7 @@
 
     var unstarEpisode = function(episode) {
       StarredEpisodeUser.destroy(episode.id)
-        .then(function(res) {
+        .then(function() {
           var index = vm.episodes.indexOf(episode);
           vm.episodes[index].starred = false;
         })

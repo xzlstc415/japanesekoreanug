@@ -14,7 +14,7 @@
     };
 
     var save = function() {
-      req = {
+      var req = {
         method: 'POST',
         url: API_URL + '/api/youtube_videos'
       };

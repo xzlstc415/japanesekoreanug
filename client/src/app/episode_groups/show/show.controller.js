@@ -26,7 +26,7 @@
     var updateEpisodeGroup = function() {
       usSpinnerService.spin('spinner-1');
       SimilarEpisodeGroup.update(vm.episodeGroup.id, {similar_episode_group: vm.episodeGroup})
-        .then(function(res) {
+        .then(function() {
           usSpinnerService.stop('spinner-1');
           toastr.success('episode has been deleted!');
           vm.newEpisodes = [];

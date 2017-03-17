@@ -34,7 +34,7 @@
     var authenticate = function(provider) {
       usSpinnerService.spin('spinner-1');
       $auth.authenticate(provider)
-        .then(function(res) {
+        .then(function() {
           usSpinnerService.stop('spinner-1');
           vm.currentUser = $auth.getPayload();
           closeLoginModal();
@@ -55,7 +55,7 @@
 
     var login = function(user) {
       usSpinnerService.spin('spinner-1');
-      $auth.login(user).then(function(res) {
+      $auth.login(user).then(function() {
         vm.currentUser = $auth.getPayload();
         usSpinnerService.stop('spinner-1');
         closeLoginModal();
@@ -67,7 +67,7 @@
         }, { reload: true });
         $state.reload();
         toastr.success('ログインに成功しました!');
-      }).catch(function(res) {
+      }).catch(function() {
         usSpinnerService.stop('spinner-1');
         toastr.error('メールアドレスまたはパスワードが間違っています');
       });
