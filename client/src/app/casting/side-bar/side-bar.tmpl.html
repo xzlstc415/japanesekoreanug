@@ -40,7 +40,7 @@
          ng-class="{active: vm.getTag() == tag.name}"
          href="javascript:void(0)"
          ng-click="vm.toggleTag(tag.name)">
-        {{tag.name}}
+        {{tag.name}} ({{tag.episodes_count}})
       </a>
     </div>
   </div>
@@ -68,7 +68,7 @@
            ng-class="{active: vm.getTag() == tag.name}"
            href="javascript:void(0)"
            ng-click="vm.toggleTag(tag.name)">
-          {{tag.name}}
+          {{tag.name}} ({{tag.episodes_count}})
         </a>
       </div>
     </div>
