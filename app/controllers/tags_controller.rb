@@ -8,7 +8,7 @@ class TagsController < ApplicationController
   end
 
   def index
-    @tags = Tag.all
+    @tags = Tag.includes(:episodes).all
   end
 
   def create
