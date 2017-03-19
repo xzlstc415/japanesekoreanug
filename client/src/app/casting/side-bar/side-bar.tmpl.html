@@ -20,15 +20,15 @@
   <div class="search_option">
     <h2>レベル分け</h2>
     <div class="list-group">
-      <a ng-repeat="episodetype in vm.episodeTypes"
+      <a ng-repeat="episode_type in vm.episodeTypes"
          class="list-group-item"
-         ng-class="{active: vm.getType() == episodetype.name}"
+         ng-class="{active: vm.getType() == episode_type.name}"
          href="javascript:void(0)"
-         ng-click="vm.toggleType(episodetype.name)"
+         ng-click="vm.toggleType(episode_type.name)"
          analytics-on="click"
-         analytics-event="Select {{episodetype.name}}"
+         analytics-event="Select {{episode_type.name}}"
          analytics-category="Sidebar Filter">
-        {{episodetype.name}}
+        {{episode_type.name}} ({{episode_type.episodes_count}})
       </a>
     </div>
   </div>
@@ -51,12 +51,12 @@
     <div class="search_option">
       <h2>レベル分け</h2>
       <div class="list-group">
-        <a ng-repeat="episodetype in vm.episodeTypes"
+        <a ng-repeat="episode_type in vm.episodeTypes"
            class="list-group-item"
-           ng-class="{active: vm.getType() == episodetype.name}"
+           ng-class="{active: vm.getType() == episode_type.name}"
            href="javascript:void(0)"
-           ng-click="vm.toggleType(episodetype.name)">
-          {{episodetype.name}}
+           ng-click="vm.toggleType(episode_type.name)">
+          {{episode_type.name}}
         </a>
       </div>
     </div>
