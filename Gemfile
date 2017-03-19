@@ -26,6 +26,8 @@ gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do
   gem 'byebug'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do

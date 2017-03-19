@@ -33,12 +33,12 @@ module Yujihomo
     config.action_dispatch.perform_deep_munge = false
 
     config.active_record.raise_in_transactional_callbacks = true
-    
-    config.i18n.default_locale = :'ja'
+
+    config.i18n.default_locale = :'ja' unless ['development', 'test'].include? Rails.env
 
     config.generators do |g|
       g.test_framework :rspec,
-        fixtures: false,
+        fixture: true,
         view_specs: false,
         helper_specs: false,
         routing_specs: false,
