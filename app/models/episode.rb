@@ -1,11 +1,20 @@
 # Model of Episode
 class Episode < ApplicationRecord
   self.per_page = 30
-  before_create :set_episode_number, :set_published_at
-  before_save :initialize_from_youtube_video
 
+  # Validations
+  validates :name, presence: true, uniqueness: true, if: :published?
+  validates :description, presence: true, if: :published?
+  validates :episode_type, presence: true, if: :published?
+  validates :youtube_video, presence: true, if: :published?
+  
+  # Callbacks
+  before_validation :set_episode_number, :initialize_from_youtube_video
+
+  # Scopes
   scope :published, -> { where('published_at IS NOT NULL') }
 
+  # Relationships
   belongs_to :similar_episode_group
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :tags
@@ -30,7 +39,7 @@ class Episode < ApplicationRecord
   end
 
   def published?
-    !published_at.nil?
+    published_at.present?
   end
 
   private
@@ -41,11 +50,8 @@ class Episode < ApplicationRecord
     self.number = last_episode.number + 1
   end
 
-  def set_published_at
-    self.published_at = Date.current
-  end
-
   def initialize_from_youtube_video
+    return unless youtube_video.present?
     self.thumbnail_url = youtube_video.api_thumbnail_url
     self.duration = youtube_video.api_duration
     self.name = youtube_video.api_title if name.blank?
