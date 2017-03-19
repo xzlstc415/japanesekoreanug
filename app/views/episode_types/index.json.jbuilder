@@ -1,1 +1,4 @@
-json.partial! 'episode_type', collection: @episode_types, as: :episode_type
+json.array! @episode_types do |episode_type|
+  json.partial! 'episode_type', episode_type: episode_type
+  json.episodes_count episode_type.episodes.count
+end
