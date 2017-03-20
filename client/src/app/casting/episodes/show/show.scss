@@ -219,3 +219,11 @@
   border-top: thin solid #BBB;
   border-bottom: thin solid #BBB;
 }
+
+#episode .label-warning a {
+  color: white !important;
+}
+
+#episode .label-warning a:hover {
+  text-decoration: none !important;
+}

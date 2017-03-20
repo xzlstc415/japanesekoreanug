@@ -15,7 +15,7 @@
              ng-click="vm.toggleStar()"
              rel="nofollow"
              ng-if="vm.currentUser">☆</a>
-          <a class="twitter-share-button btn btn-xs btn-primary"
+          <a class="twitter-share-button btn btn-xs btn-info"
              ng-href="https://twitter.com/intent/tweet?text={{vm.episode.name}}&via=jpkr_ug"
              analytics-on="click"
              analytics-event="Shared on Twitter"
@@ -24,8 +24,8 @@
           </a>
         </h1>
         <div class="details">{{vm.episode.published_at}} | {{vm.episode.comments_count}} comments | {{vm.episode.duration | secondsToTimeFormat}} |
-          <span ng-repeat="tag in vm.episode.tags track by $index">
-            <a href="javascript:void(0)">{{tag.name}}</a><span ng-if="!$last">,</span>
+          <span class="label label-warning" ng-repeat="tag in vm.episode.tags track by $index">
+            <a ui-sref="home({tags_name_eq: '{{tag.name}}'})" href="javascript:void(0)">{{tag.name}}</a><span ng-if="!$last">,</span>
           </span>
         </div>
         <div class="description">
