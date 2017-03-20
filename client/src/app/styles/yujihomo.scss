@@ -49,6 +49,7 @@ body {
   padding-top: 50px;
   -webkit-font-smoothing: antialiased;
   font-family: Arial, 'mplus-2p-regular';
+  background-color: rgb(242,242,242);
 }
 
 @font-face
@@ -159,4 +160,10 @@ $brand-danger:          #d9534f !default;
 
 .blog-wrapper p {
   text-align: justify;
+  line-height: 1.75em;
+}
+
+.well {
+  background-color: white !important;
+  background-image: none !important;
 }

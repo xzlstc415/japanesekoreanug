@@ -61,7 +61,7 @@
          calendar-initialized="vm.onCalendar"></div>
   </div>
 </div>
-<div class="row" ng-if="!vm.currentUser || vm.currentUser.role == 'user'">
+<div class="row well" ng-if="!vm.currentUser || vm.currentUser.role == 'user'">
   <div ui-calendar="vm.calendarUiConfig.calendar"
        ng-model="vm.eventSources"
        calendar="userCalendar"

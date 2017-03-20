@@ -1,43 +1,64 @@
-<h1 class="content">xzlstc415's Profile</h1>
-<div class="content">
-  <form name="userForm" class="edit_user">
-    <div>
-      <img ng-show="vm.currentUser.avatar_url" ng-src="{{vm.currentUser.avatar_url}}" class="thumb"/>
-    </div>
-    <p>
-      <label for="user_name">Name</label>
-      <input id="user_name" ng-model="vm.currentUser.name" size="30" type="text">
-    </p>
-    <p>
-      <label for="user_email">Email</label>
-      <input id="user_email" ng-model="vm.currentUser.email" size="30" type="text">
-    </p>
-    <p>
-      <label for="password">Password</label>
-      <input id="password" ng-model="vm.currentUser.password" size="30" type="password">
-    </p>
-    <p>
-      <label for="password_confirmation">Password Confirmation</label>
-      <input id="password_confirmation" ng-model="vm.currentUser.password_confirmation" size="30" type="password">
-    </p>
-    <p>
-      <label for="user_avatar">Avatar</label>
-      <input type="file" ngf-select ng-model="vm.avatar" name="file"
-             accept="image/*" ngf-max-size="200KB"
-             ngf-resize="{width: 64, height: 64, quality: 1, type: 'image/jpeg',
-               ratio: '1:1', centerCrop: true, pattern='.jpg', restoreExif: false}"
-             ngf-model-invalid="errorFile">
-      <i ng-show="userForm.file.$error.maxSize">File too large
-          {{errorFile.size / 1000|number:1}}KB: max 200KB</i>
+<div class="well">
+  <h2 class="content">xzlstc415's Profile</h2>
+  <br>
+  <div class="content">
+    <form name="userForm" class="form-horizontal">
       <div>
-        <img ng-if="userForm.file.$valid" ngf-thumbnail="vm.avatar" class="thumb"
-             ngf-size="{quality: 1, ratio: '1:1', centerCrop: true}" />
+        <img ng-show="vm.currentUser.avatar_url" ng-src="{{vm.currentUser.avatar_url}}" class="thumb"/>
       </div>
-      <br />
-      <button ng-click="vm.avatar = null" ng-show="vm.avatar">Remove</button>
-    </p>
-    <!-- <button ng-disabled="!userForm.$valid"
-            ng-click="uploadPic(picFile)">Submit</button> -->
-    <p><input name="commit" type="submit" ng-click="vm.updateUser()" value="Update Profile"></p>
-  </form>
+      <div class="form-group">
+        <label for="user_name" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+          <input id="user_name" class="form-control" ng-model="vm.currentUser.name" size="30" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="user_email" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+          <input id="user_email" class="form-control" ng-model="vm.currentUser.email" size="30" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+          <input id="password" class="form-control" ng-model="vm.currentUser.password" size="30" type="password">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password_confirmation" class="col-sm-2 control-label">Password Confirmation</label>
+        <div class="col-sm-10">
+          <input id="password_confirmation" class="form-control" ng-model="vm.currentUser.password_confirmation" size="30" type="password">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="user_avatar" class="col-sm-2 control-label">Avatar</label>
+        <div class="col-sm-10">
+          <input type="file" ngf-select ng-model="vm.avatar" name="file"
+                 accept="image/*" ngf-max-size="200KB"
+                 ngf-resize="{width: 64, height: 64, quality: 1, type: 'image/jpeg',
+                 ratio: '1:1', centerCrop: true, pattern='.jpg', restoreExif: false}"
+                 ngf-model-invalid="errorFile">
+        </div>
+        <i ng-show="userForm.file.$error.maxSize">File too large
+            {{errorFile.size / 1000|number:1}}KB: max 200KB</i>
+        <div>
+          <img ng-if="userForm.file.$valid" ngf-thumbnail="vm.avatar" class="thumb"
+               ngf-size="{quality: 1, ratio: '1:1', centerCrop: true}" />
+        </div>
+        <br />
+        <button ng-click="vm.avatar = null" ng-show="vm.avatar">Remove</button>
+      </div>
+      <!-- <button ng-disabled="!userForm.$valid"
+              ng-click="uploadPic(picFile)">Submit</button> -->
+      <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+          <input name="commit"
+                 type="submit"
+                 ng-click="vm.updateUser()"
+                 value="Update Profile"
+                 class="btn btn-primary">
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
