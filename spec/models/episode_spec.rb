@@ -110,5 +110,23 @@ describe Episode do
         expect(@episode.similar_episode_ids).to match_array [@another_episode.id]
       end
     end
+
+    context '#publish!' do
+      it 'set published_at to the current time' do
+        episode_for_publish.publish!
+        expect(episode_for_publish.published_at).not_to be_nil
+      end
+    end
+
+    context '#published?' do
+      it 'returns true if episode is published' do
+        episode_for_publish.publish!
+        expect(episode_for_publish.published?).to be_truthy
+      end
+
+      it 'returns false if episode is not published' do
+        expect(episode_for_publish.published?).to be_falsy
+      end
+    end
   end
 end
