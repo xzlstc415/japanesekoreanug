@@ -9,6 +9,21 @@
         abstract: true,
         views: {
           '@yujihomo': {
+            templateUrl: 'app/casting/casting.tmpl.html'
+          },
+          'side-bar@episodes-detail': {
+            templateUrl: 'app/casting/side-bar/side-bar.tmpl.html',
+            controller: 'SidebarController as vm',
+            resolve: {
+              tags: ['Tag', function(Tag) {
+                return Tag.query();
+              }],
+              episodeTypes: ['EpisodeType', function(EpisodeType) {
+                return EpisodeType.query();
+              }]
+            }
+          },
+          'episodes@episodes-detail': {
             templateUrl: 'app/casting/episodes/show/show.tmpl.html',
             controller: 'EpisodesShowController as vm'
           }

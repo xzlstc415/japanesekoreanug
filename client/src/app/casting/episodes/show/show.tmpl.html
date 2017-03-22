@@ -1,13 +1,13 @@
-<div id="episode" class="row">
-  <div class="col-md-8 col-md-offset-2 white-background well">
-    <div class="info row" ng-show="!vm.showVideo">
-      <div class="col-sm-4">
+<div id="episode" class="blog-container">
+  <div>
+    <div class="info" ng-show="!vm.showVideo">
+      <div class="item">
         <a class="play_video" href="javascript:void(0)" ng-click="vm.playVideo()">
-          <img class="img-responsive" alt="{{vm.episode.number}}-{{vm.episode.name}}" height="125" src="{{vm.episode.thumbnail_url}}">
+          <img class="img-responsive" alt="{{vm.episode.number}}-{{vm.episode.name}}" src="{{vm.episode.thumbnail_url}}">
         </a>
       </div>
-      <div class="col-sm-8 info-right-splash">
-        <h1>
+      <div>
+        <h1 class="item">
           <span class="position">#{{vm.episode.number}}</span> {{vm.episode.name}}
           <a href="javascript:void(0)"
              class="star"
@@ -15,13 +15,6 @@
              ng-click="vm.toggleStar()"
              rel="nofollow"
              ng-if="vm.currentUser">☆</a>
-          <a class="twitter-share-button btn btn-xs btn-info"
-             ng-href="https://twitter.com/intent/tweet?text={{vm.episode.name}}&via=jpkr_ug"
-             analytics-on="click"
-             analytics-event="Shared on Twitter"
-             analytics-category="social sharing">
-            Share on Twitter
-          </a>
         </h1>
         <div class="details">{{vm.episode.published_at}} | {{vm.episode.comments_count}} comments | {{vm.episode.duration | secondsToTimeFormat}} |
           <span class="label label-warning" ng-repeat="tag in vm.episode.tags track by $index">
@@ -31,23 +24,17 @@
         <div class="description">
           {{vm.episode.name}}
         </div>
-        <div class="watch"><a href="javascript:void(0)" ng-click="vm.playVideo()" class="play_video btn btn-success">動画を見る ▶</a></div>
+        <a href="javascript:void(0)" ng-click="vm.playVideo()" class="play_video btn btn-success">動画を見る ▶</a>
+        <a class="twitter-share-button btn btn-info"
+           ng-href="https://twitter.com/intent/tweet?text={{vm.episode.name}}&via=jpkr_ug"
+           analytics-on="click"
+           analytics-event="Shared on Twitter"
+           analytics-category="social sharing">
+          Share on Twitter
+        </a>
       </div>
-      <!-- <div class="social">
-        <iframe
-          id="twitter-widget-0"
-          scrolling="no"
-          frameborder="0"
-          allowtransparency="true"
-          class="twitter-share-button twitter-share-button-rendered twitter-tweet-button"
-          title="Twitter Tweet Button"
-          ng-src="{{vm.getIframeSrc()}}"
-          style="position: static; visibility: visible; width: 61px; height: 20px;"
-          data-url="http://railscasts.com/episodes/417-foundation">
-        </iframe>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div> -->
-      <div class="clear"></div>
     </div>
+    <div class="clear"></div>
     <div class="video-wrapper" ng-show="vm.showVideo && vm.episode.youtube_video">
       <div ng-bind-html="vm.embedHtml"></div>
     </div>

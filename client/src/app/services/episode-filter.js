@@ -30,10 +30,18 @@
       refreshState();
     };
 
+    var reset = function(currentPage) {
+      filters = {
+        tags_name_eq: null,
+        episode_type_name_eq: null
+      };
+    };
+
     vm.getTag = getTag;
     vm.getType = getType;
     vm.setTag = setTag;
     vm.setType = setType;
+    vm.reset = reset;
 
     return vm;
   };

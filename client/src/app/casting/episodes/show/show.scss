@@ -15,10 +15,6 @@
 
 /*** EPISODE ***/
 
-#episode.legacy {
-  width: 802px;
-}
-
 #episode #video_wrapper {
   border: solid 1px #777;
   margin-bottom: 14px;
@@ -30,13 +26,6 @@
 
 #episode .info-right-splash {
   margin-top: 2em;
-}
-
-#episode > .info {
-  position: relative;
-  margin-bottom: 15px;
-  background-color: #FFF;
-  min-height: 150px;
 }
 
 #episode .info h1 {
@@ -225,4 +214,16 @@
 
 #episode .label-warning a:hover {
   text-decoration: none !important;
+}
+
+
+@media all and (min-width: 768px)
+{
+  #episode.blog-container {
+    padding: 2.57em 4.42em;
+  }
+}
+
+#episode .info .item {
+  margin-bottom: 1em;
 }

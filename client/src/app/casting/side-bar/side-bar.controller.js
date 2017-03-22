@@ -1,14 +1,18 @@
 (function() {
   'use strict';
 
-  var SidebarController = function($stateParams, tags, episodeTypes, episodeFilter, MobileSidebarState) {
+  var SidebarController = function($stateParams, tags, episodeTypes, episodeFilter, MobileSidebarState, $state) {
     var vm = this;
     vm.tags = tags.data;
     vm.episodeTypes = episodeTypes.data;
     vm.filters = $stateParams;
     vm.hiddenMenuIsVisible = false;
-    episodeFilter.setTag($stateParams.tags_name_eq);
-    episodeFilter.setType($stateParams.episode_type_name_eq);
+    if ($state.current.name == 'home') {
+      episodeFilter.setTag($stateParams.tags_name_eq);
+      episodeFilter.setType($stateParams.episode_type_name_eq);
+    } else {
+      episodeFilter.reset();
+    }
 
     var removeTag = function() {
       episodeFilter.setTag(null);
@@ -54,7 +58,7 @@
     vm.closeMobileSidebar = closeMobileSidebar;
   };
 
-  SidebarController.$inject = ['$stateParams', 'tags', 'episodeTypes', 'episodeFilter', 'MobileSidebarState'];
+  SidebarController.$inject = ['$stateParams', 'tags', 'episodeTypes', 'episodeFilter', 'MobileSidebarState', '$state'];
 
   angular.module('yujihomo')
     .controller('SidebarController', SidebarController);

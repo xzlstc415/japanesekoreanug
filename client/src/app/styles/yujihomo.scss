@@ -15,7 +15,13 @@
   cursor: pointer !important;
 }
 
-.container {
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1030px;
+}
+
+.main-container-padding-btm {
   padding-bottom: 10em;
 }
 
