@@ -21,16 +21,4 @@ describe EpisodeType do
       expect(dup_episode_type.errors[:name]).to include 'has already been taken'
     end
   end
-
-  context 'callbacks' do
-
-  end
-
-  context 'scopes' do
-
-  end
-
-  context 'methods' do
-
-  end
 end
