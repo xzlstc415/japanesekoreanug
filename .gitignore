@@ -5,6 +5,8 @@ private
 coverage
 ngapp/index.html
 public/**
+zeus.json
+custom_plan.rb
 
 # ignore the .ruby-gemset file, but you can use one if you want
 .ruby-gemset
