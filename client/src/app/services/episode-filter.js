@@ -30,7 +30,7 @@
       refreshState();
     };
 
-    var reset = function(currentPage) {
+    var reset = function() {
       filters = {
         tags_name_eq: null,
         episode_type_name_eq: null

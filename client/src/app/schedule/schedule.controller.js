@@ -28,6 +28,11 @@
       showWeeks: true
     };
 
+    var translateFromBackend = function(event) {
+      event.start = event.start_time;
+      event.end = event.end_time;
+    }
+
     var eventRender = function(event, element) {
       if (vm.eventType == 'streaming') {
         element.style = "color: yellow";
@@ -38,6 +43,7 @@
       var scheduleEvents = _.filter(events.data, ['event_type', eventType]);
       _.forEach(scheduleEvents, function(event) {
         event.className = eventType;
+        translateFromBackend(event);
       });
       return scheduleEvents;
     };
@@ -113,13 +119,14 @@
     };
 
     var createEvent = function(scheduleEvent) {
-      if (scheduleEvent.date && scheduleEvent.start && scheduleEvent.end) {
-        scheduleEvent.start = setDateTime(scheduleEvent.date, scheduleEvent.start);
-        scheduleEvent.end = setDateTime(scheduleEvent.date, scheduleEvent.end);
+      if (scheduleEvent.date && scheduleEvent.start_time && scheduleEvent.end_time) {
+        scheduleEvent.start_time = setDateTime(scheduleEvent.date, scheduleEvent.start_time);
+        scheduleEvent.end_time = setDateTime(scheduleEvent.date, scheduleEvent.end_time);
         Event.save({event: scheduleEvent})
         .then(function(res) {
           var event = res.data;
           event.className = event.event_type;
+          translateFromBackend(event);
           newEvents.push(event);
         })
         .catch(function(res) {
