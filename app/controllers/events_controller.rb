@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:update, :destroy]
 
   def index
-    @events = Event.where("start > ?", DateTime.now - 20.days)
+    @events = Event.where("start_time > ?", DateTime.now - 20.days)
   end
 
   def create
@@ -34,8 +34,8 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(
       :title,
-      :start,
-      :end,
+      :start_time,
+      :end_time,
       :event_type
     )
   end
