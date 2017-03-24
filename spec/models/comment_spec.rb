@@ -31,10 +31,20 @@ describe Comment do
   end
 
   context 'scopes' do
-
+    it 'can be scoped to root' do
+      comment_with_root = create(:comment_with_parent)
+      expect(Comment.root).to match_array [comment_with_root.parent_comment]
+    end
   end
 
   context 'methods' do
-
+    context '#destroy' do
+      it "change content to 'this message has been deleted!', and mark as deleted" do
+        comment.save
+        comment.destroy
+        expect(comment.content).to eq 'this message has been deleted!'
+        expect(comment).to be_deleted
+      end
+    end
   end
 end
