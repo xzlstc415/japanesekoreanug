@@ -55,27 +55,58 @@
 
       taOptions.toolbar = [
         ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
-        ['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
+        ['bold-normal', 'italics', 'bold-underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
         ['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent'],
         ['html', 'insertImage', 'insertResponsiveImage','insertLink', 'insertVideo', 'wordcount', 'charcount'],
         []
       ];
-      taRegisterTool('calloutDanger', {
-        iconclass: "fa fa-exclamation-triangle",
+
+      // add the button to the default toolbar definition
+      taOptions.toolbar[4].push('calloutInfo');
+      taOptions.toolbar[4].push('calloutWarning');
+      taOptions.toolbar[1].push('blackText');
+      taOptions.toolbar[1].push('redText');
+      taOptions.toolbar[1].push('greenText');
+      // taOptions.keyMappings = [
+      //   {commandKeyCode: 117, testForKey: function (event) { return false; } },
+      //   {commandKeyCode: 98, testForKey: function (event) { return false; } },
+      //   {
+      //     commandKeyCode: 116,
+      //     testForKey: function (event) {
+      //       if (event.keyCode==66 && event.metaKey && !event.shiftKey && !event.altKey) {
+      //         return true;
+      //       };
+      //     }
+      //   }
+      // ]
+
+      taRegisterTool('bold-normal', {
+        iconclass: "fa fa-bold",
+        tooltiptext: taTranslations.bold.tooltip,
         action: function() {
-          this.$editor().wrapSelection('formatBlock', '<div class="bs-callout bs-callout-danger"></div>', true);
+          return this.$editor().wrapSelection('wrapSelection', '<SPAN>', null);
+        }
+      });
+      taRegisterTool('bold-underline', {
+        iconclass: 'fa fa-underline',
+        tooltiptext: taTranslations.underline.tooltip,
+        action: function(){
+            return this.$editor().wrapSelection("bold", null);
+        },
+        activeState: function(){
+            return this.$editor().queryCommandState('bold');
         }
       });
       taRegisterTool('calloutInfo', {
         iconclass: "fa fa-info-circle",
         action: function() {
-          this.$editor().wrapSelection('formatBlock', '<div class="bs-callout bs-callout-info"></div>', true);
+          return this.$editor().wrapSelection('formatBlock', '<div class="orange-box">', true);
         }
       });
       taRegisterTool('calloutWarning', {
         iconclass: "fa fa-hashtag",
         action: function() {
-          this.$editor().wrapSelection('formatBlock', '<div class="bs-callout bs-callout-warning"></div>', true);
+          return this.$editor().wrapSelection('formatBlock', '<div class="gray-box">', true);
         }
       });
       taRegisterTool('blackText', {
@@ -130,13 +161,7 @@
               action: taToolFunctions.imgOnSelectAction
           }
       });
-      // add the button to the default toolbar definition
-      taOptions.toolbar[4].push('calloutDanger');
-      taOptions.toolbar[4].push('calloutInfo');
-      taOptions.toolbar[4].push('calloutWarning');
-      taOptions.toolbar[1].push('blackText');
-      taOptions.toolbar[1].push('redText');
-      taOptions.toolbar[1].push('greenText');
+
       return taOptions;
     }]);
   }

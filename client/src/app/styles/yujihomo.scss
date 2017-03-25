@@ -133,12 +133,55 @@ $brand-danger:          #d9534f !default;
 @include bs-mixin(bs-callout-warning, $brand-warning);
 @include bs-mixin(bs-callout-success, $brand-success);
 
-.blog-wrapper h3:before {
-  content: "\f0eb";
-  font-family: FontAwesome;
+.blog-wrapper h1 {
+  font-size: 32px;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.blog-wrapper .bold {
+  font-weight: bold;
+}
+
+.blog-wrapper h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 4em 0 2em;
   position: relative;
-  padding-right: 10px;
-  color: #6C9FCE;
+  background-color: #fff;
+  padding: .5em 1em .5em 1.5em;
+  box-shadow: 0 0 1px rgba(0,0,0,.8);
+}
+
+.blog-wrapper h2:after {
+  position: absolute;
+  top: .5em;
+  left: .5em;
+  content: '';
+  width: 6px;
+  height: -webkit-calc(100% - 1.2em);
+  height: calc(100% - 1.2em);
+  background-color: #f0ad4e;
+}
+
+.blog-wrapper h3 {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 3.8em 0 2em;
+  padding: .4em 0 .4em .1em;
+  position: relative;
+  border-bottom: 2px solid #ccc;
+}
+
+.blog-wrapper h3:after {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  z-index: 2;
+  content: '';
+  width: 30%;
+  height: 2px;
+  background-color: #f0ad4e;
 }
 
 .blog-wrapper strong, .blog-wrapper b {
@@ -167,6 +210,42 @@ $brand-danger:          #d9534f !default;
 .blog-wrapper p {
   text-align: justify;
   line-height: 1.75em;
+}
+
+.blog-wrapper .orange-box {
+  border: 1px solid #ff6819;
+  margin: 24px auto;
+  max-width: 100% !important;
+  width: 100%;
+  padding: 1.2em;
+  border-radius: 4px;
+  font-size: 1.14em;
+}
+
+.blog-wrapper .gray-box {
+  width: 90%;
+  font-size: 1.14em;
+  margin: 2em auto;
+  padding: 1.5em 1em;
+  background-color: #f8f8f8;
+  overflow: hidden;
+  box-shadow: 0 0 1px rgba(0,0,0,.4);
+}
+
+.blog-wrapper ul {
+  list-style: none;
+  padding: 0;
+}
+
+.blog-wrapper li {
+  padding-left: 1.3em;
+}
+
+.blog-wrapper li:before {
+  content: "└";
+  display: inline-block;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  width: 1.3em; /* same as padding-left set on li */
 }
 
 .well {
