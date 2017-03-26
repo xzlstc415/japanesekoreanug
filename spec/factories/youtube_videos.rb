@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :youtube_video do
     sequence(:api_title) { |n| "youtube_video_#{n}" }
     api_description 'youtube video'
-    api_id 'API_ID'
+    sequence(:api_id) { |n| "API_ID_#{n}"}
     api_thumbnail_url Faker::Internet.url
     api_privacy_status 'public'
     api_duration 1800
