@@ -1,8 +1,21 @@
 # YoutubeVideo Model
 class YoutubeVideo < ApplicationRecord
-  has_one :episode
+  # Validations
+  validates :api_id,
+            :api_title,
+            :api_privacy_status,
+            :api_duration,
+            :api_duration,
+            :api_embed_html,
+            :api_processed,
+            presence: true
+  validates :api_id, uniqueness: true
 
+  # Callbacks
   before_save :switch_to_hq_thumbnail
+
+  # Relationships
+  has_one :episode
 
   private
 
