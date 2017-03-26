@@ -1,8 +1,10 @@
 # SimilarEpisodeGroup model
 class SimilarEpisodeGroup < ApplicationRecord
-  has_many :episodes
-
+  # Validations
   validates :name, presence: true, uniqueness: true
+
+  # Relationships
+  has_many :episodes
 
   def similar_episode_ids(episode)
     episodes.published.pluck(:id).reject do |id|

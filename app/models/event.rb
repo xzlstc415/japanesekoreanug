@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   enum event_type: [:streaming, :editing, :school, :others]
 
+  # Validations
   validates :title, :start_time, :end_time, :event_type, presence: true
   validate :end_is_later_than_start, if: 'start_time.present? && end_time.present?'
 
