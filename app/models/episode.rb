@@ -7,7 +7,7 @@ class Episode < ApplicationRecord
   validates :description, presence: true, if: :published?
   validates :episode_type, presence: true, if: :published?
   validates :youtube_video, presence: true, if: :published?
-  
+
   # Callbacks
   before_validation :set_episode_number, :initialize_from_youtube_video
 
@@ -45,6 +45,7 @@ class Episode < ApplicationRecord
   private
 
   def set_episode_number
+    return true if number.present?
     last_episode = Episode.last
     return self.number = 1 if last_episode.blank?
     self.number = last_episode.number + 1
