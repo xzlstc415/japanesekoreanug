@@ -12,7 +12,6 @@
 
     var updateEpisode = function() {
       Episode.update(vm.episode.id, {episode: vm.episode}).then(function() {
-        $state.go('home');
         toastr.success('Episode is updated');
       }).catch(function(res) {
         ErrorMessageHandler.displayErrors(res);
