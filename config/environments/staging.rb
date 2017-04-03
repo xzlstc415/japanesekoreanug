@@ -34,7 +34,11 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
-
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_host_name => 's3-ap-northeast-1.amazonaws.com',
+    :bucket => 'japanesekoreanug-pic'
+  }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
