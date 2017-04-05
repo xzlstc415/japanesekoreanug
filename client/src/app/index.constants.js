@@ -1,11 +1,15 @@
-/* global malarkey:false, moment:false */
 (function() {
   'use strict';
 
+  var mediumType = {
+    'icon': 'Icon',
+    'regular': 'Regular',
+    'large': 'Large'
+  }
+
   angular
     .module('yujihomo')
-    .constant('malarkey', malarkey)
-    .constant('moment', moment)
-    // .constant('API_URL', 'http://localhost:3000');
-    .constant('API_URL', 'http://139.162.74.33');
+    .constant('mediumType', mediumType)
+    .constant('API_URL', 'http://localhost:3000');
+    // .constant('API_URL', 'http://139.162.74.33');
 })();

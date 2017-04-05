@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :starred_episode_users, only: [:create, :destroy]
     resources :feedbacks, only: [:index, :create]
     resources :events, only: [:index, :create, :update, :destroy]
+    resources :media, only: [:index, :create, :destroy]
     mount Sidekiq::Web, at: '/sidekiq'
   end
 

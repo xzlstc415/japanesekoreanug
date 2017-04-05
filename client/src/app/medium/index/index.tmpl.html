@@ -1,0 +1,39 @@
+<div class="well well-lg">
+  <h3>List of Media</h3>
+  <form id="newMediaForm" class="form-inline">
+    <div class="form-group">
+      <input type="file" ngf-select ng-model="vm.mediumFile" name="file"
+             accept="image/*" ngf-max-size="500KB"
+             ngf-resize="{width: 64, height: 64, quality: 1, type: 'image/jpeg',
+             ratio: '1:1', centerCrop: true, pattern='.jpg', restoreExif: false}"
+             ngf-model-invalid="errorFile">
+    </div>
+    <div class="form-group">
+      <select class="form-control"
+              ng-model="vm.medium.medium_type"
+              ng-options="key as value for (key, value) in vm.mediumType">
+      </select>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success" ng-click="vm.addNewMedia()">add new medium</button>
+    </div>
+  </form>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>Medium Content</th>
+        <th>Medium Type</th>
+        <th>Medium Image Url</th>
+        <th>Action</th>
+      </tr>
+      <tr class="medium" ng-repeat="medium in vm.media track by medium.id">
+        <td><img class="img-responsive" ng-src="{{medium.image_url}}"></td>
+        <td>{{medium.medium_type}}</td>
+        <td>{{medium.image_url}}</td>
+        <td>
+          <button class="btn btn-danger" ng-click="vm.removeMedia(medium)">delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
