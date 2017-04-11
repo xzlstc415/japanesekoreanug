@@ -25,11 +25,7 @@ class User < ApplicationRecord
 
   def s3_credentials
     {
-      bucket: "japanesekoreanug-pic",
-      access_key_id: "AKIAIBOGVXCP6PHBEYKQ",
-      secret_access_key: "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",
-      s3_host_name: 's3-ap-northeast-1.amazonaws.com',
-      s3_region: 'ap-northeast-1'
+      bucket: "japanesekoreanug-avatar",
     }
   end
 end
