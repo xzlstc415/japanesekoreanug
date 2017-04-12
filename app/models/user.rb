@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_attached_file :avatar, styles: { thumb: '64x64#' },
                              default_url: '/images/:style/missing.png',
                              storage: :s3,
-                             s3_credentials: Proc.new{|a| a.instance.s3_credentials}
+                             s3_credentials: Proc.new { |a| a.instance.s3_credentials }
 
   validates :name, presence: true
   validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}

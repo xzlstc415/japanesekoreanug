@@ -3,7 +3,7 @@
   <form id="newMediaForm" class="form-inline">
     <div class="form-group">
       <input type="file" ngf-select ng-model="vm.mediumFile" name="file"
-             accept="image/*" ngf-max-size="500KB"
+             accept="image/*" ngf-max-size="50MB"
              ngf-resize="{width: 64, height: 64, quality: 1, type: 'image/jpeg',
              ratio: '1:1', centerCrop: true, pattern='.jpg', restoreExif: false}"
              ngf-model-invalid="errorFile">

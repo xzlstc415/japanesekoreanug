@@ -7,7 +7,16 @@
     vm.mediumType = mediumType;
 
     var addNewMedia = function() {
-      Medium.save(vm.medium, vm.mediumFile);
+      usSpinnerService.spin('spinner-1');
+      Medium.save(vm.medium, vm.mediumFile)
+        .then(function(res) {
+          usSpinnerService.stop('spinner-1');
+          vm.media.push(res);
+        })
+        .catch(function(res) {
+          usSpinnerService.stop('spinner-1');
+          ErrorMessageHandler.displayErrors(res);
+        });
     };
 
     var removeMedia = function() {
