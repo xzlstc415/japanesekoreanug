@@ -11,7 +11,7 @@
       Medium.save(vm.medium, vm.mediumFile)
         .then(function(res) {
           usSpinnerService.stop('spinner-1');
-          vm.media.push(res);
+          vm.media.push(res.data);
         })
         .catch(function(res) {
           usSpinnerService.stop('spinner-1');

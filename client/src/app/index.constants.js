@@ -5,7 +5,7 @@
     'icon': 'Icon',
     'regular': 'Regular',
     'large': 'Large'
-  }
+  };
 
   angular
     .module('yujihomo')
