@@ -21,3 +21,6 @@ client_secrets.json
 /config/aws.yml
 
 /client/gulp/aws.js
+
+# Ignore application configuration
+/config/application.yml

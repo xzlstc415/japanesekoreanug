@@ -24,6 +24,7 @@ gem 'paperclip'
 gem 'google-api-client'
 gem 'rack-cors', require: 'rack/cors'
 gem 'aws-sdk', '~> 2.3'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'
