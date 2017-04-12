@@ -18,11 +18,6 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_host_name => 's3-ap-northeast-1.amazonaws.com',
-    :bucket => 'japanesekoreanug-pic'
-  }
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 

@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   def s3_credentials
     {
-      bucket: "japanesekoreanug-avatar",
+      bucket: 'japanesekoreanug-avatar'
     }
   end
 end
