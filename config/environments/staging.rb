@@ -33,10 +33,7 @@ Rails.application.configure do
 
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
-  logger = Logger.new(STDOUT)
-  logger.error "I am in staging.rb now"
-  logger.error ENV['TWITCH_CLIENT_ID']
-  logger.error ENV['AWS_REGION']
+
   config.paperclip_defaults = {
     storage: :s3,
     s3_region: ENV['AWS_REGION'],
