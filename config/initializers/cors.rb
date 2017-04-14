@@ -11,7 +11,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
             'http://japanesekoreanug.com.s3-website-ap-northeast-1.amazonaws.com',
             'http://www.japanesekoreanug.com',
             'http://japanesekoreanug.com',
-            'http://localhost:3001'
+            'http://localhost:3001',
+            'http://japanesekoreanug.herokuapp.com/'
 
     resource '*',
       headers: :any,
