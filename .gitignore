@@ -14,7 +14,7 @@ custom_plan.rb
 .byebug_history
 .envrc
 dump.rdb
-client_secrets.json
+client_secrets.example.json
 
 /config/aws.yml
 
