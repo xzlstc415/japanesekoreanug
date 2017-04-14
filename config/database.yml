@@ -31,4 +31,5 @@ test:
   database: yujihomo_test
 
 production:
+  <<: *default
   url: <%= ENV['DATABASE_URL'] %>
