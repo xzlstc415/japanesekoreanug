@@ -16,8 +16,6 @@ custom_plan.rb
 dump.rdb
 client_secrets.json
 
-/config/database.yml
-/config/secrets.yml
 /config/aws.yml
 
 /client/gulp/aws.js
