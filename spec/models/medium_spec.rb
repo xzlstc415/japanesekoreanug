@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'aws-sdk'
 
 describe Medium do
   let(:medium) { build(:medium) }
@@ -34,9 +35,9 @@ describe Medium do
     end
 
     it 'is invalid with too big file' do
-      medium.image = File.new("#{Rails.root}/spec/support/fixtures/large_test.jpg")
+      medium.image = File.new("#{Rails.root}/spec/support/fixtures/super_large_test.jpg")
       medium.valid?
-      expect(medium.errors[:image]).to include 'must be in between 0 Bytes and 500 KB'
+      expect(medium.errors[:image]).to include 'must be in between 0 Bytes and 1000 KB'
     end
   end
 end

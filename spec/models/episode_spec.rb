@@ -5,13 +5,6 @@ describe Episode do
 
   let(:episode_for_publish) { build(:episode_for_publish) }
 
-  def stub_youtube_video(episode, youtube_video = nil)
-    youtube_video = build(:youtube_video) unless youtube_video
-    expect(episode).to receive(:youtube_video)
-                       .at_least(:twice)
-                       .and_return(youtube_video)
-  end
-
   context 'validations' do
     it 'has a valid factory' do
       expect(episode).to be_valid
@@ -28,18 +21,6 @@ describe Episode do
         expect(episode.errors[:name]).to include "can't be blank"
       end
 
-      it 'is invalid without a description' do
-        episode.description = nil
-        episode.publish!
-        expect(episode.errors[:description]).to include "can't be blank"
-      end
-
-      it 'is invalid without a youtube_video' do
-        episode.youtube_video = nil
-        episode.publish!
-        expect(episode.errors[:youtube_video]).to include "can't be blank"
-      end
-
       it 'is invalid without a episode_type' do
         episode.episode_type = nil
         episode.publish!
@@ -52,31 +33,39 @@ describe Episode do
         another_episode.publish!
         expect(another_episode.errors[:name]).to include 'has already been taken'
       end
+
+      it 'is invalid without a blog' do
+        episode.blog = nil
+        episode.publish!
+        expect(episode.errors[:blog]).to include "can't be blank"
+      end
+
+      it 'is invalid with wrong type of file for thumbnail' do
+        episode.thumbnail = File.new("#{Rails.root}/spec/support/fixtures/test.txt")
+        episode.valid?
+        expect(episode.errors[:thumbnail])
+          .to match_array ['is invalid', 'has contents that are not what they are reported to be']
+        expect(episode.errors[:image_content_type]).to include 'is invalid'
+      end
+
+      it 'is invalid with too big file' do
+        episode.thumbnail = File.new("#{Rails.root}/spec/support/fixtures/super_large_test.jpg")
+        episode.valid?
+        expect(episode.errors[:thumbnail]).to include 'must be in between 0 Bytes and 1000 KB'
+      end
     end
   end
 
   context 'callbacks' do
     context 'before_validation' do
       it 'set_episode_number' do
-        stub_youtube_video(episode)
         episode.valid?
         expect(episode.number).to eq 1
         episode.save
 
         second_episode = build(:episode)
-        stub_youtube_video(second_episode)
         second_episode.valid?
         expect(second_episode.number).to eq 2
-      end
-
-      it 'initialize_from_youtube_video' do
-        youtube_video = build(:youtube_video)
-        episode.name = ''
-        episode.description = ''
-        stub_youtube_video(episode, youtube_video)
-        episode.valid?
-        expect(episode.name).to eq youtube_video.api_title
-        expect(episode.description).to eq youtube_video.api_description
       end
     end
   end
