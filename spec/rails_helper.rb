@@ -55,3 +55,14 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+module Paperclip
+  def self.run cmd, arguments = "", interpolation_values = {}, local_options = {}
+    cmd == 'convert' ? nil : super
+  end
+end
+
+class Paperclip::Attachment
+  def post_process
+  end
+end

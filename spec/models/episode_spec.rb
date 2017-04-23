@@ -14,30 +14,24 @@ describe Episode do
       expect(episode_for_publish).to be_valid
     end
 
-    context 'when pubulish' do
+    context 'when unpublished' do
       it 'is invalid without a name' do
         episode.name = nil
-        episode.publish!
+        episode.valid?
         expect(episode.errors[:name]).to include "can't be blank"
+      end
+
+      it 'is invalid with duplicated name' do
+        episode.save
+        another_episode = build(:episode, name: episode.name)
+        another_episode.valid?
+        expect(another_episode.errors[:name]).to include 'has already been taken'
       end
 
       it 'is invalid without a episode_type' do
         episode.episode_type = nil
-        episode.publish!
+        episode.valid?
         expect(episode.errors[:episode_type]).to include "can't be blank"
-      end
-
-      it 'is invalid with duplicated name' do
-        episode_for_publish.publish!
-        another_episode = build(:episode_for_publish, name: episode_for_publish.name)
-        another_episode.publish!
-        expect(another_episode.errors[:name]).to include 'has already been taken'
-      end
-
-      it 'is invalid without a blog' do
-        episode.blog = nil
-        episode.publish!
-        expect(episode.errors[:blog]).to include "can't be blank"
       end
 
       it 'is invalid with wrong type of file for thumbnail' do
@@ -45,13 +39,36 @@ describe Episode do
         episode.valid?
         expect(episode.errors[:thumbnail])
           .to match_array ['is invalid', 'has contents that are not what they are reported to be']
-        expect(episode.errors[:image_content_type]).to include 'is invalid'
+        expect(episode.errors[:thumbnail_content_type]).to include 'is invalid'
       end
 
       it 'is invalid with too big file' do
         episode.thumbnail = File.new("#{Rails.root}/spec/support/fixtures/super_large_test.jpg")
         episode.valid?
         expect(episode.errors[:thumbnail]).to include 'must be in between 0 Bytes and 1000 KB'
+      end
+    end
+
+    context 'when pubulish' do
+      it 'is invalid without a blog' do
+        episode.blog = nil
+        episode.save
+        episode.publish!
+        expect(episode.errors[:blog]).to include "can't be blank"
+      end
+
+      it 'is invalid without a description' do
+        episode.description = nil
+        episode.save
+        episode.publish!
+        expect(episode.errors[:description]).to include "can't be blank"
+      end
+
+      it 'is invalid without a thumbnail' do
+        episode.thumbnail = nil
+        episode.save
+        episode.publish!
+        expect(episode.errors[:thumbnail]).to include "can't be blank"
       end
     end
   end
