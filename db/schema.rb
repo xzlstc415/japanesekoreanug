@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423063008) do
+ActiveRecord::Schema.define(version: 20170423071648) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "episode_id",        limit: 4
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20170423063008) do
   end
 
   create_table "episodes", force: :cascade do |t|
-    t.integer  "youtube_video_id",         limit: 4
     t.integer  "number",                   limit: 4
     t.integer  "comments_count",           limit: 4,     default: 0
     t.string   "name",                     limit: 255
@@ -56,7 +55,6 @@ ActiveRecord::Schema.define(version: 20170423063008) do
 
   add_index "episodes", ["episode_type_id"], name: "fk_rails_fbae6c65b1", using: :btree
   add_index "episodes", ["similar_episode_group_id"], name: "index_episodes_on_similar_episode_group_id", using: :btree
-  add_index "episodes", ["youtube_video_id"], name: "index_episodes_on_youtube_video_id", using: :btree
 
   create_table "episodes_tags", id: false, force: :cascade do |t|
     t.integer "episode_id", limit: 4
@@ -173,7 +171,6 @@ ActiveRecord::Schema.define(version: 20170423063008) do
   add_foreign_key "comments", "users"
   add_foreign_key "episodes", "episode_types"
   add_foreign_key "episodes", "similar_episode_groups"
-  add_foreign_key "episodes", "youtube_videos"
   add_foreign_key "episodes_tags", "episodes"
   add_foreign_key "episodes_tags", "tags"
   add_foreign_key "starred_episode_users", "episodes"

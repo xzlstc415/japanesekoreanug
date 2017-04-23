@@ -14,9 +14,6 @@ class YoutubeVideo < ApplicationRecord
   # Callbacks
   before_save :switch_to_hq_thumbnail
 
-  # Relationships
-  has_one :episode
-
   private
 
   def switch_to_hq_thumbnail
