@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" uib-collapse="vm.isNavCollapsed">
       <ul class="nav navbar-nav navbar-right" ng-show="vm.currentUser">
         <li><a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a></li>
-        <li><a href="javascript:void(0)" ui-sref="home({starred: true})">お気に入り動画</a></li>
+        <li><a href="javascript:void(0)" ui-sref="home({starred: true})">お気に入り</a></li>
         <li><a href="javascript:void(0)" ng-click="vm.logout()">ログアウト</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" ng-show="!vm.currentUser">
@@ -56,7 +56,7 @@
       <li><a href="javascript:void(0)" ui-sref="episodes-create" ng-if="vm.currentUser.role=='admin'">Create Episode</a></li>
       <li><a href="javascript:void(0)" ui-sref="youtube" ng-if="vm.currentUser.role=='admin'">Youtube Import</a></li>
       <li ng-if="vm.currentUser.role=='admin'" class="split">|</li>
-      <li><a href="javascript:void(0)" ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">講座エピソード</a></li>
+      <li><a href="javascript:void(0)" ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">ブログ講座</a></li>
       <li><a href="javascript:void(0)" ui-sref="schedule">配信予定</a></li>
       <li><a href="javascript:void(0)" ui-sref="about">このサイトについて</a></li>
       <li><a href="javascript:void(0)" ui-sref="feedback-create" ng-if="!vm.currentUser||vm.currentUser.role=='user'">フィードバック</a></li>
