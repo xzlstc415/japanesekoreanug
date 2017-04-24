@@ -2,7 +2,9 @@
 class Episode < ApplicationRecord
   self.per_page = 30
 
-  has_attached_file :thumbnail, styles: { thumb: '200x125^', regular: '800x^' }
+  has_attached_file :thumbnail,
+                    styles: { thumb: '200x125^', regular: '800x^' },
+                    default_url: "/assets/images/thumb_missing.png"
 
   # Validations
   validates :name, presence: true, uniqueness: true
