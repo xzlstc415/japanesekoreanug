@@ -1,41 +1,27 @@
 (function() {
   'use strict';
 
-  var EpisodesUpdateController = function(User, Episode, episode, $state, toastr, Tag, YoutubeVideo, ErrorMessageHandler, episodeTypes) {
+  var EpisodesUpdateController = function(User, Episode, episode, $state, toastr, Tag, ErrorMessageHandler, episodeTypes, usSpinnerService) {
     var vm = this;
     vm.episode = episode.data;
     vm.episodeTypes = episodeTypes.data;
-    vm.youtubeVideos = [vm.episode.youtube_video];
     vm.tag_ids = vm.episode.tag_ids;
     vm.tags = vm.episode.tags;
     vm.currentUser = User.currentUser();
 
     var updateEpisode = function() {
+      usSpinnerService.spin('spinner-1');
       Episode.update(vm.episode.id, {episode: vm.episode}).then(function() {
+        usSpinnerService.stop('spinner-1');
         toastr.success('Episode is updated');
       }).catch(function(res) {
+        usSpinnerService.stop('spinner-1');
         ErrorMessageHandler.displayErrors(res);
       });
     };
 
-    var canAddVideo = function() {
-      if (vm.youtubeVideos.length > 0) { return false; }
-    };
-
     var searchTags = function(key) {
       return Tag.autocomplete({name_cont: key});
-    };
-
-    var searchYoutubeVideos = function(key) {
-      return YoutubeVideo.autocomplete({api_title_cont: key});
-    };
-
-    var setYoutubeVideo = function($tag) {
-      if ($tag) {
-        vm.episode.youtube_video_id = $tag.id;
-      } else {
-        delete vm.episode.youtube_video_id;
-      }
     };
 
     var createTag = function($tag) {
@@ -63,16 +49,13 @@
     };
 
     vm.updateEpisode = updateEpisode;
-    vm.canAddVideo = canAddVideo;
     vm.searchTags = searchTags;
-    vm.searchYoutubeVideos = searchYoutubeVideos;
-    vm.setYoutubeVideo = setYoutubeVideo;
     vm.createTag = createTag;
     vm.addTag = addTag;
     vm.removeTag = removeTag;
   };
 
-  EpisodesUpdateController.$inject = ['User', 'Episode', 'episode', '$state', 'toastr', 'Tag', 'YoutubeVideo', 'ErrorMessageHandler', 'episodeTypes'];
+  EpisodesUpdateController.$inject = ['User', 'Episode', 'episode', '$state', 'toastr', 'Tag', 'ErrorMessageHandler', 'episodeTypes', 'usSpinnerService'];
 
   angular.module('yujihomo')
     .controller('EpisodesUpdateController', EpisodesUpdateController);

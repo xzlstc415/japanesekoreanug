@@ -1,6 +1,6 @@
 (function() {
 
-  var Episode = function($http, API_URL) {
+  var Episode = function($http, API_URL, Upload) {
     var vm = this;
 
     var query = function(params) {
@@ -29,7 +29,7 @@
         data: params
       };
 
-      return $http(req);
+      return Upload.upload(req);
     };
 
     var update = function(id, params) {
@@ -39,7 +39,7 @@
         data: params
       };
 
-      return $http(req);
+      return Upload.upload(req);
     };
 
     vm.query = query;
@@ -50,7 +50,7 @@
     return vm;
   };
 
-  Episode.$inject = ['$http', 'API_URL'];
+  Episode.$inject = ['$http', 'API_URL', 'Upload'];
 
   angular.module('yujihomo')
     .service('Episode', Episode);

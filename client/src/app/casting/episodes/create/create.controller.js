@@ -1,41 +1,27 @@
 (function() {
   'use strict';
 
-  var EpisodesCreateController = function(User, Episode, $state, toastr, Tag, YoutubeVideo, ErrorMessageHandler, episodeTypes) {
+  var EpisodesCreateController = function(User, Episode, $state, toastr, Tag, ErrorMessageHandler, episodeTypes, usSpinnerService) {
     var vm = this;
     vm.episodeTypes = episodeTypes.data;
-    vm.youtubeVideos = [];
     vm.episode = {};
     vm.episode.tag_ids = [];
     vm.currentUser = User.currentUser();
 
     var saveEpisode = function() {
+      usSpinnerService.spin('spinner-1');
       Episode.save({episode: vm.episode}).then(function() {
+        usSpinnerService.stop('spinner-1');
         $state.go('home');
         toastr.success('You have created a new episode');
       }).catch(function(res) {
+        usSpinnerService.stop('spinner-1');
         ErrorMessageHandler.displayErrors(res);
       });
     };
 
     var searchTags = function(key) {
       return Tag.autocomplete({name_cont: key});
-    };
-
-    var searchYoutubeVideos = function(key) {
-      return YoutubeVideo.autocomplete({api_title_cont: key});
-    };
-
-    var canAddVideo = function() {
-      if (vm.youtubeVideos.length > 0) { return false; }
-    };
-
-    var setYoutubeVideo = function($tag) {
-      if ($tag) {
-        vm.episode.youtube_video_id = $tag.id;
-      } else {
-        delete vm.episode.youtube_video_id;
-      }
     };
 
     var createTag = function($tag) {
@@ -64,15 +50,12 @@
 
     vm.saveEpisode = saveEpisode;
     vm.searchTags = searchTags;
-    vm.searchYoutubeVideos = searchYoutubeVideos;
-    vm.canAddVideo = canAddVideo;
-    vm.setYoutubeVideo = setYoutubeVideo;
     vm.addTag = addTag;
     vm.createTag = createTag;
     vm.removeTag = removeTag;
   };
 
-  EpisodesCreateController.$inject = ['User', 'Episode', '$state', 'toastr', 'Tag', 'YoutubeVideo', 'ErrorMessageHandler', 'episodeTypes'];
+  EpisodesCreateController.$inject = ['User', 'Episode', '$state', 'toastr', 'Tag', 'ErrorMessageHandler', 'episodeTypes', 'usSpinnerService'];
 
   angular.module('yujihomo')
     .controller('EpisodesCreateController', EpisodesCreateController);

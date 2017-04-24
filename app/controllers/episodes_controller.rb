@@ -75,10 +75,9 @@ class EpisodesController < ApplicationController
     params.require(:episode)
           .permit(:name,
                   :duration,
-                  :thumbnail_url,
+                  :thumbnail,
                   :description,
                   :episode_type_id,
-                  :youtube_video_id,
                   :blog,
                   tag_ids: [])
   end
