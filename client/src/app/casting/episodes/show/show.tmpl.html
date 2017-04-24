@@ -13,7 +13,7 @@
            rel="nofollow"
            ng-if="vm.currentUser">☆</a>
       </h1>
-      <div class="details">{{vm.episode.published_at}} | {{vm.episode.comments_count}} comments | {{vm.episode.duration | secondsToTimeFormat}} |
+      <div class="details">{{vm.episode.published_at}} | {{vm.episode.comments_count}} comments
         <span class="label label-warning" ng-repeat="tag in vm.episode.tags track by $index">
           <a ui-sref="home({tags_name_eq: '{{tag.name}}'})" href="javascript:void(0)">{{tag.name}}</a><span ng-if="!$last">,</span>
         </span>

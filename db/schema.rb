@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424032538) do
+ActiveRecord::Schema.define(version: 20170424042848) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "episode_id",        limit: 4
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20170424032538) do
     t.integer  "number",                   limit: 4
     t.integer  "comments_count",           limit: 4,     default: 0
     t.string   "name",                     limit: 255
-    t.integer  "duration",                 limit: 4
     t.text     "description",              limit: 65535
     t.date     "published_at"
     t.integer  "next_episode_id",          limit: 4

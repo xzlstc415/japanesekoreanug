@@ -46,7 +46,6 @@
       </h2>
       <div class="description">
         {{episode.description}}
-        <span class="stats">({{episode.duration | secondsToTimeFormat}})</span>
       </div>
       <div class="watch">
         <a href="javascript:void(0)"
@@ -108,7 +107,6 @@
           {{episode.comments_count}} コメント
         </a>
       </td>
-      <td>{{episode.duration | secondsToTimeFormat}}</td>
       <td>{{episode.published_at}}</td>
     </tr>
   </tbody>
@@ -147,7 +145,6 @@
       </div>
       <div>
         {{episode.description}}
-        <span class="stats">({{episode.duration | secondsToTimeFormat}})</span>
       </div>
     </div>
   </div>
