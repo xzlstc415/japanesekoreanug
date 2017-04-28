@@ -11,9 +11,24 @@
     </div>
     <div class="collapse navbar-collapse" uib-collapse="vm.isNavCollapsed">
       <ul class="nav navbar-nav navbar-right" ng-show="vm.currentUser">
-        <li><a href="javascript:void(0)" ui-sref="profile">{{ vm.currentUser.name }}</a></li>
         <li><a href="javascript:void(0)" ui-sref="home({starred: true})">お気に入り</a></li>
-        <li><a href="javascript:void(0)" ng-click="vm.logout()">ログアウト</a></li>
+        <li uib-dropdown is-open="status.isopen">
+          <a href="javascript:void(0)"
+             id="menu_button"
+             uib-dropdown-toggle>
+            {{ vm.currentUser.name }} <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="menu_button">
+            <li><a href="javascript:void(0)" ui-sref="profile">プロフィール</a></li>
+            <li role="separator" class="divider" ng-if="vm.currentUser.role=='admin'"></li>
+            <li><a href="javascript:void(0)" ui-sref="tags" ng-if="vm.currentUser.role=='admin'">Tags</a></li>
+            <li><a href="javascript:void(0)" ui-sref="episode-groups" ng-if="vm.currentUser.role=='admin'">Episode Groups</a></li>
+            <li><a href="javascript:void(0)" ui-sref="episodes-create" ng-if="vm.currentUser.role=='admin'">Create Episode</a></li>
+            <li><a href="javascript:void(0)" ui-sref="youtube" ng-if="vm.currentUser.role=='admin'">Youtube Import</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="javascript:void(0)" ng-click="vm.logout()">ログアウト</a></li>
+          </ul>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" ng-show="!vm.currentUser">
         <li><a href="javascript:void(0)" ng-click="vm.openLoginModal();">ログイン</a></li>
@@ -22,7 +37,7 @@
     </div>
   </div>
 </nav>
-<div class="jumbotron" ng-if="vm.$state.current.name != 'episodes-comments' && vm.$state.current.name != 'episodes-similar-ep'">
+<div class="jumbotron" ng-show="vm.$state.current.name != 'episodes-comments' && vm.$state.current.name != 'episodes-similar-ep'">
   <div class="container-fluid" style="padding-top: 50px;">
     <div class="col-md-6 col-sm-8">
       <a class="no-underline"
@@ -41,7 +56,11 @@
     </div>
   </div>
 </div>
-<nav class="navbar navbar-inverse no-border-radius yellow-bot-border hidden-xs" role="navigation">
+<nav class="navbar navbar-inverse no-border-radius yellow-bot-border hidden-xs"
+     role="navigation"
+     id="user_navbar"
+     ug-waypoint
+     waypoint-offset="50px">
   <div class="container-fluid" style="padding: 0 15px;">
     <form class="navbar-form navbar-left" ng-submit="vm.searchEpisodes()" ng-show="vm.$state.current.name == 'home'">
       <div class="form-group">
@@ -51,11 +70,6 @@
       <button type="submit" class="btn btn-default">エピソード検索</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="javascript:void(0)" ui-sref="tags" ng-if="vm.currentUser.role=='admin'">Tags</a></li>
-      <li><a href="javascript:void(0)" ui-sref="episode-groups" ng-if="vm.currentUser.role=='admin'">Episode Groups</a></li>
-      <li><a href="javascript:void(0)" ui-sref="episodes-create" ng-if="vm.currentUser.role=='admin'">Create Episode</a></li>
-      <li><a href="javascript:void(0)" ui-sref="youtube" ng-if="vm.currentUser.role=='admin'">Youtube Import</a></li>
-      <li ng-if="vm.currentUser.role=='admin'" class="split">|</li>
       <li><a href="javascript:void(0)" ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">講座</a></li>
       <li><a href="javascript:void(0)" ui-sref="schedule">配信予定</a></li>
       <li><a href="javascript:void(0)" ui-sref="about">このサイトについて</a></li>

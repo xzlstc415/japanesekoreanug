@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var HeaderController = function($auth, toastr, User, $state, usSpinnerService, ErrorMessageHandler) {
+  var HeaderController = function($auth, toastr, User, $state, usSpinnerService, ErrorMessageHandler, $scope, $timeout) {
     var vm = this;
     vm.isNavCollapsed = true;
     vm.mobileSearchOpen = false;
@@ -127,7 +127,7 @@
     vm.closeMobileSearch = closeMobileSearch;
   };
 
-  HeaderController.$inject = ['$auth', 'toastr', 'User', '$state', 'usSpinnerService', 'ErrorMessageHandler'];
+  HeaderController.$inject = ['$auth', 'toastr', 'User', '$state', 'usSpinnerService', 'ErrorMessageHandler', '$scope', '$timeout'];
 
   angular.module('yujihomo')
     .controller('HeaderController', HeaderController);
