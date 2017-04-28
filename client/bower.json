@@ -26,7 +26,8 @@
     "angular-bootstrap": "latest",
     "ng-disable-scroll": "latest",
     "angular-ui-calendar": "latest",
-    "textAngular": "latest"
+    "textAngular": "latest",
+    "waypoint": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"
