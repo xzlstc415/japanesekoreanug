@@ -16,7 +16,13 @@
 /*** EPISODE ***/
 .ta-insert-video {
   width: 80%;
-  height: 200px;
+  height: 300px;
+}
+
+@media all and (max-width: 768px) {
+  .ta-insert-video {
+    height: 200px;
+  }
 }
 
 #episode #video_wrapper {
