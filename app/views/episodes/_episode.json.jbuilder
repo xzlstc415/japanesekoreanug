@@ -13,6 +13,7 @@ json.published_at episode.published_at.strftime('%Y/%m/%d') if episode.published
 json.similar_episode_ids episode.similar_episode_ids
 json.type episode.episode_type.name if episode.episode_type
 json.thumbnail_url episode.thumbnail.url(:thumb)
+json.thumbnail_large_url episode.thumbnail.url(:regular)
 if episode.tags
   json.tags episode.tags.map { |tag| { id: tag.id, name: tag.name, text: tag.name, value: tag.id } }
 end
