@@ -38,7 +38,7 @@
     </div>
   </div>
 </nav>
-<div class="jumbotron" ng-show="vm.$state.current.name != 'episodes-comments' && vm.$state.current.name != 'episodes-similar-ep'">
+<div class="jumbotron hidden-xs" ng-show="vm.$state.current.name != 'episodes-comments' && vm.$state.current.name != 'episodes-similar-ep'">
   <div class="container-fluid" style="padding-top: 50px;">
     <div class="col-md-6 col-sm-8">
       <a class="no-underline"
@@ -125,7 +125,7 @@
         <div class="center-item">
           <a href="javascript:void(0)"
              ui-sref="home({starred: '', episode_type_name_eq: '', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: ''})">
-            <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
           </a>
         </div>
       </li>

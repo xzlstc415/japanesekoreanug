@@ -6,7 +6,6 @@
     vm.tags = tags.data;
     vm.episodeTypes = episodeTypes.data;
     vm.filters = $stateParams;
-    vm.hiddenMenuIsVisible = false;
     Episode.queryLatestEpisodes().then(function(res) {
       vm.latestEpisodes = res.data;
     }).catch(function(res) {
@@ -24,19 +23,6 @@
     } else {
       episodeFilter.reset();
     }
-
-    var openMobileSidebar = function() {
-      vm.hiddenMenuIsVisible = true;
-      MobileSidebarState.open();
-    };
-
-    var closeMobileSidebar = function() {
-      vm.hiddenMenuIsVisible = false;
-      MobileSidebarState.close();
-    };
-
-    vm.openMobileSidebar = openMobileSidebar;
-    vm.closeMobileSidebar = closeMobileSidebar;
   };
 
   SidebarController.$inject = ['$stateParams', 'tags', 'episodeTypes', 'episodeFilter', 'MobileSidebarState', '$state', 'Episode'];

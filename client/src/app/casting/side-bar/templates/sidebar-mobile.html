@@ -1,42 +1,40 @@
-<div class="hidden-menu container visibile-xs mobile-sidebar" ng-show="vm.hiddenMenuIsVisible">
-  <div class="col-xs-11 hidden-menu-body">
-    <div class="search_option">
-      <h4>レベル分け</h4>
-      <ul>
-        <li ng-repeat="episode_type in vm.episodeTypes track by $index">
-          <a href="javascript:void(0)"
-             ui-sref="home({episode_type_name_eq: '{{episode_type.name}}', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: '', starred: ''})"
-             analytics-on="click"
-             analytics-event="Select {{episode_type.name}}"
-             analytics-category="Sidebar Filter"
-             class="no-underline">
-            {{episode_type.name}} ({{episode_type.episodes_count}})
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="search_option">
-      <h4>タグ</h4>
-      <div>
-        <span ng-repeat="tag in vm.tags">
-          <a class="label label-warning"
-             href="javascript:void(0)"
-             ui-sref="home({tags_name_eq: '{{tag.name}}', episode_type_name_eq: '', name_or_tags_name_or_episode_type_name_cont: '', starred: ''})"
-             style="margin-right: 0.5em; color: white">
-            {{tag.name}} ({{tag.episodes_count}})
-          </a>
-        </span>
-      </div>
-    </div>
+<div class="mobile-sort-bar container-fluid visible-xs-block mobile-sidebar">
+  <div class="btn-group" uib-dropdown is-open="levelSortStatus.isopen">
+    <button id="level-sort-button"
+            type="button"
+            class="btn btn-default"
+            uib-dropdown-toggle>
+      レベル分け<span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu mobile-sort-bar-dropdown" uib-dropdown-menu role="menu" aria-labelledby="level-sort-button">
+      <li role="menuitem" ng-repeat="episode_type in vm.episodeTypes track by $index">
+        <a href="javascript:void(0)"
+           ui-sref="home({episode_type_name_eq: '{{episode_type.name}}', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: '', starred: ''})"
+           analytics-on="click"
+           analytics-event="Select {{episode_type.name}}"
+           analytics-category="Sidebar Filter"
+           class="no-underline">
+          {{episode_type.name}} ({{episode_type.episodes_count}})
+        </a>
+      </li>
+    </ul>
   </div>
-</div>
-<div class="visible-xs side-button-container">
-  <button type="button"
-          class="btn btn-warning btn-xs hidden-menu-button"
-          ng-click="vm.openMobileSidebar()"
-          ng-show="vm.hiddenMenuIsVisible == false">&lt</button>
-  <button type="button"
-          class="btn btn-warning btn-xs hidden-menu-button"
-          ng-click="vm.closeMobileSidebar()"
-          ng-show="vm.hiddenMenuIsVisible == true">&gt</button>
+
+  <div class="btn-group" uib-dropdown is-open="tagSortStatus.isopen">
+    <button id="tag-sort-button"
+            type="button"
+            class="btn btn-default"
+            uib-dropdown-toggle>
+      タグ<span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu mobile-sort-bar-dropdown" uib-dropdown-menu role="menu" aria-labelledby="tag-sort-button">
+      <li role="menuitem" ng-repeat="tag in vm.tags track by $index">
+        <a class="no-underline"
+           href="javascript:void(0)"
+           ui-sref="home({tags_name_eq: '{{tag.name}}', episode_type_name_eq: '', name_or_tags_name_or_episode_type_name_cont: '', starred: ''})">
+          {{tag.name}} ({{tag.episodes_count}})
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
