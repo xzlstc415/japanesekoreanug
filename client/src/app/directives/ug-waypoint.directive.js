@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var ugWaypoint = function($timeout) {
+  var ugWaypoint = function($timeout, Waypoint) {
     var link = function(scope, element, attr) {
       $timeout(function() {
         new Waypoint({
@@ -23,7 +23,7 @@
     };
   };
 
-  ugWaypoint.$inject = ['$timeout'];
+  ugWaypoint.$inject = ['$timeout', 'Waypoint'];
 
   angular.module('yujihomo').directive('ugWaypoint', ugWaypoint);
 })();
