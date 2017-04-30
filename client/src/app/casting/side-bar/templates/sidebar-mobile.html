@@ -1,27 +1,31 @@
 <div class="hidden-menu container visibile-xs mobile-sidebar" ng-show="vm.hiddenMenuIsVisible">
   <div class="col-xs-11 hidden-menu-body">
     <div class="search_option">
-      <h2>レベル分け</h2>
-      <div class="list-group">
-        <a ng-repeat="episode_type in vm.episodeTypes"
-           class="list-group-item"
-           ng-class="{active: vm.getType() == episode_type.name}"
-           href="javascript:void(0)"
-           ng-click="vm.toggleType(episode_type.name)">
-          {{episode_type.name}}
-        </a>
-      </div>
+      <h4>レベル分け</h4>
+      <ul>
+        <li ng-repeat="episode_type in vm.episodeTypes track by $index">
+          <a href="javascript:void(0)"
+             ui-sref="home({episode_type_name_eq: '{{episode_type.name}}', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: '', starred: ''})"
+             analytics-on="click"
+             analytics-event="Select {{episode_type.name}}"
+             analytics-category="Sidebar Filter"
+             class="no-underline">
+            {{episode_type.name}} ({{episode_type.episodes_count}})
+          </a>
+        </li>
+      </ul>
     </div>
     <div class="search_option">
-      <h2>カテゴリー</h2>
-      <div class="list-group">
-        <a ng-repeat="tag in vm.tags"
-           class="list-group-item"
-           ng-class="{active: vm.getTag() == tag.name}"
-           href="javascript:void(0)"
-           ng-click="vm.toggleTag(tag.name)">
-          {{tag.name}} ({{tag.episodes_count}})
-        </a>
+      <h4>タグ</h4>
+      <div>
+        <span ng-repeat="tag in vm.tags">
+          <a class="label label-warning"
+             href="javascript:void(0)"
+             ui-sref="home({tags_name_eq: '{{tag.name}}', episode_type_name_eq: '', name_or_tags_name_or_episode_type_name_cont: '', starred: ''})"
+             style="margin-right: 0.5em; color: white">
+            {{tag.name}} ({{tag.episodes_count}})
+          </a>
+        </span>
       </div>
     </div>
   </div>

@@ -10,7 +10,6 @@
            class="star"
            ng-class="{starred: vm.episode.starred, unstarred: !vm.episode.starred}"
            ng-click="vm.toggleStar()"
-           rel="nofollow"
            ng-if="vm.currentUser">☆</a>
       </h1>
       <div class="details">{{vm.episode.published_at}} | {{vm.episode.comments_count}} comments
@@ -37,48 +36,11 @@
            required
            ng-model-options="{debounce: 1000}"
            style="width: 100%">
+      </div>
     </div>
-    <ul class="nav horizontal col-sm-12" style="margin-top: 1em;">
-      <li>
-        <a href="javascript:void(0)"
-           class="tab"
-           ng-class="{selected: vm.commentsSelected}"
-           ng-click="vm.commentsSelected = true; vm.similarEpisodesSelected = false;"
-           ui-sref="episodes-comments({id: {{vm.episode.id}}})">
-          {{vm.episode.comments_count}} コメント
-        </a>
-      </li>
-      <li>
-        <a href="javascript:void(0)"
-           class="tab"
-           ng-class="{selected: vm.similarEpisodesSelected}"
-           ng-click="vm.commentsSelected = false; vm.similarEpisodesSelected = true;"
-           ui-sref="episodes-similar-ep({id: {{vm.episode.id}}})"
-           analytics-on="click"
-           analytics-event="Check similar episodes"
-           analytics-category="episode detail page">
-          関連エピソード
-        </a>
-      </li>
-      <li class="next">
-        <a href="javascript:void(0)"
-           ui-sref="episodes-comments({id: {{vm.episode.next_episode_id}}})"
-           ng-if="!!vm.episode.next_episode_id">
-          次のエピソード &gt;
-        </a>
-      </li>
-      <li class="previous">
-        <a href="javascript:void(0)"
-           ui-sref="episodes-comments({id: {{vm.episode.previous_episode_id}}})"
-           ng-if="!!vm.episode.previous_episode_id">
-          &lt; 前回のエピソード
-        </a>
-      </li>
-    </ul>
     <div class="nav_section">
       <div class="inner">
         <div ui-view="comments" id="comments"></div>
-        <div ui-view="similar-episodes" class="similar"></div>
       </div>
     </div>
   </div>

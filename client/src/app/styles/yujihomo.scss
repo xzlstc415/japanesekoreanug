@@ -38,14 +38,14 @@ ul {
   color: #E98C08 !important;
 }
 
-.star{
-  font-size: 16px;
-  text-decoration: none;
+.star {
+  font-size: 0.8em;
+  text-decoration: none !important;
   margin-left: 3px;
 }
 
 .star:hover {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 #toast-container {
