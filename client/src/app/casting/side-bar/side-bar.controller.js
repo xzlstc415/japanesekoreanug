@@ -1,42 +1,29 @@
 (function() {
   'use strict';
 
-  var SidebarController = function($stateParams, tags, episodeTypes, episodeFilter, MobileSidebarState, $state) {
+  var SidebarController = function($stateParams, tags, episodeTypes, episodeFilter, MobileSidebarState, $state, Episode) {
     var vm = this;
     vm.tags = tags.data;
     vm.episodeTypes = episodeTypes.data;
     vm.filters = $stateParams;
     vm.hiddenMenuIsVisible = false;
+    Episode.queryLatestEpisodes().then(function(res) {
+      vm.latestEpisodes = res.data;
+    }).catch(function(res) {
+      ErrorMessageHandler.displayErrors(res);
+    })
+    Episode.queryPopularEpisodes().then(function(res) {
+      vm.popularEpisodes = res.data;
+    }).catch(function(res) {
+      ErrorMessageHandler.displayErrors(res);
+    })
+
     if ($state.current.name == 'home') {
       episodeFilter.setTag($stateParams.tags_name_eq);
       episodeFilter.setType($stateParams.episode_type_name_eq);
     } else {
       episodeFilter.reset();
     }
-
-    var removeTag = function() {
-      episodeFilter.setTag(null);
-    };
-
-    var removeType = function() {
-      episodeFilter.setType(null);
-    };
-
-    var toggleTag = function(tagName) {
-      var currentTag = angular.copy(episodeFilter.getTag());
-      removeTag();
-      if (currentTag != tagName) {
-        episodeFilter.setTag(tagName);
-      }
-    };
-
-    var toggleType = function(typeName) {
-      var currentType = angular.copy(episodeFilter.getType());
-      removeType();
-      if (currentType != typeName) {
-        episodeFilter.setType(typeName);
-      }
-    };
 
     var openMobileSidebar = function() {
       vm.hiddenMenuIsVisible = true;
@@ -48,17 +35,11 @@
       MobileSidebarState.close();
     };
 
-    vm.getTag = episodeFilter.getTag;
-    vm.getType = episodeFilter.getType;
-    vm.toggleType = toggleType;
-    vm.toggleTag = toggleTag;
-    vm.removeType = removeType;
-    vm.removeTag = removeTag;
     vm.openMobileSidebar = openMobileSidebar;
     vm.closeMobileSidebar = closeMobileSidebar;
   };
 
-  SidebarController.$inject = ['$stateParams', 'tags', 'episodeTypes', 'episodeFilter', 'MobileSidebarState', '$state'];
+  SidebarController.$inject = ['$stateParams', 'tags', 'episodeTypes', 'episodeFilter', 'MobileSidebarState', '$state', 'Episode'];
 
   angular.module('yujihomo')
     .controller('SidebarController', SidebarController);

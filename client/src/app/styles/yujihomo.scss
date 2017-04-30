@@ -6,6 +6,11 @@
   text-decoration: none;
 }
 
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
 .no-border-radius {
   border-radius: 0 !important;
   -moz-border-radius: 0 !important;
@@ -253,6 +258,11 @@ $brand-danger:          #d9534f !default;
   background-image: none !important;
 }
 
+.well {
+  background-color: white !important;
+  background-image: none !important;
+}
+
 #main-container {
   padding-top: 100px;
 }
@@ -261,4 +271,13 @@ $brand-danger:          #d9534f !default;
   #main-container {
     padding-top: 20px;
   }
+}
+
+.well-lg {
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  box-shadow: 0 1px 4px rgba(0,0,0,.04);
+}
+
+.label-warning a, .label-primary a {
+  color: white !important;
 }

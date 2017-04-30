@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var EpisodesShowController = function(User, episode, $sce, StarredEpisodeUser, $state, ErrorMessageHandler) {
+  var EpisodesShowController = function(User, episode, $sce, StarredEpisodeUser, $state, ErrorMessageHandler, $location) {
     var vm = this;
     vm.episode = episode.data;
     vm.currentUser = User.currentUser();
@@ -42,15 +42,25 @@
       }
     };
 
+    var episodeNameForTwitter = function() {
+      return encodeURIComponent(vm.episode.name);
+    }
+
+    var episodeUrlForTwitter = function() {
+      return encodeURIComponent($location.absUrl());
+    }
+
     // var getIframeSrc = function() {
     //   return $sce.trustAsResourceUrl(window.encodeURIComponent( 'http://platform.twitter.com/widgets/tweet_button.289140617d6d66fbee36bb5f0535b846.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=ja&amp;original_referer=http://japanesekoreanug.com/episodes/'+ vm.episode.id + '&amp;size=m&amp;text=この動画' + vm.episode.name + '&amp;type=share&amp;url=http://japanesekoreanug.com/episodes/'+ vm.episode.id));
     // };
 
     vm.toggleStar = toggleStar;
+    vm.episodeNameForTwitter = episodeNameForTwitter;
+    vm.episodeUrlForTwitter = episodeUrlForTwitter;
     // vm.getIframeSrc = getIframeSrc;
   };
 
-  EpisodesShowController.$inject = ['User', 'episode', '$sce', 'StarredEpisodeUser', '$state', 'ErrorMessageHandler'];
+  EpisodesShowController.$inject = ['User', 'episode', '$sce', 'StarredEpisodeUser', '$state', 'ErrorMessageHandler', '$location'];
 
   angular.module('yujihomo')
     .controller('EpisodesShowController', EpisodesShowController);

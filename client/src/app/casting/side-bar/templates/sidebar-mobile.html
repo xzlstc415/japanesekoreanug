@@ -1,0 +1,38 @@
+<div class="hidden-menu container visibile-xs mobile-sidebar" ng-show="vm.hiddenMenuIsVisible">
+  <div class="col-xs-11 hidden-menu-body">
+    <div class="search_option">
+      <h2>レベル分け</h2>
+      <div class="list-group">
+        <a ng-repeat="episode_type in vm.episodeTypes"
+           class="list-group-item"
+           ng-class="{active: vm.getType() == episode_type.name}"
+           href="javascript:void(0)"
+           ng-click="vm.toggleType(episode_type.name)">
+          {{episode_type.name}}
+        </a>
+      </div>
+    </div>
+    <div class="search_option">
+      <h2>カテゴリー</h2>
+      <div class="list-group">
+        <a ng-repeat="tag in vm.tags"
+           class="list-group-item"
+           ng-class="{active: vm.getTag() == tag.name}"
+           href="javascript:void(0)"
+           ng-click="vm.toggleTag(tag.name)">
+          {{tag.name}} ({{tag.episodes_count}})
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="visible-xs side-button-container">
+  <button type="button"
+          class="btn btn-warning btn-xs hidden-menu-button"
+          ng-click="vm.openMobileSidebar()"
+          ng-show="vm.hiddenMenuIsVisible == false">&lt</button>
+  <button type="button"
+          class="btn btn-warning btn-xs hidden-menu-button"
+          ng-click="vm.closeMobileSidebar()"
+          ng-show="vm.hiddenMenuIsVisible == true">&gt</button>
+</div>

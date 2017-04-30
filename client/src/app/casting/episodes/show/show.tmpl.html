@@ -22,7 +22,7 @@
         {{vm.episode.name}}
       </div>
       <a class="twitter-share-button btn btn-info"
-         ng-href="https://twitter.com/intent/tweet?text={{vm.episode.name}}&via=jpkr_ug"
+         ng-href="https://twitter.com/intent/tweet?text={{vm.episodeNameForTwitter()}}&via=jpkr_ug&url={{vm.episodeUrlForTwitter()}}"
          analytics-on="click"
          analytics-event="Shared on Twitter"
          analytics-category="social sharing">

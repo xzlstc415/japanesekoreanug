@@ -1,0 +1,60 @@
+<div class="hidden-xs">
+  <div class="search_option">
+    <h4>レベル分け</h4>
+    <ul>
+      <li ng-repeat="episode_type in vm.episodeTypes track by $index">
+        <a href="javascript:void(0)"
+           ui-sref="home({episode_type_name_eq: '{{episode_type.name}}', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: '', starred: ''})"
+           analytics-on="click"
+           analytics-event="Select {{episode_type.name}}"
+           analytics-category="Sidebar Filter"
+           class="no-underline">
+          {{episode_type.name}} ({{episode_type.episodes_count}})
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="search_option">
+    <h4>タグ</h4>
+    <div>
+      <span ng-repeat="tag in vm.tags">
+        <a class="label label-warning"
+           href="javascript:void(0)"
+           ui-sref="home({tags_name_eq: '{{tag.name}}', episode_type_name_eq: '', name_or_tags_name_or_episode_type_name_cont: '', starred: ''})"
+           style="margin-right: 0.5em; color: white">
+          {{tag.name}} ({{tag.episodes_count}})
+        </a>
+      </span>
+    </div>
+  </div>
+  <div class="search_option">
+    <h4>最新の記事</h4>
+    <ul>
+      <li ng-repeat="latestEpisode in vm.latestEpisodes track by latestEpisode.id">
+        <a href="javascript:void(0)"
+           ui-sref="episodes-comments({id: {{latestEpisode.id}}})"
+           analytics-on="click"
+           analytics-event="go to latest episode {{latestEpisode.name}}"
+           analytics-category="latest episodes"
+           class="no-underline">
+          {{latestEpisode.name}}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="search_option">
+    <h4>人気の記事</h4>
+    <ul>
+      <li ng-repeat="popularEpisode in vm.popularEpisodes track by popularEpisode.id">
+        <a href="javascript:void(0)"
+           ui-sref="episodes-comments({id: {{popularEpisode.id}}})"
+           analytics-on="click"
+           analytics-event="go to popular episode {{popularEpisode.name}}"
+           analytics-category="popular episodes"
+           class="no-underline">
+          {{popularEpisode.name}}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

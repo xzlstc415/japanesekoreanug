@@ -4,6 +4,15 @@
   padding-left: 5px;
 }
 
+#casting-episodes h4 a {
+  color: #777;
+}
+
+#casting-episodes h4 a:hover {
+  color: #aaa;
+  text-decoration: none;
+}
+
 #casting-episodes h2 .remove{
   font-size: 14px;
   font-weight: normal;
@@ -91,4 +100,9 @@
   margin: 0 auto;
   font-size: 18px;
   line-height: 30px;
+}
+
+.tag-span {
+  vertical-align:middle;
+  margin-right: 0.5em
 }

@@ -9,6 +9,14 @@ class EpisodesController < ApplicationController
       episodes = policy_scope(Episode)
                  .joins(:starred_episode_users)
                  .where(starred_episode_users: { user: current_auth_user })
+    elsif params[:latest]
+      episodes = policy_scope(Episode)
+                 .order(number: :desc)
+                 .limit(6)
+    elsif params[:popular]
+      episodes = policy_scope(Episode)
+                 .order(comments_count: :desc)
+                 .limit(6)
     elsif search_params[:episode_type_name_eq].blank? &&
           search_params[:tags_name_eq].blank? &&
           search_params[:similar_episode_group_id_eq].blank? &&

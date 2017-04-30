@@ -1,7 +1,9 @@
 (function() {
 
-  var Episode = function($http, API_URL, Upload) {
+  var Episode = function($http, API_URL, Upload, $q) {
     var vm = this;
+    var latestEpisodes = [];
+    var popularEpisodes = [];
 
     var query = function(params) {
       var req = {
@@ -12,6 +14,46 @@
 
       return $http(req);
     };
+
+    var queryLatestEpisodes = function() {
+      var deferred = $q.defer();
+
+      if (latestEpisodes.length > 0) {
+        deferred.resolve({data: latestEpisodes})
+      } else {
+        query({latest: true})
+          .then(function(res) {
+            deferred.resolve(res);
+          })
+          .catch(function(res) {
+            deferred.reject(res);
+          })
+      }
+
+      return deferred.promise;
+    }
+
+    var queryPopularEpisodes = function() {
+      var deferred = $q.defer();
+
+      if (popularEpisodes.length > 0) {
+        deferred.resolve({data: popularEpisodes})
+      } else {
+        query({popular: true})
+          .then(function(res) {
+            deferred.resolve(res);
+          })
+          .catch(function(res) {
+            deferred.reject(res);
+          })
+      }
+
+      return deferred.promise;
+    }
+
+    var queryPopularEpisodes = function() {
+      return query({popular: true});
+    }
 
     var get = function(id) {
       var req = {
@@ -46,11 +88,13 @@
     vm.get = get;
     vm.save = save;
     vm.update = update;
+    vm.queryPopularEpisodes = queryPopularEpisodes;
+    vm.queryLatestEpisodes = queryLatestEpisodes;
 
     return vm;
   };
 
-  Episode.$inject = ['$http', 'API_URL', 'Upload'];
+  Episode.$inject = ['$http', 'API_URL', 'Upload', '$q'];
 
   angular.module('yujihomo')
     .service('Episode', Episode);

@@ -7,11 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">JPKR UG</a>
+      <a class="navbar-brand" ui-sref="home({starred: '', episode_type_name_eq: '', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: ''})">JPKR UG</a>
     </div>
     <div class="collapse navbar-collapse" uib-collapse="vm.isNavCollapsed">
       <ul class="nav navbar-nav navbar-right" ng-show="vm.currentUser">
-        <li><a href="javascript:void(0)" ui-sref="home({starred: true})">お気に入り</a></li>
+        <li><a href="javascript:void(0)" ui-sref="home({starred: true, episode_type_name_eq: '', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: ''})">お気に入り</a></li>
         <li uib-dropdown is-open="status.isopen">
           <a href="javascript:void(0)"
              id="menu_button"
@@ -25,6 +25,7 @@
             <li><a href="javascript:void(0)" ui-sref="episode-groups" ng-if="vm.currentUser.role=='admin'">Episode Groups</a></li>
             <li><a href="javascript:void(0)" ui-sref="episodes-create" ng-if="vm.currentUser.role=='admin'">Create Episode</a></li>
             <li><a href="javascript:void(0)" ui-sref="youtube" ng-if="vm.currentUser.role=='admin'">Youtube Import</a></li>
+            <li><a href="javascript:void(0)" ui-sref="media" ng-if="vm.currentUser.role=='admin'">Image Upload</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="javascript:void(0)" ng-click="vm.logout()">ログアウト</a></li>
           </ul>
@@ -42,7 +43,7 @@
     <div class="col-md-6 col-sm-8">
       <a class="no-underline"
          style="cursor:pointer"
-         ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">
+         ui-sref="home({starred: '', episode_type_name_eq: '', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: ''})">
         <img class="col-md-3 hidden-xs hidden-sm img-responsive" style="margin:10px 0;" alt="Yuji profile Logo" src="/assets/images/yuji_profile.jpg">
         <img class="col-md-9 img-responsive" style="margin:10px 0;" alt="JapaneseKoreanUG" src="/assets/images/Logomakr_7vEWEF.jpg">
       </a>
@@ -70,7 +71,7 @@
       <button type="submit" class="btn btn-default">エピソード検索</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="javascript:void(0)" ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">講座</a></li>
+      <li><a href="javascript:void(0)" ui-sref="home({starred: '', episode_type_name_eq: '', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: ''})">講座</a></li>
       <li><a href="javascript:void(0)" ui-sref="schedule">配信予定</a></li>
       <li><a href="javascript:void(0)" ui-sref="about">このサイトについて</a></li>
       <li><a href="javascript:void(0)" ui-sref="feedback-create" ng-if="!vm.currentUser||vm.currentUser.role=='user'">フィードバック</a></li>
@@ -123,7 +124,7 @@
       <li class="col-xs-3 mobile-nav border-right">
         <div class="center-item">
           <a href="javascript:void(0)"
-             ui-sref="home({starred: null, episode_type_name_eq: null, tags_name_eq: null, name_or_tags_name_or_episode_type_name_cont: null})">
+             ui-sref="home({starred: '', episode_type_name_eq: '', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: ''})">
             <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
           </a>
         </div>
