@@ -24,6 +24,7 @@
         query({latest: true})
           .then(function(res) {
             deferred.resolve(res);
+            latestEpisodes = res.data;
           })
           .catch(function(res) {
             deferred.reject(res);
@@ -42,6 +43,7 @@
         query({popular: true})
           .then(function(res) {
             deferred.resolve(res);
+            popularEpisodes = res.data;
           })
           .catch(function(res) {
             deferred.reject(res);
@@ -49,10 +51,6 @@
       }
 
       return deferred.promise;
-    }
-
-    var queryPopularEpisodes = function() {
-      return query({popular: true});
     }
 
     var get = function(id) {
