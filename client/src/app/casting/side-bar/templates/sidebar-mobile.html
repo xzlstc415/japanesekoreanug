@@ -1,9 +1,8 @@
 <div class="mobile-sort-bar container-fluid visible-xs-block mobile-sidebar row">
-  <div class="col-xs-6 mobile-sort-bar-item" uib-dropdown is-open="levelSortStatus.isopen">
+  <div class="col-xs-6 mobile-sort-bar-item" uib-dropdown uib-dropdown-toggle is-open="levelSortStatus.isopen">
     <div style="margin: 0 auto; width: 80px;">
       <a id="level-sort-button"
-         class="no-underline"
-         uib-dropdown-toggle>
+         class="no-underline">
         レベル分け<span class="caret"></span>
       </a>
     </div>
@@ -21,11 +20,10 @@
     </ul>
   </div>
   <div class="divider"></div>
-  <div class="col-xs-6 mobile-sort-bar-item" uib-dropdown is-open="tagSortStatus.isopen">
+  <div class="col-xs-6 mobile-sort-bar-item" uib-dropdown uib-dropdown-toggle is-open="tagSortStatus.isopen">
     <div style="margin: 0 auto; width: 38px;">
       <a id="tag-sort-button"
-         class="no-underline"
-         uib-dropdown-toggle>
+         class="no-underline">
         タグ<span class="caret"></span>
       </a>
     </div>
