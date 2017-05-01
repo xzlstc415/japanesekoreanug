@@ -1,11 +1,12 @@
-<div class="mobile-sort-bar container-fluid visible-xs-block mobile-sidebar">
-  <div class="btn-group" uib-dropdown is-open="levelSortStatus.isopen">
-    <button id="level-sort-button"
-            type="button"
-            class="btn btn-default"
-            uib-dropdown-toggle>
-      レベル分け<span class="caret"></span>
-    </button>
+<div class="mobile-sort-bar container-fluid visible-xs-block mobile-sidebar row">
+  <div class="col-xs-6 mobile-sort-bar-item" uib-dropdown is-open="levelSortStatus.isopen">
+    <div style="margin: 0 auto; width: 80px;">
+      <a id="level-sort-button"
+         class="no-underline"
+         uib-dropdown-toggle>
+        レベル分け<span class="caret"></span>
+      </a>
+    </div>
     <ul class="dropdown-menu mobile-sort-bar-dropdown" uib-dropdown-menu role="menu" aria-labelledby="level-sort-button">
       <li role="menuitem" ng-repeat="episode_type in vm.episodeTypes track by $index">
         <a href="javascript:void(0)"
@@ -19,14 +20,15 @@
       </li>
     </ul>
   </div>
-
-  <div class="btn-group" uib-dropdown is-open="tagSortStatus.isopen">
-    <button id="tag-sort-button"
-            type="button"
-            class="btn btn-default"
-            uib-dropdown-toggle>
-      タグ<span class="caret"></span>
-    </button>
+  <div class="divider"></div>
+  <div class="col-xs-6 mobile-sort-bar-item" uib-dropdown is-open="tagSortStatus.isopen">
+    <div style="margin: 0 auto; width: 38px;">
+      <a id="tag-sort-button"
+         class="no-underline"
+         uib-dropdown-toggle>
+        タグ<span class="caret"></span>
+      </a>
+    </div>
     <ul class="dropdown-menu mobile-sort-bar-dropdown" uib-dropdown-menu role="menu" aria-labelledby="tag-sort-button">
       <li role="menuitem" ng-repeat="tag in vm.tags track by $index">
         <a class="no-underline"
@@ -37,4 +39,5 @@
       </li>
     </ul>
   </div>
+
 </div>

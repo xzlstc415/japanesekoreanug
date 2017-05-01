@@ -34,7 +34,10 @@
   right: 0;
   background-color: rgba(255, 255, 255, 0.95);
   z-index: 99;
-  padding: 1em;
+  height: 50px;
+  border-bottom: 1px solid #aaa;
+  border-radius: 2px;
+  box-shadow: 0 0 1px rgba(0,0,0,.8);
 }
 
 .side-button-container {
@@ -48,4 +51,22 @@
 
 .mobile-sort-bar-dropdown {
   max-width: 50px;
+}
+
+.mobile-sort-bar-item {
+  margin: 0 auto;
+  height: 50px;
+  padding: 1em;
+}
+
+.divider {
+  height: 50px;
+  position: absolute;
+  width: 1px;
+  left: 50%;
+  border: 1px solid #aaa;
+}
+
+.mobile-sort-bar-item.open {
+  background-color: black !important;
 }

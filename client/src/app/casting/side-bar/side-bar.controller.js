@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var SidebarController = function($stateParams, tags, episodeTypes, episodeFilter, MobileSidebarState, $state, Episode) {
+  var SidebarController = function($stateParams, tags, episodeTypes, episodeFilter, MobileSidebarState, $state, Episode, ErrorMessageHandler) {
     var vm = this;
     vm.tags = tags.data;
     vm.episodeTypes = episodeTypes.data;
@@ -25,7 +25,7 @@
     }
   };
 
-  SidebarController.$inject = ['$stateParams', 'tags', 'episodeTypes', 'episodeFilter', 'MobileSidebarState', '$state', 'Episode'];
+  SidebarController.$inject = ['$stateParams', 'tags', 'episodeTypes', 'episodeFilter', 'MobileSidebarState', '$state', 'Episode', 'ErrorMessageHandler'];
 
   angular.module('yujihomo')
     .controller('SidebarController', SidebarController);

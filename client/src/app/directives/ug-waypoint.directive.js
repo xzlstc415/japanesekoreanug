@@ -15,7 +15,7 @@
           },
           offset: attr.waypointOffset
         })
-      }, 200);
+      }, 800);
     }
     return {
       restrict: "A",

@@ -216,10 +216,15 @@
   border-bottom: thin solid #BBB;
 }
 
+#episode.blog-container {
+  margin-top: 55px;
+}
+
 @media all and (min-width: 768px)
 {
   #episode.blog-container {
     padding: 2.57em 4.42em;
+    margin: auto;
   }
 }
 
