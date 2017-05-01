@@ -3,6 +3,7 @@ class EpisodesController < ApplicationController
   before_action :authenticate_auth_user!, only: [:create, :update, :destroy]
   after_action :verify_authorized
   before_action :set_current_user
+  before_action :parse_tags_to_array, only: [:create, :update]
 
   def index
     if params[:starred]
@@ -68,6 +69,11 @@ class EpisodesController < ApplicationController
   end
 
   private
+
+  def parse_tags_to_array
+    return unless params[:episode].has_key?(:tag_ids)
+    params[:episode][:tag_ids] = params[:episode][:tag_ids].values
+  end
 
   def search_params
     params.permit(
