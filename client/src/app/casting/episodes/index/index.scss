@@ -120,3 +120,9 @@
 .mobile-tag-block {
   margin-bottom: 1em;
 }
+
+@media all and (max-width: 768px) {
+  .episode-name {
+    font-size: 1em
+  }
+}
