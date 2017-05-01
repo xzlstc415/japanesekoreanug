@@ -1,3 +1,97 @@
-<div ng-include="'app/casting/episodes/index/templates/index-big-screen.html'"></div>
-<div ng-include="'app/casting/episodes/index/templates/index-mobile.html'"></div>
+<div class="full mobile-screen-margin"
+     infinite-scroll='vm.nextPage()'
+     infinite-scroll-disabled='vm.busy || vm.end'
+     infinite-scroll-distance='1'>
+  <div class="episode row"
+       id="episode_{{episode.number}}"
+       ng-repeat="episode in vm.episodes | orderBy: '-number' track by episode.id">
+    <div class="screenshot col-xs-5">
+      <a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})"
+         analytics-on="click"
+         analytics-event="Click To Watch Episode {{episode.number}}"
+         analytics-category="Episodes Index Page">
+        <img alt="{{episode.number}}-{{episode.name}}"
+             ng-src="{{episode.thumbnail_url}}"
+             class="image-cover">
+      </a>
+    </div>
+    <div class="col-xs-7">
+      <div class="info">
+        <span class="number">エピソード #{{episode.number}}</span> –
+        <span class="published_at">{{episode.published_at}}</span>
+        <span class="hidden-xs" ng-show="!episode.published_at" style="color: red;"><b>Unpublished</b></span>
+      </div>
+      <div class="hidden-xs">
+        <span class="glyphicon glyphicon-tag" style="vertical-align:middle; margin-right: 0.5em"></span>
+        <span style="margin-right: 0.3em" ng-repeat="tag in episode.tags track by $index">
+          <a ui-sref="home({tags_name_eq: '{{tag.name}}', episode_type_name_eq: '', starred: '', name_or_tags_name_or_episode_type_name_cont: ''})" href="javascript:void(0)" class="label label-warning" >{{tag.name}}</a>
+        </span>
+        <span class="glyphicon glyphicon-flash" style="vertical-align:middle; margin: 0 0.4em 0 0.7em"></span>
+        <span>
+          <a ui-sref="home({episode_type_name_eq: '{{episode.episode_type}}', starred: '', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: ''})" href="javascript:void(0)" class="label label-primary">{{episode.episode_type}}</a>
+        </span>
+        <span class="glyphicon glyphicon-comment" style="vertical-align:middle; margin: 0 0.5em 0 1em"></span>
+        <span class="badge">
+          {{episode.comments_count}}
+        </span>
+      </div>
+      <h4>
+        <b><a href="javascript:void(0)" ui-sref="episodes-comments({id: {{episode.id}}})"
+           analytics-on="click"
+           analytics-event="Click To Watch Episode {{episode.number}}"
+           analytics-category="Episodes Index Page">{{episode.name}}</a></b>
+         <a href="javascript:void(0)"
+            class="star"
+            ng-class="{starred: episode.starred, unstarred: !episode.starred}"
+            ng-click="vm.toggleStar(episode)"
+            rel="nofollow"
+            ng-if="vm.currentUser">☆</a>
+      </h4>
+      <div class="visible-xs-block mobile-tag-block">
+        <div>
+          <span class="glyphicon glyphicon-tag mobile-tag-label"></span>
+          <span style="margin-right: 0.3em" ng-repeat="tag in episode.tags track by $index">
+            <a ui-sref="home({tags_name_eq: '{{tag.name}}', episode_type_name_eq: '', starred: '', name_or_tags_name_or_episode_type_name_cont: ''})" href="javascript:void(0)" class="label label-warning" >{{tag.name}}</a>
+          </span>
+        </div>
+        <div>
+          <span class="glyphicon glyphicon-flash mobile-tag-label"></span>
+          <span>
+            <a ui-sref="home({episode_type_name_eq: '{{episode.episode_type}}', starred: '', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: ''})" href="javascript:void(0)" class="label label-primary">{{episode.episode_type}}</a>
+          </span>
+        </div>
+        <div>
+          <span class="glyphicon glyphicon-comment mobile-tag-label"></span>
+          <span class="badge">
+            {{episode.comments_count}}
+          </span>
+        </div>
+      </div>
+      <div class="description">
+        {{episode.description}}
+      </div>
+      <div class="watch hidden-xs">
+        <a href="javascript:void(0)"
+           ui-sref="episodes-comments({id: {{episode.id}}})"
+             analytics-on="click"
+             analytics-event="Click To Watch Episode {{episode.number}}"
+             analytics-category="Episodes Index Page"
+           class="btn btn-success">エピソードを見る</a>
+        <a href="javascript:void(0)"
+           ui-sref="episodes-update({id: {{episode.id}}})"
+           class="btn btn-primary"
+           ng-if="vm.currentUser.role == 'admin'">Edit Episode</a>
+        <a href="javascript:void(0)"
+           ng-click="vm.publishEpisode(episode)"
+           class="btn btn-info"
+           ng-if="!episode.published_at && vm.currentUser.role == 'admin'">Publish Episode</a>
+        <a href="javascript:void(0)"
+           ng-click="vm.unPublishEpisode(episode)"
+           class="btn btn-danger"
+           ng-if="episode.published_at && vm.currentUser.role == 'admin'">Unpublish Episode</a>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
 <div class="loading-indicator" ng-if="vm.busy">もっと見る...</div>

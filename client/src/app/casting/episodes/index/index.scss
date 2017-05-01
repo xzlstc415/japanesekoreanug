@@ -24,16 +24,12 @@
   margin-bottom: 20px;
 }
 
-.full .screenshot{
-  float: left;
+.screenshot {
+  padding: 0 !important;
 }
 
 .screenshot img{
   border: solid 1px #999;
-}
-
-.full .main{
-  margin-left: 215px;
 }
 
 .full .info{
@@ -109,12 +105,18 @@
   margin-right: 0.5em
 }
 
-.image-cover {
-  object-fit: cover;
-  width: 100%;
-  height: 12em;
-}
-
 .episode-index-mobile-info-item {
   margin-bottom: 0.2em;
+}
+
+.mobile-screen-margin {
+  margin-top: 50px;
+}
+
+.mobile-tag-label {
+  margin-right: 1em;
+}
+
+.mobile-tag-block {
+  margin-bottom: 1em;
 }
