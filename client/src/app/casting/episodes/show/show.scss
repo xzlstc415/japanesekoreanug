@@ -231,3 +231,15 @@
 #episode .info .item {
   margin-bottom: 1em;
 }
+
+@media all and (max-width: 768px) {
+  #episode h2,
+  .blog-content h2,
+  .blog-content p,
+  .blog-content h3,
+  .blog-content b,
+  .blog-content div,
+  .blog-content span {
+    font-size: 1em !important;
+  }
+}

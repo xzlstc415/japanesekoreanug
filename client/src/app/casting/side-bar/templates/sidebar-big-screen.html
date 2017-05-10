@@ -16,12 +16,12 @@
   </div>
   <div class="search_option">
     <h4>タグ</h4>
-    <div>
-      <span ng-repeat="tag in vm.tags">
+    <div class="clearfix">
+      <span ng-repeat="tag in vm.tags" style="margin-right: 0.2em;" class="pull-left">
         <a class="label label-warning"
            href="javascript:void(0)"
            ui-sref="home({tags_name_eq: '{{tag.name}}', episode_type_name_eq: '', name_or_tags_name_or_episode_type_name_cont: '', starred: ''})"
-           style="margin-right: 0.5em; color: white">
+           style="color: white">
           {{tag.name}} ({{tag.episodes_count}})
         </a>
       </span>
