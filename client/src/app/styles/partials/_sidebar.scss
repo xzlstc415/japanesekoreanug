@@ -1,3 +1,76 @@
 .search_option ul {
   padding-left: 0px;
 }
+
+#casting-side-bar .banner {
+  margin-top: 15px;
+}
+
+#casting-side-bar h4 {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+#casting-side-bar .big-screen-sidebar-section li {
+  margin-bottom: 1em;
+}
+
+#casting-side-bar a {
+  color: #777;
+}
+
+#casting-side-bar .mobile-sort-bar-dropdown li {
+  padding: 0.2em 0;
+}
+
+#casting-side-bar a:hover {
+  color: #aaa;
+}
+
+.search_option {
+  margin-bottom: 2em;
+}
+
+.mobile-sort-bar {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 99;
+  height: 50px;
+  border-bottom: 1px solid #aaa;
+  border-radius: 2px;
+  box-shadow: 0 0 1px rgba(0,0,0,.8);
+}
+
+.side-button-container {
+  position: fixed;
+  right: 0.3em;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  height: 100%;
+}
+
+.mobile-sort-bar-dropdown {
+  max-width: 50px;
+}
+
+.mobile-sort-bar-item {
+  margin: 0 auto;
+  height: 50px;
+  padding: 1em;
+}
+
+.divider {
+  height: 50px;
+  position: absolute;
+  width: 1px;
+  left: 50%;
+  border: 1px solid #aaa;
+}
+
+.mobile-sort-bar-item.open {
+  background-color: black !important;
+}
