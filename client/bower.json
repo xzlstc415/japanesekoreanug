@@ -27,7 +27,8 @@
     "ng-disable-scroll": "latest",
     "angular-ui-calendar": "latest",
     "textAngular": "latest",
-    "waypoint": "latest"
+    "waypoint": "latest",
+    "compass-sass-mixins": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

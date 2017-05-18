@@ -1,0 +1,10 @@
+body {
+  padding-top: 50px;
+  -webkit-font-smoothing: antialiased;
+  font-family: Arial, 'mplus-2p-regular' !important;
+  background-color: $gray-lighter;
+}
+
+ul {
+  @include reset-list-style();
+}

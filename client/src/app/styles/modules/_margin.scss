@@ -1,0 +1,12 @@
+@mixin margin-vertical($lines) {
+  @include margin-leader($lines);
+  @include margin-trailer($lines);
+}
+
+@mixin margin-vertical-x {
+  @for $i from 1 through 5 {
+    .margin-vertical-#{$i} { @include margin-vertical($i); }
+  }
+}
+
+@include margin-vertical-x;

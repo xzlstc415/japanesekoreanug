@@ -1,266 +1,25 @@
-.navbar-collapse.in {
-  overflow-y: hidden;
-}
+// Modules and Variables
+@import "partials/base";
 
-.no-underline:hover{
-  text-decoration: none;
-}
+// Partials
+@import "partials/sidebar";
+@import "partials/star";
+@import "partials/layers";
+@import "partials/navbar";
+@import "partials/blog";
+@import "partials/about";
+@import "partials/image";
+@import "partials/link";
+@import "partials/episode_block";
 
-ul {
-  list-style-type: none;
-  padding-left: 0px;
-}
-
-.no-border-radius {
-  border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-}
-
-.nav, .pagination, .carousel, .panel-title a {
-  cursor: pointer !important;
-}
+// Third-party
+@import "vendor/bootstrap-theme.min";
+@import "vendor/bootstrap.min";
 
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
   max-width: 1030px;
-}
-
-.main-container-padding-btm {
-  padding-bottom: 10em;
-}
-
-.unstarred{
-  color: #AAA !important;
-}
-
-.starred{
-  color: #E98C08 !important;
-}
-
-.star {
-  font-size: 0.8em;
-  text-decoration: none !important;
-  margin-left: 3px;
-}
-
-.star:hover {
-  text-decoration: none !important;
-}
-
-#toast-container {
-  z-index: 9999 !important;
-}
-
-.navbar-fixed-top {
-  z-index: 999 !important;
-}
-
-body {
-  padding-top: 50px;
-  -webkit-font-smoothing: antialiased;
-  font-family: Arial, 'mplus-2p-regular';
-  background-color: rgb(242,242,242);
-}
-
-@font-face
-{
-font-family: 'mplus-2p-regular';
-src: url('../fonts/mplus-2p-regular.eot');
-src: url('../fonts/mplus-2p-regular.eot?#iefix') format('embedded-opentype'),
-url('../fonts/mplus-2p-regular.woff') format('woff'),
-url('../fonts/mplus-2p-regular.ttf') format('truetype');
-}
-
-@font-face
-{
-font-family: 'mplus-2p-light';
-src: url('../fonts/mplus-2p-light.eot');
-src: url('../fonts/mplus-2p-light.eot?#iefix') format('embedded-opentype'),
-url('../fonts/mplus-2p-light.woff') format('woff'),
-url('../fonts/mplus-2p-light.ttf') format('truetype');
-}
-
-.bs-callout {
-padding: 20px;
-margin: 20px 0;
-border: 1px solid #eee;
-border-left-width: 5px;
-border-radius: 3px;
-}
-
-.bs-callout h4 {
-margin-top: 0;
-margin-bottom: 5px;
-}
-
-.bs-callout p:last-child {
-margin-bottom: 0;
-}
-
-.bs-callout code {
-border-radius: 3px;
-}
-
-.bs-callout+.bs-callout {
-margin-top: -5px;
-}
-
-$gray-base:              #000 !default;
-$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              lighten($gray-base, 20%) !default;   // #333
-$gray:                   lighten($gray-base, 33.5%) !default; // #555
-$gray-light:             lighten($gray-base, 46.7%) !default; // #777
-$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
-
-$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
-$brand-success:         #5cb85c !default;
-$brand-info:            #5bc0de !default;
-$brand-warning:         #f0ad4e !default;
-$brand-danger:          #d9534f !default;
-
-@mixin bs-mixin($name, $callout-color) {
-
-// Callout border color
-.#{$name} {
-  border-left-color: $callout-color;
-}
-// Callout header color
-.#{$name} h4 {
-  color: $callout-color;
-  }
-}
-
-@include bs-mixin(bs-callout-default, $gray);
-@include bs-mixin(bs-callout-primary, $brand-primary);
-@include bs-mixin(bs-callout-info, $brand-info);
-@include bs-mixin(bs-callout-danger, $brand-danger);
-@include bs-mixin(bs-callout-warning, $brand-warning);
-@include bs-mixin(bs-callout-success, $brand-success);
-
-.blog-wrapper h1 {
-  font-size: 32px;
-  margin-bottom: 3rem;
-  font-weight: bold;
-}
-
-.blog-wrapper .bold {
-  font-weight: bold;
-}
-
-.blog-wrapper h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 4em 0 2em;
-  position: relative;
-  background-color: #fff;
-  padding: .5em 1em .5em 1.5em;
-  box-shadow: 0 0 1px rgba(0,0,0,.8);
-}
-
-.blog-wrapper h2:after {
-  position: absolute;
-  top: .5em;
-  left: .5em;
-  content: '';
-  width: 6px;
-  height: -webkit-calc(100% - 1.2em);
-  height: calc(100% - 1.2em);
-  background-color: #f0ad4e;
-}
-
-.blog-wrapper h3 {
-  font-size: 22px;
-  font-weight: bold;
-  margin: 3.8em 0 2em;
-  padding: .4em 0 .4em .1em;
-  position: relative;
-  border-bottom: 2px solid #ccc;
-}
-
-.blog-wrapper h3:after {
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  z-index: 2;
-  content: '';
-  width: 30%;
-  height: 2px;
-  background-color: #f0ad4e;
-}
-
-.blog-wrapper strong, .blog-wrapper b {
-	margin: auto .2em;
-	background: linear-gradient(transparent 80%, #ffc6fa 80%);
-	background: -webkit-linear-gradient(transparent 80%, #ffc6fa 80%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(80%,#fff), color-stop(80%,#ffc6fa));
-}
-
-.blog-wrapper p {
-  font-size: 1.14em;
-}
-
-.blog-wrapper li {
-  font-size: 1.08em;
-}
-
-.red-text {
-  color: #b22222;
-}
-
-.green-text {
-  color: #149b14;
-}
-
-.blog-wrapper p {
-  text-align: justify;
-  line-height: 1.75em;
-}
-
-.blog-wrapper .orange-box {
-  border: 1px solid #ff6819;
-  margin: 24px auto;
-  max-width: 100% !important;
-  width: 100%;
-  padding: 1.2em;
-  border-radius: 4px;
-  font-size: 1.14em;
-}
-
-.blog-wrapper .gray-box {
-  width: 90%;
-  font-size: 1.14em;
-  margin: 2em auto;
-  padding: 1.5em 1em;
-  background-color: #f8f8f8;
-  overflow: hidden;
-  box-shadow: 0 0 1px rgba(0,0,0,.4);
-}
-
-.blog-wrapper ul {
-  list-style: none;
-  padding: 0;
-}
-
-.blog-wrapper li {
-  padding-left: 1.3em;
-}
-
-.blog-wrapper li:before {
-  content: "└";
-  display: inline-block;
-  margin-left: -1.3em; /* same as padding-left set on li */
-  width: 1.3em; /* same as padding-left set on li */
-}
-
-.well-lg {
-  background-color: white !important;
-  background-image: none !important;
-}
-
-.well {
-  background-color: white !important;
-  background-image: none !important;
 }
 
 #main-container {
@@ -273,27 +32,8 @@ $brand-danger:          #d9534f !default;
   }
 }
 
-.well-lg {
-  border: 1px solid rgba(0, 0, 0, 0.09);
-  box-shadow: 0 1px 4px rgba(0,0,0,.04);
-}
-
-.label-warning a, .label-primary a {
-  color: white !important;
-}
-
-.image-cover {
-  object-fit: cover;
-  width: 100%;
-  height: 12em;
-}
-
-.image-contain {
-  object-fit: contain;
-  width: 100%;
-}
-
-.image-fill {
-  object-fit: fill;
-  width: 100%;
+@media all and (max-width: 768px) {
+  .dynamic-font-size {
+    font-size: 1em
+  }
 }

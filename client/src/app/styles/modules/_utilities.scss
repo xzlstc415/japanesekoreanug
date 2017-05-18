@@ -1,0 +1,37 @@
+// shared basic styles
+.no-underline {
+  @include unstyled-link();
+}
+
+.no-underline:hover {
+  text-decoration: none;
+}
+
+.no-border-radius {
+  @include border-radius(0px, 0px !important);
+}
+
+// text styles
+.red-text {
+  color: $red;
+}
+
+.green-text {
+  color: $green;
+}
+
+// font styles
+.bold-text {
+  font-weight: bold;
+}
+
+// Text Angular override
+.ta-scroll-window {
+  max-height: 500px;
+}
+
+.unreleased{
+  color: #D00;
+  font-weight: bold;
+  padding-left: 5px;
+}

@@ -1,0 +1,13 @@
+.unstarred{
+  color: $gray-light !important;
+}
+
+.starred{
+  color: #E98C08 !important;
+}
+
+.star {
+  @extend .no-underline;
+  font-size: 0.8em;
+  margin-left: 3px;
+}

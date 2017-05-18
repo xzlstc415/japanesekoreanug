@@ -1,0 +1,50 @@
+.label-warning a, .label-primary a {
+  color: $gray-lighter !important;
+}
+
+.full .episode{
+  padding-bottom: 18px;
+  border-bottom: solid 1px $gray-lighter;
+  @include margin-trailer(1);
+}
+
+.full .info{
+  color: $gray-light;
+  font-size: 12px;
+}
+
+.full .info a{
+  color: $gray-light;
+}
+
+.full .number{
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.full .description{
+  @include margin-trailer(1);
+}
+
+.loading-indicator {
+  width: 10%;
+  margin: 0 auto;
+  font-size: 1.2em;
+  line-height: 2em;
+}
+
+.episode-index-mobile-info-item {
+  margin-bottom: 0.2em;
+}
+
+.mobile-screen-margin {
+  margin-top: 50px;
+}
+
+.mobile-tag-label {
+  margin-right: 1em;
+}
+
+.mobile-tag-block {
+  margin-bottom: 1em;
+}

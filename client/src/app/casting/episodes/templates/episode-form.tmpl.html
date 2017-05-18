@@ -39,9 +39,12 @@
   </div>
 </div>
 <div class="form-group">
-  <div class="form-link col-sm-offset-2 col-sm-10">
+  <div class="col-sm-offset-2 col-sm-10">
     Need a new episode type?
-    <a href="javascript:void(0)" ui-sref="episode_type_management" ng-if="vm.currentUser.role=='admin'">Create Episode Type</a>
+    <a class="cyan-link underline" 
+       href="javascript:void(0)"
+       ui-sref="episode_type_management"
+       ng-if="vm.currentUser.role=='admin'">Create Episode Type</a>
   </div>
 </div>
 <div class="form-group">
