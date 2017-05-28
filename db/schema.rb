@@ -125,7 +125,6 @@ ActiveRecord::Schema.define(version: 20170424042848) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                limit: 255
-    t.string   "avatar_url",          limit: 255
     t.boolean  "receive_email",                   default: true
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -141,6 +140,7 @@ ActiveRecord::Schema.define(version: 20170424042848) do
     t.string   "avatar_content_type", limit: 255
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
+    t.string   "avatar_url",          limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

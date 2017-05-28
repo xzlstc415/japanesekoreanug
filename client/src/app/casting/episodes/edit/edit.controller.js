@@ -1,13 +1,20 @@
 (function() {
   'use strict';
 
-  var EpisodesUpdateController = function(User, Episode, episode, $state, toastr, Tag, ErrorMessageHandler, episodeTypes, usSpinnerService) {
+  var EpisodesUpdateController = function(User, Episode, episode, $state, toastr, Tag, ErrorMessageHandler, episodeTypes, usSpinnerService, tinymce) {
     var vm = this;
     vm.episode = episode.data;
     vm.episodeTypes = episodeTypes.data;
     vm.tag_ids = vm.episode.tag_ids;
     vm.tags = vm.episode.tags;
     vm.currentUser = User.currentUser();
+    vm.tinymceOptions = {
+      height: 500,
+      max_height: 800,
+      plugins: "image media autolink autosave charmap emoticons link lists paste preview tabfocus textcolor wordcount",
+      menubar: "edit insert view format table tools",
+      toolbar: "media restoredraft emoticons link numlist bullist paste forecolor backcolor preview"
+    };
 
     var updateEpisode = function() {
       usSpinnerService.spin('spinner-1');
@@ -55,7 +62,11 @@
     vm.removeTag = removeTag;
   };
 
-  EpisodesUpdateController.$inject = ['User', 'Episode', 'episode', '$state', 'toastr', 'Tag', 'ErrorMessageHandler', 'episodeTypes', 'usSpinnerService'];
+  EpisodesUpdateController.$inject = [
+    'User', 'Episode', 'episode', '$state', 'toastr', 'Tag',
+    'ErrorMessageHandler', 'episodeTypes', 'usSpinnerService',
+    'tinymce'
+  ];
 
   angular.module('yujihomo')
     .controller('EpisodesUpdateController', EpisodesUpdateController);

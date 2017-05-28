@@ -1,12 +1,15 @@
 (function() {
   'use strict';
 
-  var EpisodesCreateController = function(User, Episode, $state, toastr, Tag, ErrorMessageHandler, episodeTypes, usSpinnerService) {
+  var EpisodesCreateController = function(User, Episode, $state, toastr, Tag, ErrorMessageHandler, episodeTypes, usSpinnerService, tinymce) {
     var vm = this;
     vm.episodeTypes = episodeTypes.data;
     vm.episode = {};
     vm.episode.tag_ids = [];
     vm.currentUser = User.currentUser();
+    vm.tinymceOptions = {
+      height: 500
+    };
 
     var saveEpisode = function() {
       usSpinnerService.spin('spinner-1');
@@ -55,7 +58,11 @@
     vm.removeTag = removeTag;
   };
 
-  EpisodesCreateController.$inject = ['User', 'Episode', '$state', 'toastr', 'Tag', 'ErrorMessageHandler', 'episodeTypes', 'usSpinnerService'];
+  EpisodesCreateController.$inject = [
+    'User', 'Episode', '$state', 'toastr',
+    'Tag', 'ErrorMessageHandler', 'episodeTypes',
+    'usSpinnerService', 'tinymce'
+  ];
 
   angular.module('yujihomo')
     .controller('EpisodesCreateController', EpisodesCreateController);
