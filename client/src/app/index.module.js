@@ -22,7 +22,8 @@
       'ui.bootstrap',
       'ngDisableScroll',
       'ui.calendar',
-      'textAngular'
+      'textAngular',
+      'ui.tinymce'
     ]);
 
 })();

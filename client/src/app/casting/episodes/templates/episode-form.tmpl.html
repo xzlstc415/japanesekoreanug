@@ -41,7 +41,7 @@
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
     Need a new episode type?
-    <a class="cyan-link underline" 
+    <a class="cyan-link underline"
        href="javascript:void(0)"
        ui-sref="episode_type_management"
        ng-if="vm.currentUser.role=='admin'">Create Episode Type</a>
@@ -68,7 +68,7 @@
 <div class="form-group">
   <label class="col-sm-2 control-label">Blog</label>
   <div class="blog-wrapper col-sm-10">
-    <text-angular ng-model="vm.episode.blog"></text-angular>
+    <textarea ui-tinymce ng-model="vm.episode.blog"></textarea>
   </div>
 </div>
 <div class="form-group">

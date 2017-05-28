@@ -28,7 +28,8 @@
     "angular-ui-calendar": "latest",
     "textAngular": "latest",
     "waypoint": "latest",
-    "compass-sass-mixins": "latest"
+    "compass-sass-mixins": "latest",
+    "angular-ui-tinymce": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"
