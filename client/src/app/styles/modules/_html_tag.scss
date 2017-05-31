@@ -5,6 +5,6 @@ body {
   background-color: $gray-lighter;
 }
 
-ul {
+.no-list-style {
   @include reset-list-style();
 }

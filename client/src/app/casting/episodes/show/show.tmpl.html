@@ -34,8 +34,7 @@
     </div>
     <div class="clear"></div>
     <div class="blog-wrapper blog-content">
-      <div ta-bind
-           ng-model="vm.episode.blog"
+      <div ng-bind-html="vm.blogHtml"
            placeholder="test placeholder"
            required
            ng-model-options="{debounce: 1000}"

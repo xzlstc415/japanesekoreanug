@@ -5,6 +5,7 @@
                                         $state, ErrorMessageHandler, $location) {
     var vm = this;
     vm.episode = episode.data;
+    vm.blogHtml = $sce.trustAsHtml(vm.episode.blog);
     vm.currentUser = User.currentUser();
 
     if ($state.current.name == 'episodes-similar-ep') {

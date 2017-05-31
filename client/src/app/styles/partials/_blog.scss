@@ -1,24 +1,13 @@
-.blog-wrapper h1 {
-  font-size: 32px;
-  margin-bottom: 3rem;
-  font-weight: bold;
-}
-
-.blog-wrapper .bold {
-  font-weight: bold;
-}
-
-.blog-wrapper h2 {
-  font-size: 24px;
+.blog-wrapper .bullet {
   font-weight: bold;
   margin: 4em 0 2em;
   position: relative;
   background-color: #fff;
   padding: .5em 1em .5em 1.5em;
-  box-shadow: 0 0 1px rgba(0,0,0,.8);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
 }
 
-.blog-wrapper h2:after {
+.blog-wrapper .bullet:after {
   position: absolute;
   top: .5em;
   left: .5em;
@@ -29,8 +18,7 @@
   background-color: #f0ad4e;
 }
 
-.blog-wrapper h3 {
-  font-size: 22px;
+.blog-wrapper .section-header {
   font-weight: bold;
   margin: 3.8em 0 2em;
   padding: .4em 0 .4em .1em;
@@ -38,7 +26,7 @@
   border-bottom: 2px solid #ccc;
 }
 
-.blog-wrapper h3:after {
+.blog-wrapper .section-header:after {
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -49,23 +37,15 @@
   background-color: #f0ad4e;
 }
 
-.blog-wrapper strong, .blog-wrapper b {
-	margin: auto .2em;
-	background: linear-gradient(transparent 80%, #ffc6fa 80%);
-	background: -webkit-linear-gradient(transparent 80%, #ffc6fa 80%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(80%,#fff), color-stop(80%,#ffc6fa));
+.blog-wrapper .pink-underline {
+  margin: auto .2em;
+  background: linear-gradient(transparent 80%, #ffc6fa 80%);
+  background: -webkit-linear-gradient(transparent 80%, #ffc6fa 80%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(80%, #fff), color-stop(80%, #ffc6fa));
 }
 
 .blog-wrapper p {
   font-size: 1.14em;
-}
-
-.blog-wrapper li {
-  font-size: 1.08em;
-}
-
-.blog-wrapper p {
-  text-align: justify;
   line-height: 1.75em;
 }
 
@@ -81,26 +61,13 @@
 
 .blog-wrapper .gray-box {
   width: 90%;
-  font-size: 1.14em;
   margin: 2em auto;
   padding: 1.5em 1em;
   background-color: #f8f8f8;
   overflow: hidden;
-  box-shadow: 0 0 1px rgba(0,0,0,.4);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
 }
 
-.blog-wrapper ul {
+.blog-wrapper .no-disc-style {
   list-style: none;
-  padding: 0;
-}
-
-.blog-wrapper li {
-  padding-left: 1.3em;
-}
-
-.blog-wrapper li:before {
-  content: "└";
-  display: inline-block;
-  margin-left: -1.3em; /* same as padding-left set on li */
-  width: 1.3em; /* same as padding-left set on li */
 }

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "angular-animate": "~1.5.3",
+    "angular-sanitize": "~1.5.3",
     "angular-cookies": "~1.5.3",
     "angular-touch": "~1.5.3",
     "angular-messages": "~1.5.3",
@@ -26,7 +27,6 @@
     "angular-bootstrap": "latest",
     "ng-disable-scroll": "latest",
     "angular-ui-calendar": "latest",
-    "textAngular": "latest",
     "waypoint": "latest",
     "compass-sass-mixins": "latest",
     "angular-ui-tinymce": "latest"

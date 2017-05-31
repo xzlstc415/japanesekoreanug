@@ -1,7 +1,7 @@
 <div class="hidden-xs">
   <div class="search_option">
     <h4>レベル分け</h4>
-    <ul class="big-screen-sidebar-section">
+    <ul class="big-screen-sidebar-section no-list-style">
       <li ng-repeat="episode_type in vm.episodeTypes track by $index">
         <a href="javascript:void(0)"
            ui-sref="home({episode_type_name_eq: '{{episode_type.name}}', tags_name_eq: '', name_or_tags_name_or_episode_type_name_cont: '', starred: ''})"
@@ -29,7 +29,7 @@
   </div>
   <div class="search_option">
     <h4>最新の記事</h4>
-    <ul class="big-screen-sidebar-section">
+    <ul class="big-screen-sidebar-section no-list-style">
       <li ng-repeat="latestEpisode in vm.latestEpisodes track by latestEpisode.id">
         <a href="javascript:void(0)"
            ui-sref="episodes-comments({id: {{latestEpisode.id}}})"
@@ -44,7 +44,7 @@
   </div>
   <div class="search_option">
     <h4>人気の記事</h4>
-    <ul class="big-screen-sidebar-section">
+    <ul class="big-screen-sidebar-section no-list-style">
       <li ng-repeat="popularEpisode in vm.popularEpisodes track by popularEpisode.id">
         <a href="javascript:void(0)"
            ui-sref="episodes-comments({id: {{popularEpisode.id}}})"
